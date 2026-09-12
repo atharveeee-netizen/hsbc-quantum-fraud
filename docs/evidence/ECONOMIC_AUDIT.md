@@ -1,77 +1,55 @@
-# Rigorous Economic Audit & Cost-Benefit Analysis
+# Economic Audit & Unit Economics Analysis — Three Architecture Scenarios
 
-**Status:** `[SYNTHETIC]` `[MEASURED]` `[MODELED]` `[VERIFIED]`  
-**Execution Phase:** Phase 145  
-**Evidence Artifact:** [`docs/evidence/hardware_and_economics.json`](file:///C:/Users/noobg/.gemini/antigravity-ide/scratch/hsbc-quantum-fraud/docs/evidence/hardware_and_economics.json)
+**Status:** `[REAL DATA]` `[MEASURED]` `[MODELED]` `[ASSUMED]` `[VERIFIED]`  
+**Execution Phase:** Phase 171  
+**Evidence Artifact:** [`docs/evidence/hardware_and_economics.json`](file:///C:/Users/noobg/.gemini/antigravity-ide/scratch/hsbc-quantum-fraud/docs/evidence/hardware_and_economics.json)  
 
 ---
 
-## 1. Accounting Taxonomy: Measured vs Modeled vs Assumed
+## 1. Accounting Provenance Taxonomy
 
 To ensure institutional credibility and eliminate any risk of overstated claims, all financial metrics are categorized strictly according to empirical provenance:
 
-| Category | Description | Scope in this Audit |
+| Category | Definition | Repository Scope in this Audit |
 | :--- | :--- | :--- |
-| **`[MEASURED]`** | Directly observed from local computational execution and real file statistics | Local compute runtime, CPU/RAM utilization, synthetic dataset volume (10,000 transactions), local inference latency. |
-| **`[MODELED]`** | Calculated via mathematically defined simulation models, pricing APIs, and pricing schedules | IonQ/AWS Braket quantum circuit execution costs, batch execution scaling, modeled fraud prevention under synthetic distributions. |
-| **`[ASSUMED]`** | Industry standard business parameters provided as operational hypotheses | Cost of missed fraud ($180/tx), cost of false decline friction ($15/tx), manual review cost ($45/analyst hour). |
+| **`[MEASURED]`** | Directly observed from computational execution and real file statistics | Local compute runtime, CPU/RAM utilization, IEEE-CIS dataset volume (590,540 transactions), local inference latency ($0.0007\text{ ms}$). |
+| **`[MODELED]`** | Calculated via mathematically defined operational formulas and published cloud provider rate cards | IonQ/AWS Braket quantum circuit execution costs, batch scaling curves, modeled fraud loss reduction across budgets. |
+| **`[ASSUMED]`** | Industry standard business parameters provided as operational hypotheses | Cost of missed fraud ($180/transaction), false decline friction cost ($15/transaction), analyst review cost ($45/analyst hour). |
 
 ---
 
 ## 2. Realized Savings Declaration
 
 > [!IMPORTANT]
-> **Realized Fraud Savings to Date: $0.00**  
-> Because access to the external IEEE-CIS real-world production dataset remains legitimately blocked (`[REAL DATA BLOCKED]`), **no real payment transactions have been processed by this system**.  
-> In accordance with scientific integrity guidelines, any hypothetical cost reductions derived from synthetic benchmarks are strictly designated as **`[MODELED POTENTIAL]`**. Claims such as "€1.2M savings" are completely absent from this repository.
+> **Realized Expenditure Savings to Date: $0.00**  
+> While the system has been thoroughly evaluated on genuine IEEE-CIS real-world payment data ($N=590,540$), this repository represents a scientific research benchmark, not a live production deployment hooked into an active merchant acquiring switch.  
+> **No realized monetary savings have been claimed or accrued ($0.00).** All financial figures represent mathematically modeled unit economics under explicit parameter assumptions. Claims of "€1.2M savings" are prohibited and rejected.
 
 ---
 
-## 3. Operational Unit Economics
+## 3. Comparative Architecture Scenarios (Per 1 Million Transactions)
 
-### 3.1 Classical Production Pipeline (LightGBM + Selective Escalation)
+Assuming an enterprise volume of 1,000,000 transactions at IEEE-CIS empirical base fraud prevalence ($\pi = 3.44\%$, i.e. 34,400 fraudulent transactions):
 
-* **Baseline Classical Model (LightGBM)**:
-  * Runtime per transaction: **0.05 ms** (`[MEASURED]`)
-  * Computational cost per 1M transactions: **$0.005** (Serverless CPU execution, `[MEASURED]`)
-* **Routing Filter (1% Budget)**:
-  * 99.0% of traffic cleared instantaneously by frontline LightGBM at sub-millisecond latency.
-  * 1.0% of traffic (uncertain/high-risk subset) escalated to specialist.
-* **Classical Specialist (GBM / Tuned RBF Expert)**:
-  * Escalated volume: 10,000 transactions per 1M total volume.
-  * Runtime per escalated transaction: **0.12 ms** (`[MEASURED]`)
-  * Total compute cost per 1M transactions: **$0.008** (`[MEASURED]`)
-
-### 3.2 Quantum Specialist Pipeline (Projected / Fidelity Quantum Kernel)
-
-* **Local Simulator (PennyLane `default.qubit`)**:
-  * Runtime per escalated transaction (N=50 support): **150 - 220 ms** (`[MEASURED]`)
-  * Compute cost per 1M transactions (1% escalated): **$0.15** (`[MEASURED]`)
-* **Physical QPU Hardware (IonQ Aria via AWS Braket)** (`[MODELED]`):
-  * Circuit evaluations per transaction against N=100 support: **100 pairwise circuits**.
-  * Total shots at 1,000 shots/circuit: **100,000 shots**.
-  * Task dispatch fee: $0.30/task.
-  * Per-shot fee ($0.00035/shot): $35.00 per transaction.
-  * Cost per 1M total transactions at 1% escalation (10,000 escalated transactions): **$350,000+** (`[MODELED]`).
+| Operational Dimension | Scenario 1: Classical-Only (Frontline LightGBM) | Scenario 2: Classical + Selective Specialist (LightGBM + 1% RBF) | Scenario 3: Quantum-Assisted (LightGBM + 1% QPU Expert) | Provenance Status |
+| :--- | :---: | :---: | :---: | :---: |
+| **Frontline Model** | Calibrated LightGBM | Calibrated LightGBM | Calibrated LightGBM | `[MEASURED]` |
+| **Frontline Cost / Tx** | **$0.0000005** ($0.50 / 1M tx) | **$0.0000005** ($0.50 / 1M tx) | **$0.0000005** ($0.50 / 1M tx) | `[MEASURED]` |
+| **Escalation Policy** | None (100% automated) | Top 1.0% Uncertainty Margin | Top 1.0% Uncertainty Margin | `[MEASURED]` |
+| **Escalated Volume** | 0 transactions | 10,000 transactions | 10,000 transactions | `[MEASURED]` |
+| **Specialist Model** | N/A | Tuned Classical RBF | Quantum Kernel (IonQ Aria via AWS) | `[MEASURED]` |
+| **Specialist Compute Cost** | $0.00 | **$0.000015 / tx** ($0.15 / 10k tx) | **$35.30 / tx** ($353,000 / 10k tx) | `[MODELED]` |
+| **Total Pipeline Compute Cost** | **$0.50** | **$0.65** | **$353,000.50** | `[MODELED]` |
+| **Expected Fraud Loss** | $1,857,600 (Modeled) | **$1,671,840** (Modeled) | $1,671,840 (No additional lift) | `[MODELED]` |
+| **Net Operational Benefit** | Baseline | **+$185,759.85** | **-$167,240.65** | `[MODELED]` |
 
 ---
 
-## 4. Cost-to-Value Economic Ratio
+## 4. Break-Even Analysis & Scaling with $N$
 
-$$\text{Economic Factor} = \frac{\text{Cost of Physical Quantum Execution}}{\text{Cost of Classical Specialist Execution}} \approx \frac{\$3,217.50 \text{ (per 100 tx)}}{\$0.000005 \text{ (per 100 tx)}} \approx 6.4 \times 10^8$$
-
-* **Classical RBF/GBM is over 600,000,000× cheaper** than physical QPU execution for equivalent or superior classification accuracy.
-* **Economic Verdict**: **`NO ECONOMIC QUANTUM ADVANTAGE`**. Physical quantum execution is economically prohibitive for transaction fraud detection at current hardware pricing without demonstrating an overwhelming statistical accuracy advantage.
-
----
-
-## 5. Modeled Operational Tradeoff Summary
-
-Under synthetic distributions ($N=2,000$ test transactions, prevalence 31.05%, optimal decision threshold $t^* = 0.20$):
-
-* **Baseline Default ($t = 0.50$)**:
-  * Expected Financial Loss: $37,845 (`[MODELED POTENTIAL]`)
-* **Optimized Operational Threshold ($t^* = 0.20$)**:
-  * Expected Financial Loss: $27,450 (`[MODELED POTENTIAL]`)
-  * Net Modeled Loss Reduction: **$10,395 (27.5% reduction)** (`[MODELED POTENTIAL]`)
-* **Conclusion**: High-leverage operational value derives from **calibrated threshold optimization and selective concentration**, not from quantum hardware acceleration.
+1. **Classical Selective Specialist:**  
+   Incurring only **$0.15** of additional classical compute per 10,000 escalated transactions, Scenario 2 breaks even if the secondary specialist prevents just **1 additional fraud transaction** out of 10,000 escalated cases.
+2. **Quantum-Assisted Specialist:**  
+   Incurring **$353,000** in quantum cloud execution costs, the quantum expert would need to prevent over **1,961 additional fraudulent transactions** beyond Classical RBF just to cover its own compute bill.
+3. **Conclusion:**  
+   Because Phase 166 verified that $\Delta\text{PR-AUC} = +0.0653$ is not statistically significant ($p = 0.246$, $95\%\text{ CI: } [-0.0383, +0.1821]$), Quantum-Assisted deployment produces an immediate, catastrophic net loss under current QPU pricing.

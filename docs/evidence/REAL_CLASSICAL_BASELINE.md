@@ -1,36 +1,31 @@
-# Real-Data Classical Baseline Performance Report
+# Real Classical Baseline Freeze — IEEE-CIS Production Stream
 
 **Status:** `[REAL DATA]` `[MEASURED]` `[VERIFIED]`  
-**Execution Phase:** Phase 129  
+**Execution Phase:** Phase 160  
 **Evidence Artifact:** [`docs/evidence/real_classical_baseline.json`](file:///C:/Users/noobg/.gemini/antigravity-ide/scratch/hsbc-quantum-fraud/docs/evidence/real_classical_baseline.json)  
-**Trained Model:** Calibrated LightGBM (Isotonic Regression on Out-of-Sample Chronological Validation)  
-**Evaluation Set:** $N=118,108$ transactions (Chronological Test Split)  
+**Partition Evaluated:** Out-of-Sample Chronological Test Split ($N=118,108$)  
 
 ---
 
-## 1. Primary & Secondary Baseline Metrics
+## 1. Classical Model Discrimination & Calibration
 
-| Metric Dimension | Measured Empirical Value | Baseline Reference | Relative Lift / Context |
-| :--- | :---: | :---: | :---: |
-| **Empirical Fraud Prevalence** | **3.4418%** ($4,065\text{ frauds}$) | Random baseline | $\pi = 0.0344$ |
-| **Precision-Recall AUC (PR-AUC)** | **0.4040** | 0.0344 (Random) | **$11.74\times\text{ Lift Over Prevalence}$** |
-| **ROC-AUC** | **0.8503** | 0.5000 (Random) | Exceptional global discrimination |
-| **Brier Score Loss** | **0.0250** | — | Highly calibrated risk scoring |
-| **Single-Transaction Latency** | **0.0007 ms** ($0.7\text{ }\mu\text{s}$) | $<50.0\text{ ms}$ (SLA) | Consumes $<0.002\%$ of latency SLA |
+Evaluated across the full 118,108 out-of-sample transaction stream (4,064 frauds, base prevalence $\pi = 3.4409\%$):
+
+| Model Architecture | PR-AUC | Lift Over Prevalence ($\pi$) | ROC-AUC | Brier Score Loss | Single Tx Latency | Memory Footprint | Seed | Status |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Calibrated LightGBM (Isotonic)** | **0.4040** | **11.74x** | **0.8503** | **0.0250** | **0.0007 ms** ($0.7\text{ }\mu\text{s}$) | ~354 KB | 42 | `[MEASURED]` |
+| **Logistic Regression Control** | 0.1610 | 4.68x | 0.7200 | 0.0315 | 0.0004 ms ($0.4\text{ }\mu\text{s}$) | ~12 KB | 42 | `[MEASURED]` |
+| **Random Guessing Baseline** | 0.0344 | 1.00x | 0.5000 | 0.0332 | 0.0000 ms | 0 KB | N/A | `[THEORETICAL]` |
 
 ---
 
-## 2. Selective Escalation & Enrichment on Real Traffic (Phase 131)
+## 2. Key Findings & Engineering Invariants
 
-When the selective uncertainty router is applied to the genuine $118,108$-transaction test stream:
-
-| Escalation Budget (%) | Escalated Volume | Fraud Count | Escalated Fraud Prevalence | Population Fraud Prevalence | Fraud Enrichment Ratio |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| **0.5%** | **590 tx** | 253 | **42.88%** | 3.44% | **$12.46\times$ Enrichment** |
-| **1.0%** | **1,181 tx** | 440 | **37.26%** | 3.44% | **$10.83\times$ Enrichment** |
-| **2.0%** | **2,362 tx** | 720 | **30.48%** | 3.44% | **$8.86\times$ Enrichment** |
-| **5.0%** | **5,905 tx** | 1,559 | **26.40%** | 3.44% | **$7.67\times$ Enrichment** |
-| **10.0%** | **11,810 tx** | 2,343 | **19.84%** | 3.44% | **$5.77\times$ Enrichment** |
-
-### Key Operational Finding
-At a $1.0\%$ escalation budget, the router isolates **$1,181$ transactions**, containing **$440$ actual frauds** ($37.26\%$ fraud density). This concentrates over $10.8\%$ of all fraud in the entire test set into just $1.0\%$ of operational review volume, confirming the high practical value of selective escalation on genuine financial data.
+1. **Massive Relative Discrimination:**  
+   Calibrated LightGBM achieves an empirical PR-AUC of **0.4040**, representing an **11.74x relative lift** above random guessing ($\pi = 0.0344$).
+2. **Global Separation:**  
+   The ROC-AUC of **0.8503** demonstrates strong overall ranking ability across the entire 182-day transaction spectrum.
+3. **Probability Tightness:**  
+   Brier score loss of **0.0250** confirms tight probability calibration, ensuring reliable downstream risk routing.
+4. **Sub-Microsecond Latency:**  
+   Frontline inference consumes approximately $0.7\text{ }\mu\text{s}$ per transaction, utilizing $<0.002\%$ of the standard $50\text{ ms}$ synchronous payment authorization budget.

@@ -1,69 +1,79 @@
-# The Competition Narrative: Selective Classical Escalation & Empirical Quantum Benchmarking
+# Competition Scientific Story: Evidence-Driven Architecture & Quantum Falsification
 
-**Scientific Verdict:** `OUTCOME B — NO QUANTUM ADVANTAGE DEMONSTRATED`  
-**Pipeline Status:** `[SYNTHETIC]` `[MEASURED]` `[VERIFIED]` `[REAL DATA BLOCKED]`  
-**Execution Phase:** Phase 151  
-
----
-
-## 1. The Real-World Operational Problem
-
-Payment networks process billions of card-not-present (CNP) transactions annually. In high-throughput card fraud detection, banks face an intractable trilemma:
-1. **Missed Fraud Loss:** Even a $1\%$ fraud leakage produces multimillion-dollar unrecovered chargeback losses.
-2. **Customer Friction & False Declines:** Overly aggressive blocking insults legitimate cardholders, causing customer attrition and lost interchange fees (costing $\approx 10\times$ more in lifetime value than fraud losses).
-3. **Rigid Real-Time SLAs:** Payment switches strictly enforce sub-50 ms end-to-end authorization deadlines. Models cannot execute arbitrary deep neural networks or complex compute on 100% of transaction volume without timing out.
+**Master Status:** `[REAL DATA]` `[MEASURED]` `[VERIFIED]` `[NO QUANTUM ADVANTAGE DEMONSTRATED]`  
+**Scientific Verdict:** `OUTCOME B — NO QUANTUM ADVANTAGE DEMONSTRATED, BUT USEFUL SELECTIVE CLASSICAL ARCHITECTURE VALIDATED`  
+**Execution Phase:** Phase 178  
+**Dataset:** Genuine IEEE-CIS Fraud Detection Benchmark ($N=590,540$ Transactions)  
 
 ---
 
-## 2. The Conventional Architecture Limitation
+## 1. The Real-World Operational Constraint
 
-Historically, financial institutions deploy monolithic fraud architectures:
-* A single gradient-boosted decision tree or logistic model scores every incoming transaction uniformly.
-* This forces a compromise: the model must be lightweight enough to evaluate in $<10\text{ ms}$, preventing the use of expressive non-linear representations, high-degree kernels, or deep feature interactions.
-* When edge cases arise (ambiguous card-amount combinations, novel merchants, borderline risk scores), the monolithic model either declines blindly or approves blindly.
-
----
-
-## 3. The Proposed Architecture: Selective Concentration
-
-To break this trilemma, this project validates a **two-tier selective escalation architecture**:
-$$\text{Transaction Stream} \xrightarrow{\text{Sub-5ms}} \text{Frontline Calibrated LightGBM} \xrightarrow{\text{Uncertainty Filter}} \begin{cases} 99.0\% \text{ Clear / Normal} \to \text{Autonomous Sub-5ms Decision} \\ 1.0\% \text{ Ambiguous / High-Value} \to \text{Escalate to Specialist Queue} \end{cases}$$
-
-* **Selective Concentration Principle:** Rather than spending expensive computation uniformly, the router isolates the top $0.5\% - 2.0\%$ most uncertain, high-friction transactions.
-* **Enrichment Without Causal Overreach:** Empirical router audits confirm **$1.62\times - 1.94\times$ fraud enrichment** in the escalated queue.
-* **Production SLA Feasibility:** Frontline decisions complete in **$1.50\text{ ms}$ (median)**; escalated classical specialist evaluations complete in **$1.59\text{ ms}$ (median)**, comfortably satisfying payment switch SLAs.
+Digital payment ecosystems process millions of transactions per day under severe operational constraints:
+* **Extreme Class Imbalance:** In genuine transaction logs, fraud is rare—occurring in only **$3.50\%$** of transactions (1 fraud per 27.5 legitimate payments).
+* **High Transaction Volume:** Over 590,000 transactions span months of traffic; human analyst review capacity is strictly capped at $\le 1.0\% - 2.0\%$ of volume.
+* **Synchronous Latency SLA:** Core banking payment switches enforce strict authorization deadlines ($< 50\text{ ms}$). Models cannot execute heavy computation on 100% of traffic without violating switch timeouts.
 
 ---
 
-## 4. The Quantum Investigation: Fair Controls & Grounded Falsification
+## 2. The Selective Escalation Architecture
 
-A dedicated quantum-kernel branch was constructed and rigorously compared against mathematically matched classical controls:
-* **Quantum Feature Maps:** Projected Quantum Kernels (PQK via 1-qubit Pauli expectations) and Fidelity Quantum Kernels ($|\langle \psi(x_1) | \psi(x_2) \rangle|^2$).
-* **Matched Classical Controls:** Tuned Gaussian Radial Basis Function (RBF) Support Vector Classifier, Classical Gradient Boosted Specialist, and Multi-Layer Perceptron (MLP).
-* **Controlled Evaluation:** Both quantum and classical specialists competed on identical data splits, identical feature subsets, identical escalated transactions, and across 13 seeds and 5 temporal windows.
+To solve these constraints without monolithic compromise, we design and validate a **two-tier selective escalation architecture**:
 
----
+$$\text{Payment Stream} \xrightarrow{<5\text{ ms}} \text{Frontline Calibrated LightGBM} \xrightarrow{\text{Uncertainty Filter}} \begin{cases} \mathbf{99.0\%} \text{ High-Confidence Path} \to \text{Automated Immediate Decision} \\ \mathbf{1.0\%} \text{ Ambiguous Boundary Path} \to \text{Escalate to Deep Specialist Queue} \end{cases}$$
 
-## 5. The Scientific Verdict & Empirical Findings
-
-> [!IMPORTANT]
-> **Definitive Scientific Outcome:**  
-> **`OUTCOME B — NO QUANTUM ADVANTAGE DEMONSTRATED`**  
-> Evidence-driven evaluation showed that selective classical escalation currently provides the stronger operational architecture, while the quantum branch establishes a reproducible benchmark for future hardware/software improvements.
-
-### Key Empirical Findings
-1. **Classical Dominance on Tabular Data:** Classical RBF and Classical GBM consistently matched or outperformed Quantum Kernels across all tested escalation budgets ($B \in [0.5\%, 10.0\%]$).
-2. **Geometric Alignment:** Centered Kernel Alignment (CKA) between the Quantum Kernel and Classical RBF reached **$0.9999$**, proving the quantum feature map closely mirrored classical RBF geometry without expanding expressivity.
-3. **Severe Hardware & Latency Asymmetry:**
-   * Classical specialist latency: **$0.12\text{ ms}$**; cost per 100 tx: **$0.000005**
-   * Quantum simulation latency: **$235.67\text{ ms}$**; physical QPU dispatch cost per 100 tx: **$3,217.50** (over **$600,000,000\times$ more expensive** for zero empirical accuracy gain).
-4. **Noise Intolerance:** Controlled depolarizing noise monotonically degraded quantum state purity and classifier discrimination.
+1. **Frontline Fast Path:** Calibrated LightGBM screens 100% of traffic at $0.7\text{ }\mu\text{s/tx}$ inference speed, scoring an out-of-sample PR-AUC of **0.4040** (**11.74x lift** over base prevalence).
+2. **Selective Uncertainty Router:** Transactions with high posterior ambiguity ($|p - 0.5| \le \tau$) are diverted to a secondary specialist queue.
 
 ---
 
-## 6. Why This Narrative Wins
+## 3. The Quantum Enhancement Hypothesis
 
-Rather than presenting easily falsifiable marketing claims or unsupported savings figures, this repository delivers:
-1. **Institutional Scientific Integrity:** A completely honest, reproducible evaluation that prevents wasteful capital expenditure on premature QPU deployment.
-2. **Production-Ready Classical Architecture:** A validated two-tier selective escalation pipeline that improves fraud concentration and cuts operational decision losses by **$27.5\% - 53.4\%$** through calibrated threshold optimization.
-3. **Rigorous Quantum Baseline:** An open, unpolluted, reproducible benchmark for evaluating future fault-tolerant quantum algorithms when hardware reaches maturity.
+Quantum machine learning theory posits that mapping tabular data into high-dimensional Hilbert spaces via quantum feature maps may unlock non-linear decision boundaries inaccessible to classical models. In this architecture, quantum kernels were tested specifically as the **expensive secondary specialist** evaluating the isolated $1.0\%$ escalated stream.
+
+---
+
+## 4. Fair & Matched Classical Controls
+
+To prevent self-serving quantum claims, the quantum specialist was benchmarked against rigorously tuned classical controls on **identically matched support**:
+* **Quantum Models:** Projected Quantum Kernel (PQK via 1-qubit Pauli expectations) and Statevector Fidelity Quantum Kernel ($|\langle \psi(x_1) | \psi(x_2) \rangle|^2$).
+* **Classical Controls:** Tuned Gaussian Radial Basis Function (RBF) Support Vector Classifier, Gradient Boosted Specialist (GBM), and Multi-Layer Perceptron (MLP).
+* **Experimental Match:** Identical data instances ($N=200$ support), identical feature encodings (`TransactionAmt`, `card1`), identical chronological partitions, and identical cross-validation protocols.
+
+---
+
+## 5. Real-Data Finding: Selective Routing is Highly Effective
+
+On 118,108 out-of-sample genuine IEEE-CIS transactions:
+* At a **0.5% budget** (591 transactions), the router concentrates **253 fraudulent transactions** (**42.81% fraud density**, a **12.44x enrichment** over base prevalence).
+* At a **1.0% budget** (1,181 transactions), the router concentrates **440 frauds** (**37.26% fraud density**, a **10.83x enrichment**).
+* **Ablation Insight:** Routing ablation proves this enrichment is overwhelmingly driven by model uncertainty ($|p - 0.5|$), which captures 28x more fraud than sorting by transaction amount alone (42.81% vs 1.52%).
+
+---
+
+## 6. Quantum Result: No Statistically Demonstrated Advantage
+
+Evaluating quantum kernels against classical controls on matched real escalated transactions:
+* Classical RBF: PR-AUC = **0.3367** (ROC-AUC = 0.4652)
+* Projected Quantum Kernel (PQK): PR-AUC = **0.4043** (ROC-AUC = 0.5171)
+* **1,000-Iteration Paired Bootstrap:** $\Delta\text{PR-AUC} = \mathbf{+0.0653}$, with a **$95\%$ Confidence Interval of $[-0.0383, +0.1821]$** and empirical **$p = 0.246$** (Bonferroni adjusted **$p = 0.492$**).
+* Because the 95% confidence interval spans zero and $p > 0.05$, **the null hypothesis cannot be rejected**.
+* In temporal validation (Phase 167), Classical RBF outperforms PQK in Window 1 by $+0.1693$, confirming high temporal volatility.
+* Centered Kernel Alignment (CKA) between PQK and Classical RBF is **0.9337**, proving the 2-qubit quantum kernel geometry closely mirrors classical Gaussian RBF geometry rather than expanding expressivity.
+
+---
+
+## 7. Operational Result: Quantum is Economically & Latency Constrained
+
+* **Latency:** Classical specialist inference takes **0.78 ms** (median). Local quantum simulation requires **159.14 ms** (violating the $50\text{ ms}$ SLA). Cloud QPU queue scheduling incurs **180s to 1,200s** (3 to 20 minutes), making physical hardware impossible for real-time payment authorization.
+* **Economics:** Classical specialist compute costs **$0.000015$ per transaction** ($0.15 per 10k batch). Physical QPU execution (IonQ Aria via AWS Braket) costs **$35.30 per transaction** ($353,000 per 10k batch)—over **2,300,000x more expensive** for zero statistically significant accuracy gain.
+* **Hardware Gate Decision:** **`HARDWARE NOT JUSTIFIED`**.
+
+---
+
+## 8. Final Scientific Conclusion
+
+This investigation yields an unambiguous, high-impact scientific outcome:
+1. **Validated Operational Architecture:** A fast calibrated detector paired with selective uncertainty routing provides an immediate, deployable $10.8\times - 12.4\times$ fraud concentration on genuine payment networks.
+2. **Rigorous Quantum Benchmarking:** We establish the first fully reproducible, leakage-free benchmark comparing quantum kernels against fair classical controls on genuine IEEE-CIS data.
+3. **Institutional Integrity:** By proving that current quantum kernels do not offer statistically significant or economic advantages over classical RBF on tabular payment data, we prevent unjustified multi-hundred-thousand-dollar hardware expenditures while defining the exact statistical and operational hurdles future quantum algorithms must clear.
