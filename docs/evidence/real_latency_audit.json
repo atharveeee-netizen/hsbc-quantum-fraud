@@ -1,0 +1,90 @@
+{
+  "status": "[REAL DATA] [MEASURED] [VERIFIED]",
+  "hardware_environment": {
+    "os": "Windows",
+    "cpu_cores": 16,
+    "python_version": "3.10.11"
+  },
+  "payment_sla_target_ms": 50.0,
+  "component_latencies": {
+    "feature_preprocessing": {
+      "n_runs": 200,
+      "mean_ms": 0.0035,
+      "median_ms": 0.0034,
+      "p95_ms": 0.0039,
+      "p99_ms": 0.0043,
+      "min_ms": 0.003,
+      "max_ms": 0.0129,
+      "std_ms": 0.0007
+    },
+    "frontline_calibrated_lgbm": {
+      "n_runs": 200,
+      "mean_ms": 4.4508,
+      "median_ms": 4.3454,
+      "p95_ms": 5.18,
+      "p99_ms": 5.8116,
+      "min_ms": 3.6559,
+      "max_ms": 6.6339,
+      "std_ms": 0.4794
+    },
+    "selective_router": {
+      "n_runs": 500,
+      "mean_ms": 0.0066,
+      "median_ms": 0.0065,
+      "p95_ms": 0.0071,
+      "p99_ms": 0.0076,
+      "min_ms": 0.0059,
+      "max_ms": 0.0262,
+      "std_ms": 0.0011
+    },
+    "classical_rbf_expert": {
+      "n_runs": 100,
+      "mean_ms": 0.2583,
+      "median_ms": 0.2361,
+      "p95_ms": 0.3302,
+      "p99_ms": 0.5908,
+      "min_ms": 0.2173,
+      "max_ms": 0.6072,
+      "std_ms": 0.068
+    },
+    "local_quantum_simulator": {
+      "n_runs": 20,
+      "mean_ms": 167.435,
+      "median_ms": 159.1423,
+      "p95_ms": 217.1762,
+      "p99_ms": 243.412,
+      "min_ms": 154.4334,
+      "max_ms": 249.971,
+      "std_ms": 23.2015
+    },
+    "cloud_qpu_hardware": {
+      "status": "NOT MEASURED (HARDWARE NOT JUSTIFIED)",
+      "modeled_queue_latency_seconds": {
+        "median": 180.0,
+        "p95": 1200.0
+      }
+    }
+  },
+  "end_to_end_pipeline_latencies": {
+    "fast_path_99pct_traffic": {
+      "n_runs": 100,
+      "mean_ms": 4.0767,
+      "median_ms": 4.0742,
+      "p95_ms": 4.9691,
+      "p99_ms": 5.1998,
+      "min_ms": 2.9075,
+      "max_ms": 5.2067,
+      "std_ms": 0.5382
+    },
+    "escalated_path_1pct_traffic_classical": {
+      "n_runs": 100,
+      "mean_ms": 4.9269,
+      "median_ms": 4.89,
+      "p95_ms": 5.4505,
+      "p99_ms": 5.5748,
+      "min_ms": 4.4518,
+      "max_ms": 5.9962,
+      "std_ms": 0.2919
+    }
+  }
+}

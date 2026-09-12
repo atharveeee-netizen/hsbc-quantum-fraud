@@ -1,0 +1,31 @@
+{
+  "status": "[SIMULATED NOISE] [MEASURED] [VERIFIED]",
+  "noise_model": "Simulated Depolarizing + Readout Perturbation",
+  "tested_error_rates": [
+    {
+      "depolarizing_error_rate": 0.001,
+      "frobenius_kernel_distortion": 0.0016847756460850278,
+      "simulated_noisy_pr_auc": 0.37839665589045046,
+      "relative_performance_drop_pct": 0.13478205168680224
+    },
+    {
+      "depolarizing_error_rate": 0.01,
+      "frobenius_kernel_distortion": 0.01660843461387525,
+      "simulated_noisy_pr_auc": 0.37387290857335426,
+      "relative_performance_drop_pct": 1.32867476911002
+    },
+    {
+      "depolarizing_error_rate": 0.02,
+      "frobenius_kernel_distortion": 0.03294971816475034,
+      "simulated_noisy_pr_auc": 0.36891944255133313,
+      "relative_performance_drop_pct": 2.6359774531800273
+    },
+    {
+      "depolarizing_error_rate": 0.05,
+      "frobenius_kernel_distortion": 0.08124610261399991,
+      "simulated_noisy_pr_auc": 0.3542795583212468,
+      "relative_performance_drop_pct": 6.499688209119992
+    }
+  ],
+  "note": "Physical quantum noise degrades kernel matrix fidelity without yielding any offset advantage."
+}

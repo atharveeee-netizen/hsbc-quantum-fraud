@@ -1,0 +1,50 @@
+{
+  "status": "[REAL DATA] [MEASURED] [VERIFIED]",
+  "evaluation_sample_n": 200,
+  "escalated_support_prevalence": 0.375,
+  "models": {
+    "Classical_RBF_Tuned": {
+      "pr_auc": 0.3366647065770469,
+      "roc_auc": 0.4651733333333334,
+      "brier_score": 0.303413633982711
+    },
+    "Classical_MLP": {
+      "pr_auc": 0.3515755895326862,
+      "roc_auc": 0.48671999999999993,
+      "brier_score": 0.24180957982420526
+    },
+    "Classical_GBM": {
+      "pr_auc": 0.35292486079746727,
+      "roc_auc": 0.43690666666666667,
+      "brier_score": 0.3308956484170059
+    },
+    "Quantum_Fidelity_Kernel": {
+      "pr_auc": 0.37890735499750827,
+      "roc_auc": 0.46570666666666666,
+      "brier_score": 0.299955904295946
+    },
+    "Quantum_Projected_Kernel": {
+      "pr_auc": 0.404322621512615,
+      "roc_auc": 0.5171199999999999,
+      "brier_score": 0.3017163836594159
+    }
+  },
+  "statistical_validation": {
+    "comparison": "Quantum_Projected_Kernel vs Classical_RBF_Tuned",
+    "delta_pr_auc_mean": 0.06533805482826975,
+    "delta_pr_auc_95_ci": [
+      -0.03826882650246313,
+      0.18206636652450783
+    ],
+    "p_value": 0.246,
+    "bonferroni_adjusted_p_value": 0.492,
+    "delta_roc_auc_mean": 0.05013376347682869,
+    "delta_roc_auc_95_ci": [
+      -0.10437529839312178,
+      0.20520829914068947
+    ],
+    "statistically_significant": false,
+    "null_hypothesis_rejected": false,
+    "scientific_conclusion": "No statistically significant quantum advantage demonstrated over fair Classical RBF control on real IEEE-CIS escalated transactions."
+  }
+}

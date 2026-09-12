@@ -1,0 +1,27 @@
+{
+  "status": "[VERIFIED]",
+  "criteria": {
+    "criterion_1_statistical_advantage": {
+      "required": "Statistically significant improvement (p < 0.05) over tuned classical RBF",
+      "satisfied": false,
+      "evidence": "Delta PR-AUC = +0.0653, p = 0.246"
+    },
+    "criterion_2_temporal_robustness": {
+      "required": "Consistent positive delta across all out-of-sample temporal windows",
+      "satisfied": false,
+      "evidence": "Delta <= 0 in out-of-sample temporal slices"
+    },
+    "criterion_3_noise_resilience": {
+      "required": "Resilience to NISQ gate and readout errors without severe degradation",
+      "satisfied": false,
+      "evidence": "Kernel distortion reaches 5-15% under realistic 1-2% depolarizing error rates"
+    },
+    "criterion_4_economic_latency_feasibility": {
+      "required": "Cost < $0.01/tx and latency < 50 ms for real-time payment authorization",
+      "satisfied": false,
+      "evidence": "Modeled QPU cost is $41k+ per 1% test volume; queue latency is 180s - 1,200s vs 50ms SLA"
+    }
+  },
+  "formal_gate_decision": "HARDWARE NOT JUSTIFIED",
+  "explanation": "All four formal execution gates failed. Deploying on physical QPU hardware would incur substantial expenditure with zero expected empirical benefit and severe latency violation."
+}

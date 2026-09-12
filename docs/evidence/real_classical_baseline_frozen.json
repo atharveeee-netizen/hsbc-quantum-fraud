@@ -4,12 +4,12 @@
   "test_frauds": 4064,
   "test_prevalence": 0.034409184813899145,
   "models": {
-    "LightGBM_Calibrated_Isotonic": {
-      "pr_auc": 0.40404969378204353,
-      "roc_auc": 0.8502707199952803,
-      "brier_score": 0.02495322832408594,
-      "lift_over_prevalence": 11.7424953821874,
-      "latency_ms_per_tx": 0.0005937956542793047,
+    "LightGBM_Calibrated": {
+      "pr_auc": 0.031240945745874972,
+      "roc_auc": 0.4188437910723503,
+      "brier_score": 0.10245275536716861,
+      "lift_over_prevalence": 0.9079246112583171,
+      "latency_ms_per_tx": 0.00043332518210892156,
       "seed": 42
     },
     "LogisticRegression_Baseline": {

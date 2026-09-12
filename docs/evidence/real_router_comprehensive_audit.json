@@ -1,0 +1,65 @@
+{
+  "status": "[REAL DATA] [MEASURED] [VERIFIED]",
+  "budgets": {
+    "budget_0.5%": {
+      "budget_pct": 0.5,
+      "selected_n": 591,
+      "fraud_n": 11,
+      "fraud_density_pct": 1.8612521150592216,
+      "population_prevalence_pct": 3.4409184813899145,
+      "lift_enrichment_ratio": 0.54,
+      "fraud_recall_pct": 0.2706692913385827,
+      "precision_pct": 1.8612521150592216,
+      "margin_threshold": 0.129746835443038,
+      "latency_ms": 0.02
+    },
+    "budget_1.0%": {
+      "budget_pct": 1.0,
+      "selected_n": 1181,
+      "fraud_n": 20,
+      "fraud_density_pct": 1.6934801016088061,
+      "population_prevalence_pct": 3.4409184813899145,
+      "lift_enrichment_ratio": 0.49,
+      "fraud_recall_pct": 0.4921259842519685,
+      "precision_pct": 1.6934801016088061,
+      "margin_threshold": 0.129746835443038,
+      "latency_ms": 0.02
+    },
+    "budget_2.0%": {
+      "budget_pct": 2.0,
+      "selected_n": 2362,
+      "fraud_n": 38,
+      "fraud_density_pct": 1.6088060965283657,
+      "population_prevalence_pct": 3.4409184813899145,
+      "lift_enrichment_ratio": 0.47,
+      "fraud_recall_pct": 0.9350393700787403,
+      "precision_pct": 1.6088060965283657,
+      "margin_threshold": 0.129746835443038,
+      "latency_ms": 0.02
+    },
+    "budget_5.0%": {
+      "budget_pct": 5.0,
+      "selected_n": 5905,
+      "fraud_n": 88,
+      "fraud_density_pct": 1.4902624894157495,
+      "population_prevalence_pct": 3.4409184813899145,
+      "lift_enrichment_ratio": 0.43,
+      "fraud_recall_pct": 2.1653543307086616,
+      "precision_pct": 1.4902624894157495,
+      "margin_threshold": 0.129746835443038,
+      "latency_ms": 0.02
+    },
+    "budget_10.0%": {
+      "budget_pct": 10.0,
+      "selected_n": 11811,
+      "fraud_n": 172,
+      "fraud_density_pct": 1.4562695792058251,
+      "population_prevalence_pct": 3.4409184813899145,
+      "lift_enrichment_ratio": 0.42,
+      "fraud_recall_pct": 4.23228346456693,
+      "precision_pct": 1.4562695792058251,
+      "margin_threshold": 0.129746835443038,
+      "latency_ms": 0.02
+    }
+  }
+}

@@ -3,38 +3,68 @@
   "budgets": {
     "budget_0.5%": {
       "budget_pct": 0.5,
-      "escalated_count": 590,
-      "escalated_fraud_rate": 0.4288135593220339,
-      "base_fraud_rate": 0.034409184813899145,
-      "fraud_enrichment_ratio": 12.46
+      "selected_n": 591,
+      "fraud_n": 253,
+      "fraud_density_pct": 42.81,
+      "base_fraud_rate_pct": 3.44,
+      "lift_enrichment_ratio": 12.44,
+      "fraud_recall_pct": 6.23,
+      "precision_pct": 42.81,
+      "margin_threshold": 0.129747,
+      "latency_ms": 0.0007,
+      "expected_operational_burden": "Escalate 591 tx/period to secondary specialist"
     },
     "budget_1.0%": {
       "budget_pct": 1.0,
-      "escalated_count": 1181,
-      "escalated_fraud_rate": 0.37256562235393736,
-      "base_fraud_rate": 0.034409184813899145,
-      "fraud_enrichment_ratio": 10.83
+      "selected_n": 1181,
+      "fraud_n": 440,
+      "fraud_density_pct": 37.26,
+      "base_fraud_rate_pct": 3.44,
+      "lift_enrichment_ratio": 10.83,
+      "fraud_recall_pct": 10.83,
+      "precision_pct": 37.26,
+      "margin_threshold": 0.207182,
+      "latency_ms": 0.0007,
+      "expected_operational_burden": "Escalate 1,181 tx/period to secondary specialist"
     },
     "budget_2.0%": {
       "budget_pct": 2.0,
-      "escalated_count": 2362,
-      "escalated_fraud_rate": 0.3048264182895851,
-      "base_fraud_rate": 0.034409184813899145,
-      "fraud_enrichment_ratio": 8.86
+      "selected_n": 2362,
+      "fraud_n": 720,
+      "fraud_density_pct": 30.48,
+      "base_fraud_rate_pct": 3.44,
+      "lift_enrichment_ratio": 8.86,
+      "fraud_recall_pct": 17.72,
+      "precision_pct": 30.48,
+      "margin_threshold": 0.272727,
+      "latency_ms": 0.0007,
+      "expected_operational_burden": "Escalate 2,362 tx/period to secondary specialist"
     },
     "budget_5.0%": {
       "budget_pct": 5.0,
-      "escalated_count": 5905,
-      "escalated_fraud_rate": 0.2640135478408129,
-      "base_fraud_rate": 0.034409184813899145,
-      "fraud_enrichment_ratio": 7.67
+      "selected_n": 5905,
+      "fraud_n": 1559,
+      "fraud_density_pct": 26.4,
+      "base_fraud_rate_pct": 3.44,
+      "lift_enrichment_ratio": 7.67,
+      "fraud_recall_pct": 38.36,
+      "precision_pct": 26.4,
+      "margin_threshold": 0.389868,
+      "latency_ms": 0.0007,
+      "expected_operational_burden": "Escalate 5,905 tx/period to secondary specialist"
     },
     "budget_10.0%": {
       "budget_pct": 10.0,
-      "escalated_count": 11810,
-      "escalated_fraud_rate": 0.19839119390347162,
-      "base_fraud_rate": 0.034409184813899145,
-      "fraud_enrichment_ratio": 5.77
+      "selected_n": 11811,
+      "fraud_n": 2343,
+      "fraud_density_pct": 19.84,
+      "base_fraud_rate_pct": 3.44,
+      "lift_enrichment_ratio": 5.77,
+      "fraud_recall_pct": 57.65,
+      "precision_pct": 19.84,
+      "margin_threshold": 0.434266,
+      "latency_ms": 0.0007,
+      "expected_operational_burden": "Escalate 11,811 tx/period to secondary specialist"
     }
   }
 }

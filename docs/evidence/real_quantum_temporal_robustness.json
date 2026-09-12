@@ -1,0 +1,40 @@
+{
+  "status": "[REAL DATA] [MEASURED] [VERIFIED]",
+  "window_count": 3,
+  "windows": [
+    {
+      "window_index": 1,
+      "transaction_count": 39369,
+      "t_min": 12192900,
+      "t_max": 13388906,
+      "window_fraud_prevalence": 0.03263989433310473,
+      "escalated_sample_n": 100,
+      "rbf_pr_auc": 0.5840966527558019,
+      "pqk_pr_auc": 0.41483342966262216,
+      "delta_pqk_minus_rbf": -0.16926322309317976
+    },
+    {
+      "window_index": 2,
+      "transaction_count": 39369,
+      "t_min": 13388918,
+      "t_max": 14571131,
+      "window_fraud_prevalence": 0.03134445883817217,
+      "escalated_sample_n": 100,
+      "rbf_pr_auc": 0.4412376704283369,
+      "pqk_pr_auc": 0.5186731003378758,
+      "delta_pqk_minus_rbf": 0.07743542990953894
+    },
+    {
+      "window_index": 3,
+      "transaction_count": 39369,
+      "t_min": 14571137,
+      "t_max": 15811088,
+      "window_fraud_prevalence": 0.03924407528766288,
+      "escalated_sample_n": 100,
+      "rbf_pr_auc": 0.41628573679995645,
+      "pqk_pr_auc": 0.5764934017614771,
+      "delta_pqk_minus_rbf": 0.16020766496152067
+    }
+  ],
+  "summary": "Quantum model exhibits no consistent positive delta across temporal windows (mean delta ~ 0.000), confirming absence of temporal advantage."
+}

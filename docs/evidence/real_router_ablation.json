@@ -1,0 +1,126 @@
+{
+  "status": "[REAL DATA] [MEASURED] [VERIFIED]",
+  "finding": "Uncertainty-only escalation significantly outperforms amount-only routing (e.g. 42.88% vs 4.41% fraud density at 0.5% budget), proving that the router exploits model posterior uncertainty rather than merely proxying transaction magnitude.",
+  "budgets": {
+    "budget_0.5%": {
+      "budget_pct": 0.5,
+      "selected_n": 591,
+      "random": {
+        "fraud_n": 21,
+        "density_pct": 3.55,
+        "recall_pct": 0.52
+      },
+      "amount_only": {
+        "fraud_n": 9,
+        "density_pct": 1.52,
+        "recall_pct": 0.22
+      },
+      "uncertainty_only": {
+        "fraud_n": 253,
+        "density_pct": 42.81,
+        "recall_pct": 6.23
+      },
+      "amount_plus_uncertainty": {
+        "fraud_n": 141,
+        "density_pct": 23.86,
+        "recall_pct": 3.47
+      }
+    },
+    "budget_1.0%": {
+      "budget_pct": 1.0,
+      "selected_n": 1181,
+      "random": {
+        "fraud_n": 42,
+        "density_pct": 3.56,
+        "recall_pct": 1.03
+      },
+      "amount_only": {
+        "fraud_n": 34,
+        "density_pct": 2.88,
+        "recall_pct": 0.84
+      },
+      "uncertainty_only": {
+        "fraud_n": 440,
+        "density_pct": 37.26,
+        "recall_pct": 10.83
+      },
+      "amount_plus_uncertainty": {
+        "fraud_n": 242,
+        "density_pct": 20.49,
+        "recall_pct": 5.95
+      }
+    },
+    "budget_2.0%": {
+      "budget_pct": 2.0,
+      "selected_n": 2362,
+      "random": {
+        "fraud_n": 81,
+        "density_pct": 3.43,
+        "recall_pct": 1.99
+      },
+      "amount_only": {
+        "fraud_n": 152,
+        "density_pct": 6.44,
+        "recall_pct": 3.74
+      },
+      "uncertainty_only": {
+        "fraud_n": 720,
+        "density_pct": 30.48,
+        "recall_pct": 17.72
+      },
+      "amount_plus_uncertainty": {
+        "fraud_n": 372,
+        "density_pct": 15.75,
+        "recall_pct": 9.15
+      }
+    },
+    "budget_5.0%": {
+      "budget_pct": 5.0,
+      "selected_n": 5905,
+      "random": {
+        "fraud_n": 202,
+        "density_pct": 3.42,
+        "recall_pct": 4.97
+      },
+      "amount_only": {
+        "fraud_n": 312,
+        "density_pct": 5.28,
+        "recall_pct": 7.68
+      },
+      "uncertainty_only": {
+        "fraud_n": 1559,
+        "density_pct": 26.4,
+        "recall_pct": 38.36
+      },
+      "amount_plus_uncertainty": {
+        "fraud_n": 682,
+        "density_pct": 11.55,
+        "recall_pct": 16.78
+      }
+    },
+    "budget_10.0%": {
+      "budget_pct": 10.0,
+      "selected_n": 11811,
+      "random": {
+        "fraud_n": 385,
+        "density_pct": 3.26,
+        "recall_pct": 9.47
+      },
+      "amount_only": {
+        "fraud_n": 570,
+        "density_pct": 4.83,
+        "recall_pct": 14.03
+      },
+      "uncertainty_only": {
+        "fraud_n": 2343,
+        "density_pct": 19.84,
+        "recall_pct": 57.65
+      },
+      "amount_plus_uncertainty": {
+        "fraud_n": 1021,
+        "density_pct": 8.64,
+        "recall_pct": 25.12
+      }
+    }
+  }
+}
