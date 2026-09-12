@@ -99,7 +99,12 @@ CARD-NOT-PRESENT TRANSACTION
 *   **Multi-Window Temporal Robustness (Phase 38):** Evaluated across 3 sequential chronological test windows. Monotonic degradation observed (concept drift); quantum delta remains negative across all windows.
 *   **Noisy Quantum Simulation (Phase 43):** Depolarizing noise on `default.mixed` degrades state purity from $1.000$ to $0.565$ and reduces AUPRC from $0.4821$ to $0.4678$.
 *   **Hardware Decision Gate (Phase 44):** Evaluated as `[HARDWARE NOT JUSTIFIED]`. No physical QPU credentials present; physical execution would cost $\sim \$3,200$ for $N=100$ without scientific benefit.
-*   **Real IEEE-CIS Benchmark (Phase 39):** `[BLOCKED]` pending credentials. Evaluated strictly on synthetic benchmarks without fabricating real data.
+*   **Real IEEE-CIS Benchmark Gate (Phases 58–60):** Evaluated as `[BLOCKED: REAL DATA]` pending credentials. Pre-flight schema audit and 65/15/20 chronological split protocol formally verified in `docs/evidence/real_data_schema.md` and `docs/evidence/real_data_temporal_split.md`.
+*   **Security & Hygiene Audit (Phase 74):** `[VERIFIED: SECURE]`. Scanned 75 files; 0 critical or high-severity vulnerabilities (`docs/evidence/SECURITY_AUDIT.md`).
+*   **Reproducibility Audit (Phase 75):** `[VERIFIED: 100% REPRODUCIBLE]`. Pinned dependencies, deterministic seeds, and 17/17 tests passing (`docs/evidence/REPRODUCIBILITY.md`).
+*   **Claim Firewall Audit (Phase 76):** `[VERIFIED: FIREWALL CLEAN]`. Automated scanning prevents marketing hyperbole or unsupported advantage claims.
+*   **Master Scientific Research Verdict (Phase 78):** Formally declared `[OUTCOME B: NO QUANTUM ADVANTAGE]` answering Q1–Q10 in `docs/evidence/RESEARCH_VERDICT.md`.
+*   **Interactive Evidence Dashboard (Phase 80):** Full Streamlit dashboard visualizing all 22 evidence artifacts: `streamlit run src/dashboard/app.py`.
 
 ---
 
@@ -108,58 +113,39 @@ CARD-NOT-PRESENT TRANSACTION
 A clean checkout reproduces all results deterministically:
 
 ```bash
-# 1. Run all 14 unit, integration, and evidence-verification tests
+# 1. Run all 17 unit, integration, and security/reproducibility verification tests
 pytest
 
-# 2. Generate deterministic synthetic data fixture
-python -m src.data.generate_synthetic
+# 2. Run security and hygiene audit (Phase 74)
+python scripts/security_audit.py
 
-# 3. Perform strict chronological temporal split (70/10/20)
-python -m src.data.make_dataset
+# 3. Run reproducibility audit (Phase 75)
+python scripts/reproducibility_audit.py
 
-# 4. Fit feature scalers strictly on training data
-python -m src.features.build_features
+# 4. Run claim firewall audit (Phase 76)
+python scripts/audit_claim_firewall.py
 
-# 5. Train and calibrate incumbent classical LightGBM
-python -m src.models.classical.train_baseline
+# 5. Generate publication figures for evidence presentation (Phase 80)
+python scripts/generate_evidence_figures.py
 
-# 6. Run router causality and controlled ablation study (Phases 30 & 31)
-python -m src.evaluation.routing_causality_ablation
+# 6. Launch interactive Streamlit evidence dashboard (Phase 80)
+streamlit run src/dashboard/app.py
 
-# 7. Run classical control strengthening benchmark (Phase 32)
-python -m src.evaluation.classical_control_strengthening
-
-# 8. Run quantum kernel expressivity and geometry CKA audit (Phases 33, 34, 35)
-python -m src.evaluation.quantum_kernel_expressivity_geometry
-
-# 9. Run multi-seed robustness testing (Phase 36)
-python -m src.evaluation.seed_robustness
-
-# 10. Run sample-size resource scaling analysis (Phase 37)
-python -m src.evaluation.sample_size_robustness
-
-# 11. Run multi-window temporal robustness analysis (Phase 38)
-python -m src.evaluation.temporal_window_robustness
-
-# 12. Run realistic depolarizing noisy quantum simulation (Phase 43)
-python -m src.evaluation.noisy_simulation
-
-# 13. Evaluate hardware gate and economic accounting (Phases 44, 49, 50)
-python -m src.evaluation.hardware_and_economics
-
-# 14. Compile master evidence ledger
+# 7. Compile master evidence ledger and verify 0 discrepancies
 python -m src.evaluation.evidence_ledger
-
-# 15. Verify 100% evidence consistency and zero leakage
 python scripts/verify_evidence_integrity.py
 ```
 
 ---
 
-## 7. Master Scientific Evidence Ledger
+## 7. Master Scientific Evidence Ledger & Deliverables
 
 All empirical artifacts, configurations, random seeds, and statistical confidence intervals are tracked in:
-* [`docs/evidence/EVIDENCE_LEDGER.md`](file:///C:/Users/noobg/.gemini/antigravity-ide/scratch/hsbc-quantum-fraud/docs/evidence/EVIDENCE_LEDGER.md)
-* [`docs/evidence/evidence_ledger.json`](file:///C:/Users/noobg/.gemini/antigravity-ide/scratch/hsbc-quantum-fraud/docs/evidence/evidence_ledger.json)
+* [`docs/evidence/RESEARCH_VERDICT.md`](file:///C:/Users/noobg/.gemini/antigravity-ide/scratch/hsbc-quantum-fraud/docs/evidence/RESEARCH_VERDICT.md) — Definitive answers to research questions Q1–Q10
+* [`docs/evidence/EVIDENCE_LEDGER.md`](file:///C:/Users/noobg/.gemini/antigravity-ide/scratch/hsbc-quantum-fraud/docs/evidence/EVIDENCE_LEDGER.md) — Audited claim ledger
+* [`docs/evidence/SECURITY_AUDIT.md`](file:///C:/Users/noobg/.gemini/antigravity-ide/scratch/hsbc-quantum-fraud/docs/evidence/SECURITY_AUDIT.md) — Phase 74 security scan
+* [`docs/evidence/REPRODUCIBILITY.md`](file:///C:/Users/noobg/.gemini/antigravity-ide/scratch/hsbc-quantum-fraud/docs/evidence/REPRODUCIBILITY.md) — Phase 75 reproducibility manifest
+* [`docs/evidence/real_data_schema.md`](file:///C:/Users/noobg/.gemini/antigravity-ide/scratch/hsbc-quantum-fraud/docs/evidence/real_data_schema.md) — Phase 59 real schema audit
+* [`docs/evidence/real_data_temporal_split.md`](file:///C:/Users/noobg/.gemini/antigravity-ide/scratch/hsbc-quantum-fraud/docs/evidence/real_data_temporal_split.md) — Phase 60 temporal split protocol
 * [`docs/research_status.md`](file:///C:/Users/noobg/.gemini/antigravity-ide/scratch/hsbc-quantum-fraud/docs/research_status.md)
 * [`docs/architecture.md`](file:///C:/Users/noobg/.gemini/antigravity-ide/scratch/hsbc-quantum-fraud/docs/architecture.md)

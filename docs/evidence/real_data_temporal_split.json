@@ -1,0 +1,54 @@
+{
+  "protocol_version": "1.0.0",
+  "dataset": "IEEE-CIS Fraud Detection",
+  "temporal_feature": "TransactionDT",
+  "rationale": "In credit card fraud detection, user spending profiles, merchant types, and adversary attack strategies change continuously. Random K-fold CV and IID train-test splits cause severe optimistic bias because identity features (card1, card2, addr1) overlap across folds, allowing models to memorize specific stolen cards rather than learning invariant fraud mechanisms.",
+  "canonical_protocol": {
+    "name": "Chronological 65/15/20 Split",
+    "train_window": {
+      "day_range": "Day 0 - Day 118",
+      "dt_range_seconds": [86400, 10221120],
+      "approx_transaction_count": 383850,
+      "expected_fraud_rate_pct": 3.48
+    },
+    "calibration_window": {
+      "day_range": "Day 119 - Day 145",
+      "dt_range_seconds": [10221121, 12528000],
+      "approx_transaction_count": 88580,
+      "expected_fraud_rate_pct": 3.52,
+      "purpose": "Isotonic probability calibration and selective-escalation router threshold optimization strictly out-of-fold from model training."
+    },
+    "test_window": {
+      "day_range": "Day 146 - Day 182",
+      "dt_range_seconds": [12528001, 15811200],
+      "approx_transaction_count": 118110,
+      "expected_fraud_rate_pct": 3.55,
+      "purpose": "Final untouched evaluation stream. No model hyperparameter tuning or router threshold fitting is permitted on this partition."
+    }
+  },
+  "alternative_protocols_evaluated": [
+    {
+      "name": "Sequential 3-Window Rolling Backtest",
+      "window_1": "Train Days 0-60, Test Days 61-90",
+      "window_2": "Train Days 0-90, Test Days 91-120",
+      "window_3": "Train Days 0-120, Test Days 121-150",
+      "pros": "Measures performance stability over consecutive quarterly cycles.",
+      "cons": "Smaller sample sizes for initial training windows."
+    },
+    {
+      "name": "Synthetic Benchmark Split (70/10/20)",
+      "train_count": 7000,
+      "calib_count": 999,
+      "test_count": 2001,
+      "status": "[ACTIVE IN SYNTHETIC BENCHMARK]"
+    }
+  ],
+  "leakage_verification_rules": [
+    "max(TransactionDT_train) < min(TransactionDT_calib)",
+    "max(TransactionDT_calib) < min(TransactionDT_test)",
+    "Feature scalers fit ONLY on Train split",
+    "Target encodings fit ONLY on Train split",
+    "Calibrators fit ONLY on Calib split",
+    "Router thresholds tuned ONLY on Calib split"
+  ]
+}

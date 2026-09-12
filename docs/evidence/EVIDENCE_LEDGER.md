@@ -1,6 +1,6 @@
 # Master Scientific Evidence Ledger
 
-> **Last Updated:** 2026-09-12T09:23:40.190399+00:00  
+> **Last Updated:** 2026-09-12T09:32:56.096984+00:00  
 > **Claim Firewall Status:** `ENFORCED`  
 > **Real Data Gate:** `BLOCKED` (Awaiting IEEE-CIS credentials; synthetic benchmark active)  
 > **Hardware Decision Gate:** `HARDWARE NOT JUSTIFIED`  
@@ -36,6 +36,11 @@
 | `CLM-TEMPORAL-WINDOWS-01` | Temporal Robustness | `VERIFIED` | Monotonic degradation observed across time windows (concept drift). Δ(Quant... | N/A | Evaluated on 3 non-overlapping sequential win... |
 | `CLM-NOISY-SIM-01` | Noise Sensitivity | `VERIFIED` | State purity drops from 1.000 to 0.9406 at p=0.01 and 0.5647 at p=0.10. Cla... | N/A | Single-qubit depolarizing channel on default.... |
 | `CLM-HARDWARE-GATE-01` | Hardware Gate | `VERIFIED` | Hardware Decision Gate Verdict: HARDWARE NOT JUSTIFIED. Physical QPU execut... | HARDWARE NOT JUSTIFIED | Based on AWS Braket standard QPU pricing mode... |
+| `CLM-REAL-DATA-GATE` | Real Data Ingestion | `BLOCKED` | Real IEEE-CIS evaluation is formally blocked by lack of Kaggle credentials;... | N/A | Real data results cannot be reported without ... |
+| `CLM-SEC-AUDIT-01` | Security & Hygiene | `VERIFIED` | Security audit verified clean: [VERIFIED: SECURE] across 83 files with 0 cr... | [VERIFIED: SECURE] | Static regex and ast analysis.... |
+| `CLM-REPRO-AUDIT-01` | Reproducibility | `VERIFIED` | 100% reproducibility verified: all core modules enforce deterministic seeds... | [VERIFIED: 100% REPRODUCIBLE] | Requires Python 3.10+.... |
+| `CLM-FIREWALL-01` | Claim Firewall | `VERIFIED` | Claim firewall audit verified: 0 unsubstantiated marketing phrases across d... | [VERIFIED: FIREWALL CLEAN] | Automated pattern matching.... |
+| `CLM-RESEARCH-VERDICT` | Research Verdict | `VERIFIED` | OUTCOME B — NO QUANTUM ADVANTAGE. Null hypothesis upheld under fair control... | N/A | Evaluated on synthetic benchmark; physical ha... |
 
 ---
 

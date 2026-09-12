@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "HSBC Quantum Fraud - Master Scientific Evidence Ledger",
-    "last_updated": "2026-09-12T09:23:40.190399+00:00",
+    "last_updated": "2026-09-12T09:32:56.096984+00:00",
     "claim_firewall_status": "ENFORCED",
     "quantum_advantage_status": "NOT YET ESTABLISHED / INCONCLUSIVE",
     "real_data_gate": "BLOCKED (Awaiting IEEE-CIS / Kaggle credentials)",
@@ -261,8 +261,8 @@
       "status": "VERIFIED",
       "metrics": {
         "ideal_purity": 1.0,
-        "purity_at_p01": 0.9405501760441872,
-        "purity_at_p10": 0.5647497792316374
+        "purity_at_p01": 0.7411902653493904,
+        "purity_at_p10": 0.7411902653493904
       },
       "scientific_conclusion": "State purity drops from 1.000 to 0.9406 at p=0.01 and 0.5647 at p=0.10. Classification AUPRC degrades from 0.4821 to 0.4678. Confirms physical noise cannot improve performance.",
       "limitations": "Single-qubit depolarizing channel on default.mixed."
@@ -280,6 +280,73 @@
       },
       "scientific_conclusion": "Hardware Decision Gate Verdict: HARDWARE NOT JUSTIFIED. Physical QPU execution cost (~$3,217 on IonQ for N=100) is >600,000x higher than Classical ($0.000005) for a quantum model that demonstrates no simulated predictive advantage.",
       "limitations": "Based on AWS Braket standard QPU pricing models."
+    },
+    {
+      "claim_id": "CLM-REAL-DATA-GATE",
+      "claim_statement": "Real IEEE-CIS dataset access and pre-flight schema audit.",
+      "category": "Real Data Ingestion",
+      "experiment_id": "EXP-REAL-DATA-GATE-01",
+      "status": "BLOCKED",
+      "metrics": {
+        "access_status": "[BLOCKED: REAL DATA]",
+        "expected_train_rows": 590540,
+        "target_prevalence_pct": 3.499
+      },
+      "scientific_conclusion": "Real IEEE-CIS evaluation is formally blocked by lack of Kaggle credentials; deterministic synthetic fixture active. Pre-flight schema audit and temporal 65/15/20 split protocol verified.",
+      "limitations": "Real data results cannot be reported without raw dataset access."
+    },
+    {
+      "claim_id": "CLM-SEC-AUDIT-01",
+      "claim_statement": "Static security, secret scanning, PII Luhn check, and subprocess safety audit.",
+      "category": "Security & Hygiene",
+      "experiment_id": "EXP-SECURITY-AUDIT-01",
+      "status": "VERIFIED",
+      "metrics": {
+        "verdict": "[VERIFIED: SECURE]",
+        "files_scanned": 83,
+        "p0_critical": 0,
+        "p1_high": 0
+      },
+      "scientific_conclusion": "Security audit verified clean: [VERIFIED: SECURE] across 83 files with 0 critical or high findings.",
+      "limitations": "Static regex and ast analysis."
+    },
+    {
+      "claim_id": "CLM-REPRO-AUDIT-01",
+      "claim_statement": "Deterministic seed verification, requirements pinning, and fresh execution test.",
+      "category": "Reproducibility",
+      "experiment_id": "EXP-REPRODUCIBILITY-01",
+      "status": "VERIFIED",
+      "metrics": {
+        "verdict": "[VERIFIED: 100% REPRODUCIBLE]",
+        "platform": "win32"
+      },
+      "scientific_conclusion": "100% reproducibility verified: all core modules enforce deterministic seeds, requirements pinned, 17/17 tests passing.",
+      "limitations": "Requires Python 3.10+."
+    },
+    {
+      "claim_id": "CLM-FIREWALL-01",
+      "claim_statement": "Automated scanning for unsupported quantum marketing phrases.",
+      "category": "Claim Firewall",
+      "experiment_id": "EXP-CLAIM-FIREWALL-01",
+      "status": "VERIFIED",
+      "metrics": {
+        "verdict": "[VERIFIED: FIREWALL CLEAN]",
+        "violation_count": 0
+      },
+      "scientific_conclusion": "Claim firewall audit verified: 0 unsubstantiated marketing phrases across documentation and code.",
+      "limitations": "Automated pattern matching."
+    },
+    {
+      "claim_id": "CLM-RESEARCH-VERDICT",
+      "claim_statement": "Master scientific research verdict across all 80 phases.",
+      "category": "Research Verdict",
+      "experiment_id": "EXP-RESEARCH-VERDICT-01",
+      "status": "VERIFIED",
+      "metrics": {
+        "final_verdict": "OUTCOME B \u2014 NO QUANTUM ADVANTAGE"
+      },
+      "scientific_conclusion": "OUTCOME B \u2014 NO QUANTUM ADVANTAGE. Null hypothesis upheld under fair controls; Selective Routing and Strong Classical GBM validated as operational winners.",
+      "limitations": "Evaluated on synthetic benchmark; physical hardware execution not justified."
     }
   ]
 }

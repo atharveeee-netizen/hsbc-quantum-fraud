@@ -1,0 +1,50 @@
+{
+  "manifest_version": "1.0.0",
+  "dataset_identity": "ieee-fraud-detection",
+  "source": "IEEE Computational Intelligence Society (IEEE-CIS) via Kaggle Competition",
+  "url": "https://www.kaggle.com/competitions/ieee-fraud-detection",
+  "access_status": "[BLOCKED: REAL DATA]",
+  "access_status_reason": "Kaggle API credentials (kaggle.json or KAGGLE_USERNAME/KAGGLE_KEY) are not present in local environment; raw IEEE-CIS CSV archives (total ~1.3 GB compressed, ~2.5 GB uncompressed) are not present in data/raw.",
+  "fallback_status": "[SYNTHETIC FIXTURE ACTIVE]",
+  "fallback_implementation": "src/data/generate_synthetic.py (10,000 samples, chronological TransactionDT, amount-skewed fraud decision boundary)",
+  "expected_files": {
+    "train_transaction.csv": {
+      "rows": 590540,
+      "columns": 394,
+      "size_mb_approx": 683.0,
+      "primary_key": "TransactionID",
+      "time_column": "TransactionDT",
+      "target_column": "isFraud",
+      "positive_rate_pct": 3.499
+    },
+    "train_identity.csv": {
+      "rows": 144233,
+      "columns": 41,
+      "size_mb_approx": 25.8,
+      "primary_key": "TransactionID",
+      "join_key": "TransactionID"
+    },
+    "test_transaction.csv": {
+      "rows": 506691,
+      "columns": 393,
+      "size_mb_approx": 613.0,
+      "primary_key": "TransactionID",
+      "time_column": "TransactionDT",
+      "target_column": null
+    },
+    "test_identity.csv": {
+      "rows": 141907,
+      "columns": 41,
+      "size_mb_approx": 25.0,
+      "primary_key": "TransactionID",
+      "join_key": "TransactionID"
+    }
+  },
+  "license": "Competition Data Agreement (Research and Non-commercial Benchmarking / Competition Entry)",
+  "security_constraints": [
+    "Never commit Kaggle credentials to version control.",
+    "Never commit raw or processed IEEE-CIS transaction tables to public Git repositories.",
+    "Ensure all card identifiers (card1-card6) and IP/device fingerprints remain pseudonymized."
+  ],
+  "ingestion_command": "kaggle competitions download -c ieee-fraud-detection -p data/raw/ && unzip data/raw/ieee-fraud-detection.zip -d data/raw/"
+}

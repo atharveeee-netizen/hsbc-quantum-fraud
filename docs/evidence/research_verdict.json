@@ -1,0 +1,83 @@
+{
+  "verdict_version": "1.0.0",
+  "final_scientific_outcome": "OUTCOME B — NO QUANTUM ADVANTAGE",
+  "research_status_tags": [
+    "[SYNTHETIC]",
+    "[MEASURED]",
+    "[VERIFIED]",
+    "[OUTCOME B: NO QUANTUM ADVANTAGE]",
+    "[HARDWARE NOT JUSTIFIED]"
+  ],
+  "answers_to_mandatory_questions": {
+    "Q1_selective_routing_workflow": {
+      "question": "Does selective routing improve the fraud workflow?",
+      "answer": "YES",
+      "verdict": "[VERIFIED]",
+      "evidence": "Amount-only routing provides 2.09x fraud enrichment in escalated traffic. Residual uncertainty provides 1.23x additive enrichment. The combined router lifts full-system AUPRC from 0.3040 (pure frontline) to 0.3162 (with expert escalation). Selective routing is computationally and operationally beneficial.",
+      "artifacts": ["docs/evidence/router_causality_ablation.json", "docs/evidence/router_audit.json"]
+    },
+    "Q2_quantum_beats_fair_classical": {
+      "question": "Does the quantum expert beat a fair classical expert?",
+      "answer": "NO",
+      "verdict": "[NO QUANTUM ADVANTAGE]",
+      "evidence": "Against a properly tuned Classical RBF Expert, Quantum Expert is statistically tied across all budgets. Against Strong Classical GBM (LightGBM expert), quantum is definitively beaten (0.2975 vs 0.3113 at 10% budget). CKA geometric similarity between Quantum and Classical RBF is 0.9429 with 0.9906 spectral cosine similarity.",
+      "artifacts": ["docs/evidence/budget_sweep_results.csv", "docs/evidence/classical_strengthening_benchmark.json", "docs/evidence/quantum_geometry_expressivity.json"]
+    },
+    "Q3_budget_threshold": {
+      "question": "At what budget does quantum add value?",
+      "answer": "AT NO TESTED BUDGET",
+      "verdict": "[MEASURED]",
+      "evidence": "Evaluated at B in {0.5%, 1.0%, 2.0%, 5.0%, 10.0%}. Quantum-RBF Delta AUPRC is +0.0005 (0.5%), +0.0004 (1.0%), -0.0009 (2.0%), -0.0015 (5.0%), and -0.0050 (10.0%).",
+      "artifacts": ["docs/evidence/budget_sweep_results.csv"]
+    },
+    "Q4_statistical_significance": {
+      "question": "Is the difference statistically meaningful?",
+      "answer": "NO",
+      "verdict": "[INCONCLUSIVE / NULL HYPOTHESIS UPHELD]",
+      "evidence": "In 1,000 paired bootstrap resamples per budget, every 95% confidence interval contains zero. Bonferroni-adjusted p-values range from 0.7200 to 1.0000 (nominal p in [0.1440, 0.7140]).",
+      "artifacts": ["docs/evidence/full_system_evaluation.json"]
+    },
+    "Q5_temporal_validation_survival": {
+      "question": "Does the result survive temporal validation?",
+      "answer": "YES (NEGATIVE CONCLUSION CONFIRMED)",
+      "verdict": "[VERIFIED]",
+      "evidence": "Evaluated across 3 sequential temporal windows on chronological streams. Concept drift degrades overall AUPRC monotonically, but Delta(Quantum - RBF) remains consistently non-positive across all windows (-0.0042, -0.0051, -0.0048).",
+      "artifacts": ["docs/evidence/temporal_window_robustness.json"]
+    },
+    "Q6_noise_survival": {
+      "question": "Does it survive noise?",
+      "answer": "NO",
+      "verdict": "[NOISE-FRAGILE]",
+      "evidence": "Under depolarizing noise simulation (default.mixed), state purity collapses from 1.000 to 0.565 at p=0.10, reducing classification AUPRC from 0.4821 to 0.4678.",
+      "artifacts": ["docs/evidence/noisy_simulation.json"]
+    },
+    "Q7_real_hardware_survival": {
+      "question": "Does it survive real hardware, if hardware is executed?",
+      "answer": "HARDWARE NOT EXECUTED / NOT JUSTIFIED",
+      "verdict": "[HARDWARE NOT JUSTIFIED]",
+      "evidence": "Physical QPU execution was formally gated and rejected under Phase 44/69 criteria. Because quantum is uncompetitive in ideal simulation and fragile under noise, expending physical hardware credits would be scientifically unjustified.",
+      "artifacts": ["docs/evidence/hardware_and_economics.json"]
+    },
+    "Q8_operational_economic_benefit": {
+      "question": "Is there any measurable operational/economic benefit?",
+      "answer": "NO",
+      "verdict": "[UNVIABLE ON QPU / VIABLE WITH CLASSICAL GBM]",
+      "evidence": "Physical QPU execution costs approximately $3,217 per 100 samples (>600,000x classical CPU cost of $0.000005). QPU queue latency (minutes to hours) violates the 100-300ms banking authorization SLA.",
+      "artifacts": ["docs/evidence/hardware_and_economics.json"]
+    },
+    "Q9_evidence_grounding": {
+      "question": "What evidence supports every claim?",
+      "answer": "MACHINE-READABLE EVIDENCE LEDGER AND REPRODUCIBLE SCRIPTS",
+      "verdict": "[VERIFIED]",
+      "evidence": "22 JSON and CSV artifacts in docs/evidence/ verified by scripts/verify_evidence_integrity.py with 0 discrepancies and 100% pytest pass rate.",
+      "artifacts": ["docs/evidence/evidence_ledger.json", "docs/evidence/EVIDENCE_LEDGER.md"]
+    },
+    "Q10_unresolved_questions": {
+      "question": "What remains unknown?",
+      "answer": "REAL IEEE-CIS RAW EVALUATION AND FAULT-TOLERANT REGIMES",
+      "verdict": "[BLOCKED: REAL DATA]",
+      "evidence": "Full IEEE-CIS raw tabular dataset access is blocked pending Kaggle credentials. Whether future fault-tolerant quantum algorithms (e.g. quantum linear systems solvers) could yield advantages on non-kernel fraud embeddings remains an open theoretical question.",
+      "artifacts": ["docs/evidence/real_data_ingestion_manifest.json"]
+    }
+  }
+}

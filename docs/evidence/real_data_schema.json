@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_name": "IEEE-CIS Fraud Detection",
+  "transaction_dt_semantics": {
+    "type": "integer",
+    "unit": "seconds",
+    "description": "Continuous timedelta from an undisclosed reference datetime. Minimum value is 86400 (Day 1).",
+    "span_days_train": 182,
+    "monotonicity_requirement": "Strict ascending order required for temporal splits to avoid future leakage."
+  },
+  "target": {
+    "column": "isFraud",
+    "type": "binary",
+    "values": {
+      "0": "Legitimate transaction",
+      "1": "Fraudulent transaction (chargeback confirmed or flagged)"
+    },
+    "train_prevalence_pct": 3.499
+  },
+  "feature_categories": {
+    "transaction_core": [
+      "TransactionID",
+      "TransactionAmt",
+      "ProductCD"
+    ],
+    "payment_card": [
+      "card1",
+      "card2",
+      "card3",
+      "card4",
+      "card5",
+      "card6"
+    ],
+    "address_and_distance": [
+      "addr1",
+      "addr2",
+      "dist1",
+      "dist2"
+    ],
+    "email_domains": [
+      "P_emaildomain",
+      "R_emaildomain"
+    ],
+    "counting_features": [
+      "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10", "C11", "C12", "C13", "C14"
+    ],
+    "time_delta_features": [
+      "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10", "D11", "D12", "D13", "D14", "D15"
+    ],
+    "match_features": [
+      "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9"
+    ],
+    "engineered_v_features": [
+      "V1"
+    ],
+    "identity_table": [
+      "id_01", "id_02", "id_03", "id_04", "id_05", "id_06", "id_07", "id_08", "id_09", "id_10",
+      "id_11", "id_12", "id_13", "id_14", "id_15", "id_16", "id_17", "id_18", "id_19", "id_20",
+      "id_21", "id_22", "id_23", "id_24", "id_25", "id_26", "id_27", "id_28", "id_29", "id_30",
+      "id_31", "id_32", "id_33", "id_34", "id_35", "id_36", "id_37", "id_38",
+      "DeviceType",
+      "DeviceInfo"
+    ]
+  },
+  "missing_value_structure": {
+    "low_missingness_pct_below_10": ["TransactionAmt", "ProductCD", "card1", "C1-C14"],
+    "medium_missingness_pct_10_50": ["card2", "card3", "card5", "card6", "addr1", "addr2", "P_emaildomain"],
+    "high_missingness_pct_above_50": ["dist1", "dist2", "R_emaildomain", "D6-D9", "D12-D14", "id_01-id_38"],
+    "v_feature_sparsity_blocks": "V-features (V1-V339) are partitioned into co-missingness blocks based on the payment card provider, merchant system, and checkout protocol. Filling missing values with a uniform constant (-999 or median) without preserving block structure induces spurious correlations."
+  },
+  "authorization_time_availability_audit": {
+    "available_at_authorization": [
+      "TransactionAmt",
+      "ProductCD",
+      "card1-card6",
+      "addr1-addr2",
+      "P_emaildomain",
+      "R_emaildomain",
+      "C1-C14 (preceding transaction counts)",
+      "D1-D15 (days since preceding events)",
+      "DeviceType",
+      "DeviceInfo"
+    ],
+    "excluded_due_to_future_information_or_settlement_delay": [
+      {
+        "field": "ChargebackNotificationTimestamp",
+        "reason": "Chargebacks arrive 30-90 days after transaction settlement. Cannot be used as an input feature or real-time label."
+      },
+      {
+        "field": "GlobalTargetEncoding_WithoutTemporalExpansion",
+        "reason": "Target encoding computed over the entire dataset leaks future fraud labels into historical training features."
+      },
+      {
+        "field": "FutureRollingAggregations",
+        "reason": "Card velocity features computed using centered or forward-looking time windows leak future transactions into the past."
+      }
+    ]
+  },
+  "entity_duplication_and_retry_audit": {
+    "mechanism": "High-frequency card-testing bursts create multiple transactions with identical card1/amount within small delta-t (<60s).",
+    "treatment": "Grouped or time-windowed deduplication must not cross temporal validation folds."
+  },
+  "quantum_subsampling_feature_reduction_spec": {
+    "max_quantum_features": 8,
+    "reduction_method": "Top mutual information / permutation importance features strictly from training split (TransactionAmt, card1, C1, C13, D1, D15, V258, V307)",
+    "scaling": "StandardScaler fit strictly on training fold."
+  }
+}
