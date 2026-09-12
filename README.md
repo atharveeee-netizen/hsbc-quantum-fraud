@@ -2,6 +2,18 @@
 
 **Project Codename:** `hsbc-quantum-fraud`
 
+## Claim Firewall System
+> [!IMPORTANT]
+> To ensure strict scientific honesty, every major claim, result, or integration status is explicitly tagged with one of the following statuses:
+> * `[VERIFIED]` - Independently tested and reproducible.
+> * `[IMPLEMENTED]` - Code exists but is pending final execution verification.
+> * `[MEASURED]` - A metric directly extracted from an experiment artifact.
+> * `[PLANNED]` - Scoped for future implementation.
+> * `[BLOCKED]` - Prevented by an external constraint (e.g., credentials).
+> * `[FAILED]` - Attempted and proven unviable.
+> * `[INCONCLUSIVE]` - Result is not statistically significant.
+> * `[SYNTHETIC]` - Result is derived from the synthetic smoke-test fixture, not real data.
+
 ## 1. What is this?
 A technically serious, reproducible, evidence-driven hybrid classical/quantum fraud detection PoC for the HSBC Global Quantum + AI Challenge 2026.
 
