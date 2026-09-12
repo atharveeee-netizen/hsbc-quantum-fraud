@@ -8,11 +8,10 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 ROUTER_DATA_PATH = "../../../data/router"
 
-def train_quantum_expert(budget_pct=10.0):
+def train_classical_control(budget_pct=10.0):
     """
-    [PLANNED] Actual PennyLane/Qiskit Projected Quantum Kernel implementation.
-    [IMPLEMENTED] Currently utilizing a classical SVC (RBF) as a structural stand-in to validate the pipeline 
-    without installing heavy quantum dependencies, per the modularity rule.
+    [IMPLEMENTED] The strongest classical baseline for the exact same escalation slot.
+    This is an RBF Kernel SVM, evaluating against the same B% escalated subset.
     """
     logging.info(f"Loading escalated transactions for Budget={budget_pct}%...")
     try:
@@ -27,26 +26,25 @@ def train_quantum_expert(budget_pct=10.0):
     X = escalated_df[features]
     y = escalated_df[target]
     
-    # We simulate a 50/50 Train/Test split of the escalated traffic for the Quantum Expert
+    # 50/50 Train/Test split of the escalated traffic
     n = len(escalated_df)
     train_end = int(n * 0.5)
     
     X_train, y_train = X.iloc[:train_end], y.iloc[:train_end]
     X_test, y_test = X.iloc[train_end:], y.iloc[train_end:]
     
-    logging.info("[PLANNED] Initialize Quantum Feature Map (ZZFeatureMap) and compute Kernel matrix...")
-    logging.info("[IMPLEMENTED] Training Classical SVC stand-in for the Quantum pipeline...")
+    logging.info("[IMPLEMENTED] Training Classical RBF Control...")
     
-    # Simulating Quantum Kernel with RBF
-    q_model = SVC(kernel='rbf', probability=True, random_state=42)
-    q_model.fit(X_train, y_train)
+    # RBF Kernel Control
+    c_model = SVC(kernel='rbf', probability=True, random_state=42)
+    c_model.fit(X_train, y_train)
     
-    preds = q_model.predict_proba(X_test)[:, 1]
+    preds = c_model.predict_proba(X_test)[:, 1]
     auc = roc_auc_score(y_test, preds)
     auprc = average_precision_score(y_test, preds)
     
-    logging.info(f"[SYNTHETIC] [MEASURED] Quantum Expert (Simulated) ROC-AUC: {auc:.4f}")
-    logging.info(f"[SYNTHETIC] [MEASURED] Quantum Expert (Simulated) AUPRC: {auprc:.4f}")
+    logging.info(f"[SYNTHETIC] [MEASURED] Classical RBF Control ROC-AUC: {auc:.4f}")
+    logging.info(f"[SYNTHETIC] [MEASURED] Classical RBF Control AUPRC: {auprc:.4f}")
 
 if __name__ == "__main__":
-    train_quantum_expert(budget_pct=10.0)
+    train_classical_control(budget_pct=10.0)

@@ -16,13 +16,13 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.metric(label="Classical Incumbent (LightGBM)", value="0.3987", delta="-")
 with col2:
-    st.metric(label="Quantum Expert (Simulated)", value="0.4215", delta="0.0228")
+    st.metric(label="Classical RBF Control", value="0.4215", delta="0.0228")
 with col3:
     st.metric(label="Escalation Budget (B%)", value="10.0%", delta=None)
 
 st.header("2. Escalation Architecture")
 st.markdown("""
-The router escalates the top $B\%$ most uncertain classical predictions to the Quantum Expert.
+The router escalates the top $B\%$ most uncertain classical predictions to the Control/Expert models.
 Currently implemented using a strict 70/10/20 temporal split to prevent distribution leakage.
 """)
 
