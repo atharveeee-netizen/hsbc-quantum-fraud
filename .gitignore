@@ -17,7 +17,6 @@ ENV/
 # Datasets & Models (Generated/Raw)
 data/
 !data/.gitkeep
-models/
 *.parquet
 *.csv
 *.joblib
