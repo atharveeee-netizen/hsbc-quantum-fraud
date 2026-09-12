@@ -1,20 +1,19 @@
-# 10 Temporal Robustness & Non-Stationarity
+# 10 Temporal Stability & Window-by-Window Drift
 
 | Provenance Metadata | Specification |
 | :--- | :--- |
-| **Scientific Status** | `[SYNTHETIC] [MEASURED] [VERIFIED]` |
-| **Dataset Provenance** | `synthetic_ieee_cis_benchmark` (v1.0-synthetic-10k) |
-| **Real Data Status** | `[BLOCKED: REAL DATA]` (Awaiting Kaggle credentials) |
-| **Experiment ID** | `EXP-TEMPORAL-ROBUST-01` |
+| **Scientific Status** | `[REAL DATA] [MEASURED] [VERIFIED]` |
+| **Dataset Provenance** | `Official IEEE-CIS Fraud Detection (Kaggle Benchmark)` |
+| **Dataset Scale** | `590,540 rows, 394 columns (Strict Chronological Split)` |
+| **Experiment ID** | `EXP-TEMP-01` |
 | **Primary Seed** | `42` |
-| **Git Commit** | `c0968b6` |
-| **Metric Definition** | AUPRC across 3 non-overlapping sequential chronological test windows. |
+| **Git Commit** | `e6dc412` |
+| **Metric Definition** | Chronological stability across contiguous out-of-sample temporal windows. |
 
 ---
 
-## Sequential Temporal Evaluation
-- **Window 1:** Baseline = $0.2913$, Quantum = $0.2907$, RBF = $0.2968$ ($\Delta = -0.0061$).
-- **Window 2:** Baseline = $0.3127$, Quantum = $0.3086$, RBF = $0.3106$ ($\Delta = -0.0020$).
-- **Window 3:** Baseline = $0.3093$, Quantum = $0.3087$, RBF = $0.3103$ ($\Delta = -0.0016$).
-
-**Finding:** Temporal non-stationarity causes natural baseline shifts, but in no temporal window does quantum demonstrate an advantage over classical controls.
+## Sequential Chronological Evaluation
+- **Window 1 (Days 141.1 – 155.0):** Classical RBF PR = **0.5841**, PQK PR = **0.4148**, $\Delta = \mathbf{-0.1693}$ (Classical RBF wins).
+- **Window 2 (Days 155.0 – 168.6):** Classical RBF PR = 0.4412, PQK PR = 0.5187, $\Delta = +0.0774$.
+- **Window 3 (Days 168.6 – 183.0):** Classical RBF PR = 0.4163, PQK PR = 0.5765, $\Delta = +0.1602$.
+Quantum enhancement fails to maintain consistency, suffering severe underperformance in Window 1 and failing the Temporal Robustness Gate.

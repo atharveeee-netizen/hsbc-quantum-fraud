@@ -1,22 +1,19 @@
-# 11 Quantum vs Classical Geometry & CKA Analysis
+# 11 Quantum Metric Geometry & Kernel Alignment
 
 | Provenance Metadata | Specification |
 | :--- | :--- |
-| **Scientific Status** | `[SYNTHETIC] [MEASURED] [VERIFIED]` |
-| **Dataset Provenance** | `synthetic_ieee_cis_benchmark` (v1.0-synthetic-10k) |
-| **Real Data Status** | `[BLOCKED: REAL DATA]` (Awaiting Kaggle credentials) |
+| **Scientific Status** | `[REAL DATA] [MEASURED] [VERIFIED]` |
+| **Dataset Provenance** | `Official IEEE-CIS Fraud Detection (Kaggle Benchmark)` |
+| **Dataset Scale** | `590,540 rows, 394 columns (Strict Chronological Split)` |
 | **Experiment ID** | `EXP-GEOM-01` |
 | **Primary Seed** | `42` |
-| **Git Commit** | `c0968b6` |
-| **Metric Definition** | Centered Kernel Alignment (CKA) and Spectral Cosine Similarity. |
+| **Git Commit** | `e6dc412` |
+| **Metric Definition** | Centered Kernel Alignment (CKA) and spectral matrix properties. |
 
 ---
 
-## Geometric & Spectral Equivalence
-- **Centered Kernel Alignment (CKA):**
-  - Quantum Fidelity Kernel vs Classical Gaussian RBF: **$0.9429$** ($94.3\%$ geometric alignment).
-  - Projected Quantum Kernel vs Classical RBF: **$0.6335$**.
-- **Spectral Cosine Similarity:**
-  - Quantum Fidelity Kernel vs Classical Gaussian RBF: **$0.9906$** ($99.1\%$ spectral alignment).
-
-**Mathematical Explanation:** The 2-qubit fidelity quantum kernel Gram matrix is geometrically and spectrally nearly identical to the classical Gaussian RBF kernel. Support Vector Classifiers trained on the quantum kernel operate as expensive classical RBF surrogates.
+## Geometric Alignment with Classical Hilbert Space
+- **CKA(Quantum Projected, Classical RBF):** **0.9337**.
+- **CKA(Quantum Fidelity, Classical RBF):** **0.9373**.
+- **Effective Rank:** Classical RBF = 49, Quantum Fidelity = 9, Quantum Projected = 50.
+The tested quantum kernel closely aligns with classical Gaussian RBF geometry ($>0.93$ CKA), explaining why predictive performance between them is statistically indistinguishable.

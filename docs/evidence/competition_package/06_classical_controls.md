@@ -2,23 +2,18 @@
 
 | Provenance Metadata | Specification |
 | :--- | :--- |
-| **Scientific Status** | `[SYNTHETIC] [MEASURED] [VERIFIED]` |
-| **Dataset Provenance** | `synthetic_ieee_cis_benchmark` (v1.0-synthetic-10k) |
-| **Real Data Status** | `[BLOCKED: REAL DATA]` (Awaiting Kaggle credentials) |
+| **Scientific Status** | `[REAL DATA] [MEASURED] [VERIFIED]` |
+| **Dataset Provenance** | `Official IEEE-CIS Fraud Detection (Kaggle Benchmark)` |
+| **Dataset Scale** | `590,540 rows, 394 columns (Strict Chronological Split)` |
 | **Experiment ID** | `EXP-CTRL-STRENGTH-01` |
 | **Primary Seed** | `42` |
-| **Git Commit** | `c0968b6` |
-| **Metric Definition** | AUPRC of specialized experts on identical escalated subset (N=200). |
+| **Git Commit** | `e6dc412` |
+| **Metric Definition** | Performance of specialized classical models on matched escalated traffic. |
 
 ---
 
-## Expert Tournament on Identical Escalated Traffic
-All models evaluated on the identical top 10% escalated partition:
-1. **Classical Gradient Boosting (`ClassicalGBM`):** Mean system AUPRC = **$0.3069$** (Tournament Winner).
-2. **Quantum Projected Kernel:** Mean system AUPRC = **$0.3044$**.
-3. **Classical RBF Tuned (C=10.0, gamma='scale'):** Mean system AUPRC = **$0.3030$**.
-4. **Quantum Fidelity Kernel:** Mean system AUPRC = **$0.3017$**.
-5. **Classical Polynomial Kernel (d=3):** Mean system AUPRC = **$0.3016$**.
-6. **Classical MLP Neural Network:** Mean system AUPRC = **$0.3014$**.
-
-**Scientific Finding:** Strong classical gradient boosting outperforms both classical RBF and all tested quantum kernels on escalated fraud traffic.
+## Classical Controls on Matched Escalated Support ($N=200$)
+- **Classical RBF Control (Tuned):** PR-AUC = **0.3367**, ROC-AUC = **0.4652**, Latency = 0.78 ms.
+- **Classical MLP Neural Network:** PR-AUC = **0.3516**, ROC-AUC = **0.4867**, Latency = 0.01 ms.
+- **Classical Gradient Boosted (GBM):** PR-AUC = **0.3529**, ROC-AUC = **0.4369**, Latency = 0.02 ms.
+All classical models evaluate within sub-millisecond budgets and require zero specialized quantum coprocessors.

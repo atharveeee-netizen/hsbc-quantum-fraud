@@ -1,21 +1,20 @@
-# 12 Physical Noise Simulation
+# 12 Simulated Physical Noise Sensitivity
 
 | Provenance Metadata | Specification |
 | :--- | :--- |
-| **Scientific Status** | `[SYNTHETIC] [MEASURED] [VERIFIED]` |
-| **Dataset Provenance** | `synthetic_ieee_cis_benchmark` (v1.0-synthetic-10k) |
-| **Real Data Status** | `[BLOCKED: REAL DATA]` (Awaiting Kaggle credentials) |
+| **Scientific Status** | `[SIMULATED NOISE] [MEASURED] [VERIFIED]` |
+| **Dataset Provenance** | `Official IEEE-CIS Fraud Detection (Kaggle Benchmark)` |
+| **Dataset Scale** | `590,540 rows, 394 columns (Strict Chronological Split)` |
 | **Experiment ID** | `EXP-NOISE-01` |
 | **Primary Seed** | `42` |
-| **Git Commit** | `c0968b6` |
-| **Metric Definition** | Depolarizing noise probability p in [0.0, 0.10], state purity, kernel fidelity, and AUPRC. |
+| **Git Commit** | `e6dc412` |
+| **Metric Definition** | Frobenius kernel distortion and PR-AUC decay under depolarizing and readout noise. |
 
 ---
 
-## Noisy Simulation on PennyLane `default.mixed`
-- **p = 0.00 (Ideal):** Purity = $1.0000$, Kernel Fidelity = $1.0000$, AUPRC = $0.4821$.
-- **p = 0.01 (NISQ Minimal):** Purity = $0.9406$, Kernel Fidelity = $0.9995$, AUPRC = $0.4821$.
-- **p = 0.05 (NISQ Moderate):** Purity = $0.7418$, Kernel Fidelity = $0.9856$, AUPRC = $0.4678$.
-- **p = 0.10 (NISQ Severe):** Purity = $0.5647$, Kernel Fidelity = $0.9422$, AUPRC = $0.4678$.
-
-**Finding:** Physical noise monotonically degrades quantum state purity and downstream classification accuracy. Physical QPUs cannot exceed ideal simulator accuracy.
+## Controlled Noise Perturbation Matrix
+- $p = 0.001$ ($0.1\%$ error): 0.17% distortion, PR-AUC = 0.3784.
+- $p = 0.010$ ($1.0\%$ error): 1.66% distortion, PR-AUC = 0.3739 (-1.32%).
+- $p = 0.020$ ($2.0\%$ error): 3.29% distortion, PR-AUC = 0.3689 (-2.64%).
+- $p = 0.050$ ($5.0\%$ error): 8.12% distortion, PR-AUC = 0.3543 (-6.49%).
+Physical quantum noise degrades kernel fidelity monotonically without providing any regularization benefit.

@@ -2,20 +2,16 @@
 
 | Provenance Metadata | Specification |
 | :--- | :--- |
-| **Scientific Status** | `[SYNTHETIC] [MEASURED] [VERIFIED]` |
-| **Dataset Provenance** | `synthetic_ieee_cis_benchmark` (v1.0-synthetic-10k) |
-| **Real Data Status** | `[BLOCKED: REAL DATA]` (Awaiting Kaggle credentials) |
+| **Scientific Status** | `[REAL DATA] [MEASURED] [VERIFIED]` |
+| **Dataset Provenance** | `Official IEEE-CIS Fraud Detection (Kaggle Benchmark)` |
+| **Dataset Scale** | `590,540 rows, 394 columns (Strict Chronological Split)` |
 | **Experiment ID** | `EXP-QUANTUM-METH-01` |
 | **Primary Seed** | `42` |
-| **Git Commit** | `c0968b6` |
-| **Metric Definition** | Gram matrix symmetry, positive semi-definiteness, and expressivity. |
+| **Git Commit** | `e6dc412` |
+| **Metric Definition** | Statevector fidelity and projected quantum kernel mathematical specifications. |
 
 ---
 
-## Quantum Feature Encoding & Kernels
-- **Qubit Register:** 2-qubit circuit with angle encoding ($\{R_x, R_y, R_z\}$ rotations).
-- **Entanglement:** Parameterized CNOT / CZ entangling layers.
-- **Kernel Types Evaluated:**
-  1. **Fidelity Kernel:** $K(x, x') = |\langle \psi(x) | \psi(x') \rangle|^2$ via transition probability / Swap test.
-  2. **Projected Quantum Kernel:** Projects quantum states onto 1-particle reduced density matrices (1-RDM) followed by classical RBF evaluation in Hilbert space.
-- **Simulator Backend:** PennyLane statevector simulator (`default.qubit`).
+## Quantum Specialist Implementations
+1. **Fidelity Quantum Kernel:** Evaluates exact statevector inner products $K(x_1, x_2) = |\langle \psi(x_1) | \psi(x_2) \rangle|^2$ using PennyLane `AngleEmbedding` and `BasicEntanglerLayers`.
+2. **Projected Quantum Kernel (Huang et al., 2021):** Extracts 1-qubit Pauli expectation observables $\langle X_i \rangle, \langle Y_i \rangle, \langle Z_i \rangle$ to construct physical projections in $[-1, 1]^{3n}$, followed by classical Gaussian kernel classification.

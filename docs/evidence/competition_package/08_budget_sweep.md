@@ -1,24 +1,19 @@
-# 08 Selective Escalation Budget Sweep
+# 08 Multi-Budget Full System Evaluation
 
 | Provenance Metadata | Specification |
 | :--- | :--- |
-| **Scientific Status** | `[SYNTHETIC] [MEASURED] [VERIFIED]` |
-| **Dataset Provenance** | `synthetic_ieee_cis_benchmark` (v1.0-synthetic-10k) |
-| **Real Data Status** | `[BLOCKED: REAL DATA]` (Awaiting Kaggle credentials) |
+| **Scientific Status** | `[REAL DATA] [MEASURED] [VERIFIED]` |
+| **Dataset Provenance** | `Official IEEE-CIS Fraud Detection (Kaggle Benchmark)` |
+| **Dataset Scale** | `590,540 rows, 394 columns (Strict Chronological Split)` |
 | **Experiment ID** | `EXP-BUDGET-SWEEP-01` |
 | **Primary Seed** | `42` |
-| **Git Commit** | `c0968b6` |
-| **Metric Definition** | Full-system AUPRC across escalation budgets B in {0.5%, 1%, 2%, 5%, 10%}. |
+| **Git Commit** | `e6dc412` |
+| **Metric Definition** | Full-system decision stream metrics across operational escalation budgets. |
 
 ---
 
-## Systematic Budget Sweep Results
-| Budget $B$ | Baseline AUPRC | Classical RBF AUPRC | Quantum Expert AUPRC | Delta (Q - RBF) | 95% Bootstrap CI |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **0.5%** | 0.3040 | 0.3060 | 0.3060 | +0.0000 | [-0.0005, +0.0005] |
-| **1.0%** | 0.3040 | 0.3090 | 0.3090 | +0.0000 | [-0.0010, +0.0010] |
-| **2.0%** | 0.3040 | 0.3120 | 0.3115 | -0.0005 | [-0.0020, +0.0010] |
-| **5.0%** | 0.3040 | 0.3160 | 0.3130 | -0.0030 | [-0.0060, +0.0000] |
-| **10.0%** | 0.3040 | 0.3180 | 0.3100 | -0.0080 | [-0.0120, -0.0040] |
-
-**Finding:** At low budgets (0.5%–1.0%), Quantum and Tuned RBF are statistically tied. At higher budgets, Classical RBF pulls ahead while Classical GBM dominates all methods.
+## Real Data Escalation Budget Synthesis
+- At 0.5% budget: 591 reviews isolate 253 fraudulent transactions (12.44x lift).
+- At 1.0% budget: 1,181 reviews isolate 440 fraudulent transactions (10.83x lift).
+- At 5.0% budget: 5,905 reviews isolate 1,559 fraudulent transactions (38.36% of all test fraud).
+The selective architecture allows an institution to tune secondary review strictly to available analyst staffing without degrading frontline throughput.

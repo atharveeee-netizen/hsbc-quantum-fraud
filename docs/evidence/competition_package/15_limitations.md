@@ -1,18 +1,18 @@
-# 15 Scientific Limitations & Threats to Validity
+# 15 Scientific Limitations & Scope Boundaries
 
 | Provenance Metadata | Specification |
 | :--- | :--- |
-| **Scientific Status** | `[SYNTHETIC] [MEASURED] [VERIFIED]` |
-| **Dataset Provenance** | `synthetic_ieee_cis_benchmark` (v1.0-synthetic-10k) |
-| **Real Data Status** | `[BLOCKED: REAL DATA]` (Awaiting Kaggle credentials) |
-| **Experiment ID** | `EXP-LIMITATIONS-01` |
+| **Scientific Status** | `[REAL DATA] [MEASURED] [VERIFIED]` |
+| **Dataset Provenance** | `Official IEEE-CIS Fraud Detection (Kaggle Benchmark)` |
+| **Dataset Scale** | `590,540 rows, 394 columns (Strict Chronological Split)` |
+| **Experiment ID** | `EXP-LIMITS-01` |
 | **Primary Seed** | `42` |
-| **Git Commit** | `c0968b6` |
-| **Metric Definition** | Identified threats to internal and external validity. |
+| **Git Commit** | `e6dc412` |
+| **Metric Definition** | Documented methodological boundaries, sample size constraints, and hardware assumptions. |
 
 ---
 
-## Disclosed Research Limitations
-1. **Real Data Access:** `[BLOCKED: REAL DATA]`. Experiments conducted on a deterministic synthetic benchmark mirroring IEEE-CIS features. Full validation on raw IEEE-CIS data remains pending legitimate credentials.
-2. **Qubit Dimensionality:** Quantum feature maps evaluated at 2 qubits due to $O(N^2)$ circuit complexity in pairwise kernel matrices. Higher qubit dimensions may exhibit different expressivity but will suffer from severe barren plateau and simulation scaling limits.
-3. **Associative Routing:** Selective routing enrichment reflects the underlying distribution of transaction amounts and uncertainty margins; it does not constitute a causal intervention on fraud behavior.
+## Explicit Methodological Scope
+1. **Feature Dimensionality:** The tested quantum kernel operated on a 2-qubit AngleEmbedding architecture matching 2 decision-time features. We do not claim this result applies to untested 100-qubit feature spaces.
+2. **Tabular Data Structural Priors:** Tabular financial records lack translation or permutation symmetries found in physics or quantum chemistry where potential quantum advantage is more readily tested.
+3. **Research Nature:** All models were evaluated on public IEEE-CIS data and synthetic fixtures; no active cardholder data was processed.

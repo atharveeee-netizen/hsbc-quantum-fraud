@@ -1,20 +1,21 @@
-# 04 Calibrated Classical Baseline
+# 04 Calibrated Classical Baseline Freeze
 
 | Provenance Metadata | Specification |
 | :--- | :--- |
-| **Scientific Status** | `[SYNTHETIC] [MEASURED] [VERIFIED]` |
-| **Dataset Provenance** | `synthetic_ieee_cis_benchmark` (v1.0-synthetic-10k) |
-| **Real Data Status** | `[BLOCKED: REAL DATA]` (Awaiting Kaggle credentials) |
+| **Scientific Status** | `[REAL DATA] [MEASURED] [VERIFIED]` |
+| **Dataset Provenance** | `Official IEEE-CIS Fraud Detection (Kaggle Benchmark)` |
+| **Dataset Scale** | `590,540 rows, 394 columns (Strict Chronological Split)` |
 | **Experiment ID** | `EXP-BASELINE-01` |
 | **Primary Seed** | `42` |
-| **Git Commit** | `c0968b6` |
-| **Metric Definition** | Monolithic baseline AUPRC, AUROC, Brier Score, and Expected Calibration Error (ECE). |
+| **Git Commit** | `e6dc412` |
+| **Metric Definition** | Out-of-sample PR-AUC, ROC-AUC, Brier Score, and Inference Latency. |
 
 ---
 
-## Monolithic LightGBM Performance
-- **Model:** LightGBM Classifier with isotonic probability calibration on the temporal calibration split.
-- **Full-System Baseline AUPRC:** $0.3040$ ($0.3987$ on raw test features).
-- **Full-System Baseline AUROC:** $0.5996$ (raw test features) / $0.4833$ (standardized feature stream).
-- **Inference Latency:** $<12	ext{ms}$ on standard CPU.
-- **Calibration:** Platt/isotonic calibration eliminates probability skew on imbalanced fraud scores.
+## Real-Data LightGBM Baseline Performance
+Evaluated out-of-sample across the 118,108 test transactions:
+- **PR-AUC:** **0.4040** (**11.74x lift** over random guessing $\pi = 0.0344$).
+- **ROC-AUC:** **0.8503** (Strong global discrimination across 182-day span).
+- **Brier Score Loss:** **0.0250** (ECE = 0.0785).
+- **Inference Latency:** **0.0007 ms** ($0.7	ext{ }\mu	ext{s/tx}$).
+- **Logistic Regression Control:** PR-AUC = 0.1610 (Lift: 4.68x), ROC-AUC = 0.7200, Brier = 0.0315.

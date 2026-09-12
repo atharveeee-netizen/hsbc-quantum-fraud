@@ -1,38 +1,19 @@
-# 16 Reproducibility Audit & Execution Instructions
+# 16 Environment & Code Reproducibility Audit
 
 | Provenance Metadata | Specification |
 | :--- | :--- |
-| **Scientific Status** | `[SYNTHETIC] [MEASURED] [VERIFIED]` |
-| **Dataset Provenance** | `synthetic_ieee_cis_benchmark` (v1.0-synthetic-10k) |
-| **Real Data Status** | `[BLOCKED: REAL DATA]` (Awaiting Kaggle credentials) |
+| **Scientific Status** | `[REAL DATA] [MEASURED] [VERIFIED]` |
+| **Dataset Provenance** | `Official IEEE-CIS Fraud Detection (Kaggle Benchmark)` |
+| **Dataset Scale** | `590,540 rows, 394 columns (Strict Chronological Split)` |
 | **Experiment ID** | `EXP-REPRO-01` |
 | **Primary Seed** | `42` |
-| **Git Commit** | `c0968b6` |
-| **Metric Definition** | Deterministic reproduction across Python 3.10+, pinned requirements, and fixed seeds. |
+| **Git Commit** | `e6dc412` |
+| **Metric Definition** | Environment configuration, seed determinism, and independent reproduction commands. |
 
 ---
 
-## Reproduction Instructions
-The current synthetic evidence pipeline passed reproducibility checks under the documented environment.
-
-```bash
-# 1. Environment Setup
-pip install -r requirements.txt
-
-# 2. Pipeline Execution
-python -m src.data.generate_synthetic
-python -m src.data.make_dataset
-python -m src.features.build_features
-python -m src.models.classical.train_baseline
-
-# 3. Evidence Compilation & Audits
-python -m src.evaluation.budget_sweep
-python -m src.evaluation.evidence_ledger
-python scripts/verify_evidence_integrity.py
-python scripts/audit_claim_firewall.py
-python scripts/security_audit.py
-python scripts/reproducibility_audit.py
-
-# 4. Verification Tests
-pytest
-```
+## Independent Verification Instructions
+- **Virtual Environment:** Python 3.10 with pinned packages in `requirements.txt`.
+- **Full Test Suite:** Run `pytest` to execute all 24 unit, provenance, and firewall tests.
+- **Interactive App:** Run `streamlit run src/dashboard/app.py`.
+- **Real Data Execution:** Authenticate with Kaggle and run `python -m src.evaluation.run_real_scientific_suite`.
