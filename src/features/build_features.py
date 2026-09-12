@@ -6,16 +6,14 @@ import logging
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-PROCESSED_DATA_PATH = "../../data/processed"
-FEATURES_PATH = "../../data/features"
+from src.utils.paths import PROCESSED_DATA_PATH, FEATURES_PATH
 
 def build_features():
     """
     [IMPLEMENTED] Deterministic feature transformation pipeline.
     Fits scalers ONLY on training data to prevent temporal leakage into the test set.
     """
-    if not os.path.exists(FEATURES_PATH):
-        os.makedirs(FEATURES_PATH)
+
         
     logging.info("Loading processed temporal datasets...")
     try:

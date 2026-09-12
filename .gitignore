@@ -19,8 +19,10 @@ data/
 !data/.gitkeep
 *.parquet
 *.csv
+!docs/evidence/*.csv
 *.joblib
 *.pkl
+
 
 # AWS / Kaggle / Secrets
 kaggle.json

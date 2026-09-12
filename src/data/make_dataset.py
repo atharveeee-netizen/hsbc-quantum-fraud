@@ -7,21 +7,17 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 KAGGLE_DATASET = "ieee-fraud-detection"
-RAW_DATA_PATH = "../../data/raw"
-PROCESSED_DATA_PATH = "../../data/processed"
+from src.utils.paths import RAW_DATA_PATH, PROCESSED_DATA_PATH
 
 def download_data():
     """[PLANNED] Deterministic acquisition via Kaggle API. Requires kaggle.json."""
-    if not os.path.exists(RAW_DATA_PATH):
-        os.makedirs(RAW_DATA_PATH)
-    
     if os.path.exists(os.path.join(RAW_DATA_PATH, 'train_transaction.csv')):
         logging.info("Dataset already exists locally (Real or Synthetic).")
         return
 
     logging.info("Attempting to download dataset from Kaggle...")
     try:
-        subprocess.run(["kaggle", "competitions", "download", "-c", KAGGLE_DATASET, "-p", RAW_DATA_PATH], check=True)
+        subprocess.run(["kaggle", "competitions", "download", "-c", KAGGLE_DATASET, "-p", str(RAW_DATA_PATH)], check=True)
         zip_path = os.path.join(RAW_DATA_PATH, f"{KAGGLE_DATASET}.zip")
         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
             zip_ref.extractall(RAW_DATA_PATH)
@@ -29,7 +25,7 @@ def download_data():
     except Exception as e:
         logging.error(f"[BLOCKED] Failed to download data: {e}")
         logging.info("Generating [SYNTHETIC] data as a fallback to clear the blocker...")
-        from generate_synthetic import generate_synthetic_data
+        from src.data.generate_synthetic import generate_synthetic_data
         generate_synthetic_data()
 
 def perform_temporal_split(train_ratio=0.70, calib_ratio=0.10):

@@ -1,0 +1,218 @@
+{
+  "status": "VERIFIED",
+  "dataset_type": "SYNTHETIC",
+  "temporal_leakage_audit": {
+    "train_window": [
+      86654,
+      1849443
+    ],
+    "calib_window": [
+      1849897,
+      2100898
+    ],
+    "test_window": [
+      2101217,
+      2591967
+    ],
+    "train_strictly_before_calib": true,
+    "calib_strictly_before_test": true,
+    "leakage_detected": false
+  },
+  "uncertainty_correlation": {
+    "spearman_correlation": 0.03836476608474403,
+    "spearman_p_value": 0.08621465283243063,
+    "pearson_correlation": -0.0174900391619789,
+    "pearson_p_value": 0.43424702802236675
+  },
+  "uncertainty_deciles": [
+    {
+      "decile": 0,
+      "n_samples": 1768,
+      "uncertainty_min": 0.16183574879227053,
+      "uncertainty_max": 0.24744027303754268,
+      "fraud_rate": 0.29638009049773756,
+      "mean_prob": 0.26059725582259025
+    },
+    {
+      "decile": 1,
+      "n_samples": 233,
+      "uncertainty_min": 0.25886524822695034,
+      "uncertainty_max": 0.25886524822695034,
+      "fraud_rate": 0.40772532188841204,
+      "mean_prob": 0.2411347517730497
+    }
+  ],
+  "feature_dominance": {
+    "budget_5.0%": {
+      "coef_TransactionAmt": 0.5664507108078084,
+      "coef_card1": 0.10168445297332107,
+      "intercept": -3.1370729258787673,
+      "amt_card1_ratio": 5.570671214110931
+    },
+    "budget_10.0%": {
+      "coef_TransactionAmt": 0.49757517432937315,
+      "coef_card1": 0.09429773015031676,
+      "intercept": -2.3128966006185716,
+      "amt_card1_ratio": 5.276639435220885
+    }
+  },
+  "covariate_shifts": {
+    "budget_0.5%": {
+      "TransactionAmt": {
+        "escalated_mean": 0.3858573042229247,
+        "escalated_std": 0.09409994732468294,
+        "cleared_mean": -0.0011764790975829816,
+        "cleared_std": 1.023024059557899,
+        "ks_statistic": 0.7292817679558011,
+        "ks_p_value": 6.544664261082548e-06,
+        "significant_shift_p05": true
+      },
+      "card1": {
+        "escalated_mean": 0.6372690531596832,
+        "escalated_std": 0.8155432874648134,
+        "cleared_mean": -0.04075943809070562,
+        "cleared_std": 0.9903291296774802,
+        "ks_statistic": 0.4595178302360623,
+        "ks_p_value": 0.019257876265913194,
+        "significant_shift_p05": true
+      }
+    },
+    "budget_1.0%": {
+      "TransactionAmt": {
+        "escalated_mean": 0.5586205824288656,
+        "escalated_std": 0.816822314323522,
+        "cleared_mean": -0.004874411150750005,
+        "cleared_std": 1.0213125333014188,
+        "ks_statistic": 0.7264008076728925,
+        "ks_p_value": 3.861323351592454e-11,
+        "significant_shift_p05": true
+      },
+      "card1": {
+        "escalated_mean": 0.5082865445346515,
+        "escalated_std": 0.7609215164327324,
+        "cleared_mean": -0.042879899847395805,
+        "cleared_std": 0.9911834345215237,
+        "ks_statistic": 0.34719838465421504,
+        "ks_p_value": 0.01227475293304845,
+        "significant_shift_p05": true
+      }
+    },
+    "budget_2.0%": {
+      "TransactionAmt": {
+        "escalated_mean": 0.9549512335658455,
+        "escalated_std": 1.3421870412011383,
+        "cleared_mean": -0.018705683928450928,
+        "cleared_std": 1.0042870780058735,
+        "ks_statistic": 0.7338092809790923,
+        "ks_p_value": 4.92758478351134e-22,
+        "significant_shift_p05": true
+      },
+      "card1": {
+        "escalated_mean": 0.14845564508725062,
+        "escalated_std": 0.8307426605735926,
+        "cleared_mean": -0.04116143626236006,
+        "cleared_std": 0.9933276542355007,
+        "ks_statistic": 0.15242223355430903,
+        "ks_p_value": 0.29065065999746104,
+        "significant_shift_p05": false
+      }
+    },
+    "budget_5.0%": {
+      "TransactionAmt": {
+        "escalated_mean": 0.8914662477756784,
+        "escalated_std": 1.325555375691196,
+        "cleared_mean": -0.04609701295035574,
+        "cleared_std": 0.9805472859650822,
+        "ks_statistic": 0.7553918990005261,
+        "ks_p_value": 3.6741420282330712e-56,
+        "significant_shift_p05": true
+      },
+      "card1": {
+        "escalated_mean": 0.08341246846858805,
+        "escalated_std": 0.9084548664769346,
+        "cleared_mean": -0.043724669938904184,
+        "cleared_std": 0.994462817486283,
+        "ks_statistic": 0.10927406628090479,
+        "ks_p_value": 0.19095378821463735,
+        "significant_shift_p05": false
+      }
+    },
+    "budget_10.0%": {
+      "TransactionAmt": {
+        "escalated_mean": 0.6413753830615241,
+        "escalated_std": 1.2608379477046983,
+        "cleared_mean": -0.07038249497688134,
+        "cleared_std": 0.9651468346056857,
+        "ks_statistic": 0.6084564131038313,
+        "ks_p_value": 9.526846098586285e-64,
+        "significant_shift_p05": true
+      },
+      "card1": {
+        "escalated_mean": 0.06406866283670301,
+        "escalated_std": 0.9424549698182875,
+        "cleared_mean": -0.048635804150104746,
+        "cleared_std": 0.9953262191805003,
+        "ks_statistic": 0.09252637423653526,
+        "ks_p_value": 0.08534017630084831,
+        "significant_shift_p05": false
+      }
+    }
+  },
+  "learned_vs_random_routing": [
+    {
+      "budget_pct": 0.5,
+      "n_escalated": 10,
+      "overall_fraud_rate": 0.30934532733633185,
+      "learned_fraud_count": 2,
+      "learned_fraud_rate": 0.2,
+      "random_fraud_count": 2,
+      "random_fraud_rate": 0.2,
+      "enrichment_factor": 0.6465266349967723,
+      "learned_superior_to_random": false
+    },
+    {
+      "budget_pct": 1.0,
+      "n_escalated": 20,
+      "overall_fraud_rate": 0.30934532733633185,
+      "learned_fraud_count": 4,
+      "learned_fraud_rate": 0.2,
+      "random_fraud_count": 4,
+      "random_fraud_rate": 0.2,
+      "enrichment_factor": 0.6465266349967723,
+      "learned_superior_to_random": false
+    },
+    {
+      "budget_pct": 2.0,
+      "n_escalated": 40,
+      "overall_fraud_rate": 0.30934532733633185,
+      "learned_fraud_count": 16,
+      "learned_fraud_rate": 0.4,
+      "random_fraud_count": 10,
+      "random_fraud_rate": 0.25,
+      "enrichment_factor": 1.2930532699935446,
+      "learned_superior_to_random": true
+    },
+    {
+      "budget_pct": 5.0,
+      "n_escalated": 100,
+      "overall_fraud_rate": 0.30934532733633185,
+      "learned_fraud_count": 33,
+      "learned_fraud_rate": 0.33,
+      "random_fraud_count": 26,
+      "random_fraud_rate": 0.26,
+      "enrichment_factor": 1.0667689477446742,
+      "learned_superior_to_random": true
+    },
+    {
+      "budget_pct": 10.0,
+      "n_escalated": 200,
+      "overall_fraud_rate": 0.30934532733633185,
+      "learned_fraud_count": 70,
+      "learned_fraud_rate": 0.35,
+      "random_fraud_count": 58,
+      "random_fraud_rate": 0.29,
+      "enrichment_factor": 1.1314216112443514,
+      "learned_superior_to_random": true
+    }
+  ]
+}

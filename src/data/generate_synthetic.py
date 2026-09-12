@@ -2,18 +2,17 @@ import os
 import pandas as pd
 import numpy as np
 import logging
+from src.utils.paths import RAW_DATA_PATH
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-RAW_DATA_PATH = "../../data/raw"
-
-def generate_synthetic_data(num_samples=10000):
+def generate_synthetic_data(num_samples=10000, seed=42):
     """
     [IMPLEMENTED] Generates synthetic smoke-test fixture mirroring IEEE-CIS schema.
     This bypasses Kaggle credential blockers and allows the engineering loop to continue.
     """
-    if not os.path.exists(RAW_DATA_PATH):
-        os.makedirs(RAW_DATA_PATH)
+    np.random.seed(seed)
+
         
     logging.info(f"Generating {num_samples} synthetic samples...")
     

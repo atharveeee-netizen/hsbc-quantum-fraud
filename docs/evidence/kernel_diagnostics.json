@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "dataset_type": "SYNTHETIC",
+    "n_samples": 100,
+    "features": [
+      "TransactionAmt",
+      "card1"
+    ],
+    "target": "isFraud",
+    "fraud_prevalence": 0.27
+  },
+  "classical_rbf_kernel": {
+    "matrix_shape": [
+      100,
+      100
+    ],
+    "min_eigenvalue": 1.806504194568081e-14,
+    "max_eigenvalue": 30.21997433589404,
+    "num_negative_eigenvalues": 0,
+    "condition_number": 302199743358.94037,
+    "effective_rank": 10.512382419435111,
+    "mean_off_diagonal_similarity": 0.23653733384852596,
+    "variance_similarity": 0.09267637081235248,
+    "kernel_target_alignment": 0.1819689056186241,
+    "class_separability": {
+      "within_class_similarity": 0.24772206984920384,
+      "between_class_similarity": 0.2196325502127983,
+      "separability_ratio": 1.1278931940200037
+    }
+  },
+  "quantum_fidelity_kernel": {
+    "matrix_shape": [
+      100,
+      100
+    ],
+    "min_eigenvalue": -1.4550989742202923e-14,
+    "max_eigenvalue": 37.120033152657186,
+    "num_negative_eigenvalues": 0,
+    "condition_number": 371200331526.57184,
+    "effective_rank": 5.805488505128327,
+    "mean_off_diagonal_similarity": 0.31335157916515904,
+    "variance_similarity": 0.11813281865193828,
+    "kernel_target_alignment": 0.18573382798203375,
+    "class_separability": {
+      "within_class_similarity": 0.3251661504942298,
+      "between_class_similarity": 0.2954948526358329,
+      "separability_ratio": 1.1004121953042674
+    }
+  },
+  "quantum_projected_kernel": {
+    "matrix_shape": [
+      100,
+      100
+    ],
+    "min_eigenvalue": -5.935948422212925e-16,
+    "max_eigenvalue": 53.965884578612375,
+    "num_negative_eigenvalues": 0,
+    "condition_number": 539658845786.1237,
+    "effective_rank": 5.125211163388571,
+    "mean_off_diagonal_similarity": 0.4825093302528987,
+    "variance_similarity": 0.09177668363880014,
+    "kernel_target_alignment": 0.20501712197778132,
+    "class_separability": {
+      "within_class_similarity": 0.49126255210110814,
+      "between_class_similarity": 0.4692795748567465,
+      "separability_ratio": 1.0468440732427604
+    }
+  },
+  "scientific_summary": {
+    "all_kernels_psd": true,
+    "highest_kernel_target_alignment": "Quantum_Projected"
+  }
+}

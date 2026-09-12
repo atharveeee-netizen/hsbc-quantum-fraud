@@ -1,0 +1,215 @@
+{
+  "metadata": {
+    "title": "HSBC Quantum Fraud - Master Scientific Evidence Ledger",
+    "last_updated": "2026-09-12T09:12:33.913933+00:00",
+    "claim_firewall_status": "ENFORCED",
+    "quantum_advantage_status": "NOT YET ESTABLISHED / INCONCLUSIVE",
+    "hardware_advantage_status": "NOT YET ESTABLISHED",
+    "economic_advantage_status": "NOT YET ESTABLISHED",
+    "real_data_status": "BLOCKED (Awaiting IEEE-CIS credentials)"
+  },
+  "claims": [
+    {
+      "claim_id": "CLM-BASE-01",
+      "claim_statement": "Incumbent classical LightGBM baseline calibrated with isotonic regression provides a reproducible starting point.",
+      "category": "Classical ML",
+      "experiment_id": "EXP-LGBM-CALIB-01",
+      "artifact_path": "C:\\Users\\noobg\\.gemini\\antigravity-ide\\scratch\\hsbc-quantum-fraud\\data\\results\\full_system_evaluation.json",
+      "dataset_type": "SYNTHETIC",
+      "hardware": "CPU (Simulated)",
+      "status": "MEASURED",
+      "metrics": {
+        "test_auprc": 0.3039974599296798,
+        "test_roc_auc": 0.48331887713949717
+      },
+      "p_value": null,
+      "ci_95": null,
+      "scientific_conclusion": "Established baseline on temporal synthetic split: AUPRC=0.3040, ROC-AUC=0.4833.",
+      "limitations": "Measured exclusively on synthetic smoke fixture due to external Kaggle/IEEE-CIS credential blocker."
+    },
+    {
+      "claim_id": "CLM-ROUTED-B0.5",
+      "claim_statement": "Performance comparison of Quantum Expert vs matched Classical RBF Expert at 0.5% escalation budget.",
+      "category": "Full System Evaluation",
+      "experiment_id": "EXP-SWEEP-B0.5",
+      "artifact_path": "C:\\Users\\noobg\\.gemini\\antigravity-ide\\scratch\\hsbc-quantum-fraud\\data\\results\\full_system_evaluation.json",
+      "dataset_type": "SYNTHETIC",
+      "hardware": "PennyLane default.qubit",
+      "status": "MEASURED",
+      "metrics": {
+        "budget_pct": 0.5,
+        "quantum_system_auprc": 0.3040607178077186,
+        "classical_rbf_auprc": 0.30361196533958007,
+        "classical_gbm_auprc": 0.30423612973280223,
+        "delta_auprc_mean": 0.0005189555395484982,
+        "ci_95": [
+          -0.0004971514819629055,
+          0.002300353879089978
+        ],
+        "nominal_p_value": 0.688,
+        "bonferroni_p_value": 1.0,
+        "zero_in_ci": true
+      },
+      "scientific_conclusion": "At 0.5% budget, Quantum Expert AUPRC=0.3041 vs Classical RBF=0.3036 (\u0394=+0.0005, 95% CI [-0.0005, +0.0023], p=0.6880). Statistically indistinguishable from null hypothesis (\u0394=0 in 95% CI).",
+      "limitations": "Tested on 2-qubit simulation on synthetic benchmark; classical RBF control tuned on training fold."
+    },
+    {
+      "claim_id": "CLM-ROUTED-B1.0",
+      "claim_statement": "Performance comparison of Quantum Expert vs matched Classical RBF Expert at 1.0% escalation budget.",
+      "category": "Full System Evaluation",
+      "experiment_id": "EXP-SWEEP-B1.0",
+      "artifact_path": "C:\\Users\\noobg\\.gemini\\antigravity-ide\\scratch\\hsbc-quantum-fraud\\data\\results\\full_system_evaluation.json",
+      "dataset_type": "SYNTHETIC",
+      "hardware": "PennyLane default.qubit",
+      "status": "MEASURED",
+      "metrics": {
+        "budget_pct": 1.0,
+        "quantum_system_auprc": 0.3032691022339534,
+        "classical_rbf_auprc": 0.3029820326403648,
+        "classical_gbm_auprc": 0.3043344611042801,
+        "delta_auprc_mean": 0.0004328119583823099,
+        "ci_95": [
+          -0.0007081763737641854,
+          0.0024108258040788128
+        ],
+        "nominal_p_value": 0.61,
+        "bonferroni_p_value": 1.0,
+        "zero_in_ci": true
+      },
+      "scientific_conclusion": "At 1.0% budget, Quantum Expert AUPRC=0.3033 vs Classical RBF=0.3030 (\u0394=+0.0004, 95% CI [-0.0007, +0.0024], p=0.6100). Statistically indistinguishable from null hypothesis (\u0394=0 in 95% CI).",
+      "limitations": "Tested on 2-qubit simulation on synthetic benchmark; classical RBF control tuned on training fold."
+    },
+    {
+      "claim_id": "CLM-ROUTED-B2.0",
+      "claim_statement": "Performance comparison of Quantum Expert vs matched Classical RBF Expert at 2.0% escalation budget.",
+      "category": "Full System Evaluation",
+      "experiment_id": "EXP-SWEEP-B2.0",
+      "artifact_path": "C:\\Users\\noobg\\.gemini\\antigravity-ide\\scratch\\hsbc-quantum-fraud\\data\\results\\full_system_evaluation.json",
+      "dataset_type": "SYNTHETIC",
+      "hardware": "PennyLane default.qubit",
+      "status": "MEASURED",
+      "metrics": {
+        "budget_pct": 2.0,
+        "quantum_system_auprc": 0.3041018375381259,
+        "classical_rbf_auprc": 0.30500577609923724,
+        "classical_gbm_auprc": 0.30440018537111935,
+        "delta_auprc_mean": -0.0008623726589761439,
+        "ci_95": [
+          -0.005584968629134032,
+          0.003616122001887185
+        ],
+        "nominal_p_value": 0.714,
+        "bonferroni_p_value": 1.0,
+        "zero_in_ci": true
+      },
+      "scientific_conclusion": "At 2.0% budget, Quantum Expert AUPRC=0.3041 vs Classical RBF=0.3050 (\u0394=-0.0009, 95% CI [-0.0056, +0.0036], p=0.7140). Statistically indistinguishable from null hypothesis (\u0394=0 in 95% CI).",
+      "limitations": "Tested on 2-qubit simulation on synthetic benchmark; classical RBF control tuned on training fold."
+    },
+    {
+      "claim_id": "CLM-ROUTED-B5.0",
+      "claim_statement": "Performance comparison of Quantum Expert vs matched Classical RBF Expert at 5.0% escalation budget.",
+      "category": "Full System Evaluation",
+      "experiment_id": "EXP-SWEEP-B5.0",
+      "artifact_path": "C:\\Users\\noobg\\.gemini\\antigravity-ide\\scratch\\hsbc-quantum-fraud\\data\\results\\full_system_evaluation.json",
+      "dataset_type": "SYNTHETIC",
+      "hardware": "PennyLane default.qubit",
+      "status": "MEASURED",
+      "metrics": {
+        "budget_pct": 5.0,
+        "quantum_system_auprc": 0.2997452652585197,
+        "classical_rbf_auprc": 0.30131795959246377,
+        "classical_gbm_auprc": 0.310283134708711,
+        "delta_auprc_mean": -0.0014808687367827086,
+        "ci_95": [
+          -0.006562477681676289,
+          0.0035147684037703224
+        ],
+        "nominal_p_value": 0.526,
+        "bonferroni_p_value": 1.0,
+        "zero_in_ci": true
+      },
+      "scientific_conclusion": "At 5.0% budget, Quantum Expert AUPRC=0.2997 vs Classical RBF=0.3013 (\u0394=-0.0015, 95% CI [-0.0066, +0.0035], p=0.5260). Statistically indistinguishable from null hypothesis (\u0394=0 in 95% CI).",
+      "limitations": "Tested on 2-qubit simulation on synthetic benchmark; classical RBF control tuned on training fold."
+    },
+    {
+      "claim_id": "CLM-ROUTED-B10.0",
+      "claim_statement": "Performance comparison of Quantum Expert vs matched Classical RBF Expert at 10.0% escalation budget.",
+      "category": "Full System Evaluation",
+      "experiment_id": "EXP-SWEEP-B10.0",
+      "artifact_path": "C:\\Users\\noobg\\.gemini\\antigravity-ide\\scratch\\hsbc-quantum-fraud\\data\\results\\full_system_evaluation.json",
+      "dataset_type": "SYNTHETIC",
+      "hardware": "PennyLane default.qubit",
+      "status": "MEASURED",
+      "metrics": {
+        "budget_pct": 10.0,
+        "quantum_system_auprc": 0.2974726586968266,
+        "classical_rbf_auprc": 0.3022840634933866,
+        "classical_gbm_auprc": 0.31128433791208776,
+        "delta_auprc_mean": -0.004975739273537197,
+        "ci_95": [
+          -0.012911167426975439,
+          0.0020145028875244884
+        ],
+        "nominal_p_value": 0.144,
+        "bonferroni_p_value": 0.72,
+        "zero_in_ci": true
+      },
+      "scientific_conclusion": "At 10.0% budget, Quantum Expert AUPRC=0.2975 vs Classical RBF=0.3023 (\u0394=-0.0050, 95% CI [-0.0129, +0.0020], p=0.1440). Statistically indistinguishable from null hypothesis (\u0394=0 in 95% CI).",
+      "limitations": "Tested on 2-qubit simulation on synthetic benchmark; classical RBF control tuned on training fold."
+    },
+    {
+      "claim_id": "CLM-ROUTER-AUDIT-01",
+      "claim_statement": "Independent audit of uncertainty escalation router: leakage verification and enrichment over random routing.",
+      "category": "Router Audit",
+      "experiment_id": "EXP-ROUTER-AUDIT",
+      "artifact_path": "C:\\Users\\noobg\\.gemini\\antigravity-ide\\scratch\\hsbc-quantum-fraud\\data\\results\\router_audit.json",
+      "dataset_type": "SYNTHETIC",
+      "hardware": "CPU",
+      "status": "VERIFIED",
+      "metrics": {
+        "leakage_detected": false,
+        "spearman_corr_uncertainty_fraud": 0.03836476608474403,
+        "spearman_p_value": 0.08621465283243063,
+        "enrichment_factor_b5": 1.0667689477446742
+      },
+      "scientific_conclusion": "Router temporal leakage: NONE (Verified). Uncertainty correlates with borderline decisions (Spearman rho=0.0384). At 5% budget, router achieves 1.07x enrichment over base fraud rate.",
+      "limitations": "Routing effectiveness is bounded by classical base calibration quality."
+    },
+    {
+      "claim_id": "CLM-TEMPORAL-01",
+      "claim_statement": "Chronological vs Random IID splitting performance comparison.",
+      "category": "Temporal Validation",
+      "experiment_id": "EXP-TEMPORAL-ROBUSTNESS",
+      "artifact_path": "C:\\Users\\noobg\\.gemini\\antigravity-ide\\scratch\\hsbc-quantum-fraud\\data\\results\\temporal_robustness.json",
+      "dataset_type": "SYNTHETIC",
+      "hardware": "CPU",
+      "status": "VERIFIED",
+      "metrics": {
+        "chronological_test_auprc": 0.3947146009650374,
+        "random_iid_test_auprc": 0.40783118775659777,
+        "inflation_gap": 0.013116586791560358
+      },
+      "scientific_conclusion": "Random IID splitting artificially inflates test AUPRC by +0.0131 relative to strict chronological splitting, proving that temporal validation is mandatory to prevent false optimism.",
+      "limitations": "Evaluated on synthetic chronological fixture."
+    },
+    {
+      "claim_id": "CLM-KERNEL-PSD-01",
+      "claim_statement": "Positive Semi-Definiteness and geometric spectral health of Quantum Gram matrices.",
+      "category": "Quantum Diagnostics",
+      "experiment_id": "EXP-KERNEL-DIAG-01",
+      "artifact_path": "C:\\Users\\noobg\\.gemini\\antigravity-ide\\scratch\\hsbc-quantum-fraud\\data\\results\\kernel_diagnostics.json",
+      "dataset_type": "SYNTHETIC",
+      "hardware": "PennyLane default.qubit",
+      "status": "VERIFIED",
+      "metrics": {
+        "quantum_fidelity_min_eigenvalue": -1.4550989742202923e-14,
+        "quantum_fidelity_effective_rank": 5.805488505128327,
+        "quantum_projected_effective_rank": 5.125211163388571,
+        "classical_rbf_effective_rank": 10.512382419435111,
+        "all_kernels_psd": true
+      },
+      "scientific_conclusion": "Quantum Gram matrix is strictly Positive Semi-Definite (0 negative eigenvalues). Effective rank: Quantum Fidelity=5.81, Projected Quantum=5.13, Classical RBF=10.51.",
+      "limitations": "Computed on N=100 samples with 2-qubit AngleEmbedding + BasicEntanglerLayers."
+    }
+  ]
+}

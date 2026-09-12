@@ -3,59 +3,91 @@ import pandas as pd
 import numpy as np
 import joblib
 import logging
+from src.utils.paths import PROCESSED_DATA_PATH, FEATURES_PATH, CLASSICAL_MODEL_DIR, ROUTER_DATA_PATH
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-PROCESSED_DATA_PATH = "../../../data/processed"
-MODEL_PATH = "../classical"
-ROUTER_DATA_PATH = "../../../data/router"
-
-def route_traffic(budget_pct=10.0):
+def compute_uncertainty(probabilities):
     """
-    [IMPLEMENTED] Routes the top B% most uncertain transactions to the Quantum/Classical Expert queue.
-    The remaining (1-B)% are cleared classically.
+    [IMPLEMENTED] Quantifies classification uncertainty as distance from the decision boundary (0.5).
+    Smaller distance = higher uncertainty (most ambiguous for classical model).
     """
-    if not os.path.exists(ROUTER_DATA_PATH):
-        os.makedirs(ROUTER_DATA_PATH)
+    probs = np.asarray(probabilities)
+    return np.abs(probs - 0.5)
 
-    logging.info("Loading Test Set and Classical Baseline Model...")
-    try:
-        test_df = pd.read_parquet(os.path.join(PROCESSED_DATA_PATH, 'test.parquet'))
-        model = joblib.load(os.path.join(MODEL_PATH, "lgbm_calibrated.joblib"))
-    except FileNotFoundError:
-        logging.error("[BLOCKED] Test data or baseline model not found.")
-        return
+def select_escalated_indices(probabilities, budget_pct=10.0, strategy='uncertainty', random_state=42):
+    """
+    [IMPLEMENTED] Selects indices of transactions to escalate under budget B%.
+    Strategies:
+      - 'uncertainty': Selects the top B% highest-uncertainty transactions (|p - 0.5| smallest).
+      - 'random': Selects B% uniformly at random (control baseline).
+    """
+    n = len(probabilities)
+    num_escalated = int(np.round((budget_pct / 100.0) * n))
+    num_escalated = max(1, min(num_escalated, n)) # Clamp between 1 and n
+    
+    if strategy == 'uncertainty':
+        uncertainties = compute_uncertainty(probabilities)
+        sorted_indices = np.argsort(uncertainties)
+        escalated_idx = sorted_indices[:num_escalated]
+        cleared_idx = sorted_indices[num_escalated:]
+    elif strategy == 'random':
+        rng = np.random.RandomState(random_state)
+        shuffled = rng.permutation(n)
+        escalated_idx = shuffled[:num_escalated]
+        cleared_idx = shuffled[num_escalated:]
+    else:
+        raise ValueError(f"Unknown routing strategy: {strategy}")
+        
+    return escalated_idx, cleared_idx
 
+def route_traffic(budget_pct=10.0, split_name='test', strategy='uncertainty', random_state=42):
+    """
+    [IMPLEMENTED] Full routing pipeline for a given split ('test', 'train', or 'calib').
+    Loads scaled features and calibrated baseline model, outputs escalated and cleared sets.
+    """
+    model_file = CLASSICAL_MODEL_DIR / "lgbm_calibrated.joblib"
+    if not model_file.exists():
+        logging.error(f"[BLOCKED] Calibrated model not found at {model_file}")
+        return None, None
+
+    model = joblib.load(model_file)
+    
+    scaled_file = FEATURES_PATH / f"{split_name}_scaled.parquet"
+    if not scaled_file.exists():
+        logging.error(f"[BLOCKED] Scaled features not found at {scaled_file}")
+        return None, None
+        
+    df = pd.read_parquet(scaled_file)
     features = ['TransactionAmt', 'card1']
-    X_test = test_df[features]
+    X = df[features]
     
-    # 1. Classical Prediction
-    logging.info("Computing Classical Probabilities...")
-    probs = model.predict_proba(X_test)[:, 1]
-    test_df['Classical_Prob'] = probs
+    probs = model.predict_proba(X)[:, 1]
+    df['Classical_Prob'] = probs
+    df['Uncertainty'] = compute_uncertainty(probs)
     
-    # 2. Uncertainty Scoring (Distance from decision boundary 0.5)
-    # The closer to 0.5, the higher the uncertainty (closer to 0)
-    test_df['Uncertainty'] = np.abs(probs - 0.5)
+    escalated_idx, cleared_idx = select_escalated_indices(
+        probs, budget_pct=budget_pct, strategy=strategy, random_state=random_state
+    )
     
-    # 3. Escalation Routing
-    num_escalated = int((budget_pct / 100.0) * len(test_df))
-    logging.info(f"Escalation Budget: {budget_pct}% -> Escalating {num_escalated} out of {len(test_df)} transactions.")
+    escalated_df = df.iloc[escalated_idx].copy()
+    cleared_df = df.iloc[cleared_idx].copy()
     
-    # Sort by uncertainty (lowest distance from 0.5 is highest uncertainty)
-    routed_df = test_df.sort_values(by='Uncertainty', ascending=True).reset_index(drop=True)
-    
-    escalated_df = routed_df.iloc[:num_escalated]
-    cleared_df = routed_df.iloc[num_escalated:]
-    
-    # Save the routed subsets
-    escalated_file = os.path.join(ROUTER_DATA_PATH, f"escalated_b{int(budget_pct)}.parquet")
-    cleared_file = os.path.join(ROUTER_DATA_PATH, f"cleared_b{int(budget_pct)}.parquet")
+    strategy_tag = "" if strategy == 'uncertainty' else f"_{strategy}"
+    escalated_file = ROUTER_DATA_PATH / f"escalated_{split_name}_b{budget_pct}{strategy_tag}.parquet"
+    cleared_file = ROUTER_DATA_PATH / f"cleared_{split_name}_b{budget_pct}{strategy_tag}.parquet"
     
     escalated_df.to_parquet(escalated_file)
     cleared_df.to_parquet(cleared_file)
     
-    logging.info(f"[VERIFIED] Routing complete. Saved to {ROUTER_DATA_PATH}")
+    logging.info(
+        f"[VERIFIED] Routed {split_name} (budget={budget_pct}%, strategy={strategy}): "
+        f"Escalated={len(escalated_df)}, Cleared={len(cleared_df)}"
+    )
+    return escalated_df, cleared_df
 
 if __name__ == "__main__":
-    route_traffic(budget_pct=10.0)
+    for b in [0.5, 1.0, 2.0, 5.0, 10.0]:
+        route_traffic(budget_pct=b, split_name='test', strategy='uncertainty')
+        route_traffic(budget_pct=b, split_name='test', strategy='random')
+        route_traffic(budget_pct=b, split_name='train', strategy='uncertainty')

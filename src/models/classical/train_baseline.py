@@ -9,8 +9,9 @@ import joblib
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-PROCESSED_DATA_PATH = "../../../data/processed"
-MODEL_PATH = "."
+from src.utils.paths import PROCESSED_DATA_PATH, CLASSICAL_MODEL_DIR
+
+MODEL_PATH = CLASSICAL_MODEL_DIR
 
 
 def train_baseline():

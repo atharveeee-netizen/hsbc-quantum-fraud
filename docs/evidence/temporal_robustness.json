@@ -1,0 +1,25 @@
+{
+  "budget_pct": 5.0,
+  "chronological_split": {
+    "train_auprc": 0.5155543684874622,
+    "calib_auprc": 0.3976473512785026,
+    "test_auprc": 0.3947146009650374,
+    "system_quantum_auprc": 0.39454683223550124,
+    "system_rbf_auprc": 0.38276027053524075,
+    "delta_q_vs_rbf": 0.01178656170026049
+  },
+  "random_iid_split": {
+    "train_auprc": 0.5105687159737474,
+    "calib_auprc": 0.4194948613199484,
+    "test_auprc": 0.40783118775659777,
+    "system_quantum_auprc": 0.4083570952590215,
+    "system_rbf_auprc": 0.4066811627050982,
+    "delta_q_vs_rbf": 0.0016759325539232872
+  },
+  "temporal_gap_analysis": {
+    "baseline_leakage_inflation": 0.013116586791560358,
+    "quantum_system_gap": 0.01381026302352023,
+    "rbf_system_gap": 0.023920892169857433,
+    "conclusion": "Random IID splitting inflates test performance relative to strict chronological splitting, confirming that temporal leakage falsely flatters fraud detection models."
+  }
+}
