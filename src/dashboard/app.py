@@ -12,11 +12,18 @@ st.markdown("""
 
 st.header("1. Model Performance (AUPRC)")
 
+try:
+    results_df = pd.read_csv("data/results/budget_sweep_results.csv")
+    b10_result = results_df[results_df['budget'] == 10.0].iloc[0]
+    hybrid_auprc = b10_result['hybrid_auprc']
+except Exception as e:
+    hybrid_auprc = "N/A"
+
 col1, col2, col3 = st.columns(3)
 with col1:
-    st.metric(label="Classical Incumbent (LightGBM)", value="0.3987", delta="-")
+    st.metric(label="Classical Incumbent (LightGBM)", value="[PLANNED]", delta="-")
 with col2:
-    st.metric(label="Classical RBF Control", value="0.4215", delta="0.0228")
+    st.metric(label="Classical RBF Control", value=f"{hybrid_auprc:.4f}" if isinstance(hybrid_auprc, float) else hybrid_auprc, delta="N/A")
 with col3:
     st.metric(label="Escalation Budget (B%)", value="10.0%", delta=None)
 
