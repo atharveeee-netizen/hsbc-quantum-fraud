@@ -1,0 +1,87 @@
+{
+  "status": "[SYNTHETIC] [MEASURED] [VERIFIED]",
+  "audit_phase": "PHASE 144 LATENCY_AUDIT",
+  "environment": {
+    "os": "Windows",
+    "os_release": "10",
+    "os_version": "10.0.26200",
+    "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+    "cpu_count": 16,
+    "python_version": "3.10.11"
+  },
+  "measured_latencies_ms": {
+    "preprocessing_single_tx": {
+      "n_runs": 100,
+      "median_ms": 0.06185000529512763,
+      "p95_ms": 0.10782500467030331,
+      "min_ms": 0.05569998756982386,
+      "max_ms": 0.13149998267181218,
+      "mean_ms": 0.07153499987907708,
+      "std_ms": 0.018236831514252577
+    },
+    "classical_lgbm_single_tx": {
+      "n_runs": 100,
+      "median_ms": 2.462750009726733,
+      "p95_ms": 4.679050002596341,
+      "min_ms": 2.0708999945782125,
+      "max_ms": 6.045199988875538,
+      "mean_ms": 2.768949000746943,
+      "std_ms": 0.824543201600895
+    },
+    "router_evaluation_single_tx": {
+      "n_runs": 100,
+      "median_ms": 0.003600027412176132,
+      "p95_ms": 0.0040000013541430235,
+      "min_ms": 0.0031999952625483274,
+      "max_ms": 0.0045000051613897085,
+      "mean_ms": 0.003662001108750701,
+      "std_ms": 0.00019686531517354065
+    },
+    "classical_rbf_expert_single_tx": {
+      "n_runs": 50,
+      "median_ms": 0.12275000335648656,
+      "p95_ms": 0.16968999552773312,
+      "min_ms": 0.11520000407472253,
+      "max_ms": 0.3141000051982701,
+      "mean_ms": 0.13130199920851737,
+      "std_ms": 0.03003094756182679
+    },
+    "quantum_simulator_single_tx_n50_support": {
+      "n_runs": 10,
+      "median_ms": 235.66745000425726,
+      "p95_ms": 253.2394850059063,
+      "min_ms": 167.45329997502267,
+      "max_ms": 260.87090000510216,
+      "mean_ms": 225.61715000192635,
+      "std_ms": 28.92790260479631
+    },
+    "e2e_fast_path_classical_only": {
+      "n_runs": 100,
+      "median_ms": 1.495349992183037,
+      "p95_ms": 2.191154978936538,
+      "min_ms": 1.1152000224683434,
+      "max_ms": 2.325700013898313,
+      "mean_ms": 1.5761449991259724,
+      "std_ms": 0.31005306759818724
+    },
+    "e2e_escalated_path_classical_rbf": {
+      "n_runs": 50,
+      "median_ms": 1.592300002812408,
+      "p95_ms": 1.9769999868003647,
+      "min_ms": 1.2349000026006252,
+      "max_ms": 33.97370001766831,
+      "mean_ms": 2.234184000408277,
+      "std_ms": 4.537624317897076
+    }
+  },
+  "modeled_physical_qpu_latencies": {
+    "status": "[MODELED]",
+    "note": "Hardware queue times are non-deterministic and cannot be measured locally without active QPU execution.",
+    "modeled_qpu_queue_time_seconds": {
+      "p50": 180.0,
+      "p95": 1200.0
+    },
+    "modeled_qpu_circuit_execution_ms_per_circuit": 15.0,
+    "sla_compliance_verdict": "Classical fast-path (<5 ms) comfortably satisfies payment network sub-50ms real-time SLA. Quantum simulation (>150 ms) and physical QPU dispatch (>minutes) strictly violate synchronous online payment SLAs and require asynchronous batch escalation."
+  }
+}

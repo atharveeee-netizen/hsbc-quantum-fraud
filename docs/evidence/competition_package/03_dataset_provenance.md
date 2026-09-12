@@ -7,7 +7,7 @@
 | **Real Data Status** | `[BLOCKED: REAL DATA]` (Awaiting Kaggle credentials) |
 | **Experiment ID** | `EXP-DATA-PROV-01` |
 | **Primary Seed** | `42` |
-| **Git Commit** | `9857a2a` |
+| **Git Commit** | `c58c174` |
 | **Metric Definition** | Data monotonicity, temporal boundaries, and absence of target leakage. |
 
 ---

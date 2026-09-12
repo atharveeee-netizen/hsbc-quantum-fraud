@@ -7,7 +7,7 @@
 | **Real Data Status** | `[BLOCKED: REAL DATA]` (Awaiting Kaggle credentials) |
 | **Experiment ID** | `EXP-FINAL-VERDICT-01` |
 | **Primary Seed** | `42` |
-| **Git Commit** | `9857a2a` |
+| **Git Commit** | `c58c174` |
 | **Metric Definition** | Comprehensive scientific synthesis and final research outcome. |
 
 ---

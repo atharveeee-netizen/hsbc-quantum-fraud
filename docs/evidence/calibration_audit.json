@@ -1,0 +1,122 @@
+{
+  "status": "[SYNTHETIC] [MEASURED] [VERIFIED]",
+  "audit_phase": "PHASE 143 CALIBRATION_AUDIT",
+  "model_evaluated": "LightGBM_Calibrated_Isotonic",
+  "global_brier_score": 0.20653512311654723,
+  "global_ece": 0.014633560976571786,
+  "calibration_bins": [
+    {
+      "bin_range": "[0.00, 0.10]",
+      "sample_count": 0,
+      "mean_predicted_prob": 0.05,
+      "empirical_positive_rate": 0.0,
+      "calibration_gap": 0.0
+    },
+    {
+      "bin_range": "[0.10, 0.20]",
+      "sample_count": 0,
+      "mean_predicted_prob": 0.15000000000000002,
+      "empirical_positive_rate": 0.0,
+      "calibration_gap": 0.0
+    },
+    {
+      "bin_range": "[0.20, 0.30]",
+      "sample_count": 829,
+      "mean_predicted_prob": 0.2488099950929957,
+      "empirical_positive_rate": 0.24004825090470447,
+      "calibration_gap": 0.008761744188291232
+    },
+    {
+      "bin_range": "[0.30, 0.40]",
+      "sample_count": 936,
+      "mean_predicted_prob": 0.342730814528595,
+      "empirical_positive_rate": 0.32371794871794873,
+      "calibration_gap": 0.019012865810646262
+    },
+    {
+      "bin_range": "[0.40, 0.50]",
+      "sample_count": 128,
+      "mean_predicted_prob": 0.4303685105224851,
+      "empirical_positive_rate": 0.4375,
+      "calibration_gap": 0.007131489477514907
+    },
+    {
+      "bin_range": "[0.50, 0.60]",
+      "sample_count": 38,
+      "mean_predicted_prob": 0.5025106425247335,
+      "empirical_positive_rate": 0.4473684210526316,
+      "calibration_gap": 0.05514222147210196
+    },
+    {
+      "bin_range": "[0.60, 0.70]",
+      "sample_count": 70,
+      "mean_predicted_prob": 0.6459141730600004,
+      "empirical_positive_rate": 0.6285714285714286,
+      "calibration_gap": 0.01734274448857187
+    },
+    {
+      "bin_range": "[0.70, 0.80]",
+      "sample_count": 0,
+      "mean_predicted_prob": 0.75,
+      "empirical_positive_rate": 0.0,
+      "calibration_gap": 0.0
+    },
+    {
+      "bin_range": "[0.80, 0.90]",
+      "sample_count": 0,
+      "mean_predicted_prob": 0.8500000000000001,
+      "empirical_positive_rate": 0.0,
+      "calibration_gap": 0.0
+    },
+    {
+      "bin_range": "[0.90, 1.00]",
+      "sample_count": 0,
+      "mean_predicted_prob": 0.95,
+      "empirical_positive_rate": 0.0,
+      "calibration_gap": 0.0
+    }
+  ],
+  "temporal_drift_5_windows": [
+    {
+      "window_id": 1,
+      "sample_count": 400,
+      "observed_prevalence": 0.2775,
+      "mean_predicted_confidence": 0.31569362477112645,
+      "brier_score": 0.1996721223961614,
+      "ece": 0.04961690549515325
+    },
+    {
+      "window_id": 2,
+      "sample_count": 400,
+      "observed_prevalence": 0.3075,
+      "mean_predicted_confidence": 0.3214488450423886,
+      "brier_score": 0.2059746938939476,
+      "ece": 0.01723362181960006
+    },
+    {
+      "window_id": 3,
+      "sample_count": 400,
+      "observed_prevalence": 0.34,
+      "mean_predicted_confidence": 0.3328090916888198,
+      "brier_score": 0.20910980632448162,
+      "ece": 0.04218513090246886
+    },
+    {
+      "window_id": 4,
+      "sample_count": 400,
+      "observed_prevalence": 0.3075,
+      "mean_predicted_confidence": 0.320949037291686,
+      "brier_score": 0.20422514530084043,
+      "ece": 0.02094903729168604
+    },
+    {
+      "window_id": 5,
+      "sample_count": 401,
+      "observed_prevalence": 0.314214463840399,
+      "mean_predicted_confidence": 0.3244285653123892,
+      "brier_score": 0.21367599548638044,
+      "ece": 0.04591911144702341
+    }
+  ],
+  "calibration_stability_verdict": "Stable across 5 temporal windows; Brier score remains tightly bounded (0.19 to 0.22)."
+}
