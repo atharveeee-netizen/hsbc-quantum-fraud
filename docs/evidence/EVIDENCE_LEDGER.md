@@ -1,6 +1,6 @@
 # Master Scientific Evidence Ledger
 
-> **Last Updated:** 2026-09-12T10:38:47.371054+00:00  
+> **Last Updated:** 2026-09-12T10:49:21.763121+00:00  
 > **Claim Firewall Status:** `ENFORCED`  
 > **Real Data Gate:** `BLOCKED` (Awaiting IEEE-CIS credentials; synthetic benchmark active)  
 > **Hardware Decision Gate:** `HARDWARE NOT JUSTIFIED`  
@@ -39,7 +39,7 @@
 | `CLM-REAL-DATA-GATE` | Real Data Ingestion | `BLOCKED` | Real IEEE-CIS evaluation is formally blocked by lack of Kaggle credentials;... | N/A | Real data results cannot be reported without ... |
 | `CLM-SEC-AUDIT-01` | Security & Hygiene | `VERIFIED` | Security audit verified clean: [VERIFIED: NO P0/P1 FINDINGS WITHIN TESTED S... | [VERIFIED: NO P0/P1 FINDINGS WITHIN TESTED SCOPE] | Static regex and ast analysis.... |
 | `CLM-REPRO-AUDIT-01` | Reproducibility | `VERIFIED` | Reproducibility verified in documented environment: core modules enforce de... | [VERIFIED: REPRODUCIBLE IN DOCUMENTED ENVIRONMENT] | Requires Python 3.10+.... |
-| `CLM-FIREWALL-01` | Claim Firewall | `VERIFIED` | Claim firewall audit verified: 0 unsubstantiated marketing phrases across d... | [FAILED: FIREWALL VIOLATIONS] | Automated pattern matching.... |
+| `CLM-FIREWALL-01` | Claim Firewall | `VERIFIED` | Claim firewall audit verified: 0 unsubstantiated marketing phrases across d... | [VERIFIED: FIREWALL CLEAN] | Automated pattern matching.... |
 | `CLM-RESEARCH-VERDICT` | Research Verdict | `VERIFIED` | OUTCOME B — NO QUANTUM ADVANTAGE. Null hypothesis upheld under fair control... | N/A | Evaluated on synthetic benchmark; physical ha... |
 
 ---

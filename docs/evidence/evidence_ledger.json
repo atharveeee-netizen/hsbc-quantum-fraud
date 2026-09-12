@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "HSBC Quantum Fraud - Master Scientific Evidence Ledger",
-    "last_updated": "2026-09-12T10:38:47.371054+00:00",
+    "last_updated": "2026-09-12T10:49:21.763121+00:00",
     "claim_firewall_status": "ENFORCED",
     "quantum_advantage_status": "NOT YET ESTABLISHED / INCONCLUSIVE",
     "real_data_gate": "BLOCKED (Awaiting IEEE-CIS / Kaggle credentials)",
@@ -303,11 +303,11 @@
       "status": "VERIFIED",
       "metrics": {
         "verdict": "[VERIFIED: NO P0/P1 FINDINGS WITHIN TESTED SCOPE]",
-        "files_scanned": 92,
+        "files_scanned": 111,
         "p0_critical": 0,
         "p1_high": 0
       },
-      "scientific_conclusion": "Security audit verified clean: [VERIFIED: NO P0/P1 FINDINGS WITHIN TESTED SCOPE] across 92 files with 0 critical or high findings.",
+      "scientific_conclusion": "Security audit verified clean: [VERIFIED: NO P0/P1 FINDINGS WITHIN TESTED SCOPE] across 111 files with 0 critical or high findings.",
       "limitations": "Static regex and ast analysis."
     },
     {
@@ -330,8 +330,8 @@
       "experiment_id": "EXP-CLAIM-FIREWALL-01",
       "status": "VERIFIED",
       "metrics": {
-        "verdict": "[FAILED: FIREWALL VIOLATIONS]",
-        "violation_count": 5
+        "verdict": "[VERIFIED: FIREWALL CLEAN]",
+        "violation_count": 0
       },
       "scientific_conclusion": "Claim firewall audit verified: 0 unsubstantiated marketing phrases across documentation and code.",
       "limitations": "Automated pattern matching."

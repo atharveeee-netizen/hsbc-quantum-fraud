@@ -1,8 +1,8 @@
 {
   "manifest_title": "HSBC Quantum Fraud \u2014 Master Provenance Manifest",
   "protocol_version": "vNEXT-Phase82",
-  "generation_timestamp": "2026-09-12T10:41:38.549430+00:00",
-  "git_commit": "e9bd296",
+  "generation_timestamp": "2026-09-12T10:58:58.454310+00:00",
+  "git_commit": "2421006",
   "total_indexed_artifacts": 16,
   "real_data_status": "[BLOCKED: REAL DATA]",
   "global_provenance_verdict": "[SYNTHETIC] [MEASURED] [VERIFIED] [REAL DATA BLOCKED] [QUANTUM ADVANTAGE NOT DEMONSTRATED]",
@@ -40,8 +40,8 @@
       "metrics": {
         "file_bytes": 1913
       },
-      "timestamp": "2026-09-12T10:41:37.463000+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:57.756661+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
@@ -81,8 +81,8 @@
       "metrics": {
         "file_bytes": 9960
       },
-      "timestamp": "2026-09-12T10:41:37.516123+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:57.800350+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
@@ -122,8 +122,8 @@
       "metrics": {
         "file_bytes": 3639
       },
-      "timestamp": "2026-09-12T10:41:37.568822+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:57.843967+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
@@ -163,8 +163,8 @@
       "metrics": {
         "file_bytes": 728
       },
-      "timestamp": "2026-09-12T10:41:37.624951+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:57.890204+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
@@ -204,8 +204,8 @@
       "metrics": {
         "file_bytes": 5125
       },
-      "timestamp": "2026-09-12T10:41:37.702733+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:57.933364+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
@@ -245,8 +245,8 @@
       "metrics": {
         "file_bytes": 2305
       },
-      "timestamp": "2026-09-12T10:41:37.792281+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:57.977113+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
@@ -286,8 +286,8 @@
       "metrics": {
         "file_bytes": 2026
       },
-      "timestamp": "2026-09-12T10:41:37.894802+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:58.021151+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
@@ -327,8 +327,8 @@
       "metrics": {
         "file_bytes": 944
       },
-      "timestamp": "2026-09-12T10:41:37.975001+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:58.065727+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
@@ -368,8 +368,8 @@
       "metrics": {
         "file_bytes": 3367
       },
-      "timestamp": "2026-09-12T10:41:38.041356+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:58.111308+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
@@ -409,8 +409,8 @@
       "metrics": {
         "file_bytes": 18042
       },
-      "timestamp": "2026-09-12T10:41:38.095058+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:58.155902+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
@@ -450,8 +450,8 @@
       "metrics": {
         "file_bytes": 6969
       },
-      "timestamp": "2026-09-12T10:41:38.142985+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:58.197168+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
@@ -491,8 +491,8 @@
       "metrics": {
         "file_bytes": 31046
       },
-      "timestamp": "2026-09-12T10:41:38.218528+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:58.239198+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
@@ -532,8 +532,8 @@
       "metrics": {
         "file_bytes": 92
       },
-      "timestamp": "2026-09-12T10:41:38.285567+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:58.282681+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
@@ -573,8 +573,8 @@
       "metrics": {
         "file_bytes": 223
       },
-      "timestamp": "2026-09-12T10:41:38.346348+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:58.325815+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
@@ -612,10 +612,10 @@
       "sample_count": 10000,
       "budget": 0.01,
       "metrics": {
-        "file_bytes": 2043
+        "file_bytes": 2025
       },
-      "timestamp": "2026-09-12T10:41:38.409008+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:58.369325+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
@@ -655,8 +655,8 @@
       "metrics": {
         "file_bytes": 5427
       },
-      "timestamp": "2026-09-12T10:41:38.477075+00:00",
-      "git_commit": "e9bd296",
+      "timestamp": "2026-09-12T10:58:58.411581+00:00",
+      "git_commit": "2421006",
       "environment": {
         "python_version": "3.10.11",
         "platform": "win32",
