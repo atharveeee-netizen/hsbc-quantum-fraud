@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Datasets & Models (Generated/Raw)
+data/
+!data/.gitkeep
+models/
+*.parquet
+*.csv
+*.joblib
+*.pkl
+
+# AWS / Kaggle / Secrets
+kaggle.json
+.aws/
+secrets.yaml
