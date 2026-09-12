@@ -307,7 +307,7 @@ def compile_evidence_ledger():
                 "verdict": repro_audit.get("status"),
                 "platform": repro_audit.get("platform")
             },
-            "scientific_conclusion": f"100% reproducibility verified: all core modules enforce deterministic seeds, requirements pinned, 17/17 tests passing.",
+            "scientific_conclusion": f"Reproducibility verified in documented environment: core modules enforce deterministic seeds, requirements pinned, test suite passing.",
             "limitations": "Requires Python 3.10+."
         })
 

@@ -8,14 +8,22 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
-# Phrases that are strictly prohibited anywhere in documentation or code
+# Phrases that are strictly prohibited anywhere in documentation or code (Phases 81, 96)
 STRICTLY_PROHIBITED = [
     r"quantum supremacy",
     r"quantum superiority",
     r"proven quantum advantage",
     r"demonstrated quantum advantage",
     r"production-ready quantum",
-    r"production quantum expert"
+    r"production quantum expert",
+    r"quantum computing solves",
+    r"quantum model is superior",
+    r"amount causes fraud",
+    r"amount is a causal",
+    r"transaction amount is the dominant causal driver",
+    r"100% secure",
+    r"100% reproducible",
+    r"hardware validation proves"
 ]
 
 # Phrases that require explicit negative/inconclusive qualification
@@ -47,7 +55,7 @@ def audit_claim_firewall():
             path = Path(root) / file
             if path.suffix not in scanned_extensions:
                 continue
-            if path.name == 'audit_claim_firewall.py':
+            if path.name in ['audit_claim_firewall.py', 'claim_firewall_audit.json']:
                 continue
 
             try:

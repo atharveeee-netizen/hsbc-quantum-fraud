@@ -15,8 +15,8 @@ ENV/
 .ipynb_checkpoints
 
 # Datasets & Models (Generated/Raw)
-data/
-!data/.gitkeep
+/data/
+!/data/.gitkeep
 *.parquet
 *.csv
 !docs/evidence/*.csv

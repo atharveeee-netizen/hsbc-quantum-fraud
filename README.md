@@ -2,7 +2,7 @@
 
 **Repository:** `atharveeee-netizen/hsbc-quantum-fraud`  
 **Focus:** Scientifically defensible hybrid classical–quantum fraud detection proof of concept.  
-**Research Status:** `[SYNTHETIC]` `[MEASURED]` `[VERIFIED]` `[OUTCOME B: NO QUANTUM ADVANTAGE]`
+**Research Status:** `[SYNTHETIC] [MEASURED] [VERIFIED] [REAL DATA BLOCKED] [QUANTUM ADVANTAGE NOT DEMONSTRATED]`
 
 ---
 
@@ -27,7 +27,7 @@ Following execution of the complete autonomous scientific master loop (Phases 1 
    Across all tested escalation budgets ($B \in \{0.5\%, 1.0\%, 2.0\%, 5.0\%, 10.0\%\}$), the difference in full-system AUPRC between the Quantum Expert and a properly tuned Classical RBF Expert is statistically indistinguishable from zero ($\Delta \in [-0.0050, +0.0005]$, with $0$ inside the 95% bootstrap confidence interval in every case; Bonferroni-adjusted $p \ge 0.72$).
 2. **Best Performing Expert Model:** Strong Classical Gradient Boosting (`ClassicalGBMExpert` trained specifically on the escalated subset) achieved the highest full-system AUPRC across all budgets ($0.3113$ at $10\%$ budget), outperforming both Classical RBF and Quantum Experts.
 3. **Mathematical Cause of Equivalence:** Centered Kernel Alignment (CKA) between the Quantum Fidelity Kernel and Classical RBF is **$0.9429$** ($94.3\%$ geometric alignment), with **$0.9906$** spectral cosine similarity. The quantum kernel functions as an expensive classical RBF surrogate.
-4. **Causal Value of Selective Routing:** Selective routing is empirically validated. Amount-driven escalation provides **$2.09\times$ fraud enrichment**, while residual uncertainty orthogonal to amount provides **$1.23\times$ additive enrichment**. This gain is a property of the routing architecture, not quantum computation.
+4. **Empirical Value of Selective Routing:** Selective routing is empirically validated. Amount-based routing produced measured enrichment (**$2.09\times$**) under the tested synthetic benchmark, while residual uncertainty orthogonal to amount provided **$1.23\times$** additive enrichment. This enrichment is an associative property of the routing architecture, not quantum computation.
 5. **Hardware Decision Gate:** Formal verdict is `[HARDWARE NOT JUSTIFIED]`. Physical noise degrades quantum state purity ($1.000 \to 0.565$ in Phase 43 simulation), and physical QPU execution costs $\approx \$3,217$ for $N=100$ ($>600,000\times$ more expensive than classical CPU execution at $\$0.000005$).
 
 ---
@@ -100,8 +100,8 @@ CARD-NOT-PRESENT TRANSACTION
 *   **Noisy Quantum Simulation (Phase 43):** Depolarizing noise on `default.mixed` degrades state purity from $1.000$ to $0.565$ and reduces AUPRC from $0.4821$ to $0.4678$.
 *   **Hardware Decision Gate (Phase 44):** Evaluated as `[HARDWARE NOT JUSTIFIED]`. No physical QPU credentials present; physical execution would cost $\sim \$3,200$ for $N=100$ without scientific benefit.
 *   **Real IEEE-CIS Benchmark Gate (Phases 58–60):** Evaluated as `[BLOCKED: REAL DATA]` pending credentials. Pre-flight schema audit and 65/15/20 chronological split protocol formally verified in `docs/evidence/real_data_schema.md` and `docs/evidence/real_data_temporal_split.md`.
-*   **Security & Hygiene Audit (Phase 74):** `[VERIFIED: SECURE]`. Scanned 75 files; 0 critical or high-severity vulnerabilities (`docs/evidence/SECURITY_AUDIT.md`).
-*   **Reproducibility Audit (Phase 75):** `[VERIFIED: 100% REPRODUCIBLE]`. Pinned dependencies, deterministic seeds, and 17/17 tests passing (`docs/evidence/REPRODUCIBILITY.md`).
+*   **Security & Hygiene Audit (Phase 74):** `[VERIFIED: NO P0/P1 FINDINGS WITHIN TESTED SCOPE]`. Scanned repository files; 0 critical or high-severity vulnerabilities (`docs/evidence/SECURITY_AUDIT.md`).
+*   **Reproducibility Audit (Phase 75):** `[VERIFIED: REPRODUCIBLE IN DOCUMENTED ENVIRONMENT]`. Pinned dependencies, deterministic seeds, and all tests passing (`docs/evidence/REPRODUCIBILITY.md`).
 *   **Claim Firewall Audit (Phase 76):** `[VERIFIED: FIREWALL CLEAN]`. Automated scanning prevents marketing hyperbole or unsupported advantage claims.
 *   **Master Scientific Research Verdict (Phase 78):** Formally declared `[OUTCOME B: NO QUANTUM ADVANTAGE]` answering Q1–Q10 in `docs/evidence/RESEARCH_VERDICT.md`.
 *   **Interactive Evidence Dashboard (Phase 80):** Full Streamlit dashboard visualizing all 22 evidence artifacts: `streamlit run src/dashboard/app.py`.

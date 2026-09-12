@@ -1,6 +1,7 @@
 # Research Status & Truth Document
 
 > [!IMPORTANT]
+> **Research Status:** `[SYNTHETIC] [MEASURED] [VERIFIED] [REAL DATA BLOCKED] [QUANTUM ADVANTAGE NOT DEMONSTRATED]`  
 > This document explicitly details the factual state of the HSBC Quantum Fraud repository to prevent any unsupported claims from bleeding into presentations or documentation. Every claim maps directly to empirical artifacts in `docs/evidence/`.
 
 ## Master Scientific Verdict: OUTCOME B — NO QUANTUM ADVANTAGE
@@ -26,7 +27,7 @@ Meanwhile, the project establishes a **scientifically verified selective-escalat
     *   Orthogonal Uncertainty (residual after regressing out amount): **$1.23\times$** fraud enrichment.
     *   Uncertainty Margin: **$0.96\times$**.
     *   Random Routing: **$0.78\times$**.
-*   **Causal Attribution:** Transaction amount is the dominant causal driver of escalation. Model uncertainty provides genuine additive signal beyond amount ($1.23\times$ enrichment), but attributing amount-driven gains to "quantum intelligence" is false. Selective routing architecture is fundamentally valuable independently of quantum computation.
+*   **Routing Attribution:** Amount-based routing produced measured enrichment under the tested synthetic benchmark ($2.09\times$). Model uncertainty provides genuine additive signal beyond amount ($1.23\times$ enrichment), but this enrichment is an associative property of the routing architecture rather than quantum computation. Selective routing architecture is fundamentally valuable independently of quantum computation.
 
 ### Phase 32: Classical Control Strengthening
 *   **Artifacts:** `docs/evidence/classical_strengthening_benchmark.json` and `.csv`.

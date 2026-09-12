@@ -93,7 +93,7 @@ def run_reproducibility_audit():
             "output_summary": res.stdout.strip().splitlines()[-1] if res.stdout.strip() else res.stderr.strip()
         }
 
-    overall_status = "[VERIFIED: 100% REPRODUCIBLE]" if all(
+    overall_status = "[VERIFIED: REPRODUCIBLE IN DOCUMENTED ENVIRONMENT]" if all(
         c["status"] == "[VERIFIED]" for c in reproducibility_checks.values()
     ) else "[FAILED]"
 
@@ -114,29 +114,25 @@ def run_reproducibility_audit():
         ]
     }
 
+    # Save artifacts
     evidence_dir = REPO_ROOT / "docs" / "evidence"
     evidence_dir.mkdir(parents=True, exist_ok=True)
-    
-    json_path = evidence_dir / "reproducibility_audit.json"
-    with open(json_path, 'w', encoding='utf-8') as f:
+
+    with open(evidence_dir / "reproducibility_audit.json", 'w', encoding='utf-8') as f:
         json.dump(audit_summary, f, indent=2)
 
-    md_path = evidence_dir / "REPRODUCIBILITY.md"
-    with open(md_path, 'w', encoding='utf-8') as f:
-        f.write("# Reproducibility Audit & Execution Manifest (Phase 75)\n\n")
+    with open(evidence_dir / "REPRODUCIBILITY.md", 'w', encoding='utf-8') as f:
+        f.write("# Environment Reproducibility Audit\n\n")
         f.write(f"**Overall Status:** `{overall_status}`  \n")
-        f.write(f"**Runtime Environment:** Python {sys.version.split()[0]} on `{sys.platform}`  \n\n")
-        f.write("---\n\n## Reproducibility Checklist\n\n")
-        for name, check in reproducibility_checks.items():
-            f.write(f"* **{name}:** `{check['status']}`\n")
-        f.write("\n---\n\n## Canonical Reproduction Workflow\n\n")
-        f.write("A new researcher can clone a clean checkout and run the full pipeline deterministically:\n\n")
-        f.write("```bash\n")
-        for cmd in audit_summary["reproducible_commands"]:
-            f.write(f"{cmd}\n")
-        f.write("```\n\n")
-        f.write("---\n\n## Blocker Disclosure\n\n")
-        f.write("* `[BLOCKED: REAL DATA]` - Real IEEE-CIS data access requires `kaggle.json` or local `train_transaction.csv`. Synthetic pipeline executes automatically as fallback.\n")
+        f.write(f"**Python Version:** `{sys.version.split()[0]}`  \n")
+        f.write(f"**Platform:** `{sys.platform}`  \n\n")
+        f.write("## Reproducibility Verification Gates\n\n")
+        f.write("| Component | Status | Details |\n")
+        f.write("| :--- | :--- | :--- |\n")
+        for comp, data in reproducibility_checks.items():
+            f.write(f"| `{comp}` | `{data['status']}` | {data.get('details', data.get('output_summary', 'N/A'))} |\n")
+        f.write("\n## External Blocker Boundaries\n")
+        f.write("* `[BLOCKED: REAL DATA ACCESS]` - Real IEEE-CIS data access requires valid Kaggle API credentials. The pipeline executes deterministically with synthetic data mirroring the IEEE-CIS schema.\n")
         f.write("* `[BLOCKED: QPU EXECUTION]` - Physical QPU execution requires AWS Braket credentials. Local PennyLane statevector simulator (`default.qubit` / `default.mixed`) executes automatically.\n")
 
     logging.info(f"Phase 75 Reproducibility Audit Complete: {overall_status}")
@@ -144,6 +140,6 @@ def run_reproducibility_audit():
 
 if __name__ == "__main__":
     res = run_reproducibility_audit()
-    if res["status"] != "[VERIFIED: 100% REPRODUCIBLE]":
+    if res["status"] != "[VERIFIED: REPRODUCIBLE IN DOCUMENTED ENVIRONMENT]":
         exit(1)
     exit(0)
