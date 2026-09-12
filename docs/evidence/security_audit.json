@@ -1,6 +1,6 @@
 {
   "status": "[VERIFIED: NO P0/P1 FINDINGS WITHIN TESTED SCOPE]",
-  "files_scanned": 146,
+  "files_scanned": 174,
   "summary": {
     "p0_critical": 0,
     "p1_high": 0,
