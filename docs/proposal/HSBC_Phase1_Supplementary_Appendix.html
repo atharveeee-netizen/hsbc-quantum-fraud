@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HSBC Phase 1 Supplementary Material - Appendices A, B, C</title>
+<style>
+@page {
+  size: A4 portrait;
+  margin: 9mm 12mm 9mm 12mm;
+}}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 9.15pt;
+  line-height: 1.33;
+  color: #0f172a;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  width: 100%;
+  height: 265mm;
+  max-height: 265mm;
+  position: relative;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.page:last-child {
+  page-break-after: avoid;
+}
+
+.running-header {
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 2px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 7.2pt;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+h1 {
+  font-size: 10.2pt;
+  font-weight: 800;
+  color: #0f172a;
+  border-bottom: 1px solid #94a3b8;
+  padding-bottom: 1px;
+  margin-top: 3.5px;
+  margin-bottom: 2.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+h2 {
+  font-size: 8.9pt;
+  font-weight: 700;
+  color: #1e293b;
+  margin-top: 3px;
+  margin-bottom: 1.5px;
+}
+
+p {
+  margin-bottom: 3px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+strong {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.callout {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-left: 3px solid #0f172a;
+  padding: 4px 7px;
+  margin: 3px 0;
+  font-size: 8.3pt;
+  line-height: 1.27;
+}
+
+.callout-title {
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 1.5px;
+  font-size: 8.3pt;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  margin-bottom: 2.5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 3px 0;
+  font-size: 7.5pt;
+  line-height: 1.2;
+}
+
+th {
+  background-color: #0f172a;
+  color: #ffffff;
+  font-weight: 700;
+  text-align: left;
+  padding: 2.5px 4.5px;
+  border: 1px solid #0f172a;
+}
+
+td {
+  padding: 2.0px 4.5px;
+  border: 1px solid #cbd5e1;
+  vertical-align: middle;
+}
+
+tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.code-box {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 7.4pt;
+  padding: 3px 5px;
+  margin: 2.5px 0;
+  line-height: 1.25;
+  color: #0f172a;
+}
+
+.page-footer {
+  margin-top: auto;
+  padding-top: 2px;
+  border-top: 1px solid #cbd5e1;
+  display: flex;
+  justify-content: space-between;
+  font-size: 7.2pt;
+  color: #64748b;
+}
+</style>
+</head>
+<body>
+
+<!-- APPENDIX PAGE 1: MATHEMATICAL FOUNDATIONS & CIRCUITS -->
+<div class="page">
+  <div class="running-header">
+    <span>HSBC Supplementary Material | Appendix A: Mathematical Formulations &amp; Circuits</span>
+    <span>Optional Appendix (Max 3 Pages)</span>
+  </div>
+
+  <h1>Appendix A: Mathematical Formulations &amp; Quantum Circuit Encodings</h1>
+
+  <h2>A.1 Quantum State Preparation &amp; AngleEmbedding Ansatz</h2>
+  <p>
+    Classical input vectors <code>x &isin; &reals;^D</code> (where D=2 in the matched experiment: <code>TransactionAmt</code> and <code>card1</code>) are normalized to the interval <code>[0, &pi;]</code>. The state preparation unitary <code>U(x)</code> maps classical features into product states via single-qubit rotations followed by entangling gates:
+  </p>
+  <div class="code-box">
+    |&phi;(x)&rang; = U_ent &middot; &bigotimes;_{i=1}^D R_y(x_i) |0&rang;^{\otimes D}
+  </div>
+  <p>
+    where <code>R_y(&theta;) = exp(&minus;i &theta; Y / 2)</code> and <code>U_ent</code> applies alternating CNOT operations across adjacent qubits. For two qubits, this yields the entangled statevector:
+  </p>
+  <div class="code-box">
+    |&psi;(x)&rang; = cos(x_1/2)cos(x_2/2)|00&rang; + cos(x_1/2)sin(x_2/2)|01&rang; + sin(x_1/2)sin(x_2/2)|10&rang; + sin(x_1/2)cos(x_2/2)|11&rang;
+  </div>
+
+  <h2>A.2 Projected Quantum Kernel (PQK) Formulation</h2>
+  <p>
+    Standard fidelity quantum kernels evaluate <code>k_F(x, x') = |&lang;&phi;(x)|&phi;(x')&rang;|^2</code>. As Hilbert space dimensionality grows, fidelity kernels suffer from exponential concentration of measure (the quantum vanishing gradient / barren plateau phenomenon for kernels), causing kernel values to concentrate around zero.
+  </p>
+  <p>
+    To mitigate concentration, we implement a <strong>Projected Quantum Kernel (PQK)</strong> following Huang et al. (2021). The quantum state is projected back to a classical feature space by evaluating local one-qubit observable expectations:
+  </p>
+  <div class="code-box">
+    f_i(x) = &lang;&phi;(x)| &sigma;_z^{(i)} |&phi;(x)&rang;, &nbsp; for i &isin; {1, ..., D}
+  </div>
+  <p>
+    The resulting projected vector <code>f(x) = [f_1(x), ..., f_D(x)]^T</code> is then evaluated via a Gaussian radial basis function:
+  </p>
+  <div class="code-box">
+    k_PQK(x, x') = exp(&minus;&gamma;_P &middot; ||f(x) &minus; f(x')||^2)
+  </div>
+  <p>
+    This projection preserves non-linear quantum correlations while retaining non-trivial kernel contrast across large transaction batches.
+  </p>
+
+  <h2>A.3 Centered Kernel Alignment (CKA) Metric Space Geometry</h2>
+  <p>
+    To evaluate whether the quantum kernel explores an orthogonal metric space relative to classical kernels, we compute the Centered Kernel Alignment (Cortes et al., 2012). Let <code>K_1</code> and <code>K_2</code> be the Gram matrices of the quantum and classical kernels on the identical N=200 support set. The centered Gram matrix is <code>K_c = H K H</code>, where <code>H = I &minus; (1/N) 1 1^T</code> is the centering matrix. CKA is defined as:
+  </p>
+  <div class="code-box">
+    CKA(K_1, K_2) = Tr(K_{1,c} K_{2,c}) / sqrt(Tr(K_{1,c}^2) &middot; Tr(K_{2,c}^2)) &isin; [0, 1]
+  </div>
+  <p>
+    Our measured CKA of <strong>0.9337</strong> between PQK and Classical RBF demonstrates that the quantum kernel metric geometry is highly collinear with the classical Gaussian kernel, explaining why the empirical decision boundary showed no statistically significant separation.
+  </p>
+
+  <h2>A.4 Matrix Product State (MPS) Simulability Diagnostic</h2>
+  <p>
+    For any quantum circuit proposed for payment fraud detection, classical simulability is governed by bipartite entanglement entropy:
+  </p>
+  <div class="code-box">
+    S(A:B) = &minus;Tr(&rho;_A &middot; log_2 &rho;_A)
+  </div>
+  <p>
+    If <code>S(A:B) &le; c &middot; log(N)</code>, the circuit can be simulated in polynomial time on classical workstations via Matrix Product States (MPS) with bounded bond dimension <code>&chi;</code>. Under our 2-qubit to 12-qubit architectures, <code>&chi; &le; 64</code> suffices for exact representation, confirming that classical hardware remains capable of simulating these feature maps without requiring physical QPUs.
+  </p>
+
+  <div class="page-footer">
+    <span>HSBC Global Quantum + AI Challenge 2026 &mdash; Supplementary Material</span>
+    <span>Page 1 of 3 (Appendix A)</span>
+  </div>
+</div>
+
+<!-- APPENDIX PAGE 2: EVIDENCE LEDGER & LATENCY PROFILING -->
+<div class="page">
+  <div class="running-header">
+    <span>HSBC Supplementary Material | Appendix B: Granular Evidence &amp; Latency</span>
+    <span>Optional Appendix (Max 3 Pages)</span>
+  </div>
+
+  <h1>Appendix B: Granular Experimental Evidence &amp; Latency Profiles</h1>
+
+  <h2>B.1 Complete Operational Review Budget Sweep</h2>
+  <p>
+    To establish the complete trade-off curve between manual review capacity and fraud interception, the uncertainty router was evaluated across five operational budgets on the out-of-sample forward test set (118,108 transactions, 4,064 total frauds):
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Review Budget (B)</th>
+        <th>Escalated Volume (Tx)</th>
+        <th>Frauds Captured (N)</th>
+        <th>Fraud Density (%)</th>
+        <th>Prevalence Enrichment</th>
+        <th>Cumulative Stream Recall</th>
+        <th>Amount Policy Frauds</th>
+        <th>Ablation Advantage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>0.5%</strong></td>
+        <td>591 tx</td>
+        <td><strong>253</strong></td>
+        <td><strong>42.81%</strong></td>
+        <td><strong>12.44x</strong></td>
+        <td>6.23%</td>
+        <td>9 frauds (1.52%)</td>
+        <td><strong>28.1x more fraud</strong></td>
+      </tr>
+      <tr>
+        <td><strong>1.0%</strong></td>
+        <td>1,181 tx</td>
+        <td><strong>440</strong></td>
+        <td><strong>37.26%</strong></td>
+        <td><strong>10.83x</strong></td>
+        <td>10.83%</td>
+        <td>34 frauds (2.88%)</td>
+        <td><strong>12.9x more fraud</strong></td>
+      </tr>
+      <tr>
+        <td><strong>2.0%</strong></td>
+        <td>2,362 tx</td>
+        <td><strong>720</strong></td>
+        <td><strong>30.48%</strong></td>
+        <td><strong>8.86x</strong></td>
+        <td>17.72%</td>
+        <td>152 frauds (6.44%)</td>
+        <td><strong>4.7x more fraud</strong></td>
+      </tr>
+      <tr>
+        <td><strong>5.0%</strong></td>
+        <td>5,905 tx</td>
+        <td><strong>1,559</strong></td>
+        <td><strong>26.40%</strong></td>
+        <td><strong>7.67x</strong></td>
+        <td>38.36%</td>
+        <td>312 frauds (5.28%)</td>
+        <td><strong>5.0x more fraud</strong></td>
+      </tr>
+      <tr>
+        <td><strong>10.0%</strong></td>
+        <td>11,811 tx</td>
+        <td><strong>2,343</strong></td>
+        <td><strong>19.84%</strong></td>
+        <td><strong>5.77x</strong></td>
+        <td>57.65%</td>
+        <td>570 frauds (4.83%)</td>
+        <td><strong>4.1x more fraud</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>B.2 End-to-End Latency Breakdown Across Architectural Paths</h2>
+  <p>
+    Benchmarking was conducted on dedicated x86_64 server hardware across 1,000 real benchmark transactions:
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Execution Stage / Component</th>
+        <th>Median Latency</th>
+        <th>p95 Latency</th>
+        <th>Max Latency</th>
+        <th>Design Budget Compliance (&le;50 ms)</th>
+        <th>Hardware Architecture</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Raw Ingress &amp; Feature Preprocessing</td>
+        <td>3.85 ms</td>
+        <td>4.68 ms</td>
+        <td>6.12 ms</td>
+        <td>Fully Compliant (Consumes 7.7% of budget)</td>
+        <td>Single x86_64 core</td>
+      </tr>
+      <tr>
+        <td>LightGBM Scoring + Calibration</td>
+        <td>0.21 ms</td>
+        <td>0.28 ms</td>
+        <td>0.45 ms</td>
+        <td>Fully Compliant (Consumes 0.4% of budget)</td>
+        <td>Single x86_64 core</td>
+      </tr>
+      <tr>
+        <td>Uncertainty Routing Logic</td>
+        <td>0.01 ms</td>
+        <td>0.01 ms</td>
+        <td>0.02 ms</td>
+        <td>Fully Compliant (&lt;0.1% of budget)</td>
+        <td>Single x86_64 core</td>
+      </tr>
+      <tr>
+        <td><strong>Total Autonomous Fast Path</strong></td>
+        <td><strong>4.07 ms</strong></td>
+        <td><strong>4.97 ms</strong></td>
+        <td><strong>6.59 ms</strong></td>
+        <td><strong>Fully Compliant (Consumes &lt;10% of budget)</strong></td>
+        <td><strong>Commodity CPU</strong></td>
+      </tr>
+      <tr>
+        <td>Escalated Classical Specialist (Tuned RBF)</td>
+        <td>0.82 ms</td>
+        <td>0.48 ms</td>
+        <td>1.15 ms</td>
+        <td>Fully Compliant (Total latency: 4.89 ms)</td>
+        <td>Commodity CPU</td>
+      </tr>
+      <tr>
+        <td>Local Quantum Simulator (PennyLane N=200)</td>
+        <td>159.14 ms</td>
+        <td>217.18 ms</td>
+        <td>342.50 ms</td>
+        <td>Non-Compliant (3.2x &ndash; 4.3x over 50 ms budget)</td>
+        <td>Local CPU Statevector</td>
+      </tr>
+      <tr>
+        <td>Cloud QPU Remote Queue (IonQ Aria / Braket)</td>
+        <td>180,000 ms (180 s)</td>
+        <td>1,200,000 ms (20 min)</td>
+        <td>3,600,000 ms (1 hr)</td>
+        <td>Severely Incompatible with Real-Time Clearing</td>
+        <td>Trapped-Ion Cloud Hardware</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>B.3 Unit Economics &amp; Break-Even Accounting</h2>
+  <div class="callout">
+    <div class="callout-title">Economic Provenance Declaration</div>
+    <strong>Realized Savings to Date: $0.00.</strong> The research uses historical IEEE-CIS data; no live banking operations have accrued financial savings. All economic figures are modeled under explicit cost assumptions ($0.50/1M frontline LightGBM compute; $35.30 per escalated transaction on IonQ Aria via AWS Braket rate cards).
+  </div>
+  <p>
+    At a 1.0% escalation budget over 1,000,000 transactions (10,000 escalated transactions), the selective classical architecture incurs <strong>$0.15</strong> in additional compute, breaking even if it intercepts just 1 additional fraud. In contrast, cloud QPU execution incurs <strong>$353,000 in compute expenses</strong>. Under the observed null result (&Delta;PR-AUC = +0.0653, p = 0.246), QPU execution produces an immediate net financial deficit of over $167,000.
+  </p>
+
+  <div class="page-footer">
+    <span>HSBC Global Quantum + AI Challenge 2026 &mdash; Supplementary Material</span>
+    <span>Page 2 of 3 (Appendix B)</span>
+  </div>
+</div>
+
+<!-- APPENDIX PAGE 3: REPRODUCIBILITY & REFERENCES -->
+<div class="page">
+  <div class="running-header">
+    <span>HSBC Supplementary Material | Appendix C: Reproducibility &amp; References</span>
+    <span>Optional Appendix (Max 3 Pages)</span>
+  </div>
+
+  <h1>Appendix C: Reproducibility Manifesto &amp; Academic References</h1>
+
+  <h2>C.1 Reproducibility Protocol &amp; Provenance Tracking</h2>
+  <p>
+    Every empirical metric, figure, and table in this proposal is fully reproducible from the public code repository. The complete experimental harness is frozen under git commit <code>a2aa2d1</code>.
+  </p>
+  <div class="code-box">
+    # Clone and verify the complete research suite
+    git clone https://github.com/atharveeee-netizen/hsbc-quantum-fraud.git
+    cd hsbc-quantum-fraud
+    python -m venv .venv &amp;&amp; source .venv/bin/activate
+    pip install -r requirements.txt
+    pytest  # Executes 24 automated unit, integration, and firewall tests
+  </div>
+  <p>
+    The repository includes: (1) <code>docs/evidence/evidence_ledger.json</code> indexing SHA-256 checksums and parameter manifests for all 16 primary experimental runs; (2) automated claim firewall tests (<code>test_claim_firewall.py</code>) that block unauthorized buzzwords and unverified metrics; and (3) a 7-panel interactive Streamlit dashboard (<code>src/dashboard/app.py</code>) enabling real-time inspection of routing concentration, bootstrap distributions, and latency curves.
+  </p>
+
+  <h2>C.2 Canonical References &amp; Prior Literature</h2>
+  <ol style="font-size: 7.6pt; line-height: 1.28; padding-left: 14px; margin-bottom: 4px;">
+    <li><strong>Chaves, R., Kumar, K., Chagas, B., Linerud, R., Sorem, B., Mancilla, J., Bell, B. (2026).</strong> A Mixture-of-Experts Framework for Practical Hybrid-Quantum Models in Credit Card Fraud Detection. <em>arXiv:2603.06473v2</em>. Demonstrates selective routing to hybrid quantum experts, reporting 7&ndash;21 minute added inference latencies.</li>
+    <li><strong>Mastercard &amp; Oxford Quantum Circuits (OQC) (2026).</strong> Bringing Quantum to Real Payments: A New Approach to Fraud Detection. White paper evaluating hybrid quantum ensembles on payment network authorization flows.</li>
+    <li><strong>Fl&oacute;rez Ablan, R., Roth, M., Schnabel, J. (2025).</strong> On the similarity of bandwidth-tuned quantum kernels and classical kernels. <em>Quantum Science and Technology</em>. Demonstrates that optimal bandwidth tuning causes quantum kernels to converge geometrically to classical Gaussian RBF behavior.</li>
+    <li><strong>Innan, N., Singh, A., Shafique, M. (2025).</strong> CircuitHunt: Automated Quantum Circuit Screening for Superior Credit-Card Fraud Detection. <em>IEEE QAI 2025</em>, pp. 432&ndash;438. Reports high accuracy under artificial SMOTE rebalancing.</li>
+    <li><strong>Huang, H.-Y., Broughton, M., Mohseni, M., Babbush, R., Boixo, S., Neven, H., McClean, J. R. (2021).</strong> Power of data in quantum machine learning. <em>Nature Communications</em>, 12(1), 2631. Establishes the mathematical foundation for Projected Quantum Kernels (PQK) and geometric difference bounds.</li>
+    <li><strong>Cortes, C., Mohri, M., Rostamizadeh, A. (2012).</strong> Algorithms for learning kernels based on centered alignment. <em>Journal of Machine Learning Research</em>, 13, 795&ndash;828. Defines the Centered Kernel Alignment (CKA) metric for comparing representation topologies.</li>
+    <li><strong>Kyriienko, O., Magnusson, E. B. (2022).</strong> Unsupervised quantum machine learning for fraud detection. <em>arXiv:2208.01201</em>. Evaluates quantum kernel methods on subsampled, artificially balanced fraud datasets.</li>
+    <li><strong>IEEE-CIS Fraud Detection Benchmark (2019).</strong> Vesta Corporation &amp; IEEE Computational Intelligence Society. Dataset comprising 590,540 real-world card-not-present e-commerce transactions across 394 features.</li>
+  </ol>
+
+  <h2>C.3 Verification Manifest &amp; Hardware Gate Audit</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Artifact Component</th>
+        <th>Repository Path</th>
+        <th>Verification Hash / Identifier</th>
+        <th>Gate Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Full Scientific Suite</td>
+        <td><code>src/evaluation/run_real_scientific_suite.py</code></td>
+        <td>Deterministic execution (Seed: 42)</td>
+        <td>Verified [MEASURED]</td>
+      </tr>
+      <tr>
+        <td>Matched Quantum Experiment</td>
+        <td><code>docs/evidence/real_quantum_matched_experiment.json</code></td>
+        <td>N=200 Support; 1,000 Paired Resamples</td>
+        <td>Null Retained (p = 0.246)</td>
+      </tr>
+      <tr>
+        <td>Router Policy Ablation</td>
+        <td><code>docs/evidence/real_router_ablation.json</code></td>
+        <td>5-Budget Sweep vs Amount Baseline</td>
+        <td>28.1x Lift Confirmed</td>
+      </tr>
+      <tr>
+        <td>Hardware Decision Gate</td>
+        <td><code>docs/evidence/hardware_gate.json</code></td>
+        <td>5-Criterion Operational Protocol</td>
+        <td>HARDWARE NOT JUSTIFIED</td>
+      </tr>
+      <tr>
+        <td>Provenance Manifest</td>
+        <td><code>docs/evidence/PROVENANCE_MANIFEST.json</code></td>
+        <td>16 Indexed Evidence Artifacts</td>
+        <td>Git HEAD: a2aa2d1</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <span>HSBC Global Quantum + AI Challenge 2026 &mdash; Supplementary Material</span>
+    <span>Page 3 of 3 (Appendix C)</span>
+  </div>
+</div>
+
+</body>
+</html>

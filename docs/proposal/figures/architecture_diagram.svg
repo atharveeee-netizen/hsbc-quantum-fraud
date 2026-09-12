@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="100%" height="auto">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .box { rx: 6; ry: 6; stroke-width: 1.5; }
+      .box-stream { fill: #f8fafc; stroke: #64748b; }
+      .box-frontline { fill: #f0fdf4; stroke: #16a34a; }
+      .box-router { fill: #eff6ff; stroke: #2563eb; }
+      .box-fastpath { fill: #f1f5f9; stroke: #475569; }
+      .box-escalated { fill: #fff7ed; stroke: #ea580c; }
+      .box-classical { fill: #ecfdf5; stroke: #059669; }
+      .box-quantum { fill: #faf5ff; stroke: #9333ea; }
+      .box-gate { fill: #fef2f2; stroke: #dc2626; }
+      .box-decision { fill: #0f172a; stroke: #0f172a; }
+      .title-text { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 700; }
+      .body-text { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10.5px; fill: #334155; }
+      .metric-text { font-family: 'Segoe UI', Arial, sans-serif; font-size: 9.5px; fill: #0f172a; font-weight: 600; }
+      .label-head { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; font-weight: 700; text-anchor: middle; }
+      .arrow { stroke: #475569; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+      .arrow-blue { stroke: #2563eb; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead-blue); }
+      .arrow-orange { stroke: #ea580c; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead-orange); }
+      .arrow-purple { stroke: #9333ea; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead-purple); }
+      .arrow-green { stroke: #059669; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead-green); }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#475569" />
+    </marker>
+    <marker id="arrowhead-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2563eb" />
+    </marker>
+    <marker id="arrowhead-orange" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#ea580c" />
+    </marker>
+    <marker id="arrowhead-purple" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#9333ea" />
+    </marker>
+    <marker id="arrowhead-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#059669" />
+    </marker>
+  </defs>
+
+  <rect width="960" height="420" class="bg" />
+
+  <!-- 1. Transaction Stream -->
+  <g transform="translate(20, 160)">
+    <rect width="130" height="90" class="box box-stream" />
+    <text x="65" y="25" class="label-head" fill="#334155">PAYMENT STREAM</text>
+    <text x="12" y="45" class="body-text">Incoming Auth Stream</text>
+    <text x="12" y="60" class="body-text">590,540 Tx (IEEE-CIS)</text>
+    <text x="12" y="75" class="metric-text">Prevalence: 3.50%</text>
+  </g>
+
+  <!-- Arrow to Frontline -->
+  <path d="M 150 205 L 180 205" class="arrow" />
+
+  <!-- 2. Frontline Classical Scorer -->
+  <g transform="translate(180, 145)">
+    <rect width="165" height="120" class="box box-frontline" />
+    <text x="82" y="22" class="label-head" fill="#166534">FRONTLINE DETECTOR</text>
+    <text x="12" y="42" class="body-text">Calibrated LightGBM</text>
+    <text x="12" y="58" class="body-text">Chronological Split (65/15/20)</text>
+    <text x="12" y="74" class="metric-text">PR-AUC: 0.4040 (11.7x lift)</text>
+    <text x="12" y="90" class="metric-text">ROC-AUC: 0.8503 | Brier: 0.025</text>
+    <text x="12" y="106" class="metric-text">Fast Latency: 4.07 ms (p95: 4.97)</text>
+  </g>
+
+  <!-- Arrow to Router -->
+  <path d="M 345 205 L 375 205" class="arrow" />
+
+  <!-- 3. Uncertainty Router -->
+  <g transform="translate(375, 145)">
+    <rect width="160" height="120" class="box box-router" />
+    <text x="80" y="22" class="label-head" fill="#1d4ed8">UNCERTAINTY ROUTER</text>
+    <text x="12" y="42" class="body-text">Margin: |p - 0.5| ≤ τ</text>
+    <text x="12" y="58" class="body-text">Explicit Budget: B ∈ [0.5, 5%]</text>
+    <text x="12" y="74" class="metric-text">0.5% Vol: 42.8% Fraud Density</text>
+    <text x="12" y="90" class="metric-text">1.0% Vol: 37.3% Fraud Density</text>
+    <text x="12" y="106" class="metric-text">28.1x Lift vs Amount Policy</text>
+  </g>
+
+  <!-- Path A: Fast Path (Up & Right) -->
+  <path d="M 455 145 L 455 70 L 580 70" class="arrow-blue" />
+  <g transform="translate(580, 30)">
+    <rect width="170" height="80" class="box box-fastpath" />
+    <text x="85" y="20" class="label-head" fill="#334155">AUTONOMOUS FAST PATH</text>
+    <text x="12" y="38" class="body-text">99.0% – 99.5% Volume</text>
+    <text x="12" y="53" class="body-text">Instant Clearance (&lt;5 ms)</text>
+    <text x="12" y="68" class="metric-text">Cost: $0.50 / 1M Transactions</text>
+  </g>
+
+  <!-- Path B: Escalation Path (Down & Right) -->
+  <path d="M 455 265 L 455 330 L 560 330" class="arrow-orange" />
+  <g transform="translate(560, 240)">
+    <!-- Sub-container for Specialists -->
+    <rect width="215" height="170" fill="#f8fafc" stroke="#cbd5e1" rx="8" ry="8" stroke-dasharray="4 4" />
+    <text x="107" y="18" class="label-head" fill="#475569">SELECTIVE SPECIALIST STAGE (0.5% - 1.0%)</text>
+    
+    <!-- Classical Controls -->
+    <g transform="translate(10, 28)">
+      <rect width="195" height="60" class="box box-classical" />
+      <text x="97" y="17" class="label-head" fill="#065f46">CLASSICAL CONTROLS (Matched)</text>
+      <text x="10" y="34" class="body-text">Tuned RBF (0.3367) | MLP (0.3516) | GBM (0.3529)</text>
+      <text x="10" y="50" class="metric-text">Latency: 4.89 ms | Cost: $0.65 / 1M</text>
+    </g>
+
+    <!-- Quantum Research Arm -->
+    <g transform="translate(10, 98)">
+      <rect width="195" height="60" class="box box-quantum" />
+      <text x="97" y="17" class="label-head" fill="#6b21a8">QUANTUM ARM (Matched N=200)</text>
+      <text x="10" y="34" class="body-text">Projected Kernel (0.4043) | Fidelity (0.3789)</text>
+      <text x="10" y="50" class="metric-text">CKA: 0.9337 | QPU Modeled: $35.30/tx</text>
+    </g>
+  </g>
+
+  <!-- Arrow to Statistical Gate -->
+  <path d="M 775 330 L 805 330" class="arrow-orange" />
+
+  <!-- 4. Statistical Decision Gate -->
+  <g transform="translate(805, 230)">
+    <rect width="140" height="180" class="box box-gate" />
+    <text x="70" y="20" class="label-head" fill="#991b1b">DECISION GATE</text>
+    <text x="8" y="38" class="body-text">Paired Bootstrap Test:</text>
+    <text x="8" y="53" class="metric-text">Δ = +0.0653</text>
+    <text x="8" y="68" class="metric-text">95% CI: [-0.038, +0.182]</text>
+    <text x="8" y="83" class="metric-text">p = 0.246 (Null Retained)</text>
+    <line x1="8" y1="92" x2="132" y2="92" stroke="#fca5a5" stroke-width="1" />
+    <text x="8" y="108" class="body-text">Hardware Gate:</text>
+    <text x="8" y="123" class="metric-text" fill="#b91c1c">HARDWARE NOT JUSTIFIED</text>
+    <line x1="8" y1="132" x2="132" y2="132" stroke="#fca5a5" stroke-width="1" />
+    <text x="8" y="148" class="body-text">Deployment Verdict:</text>
+    <text x="8" y="163" class="metric-text" fill="#047857">DEPLOY SELECTIVE CLASSICAL</text>
+  </g>
+
+</svg>

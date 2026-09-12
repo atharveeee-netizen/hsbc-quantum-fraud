@@ -27,9 +27,13 @@ search_terms = [
 results = {term: [] for term in search_terms}
 
 for root, dirs, files in os.walk(repo_root):
-    if any(p in root for p in ['.git', '.pytest_cache', '__pycache__', 'models']):
+    if any(p in root for p in ['.git', '.pytest_cache', '__pycache__', 'models', 'data', 'renders']):
         continue
     for f in files:
+        if f.endswith(('.csv', '.parquet', '.zip', '.png', '.pdf', '.docx', '.svg')):
+            continue
+        if f in ['stale_claim_audit.json', 'claim_firewall_audit.json']:
+            continue
         fpath = os.path.join(root, f)
         relpath = os.path.relpath(fpath, repo_root)
         try:

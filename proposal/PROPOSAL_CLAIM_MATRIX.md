@@ -1,0 +1,41 @@
+# Proposal Claim Matrix: Classification & Interpretation Guardrails
+
+**Project:** HSBC Challenge — Selective Quantum-Enhanced Credit Card Fraud Detection  
+**Repository:** `https://github.com/atharveeee-netizen/hsbc-quantum-fraud`  
+**Protocol Version:** `vNEXT.3`  
+**Status:** `ACTIVE CLAIM FIREWALL`
+
+This document defines the evidentiary classification, source artifact, allowed interpretation, and strictly forbidden interpretation for every substantive technical claim in the Phase 1 Concept Proposal.
+
+---
+
+## 1. Substantive Claim Classification Matrix
+
+| Claim ID | Claim / Proposition | Evidence Basis | Status | Source File | Key Metric | Allowed Interpretation | Forbidden Interpretation |
+| :--- | :--- | :--- | :---: | :--- | :--- | :--- | :--- |
+| **CLM-01** | Real Data Validation | Official IEEE-CIS Fraud Detection benchmark | `[REAL DATA] [MEASURED]` | `docs/evidence/real_data_ingestion.json` | $N=590,540$, 394 features | "Evaluated on the historical IEEE-CIS Fraud Detection benchmark containing 590,540 real transactions." | "Validated on HSBC internal data" or "Trained on live HSBC bank transactions" |
+| **CLM-02** | Chronological Evaluation | Temporal split on `TransactionDT` | `[REAL DATA] [MEASURED]` | `docs/evidence/real_temporal_split.json` | 65% train, 15% calib, 20% test | "Evaluated using strict temporal ordering to simulate out-of-sample forward deployment without lookahead leakage." | "Random cross-validation gives identical performance" or "No temporal drift exists" |
+| **CLM-03** | Severe Class Imbalance | Population fraud labeling | `[REAL DATA] [MEASURED]` | `docs/evidence/real_class_imbalance_audit.json` | 3.4990% prevalence (20,663 frauds) | "Authentic fraud prevalence is severely imbalanced at 3.50% (1 in 27.5 transactions)." | "Balanced 50/50 synthetic evaluation represents real production" |
+| **CLM-04** | Frontline Classical Baseline | Calibrated LightGBM GBDT | `[REAL DATA] [MEASURED]` | `docs/evidence/real_classical_baseline.json` | PR-AUC = 0.4040, ROC-AUC = 0.8503 | "Frontline calibrated LightGBM achieves a PR-AUC of 0.4040, delivering an 11.74x lift over out-of-sample test prevalence (0.0344)." | "Baseline is weak" or "LightGBM perfectly eliminates fraud" |
+| **CLM-05** | Frontline Probability Calibration | Isotonic regression on holdout calibration split | `[REAL DATA] [MEASURED]` | `docs/evidence/real_calibration_audit.json` | Brier = 0.0250, ECE = 0.0785 | "Probability outputs are well-calibrated, yielding a low Brier loss of 0.0250 and ECE of 0.0785, enabling reliable decision uncertainty." | "Raw uncalibrated tree outputs can directly drive risk routing" |
+| **CLM-06** | Uncertainty-Based Routing Concentration | Margin from decision boundary $\|p - 0.5\| \le \tau$ | `[REAL DATA] [MEASURED]` | `docs/evidence/real_router_audit.json` | 0.5% budget: 42.81% fraud density (12.44x lift) | "Uncertainty-based routing concentrates fraud cases into a tiny escalation budget, achieving 42.81% fraud density at 0.5% volume (253 frauds)." | "Uncertainty routing eliminates all missed frauds across the stream" |
+| **CLM-07** | Routing Mechanism vs Transaction Amount | Comparative policy ablation | `[REAL DATA] [MEASURED]` | `docs/evidence/real_router_ablation.json` | 253 vs 9 frauds at 0.5% budget | "Uncertainty routing captures 28.1x more fraud than sorting by transaction amount alone (253 vs 9 frauds at 0.5% budget)." | "Transaction dollar amount causally drives fraud" |
+| **CLM-08** | Matched Quantum vs Classical Experiment | Identical $N=200$ support, identical 2D features | `[REAL DATA] [MEASURED]` | `docs/evidence/real_quantum_matched_experiment.json` | PQK: 0.4043 vs RBF: 0.3367, MLP: 0.3516, GBM: 0.3529 | "In a strictly matched N=200 escalated experiment, PQK achieved a nominal PR-AUC of 0.4043 versus 0.3367 for a tuned Classical RBF baseline." | "PQK demonstrated empirical quantum dominance or decisive superiority" |
+| **CLM-09** | Quantum Statistical Hypothesis Testing | 1,000 paired bootstrap resamples | `[REAL DATA] [MEASURED]` | `docs/evidence/real_quantum_matched_experiment.json` | $\Delta = +0.0653$, 95% CI: [-0.0383, +0.1821], $p = 0.246$ | "The paired bootstrap hypothesis test yielded p = 0.246 and a 95% CI spanning zero [-0.0383, +0.1821]; the null hypothesis of no advantage cannot be rejected." | "Quantum advantage is claimed as statistically proven" or "Quantum underperformed significantly" |
+| **CLM-10** | Quantum Kernel Representation Geometry | Centered Kernel Alignment (CKA) | `[REAL DATA] [MEASURED]` | `docs/evidence/real_quantum_geometry.json` | CKA = 0.9337 (PQK vs RBF), 0.9373 (Fidelity vs RBF) | "CKA of 0.9337 indicates strong geometric alignment between the tested quantum kernel and the classical RBF kernel under current feature encoding." | "Proves exact mathematical equivalence between quantum circuits and classical kernels" |
+| **CLM-11** | Physical Noise Sensitivity | Simulated depolarizing & phase-damping channels | `[MEASURED]` | `docs/evidence/real_noise_robustness.json` | -1.32% to -6.49% degradation | "Quantum kernel performance monotonically degrades by 1.32% to 6.49% under realistic NISQ noise (p=0.01 to 0.05)." | "Quantum circuits are robust against NISQ noise without fault tolerance" |
+| **CLM-12** | Authorization Latency Compliance | Measured local CPU runtime on real transactions | `[REAL DATA] [MEASURED]` | `docs/evidence/real_latency_audit.json` | Fast path: 4.07 ms med / 4.97 ms p95; Escalated: 4.89 ms med / 5.45 ms p95 | "Classical fast path (4.07 ms med) and escalated classical path (4.89 ms med) operate well within the project's 50 ms design budget." | "Physical QPU execution meets synchronous payment SLAs" |
+| **CLM-13** | Quantum Latency Feasibility | Measured simulator runtime & modeled QPU queue | `[MEASURED] [MODELED]` | `docs/evidence/real_latency_audit.json` | Sim: 159.14 ms med; Cloud QPU queue: 180s - 1,200s | "Local quantum simulation (159.14 ms med) exceeds the 50 ms budget, while cloud QPU queue times (3–20 min) are incompatible with real-time authorization." | "Measured physical QPU transaction latency was sub-second" |
+| **CLM-14** | Unit Economics & Compute Costs | Modeled cloud rates (AWS Braket / IonQ Aria) | `[MODELED] [VERIFIED]` | `docs/evidence/hardware_and_economics.json` | Classical: $0.65 / 1M tx; QPU: $353,000.50 / 1M tx | "Modeled QPU compute costs ($35.30 per escalated transaction, $353,000 / 10k tx) are >540,000x more expensive than classical compute ($0.65 / 1M tx)." | "Realized banking savings of €1.2M have been achieved" |
+| **CLM-15** | Realized Financial Savings | Operational status audit | `[VERIFIED]` | `docs/evidence/ECONOMIC_AUDIT.md` | $0.00 realized savings | "$0.00 in realized monetary savings have been claimed or achieved; all financial metrics represent modeled scenario economics." | "The project generated millions of dollars in net commercial savings" |
+| **CLM-16** | Physical QPU Hardware Execution Gate | Formal 5-criterion decision protocol | `[VERIFIED]` | `docs/evidence/hardware_gate.json` | Verdict: HARDWARE NOT JUSTIFIED | "Physical QPU deployment is not justified under current evidence due to the null hypothesis result, noise vulnerability, queue latency, and cost." | "We deployed and tested on physical quantum hardware in production" |
+| **CLM-17** | Master Scientific Verdict | Comprehensive multi-phase empirical synthesis | `[VERIFIED]` | `docs/evidence/RESEARCH_VERDICT.md` | Outcome B | "Outcome B: No quantum advantage demonstrated under rigorous matched controls, but a highly effective selective classical architecture was validated." | "Outcome A: Conclusive quantum advantage achieved" |
+
+---
+
+## 2. Firewall Enforcement Directives
+1. **Never conflate benchmark data with HSBC production data.**
+2. **Never present point estimates ($+0.0653$) without explicitly stating the non-zero-spanning confidence interval and non-significant p-value ($p=0.246$).**
+3. **Never claim realized savings ($0.00 realized).**
+4. **Never claim physical QPU deployment or real-time payment network SLA compliance.**
+5. **Treat the negative quantum result as a valuable, high-impact enterprise decision: preventing hundreds of thousands of dollars in unjustified quantum cloud spend.**
