@@ -1,0 +1,28 @@
+{
+  "status": "[REAL DATA] [MEASURED] [VERIFIED]",
+  "split_strategy": "STRICT_CHRONOLOGICAL",
+  "train": {
+    "rows": 383851,
+    "fraction": 0.65,
+    "t_min": 86400,
+    "t_max": 9614637,
+    "fraud_count": 13126,
+    "fraud_prevalence": 0.03419556025645368
+  },
+  "calibration": {
+    "rows": 88581,
+    "fraction": 0.15,
+    "t_min": 9614722,
+    "t_max": 12192842,
+    "fraud_count": 3473,
+    "fraud_prevalence": 0.03920705343132275
+  },
+  "test": {
+    "rows": 118108,
+    "fraction": 0.2,
+    "t_min": 12192900,
+    "t_max": 15811131,
+    "fraud_count": 4064,
+    "fraud_prevalence": 0.034409184813899145
+  }
+}

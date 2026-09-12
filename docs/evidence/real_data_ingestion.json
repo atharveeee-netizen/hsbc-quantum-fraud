@@ -1,0 +1,36 @@
+{
+  "status": "[REAL DATA] [MEASURED] [VERIFIED]",
+  "dataset_name": "IEEE-CIS Fraud Detection (Kaggle)",
+  "train_transaction": {
+    "path": "C:\\Users\\noobg\\.gemini\\antigravity-ide\\scratch\\hsbc-quantum-fraud\\data\\raw\\train_transaction.csv",
+    "sha256": "3a5c83ab6b3cc13dcabe5ffa9f522307fd5f7f7b6e6f6a60c32284ca6283d642",
+    "bytes": 683351067,
+    "row_count": 590540,
+    "column_count": 394
+  },
+  "train_identity": {
+    "path": "C:\\Users\\noobg\\.gemini\\antigravity-ide\\scratch\\hsbc-quantum-fraud\\data\\raw\\train_identity.csv",
+    "sha256": "b63c725d8377be90a995268d97f347c17d456b95db45807adcf9f59cd603c37c",
+    "bytes": 26529680,
+    "row_count": 144233,
+    "transaction_match_rate": 0.2442391709283029
+  },
+  "target_distribution": {
+    "total_transactions": 590540,
+    "fraud_count": 20663,
+    "legitimate_count": 569877,
+    "fraud_prevalence": 0.03499000914417313,
+    "fraud_prevalence_pct": "3.4990%",
+    "imbalance_ratio": "1 fraud per 27 legitimate transactions"
+  },
+  "temporal_range": {
+    "min_transaction_dt": 86400,
+    "max_transaction_dt": 15811131,
+    "span_seconds": 15724731,
+    "span_days": 182.0
+  },
+  "data_quality": {
+    "missing_cells_pct": 41.07,
+    "duplicate_transaction_ids": 0
+  }
+}

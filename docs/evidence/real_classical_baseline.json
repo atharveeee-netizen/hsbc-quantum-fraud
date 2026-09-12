@@ -1,0 +1,16 @@
+{
+  "status": "[REAL DATA] [MEASURED] [VERIFIED]",
+  "model": "LightGBM_Calibrated_Isotonic",
+  "n_train": 383851,
+  "n_calib": 88581,
+  "n_test": 118108,
+  "test_fraud_count": 4064,
+  "test_prevalence": 0.034409184813899145,
+  "metrics": {
+    "pr_auc": 0.40404969378204353,
+    "roc_auc": 0.8502707199952803,
+    "brier_score": 0.02495322832408594,
+    "lift_over_prevalence": 11.7424953821874,
+    "latency_ms_per_tx": 0.0006529360098177819
+  }
+}

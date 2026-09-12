@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "HSBC Quantum Fraud - Master Scientific Evidence Ledger",
-    "last_updated": "2026-09-12T13:18:54.937279+00:00",
+    "last_updated": "2026-09-12T13:49:32.505372+00:00",
     "claim_firewall_status": "ENFORCED",
     "quantum_advantage_status": "NOT YET ESTABLISHED / INCONCLUSIVE",
     "real_data_gate": "BLOCKED (Awaiting IEEE-CIS / Kaggle credentials)",
@@ -303,11 +303,11 @@
       "status": "VERIFIED",
       "metrics": {
         "verdict": "[VERIFIED: NO P0/P1 FINDINGS WITHIN TESTED SCOPE]",
-        "files_scanned": 133,
+        "files_scanned": 146,
         "p0_critical": 0,
         "p1_high": 0
       },
-      "scientific_conclusion": "Security audit verified clean: [VERIFIED: NO P0/P1 FINDINGS WITHIN TESTED SCOPE] across 133 files with 0 critical or high findings.",
+      "scientific_conclusion": "Security audit verified clean: [VERIFIED: NO P0/P1 FINDINGS WITHIN TESTED SCOPE] across 146 files with 0 critical or high findings.",
       "limitations": "Static regex and ast analysis."
     },
     {

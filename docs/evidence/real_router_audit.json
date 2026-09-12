@@ -1,0 +1,40 @@
+{
+  "status": "[REAL DATA] [MEASURED] [VERIFIED]",
+  "budgets": {
+    "budget_0.5%": {
+      "budget_pct": 0.5,
+      "escalated_count": 590,
+      "escalated_fraud_rate": 0.4288135593220339,
+      "base_fraud_rate": 0.034409184813899145,
+      "fraud_enrichment_ratio": 12.46
+    },
+    "budget_1.0%": {
+      "budget_pct": 1.0,
+      "escalated_count": 1181,
+      "escalated_fraud_rate": 0.37256562235393736,
+      "base_fraud_rate": 0.034409184813899145,
+      "fraud_enrichment_ratio": 10.83
+    },
+    "budget_2.0%": {
+      "budget_pct": 2.0,
+      "escalated_count": 2362,
+      "escalated_fraud_rate": 0.3048264182895851,
+      "base_fraud_rate": 0.034409184813899145,
+      "fraud_enrichment_ratio": 8.86
+    },
+    "budget_5.0%": {
+      "budget_pct": 5.0,
+      "escalated_count": 5905,
+      "escalated_fraud_rate": 0.2640135478408129,
+      "base_fraud_rate": 0.034409184813899145,
+      "fraud_enrichment_ratio": 7.67
+    },
+    "budget_10.0%": {
+      "budget_pct": 10.0,
+      "escalated_count": 11810,
+      "escalated_fraud_rate": 0.19839119390347162,
+      "base_fraud_rate": 0.034409184813899145,
+      "fraud_enrichment_ratio": 5.77
+    }
+  }
+}

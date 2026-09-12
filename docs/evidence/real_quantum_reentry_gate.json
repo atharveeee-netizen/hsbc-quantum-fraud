@@ -1,0 +1,9 @@
+{
+  "status": "[REAL DATA] [MEASURED] [VERIFIED]",
+  "real_test_volume": 118108,
+  "escalated_volume_1pct": 1181,
+  "kernel_evaluations_needed_1pct": 1394949,
+  "modeled_qpu_cost_usd_1pct": 41848.49899199999,
+  "re_entry_verdict": "QUANTUM EXPERIMENT DEFENSE PROTOCOL ACTIVE",
+  "scientific_protocol": "Full 118,108-sample Gram matrix scaling is computationally and economically prohibitive on QPUs ($41k+ per run). To preserve statistical defensibility without arbitrary truncation, evaluate specialist comparison on a stratified subsample of escalated traffic (N=200 support) matched identically against Tuned Classical RBF and GBM."
+}

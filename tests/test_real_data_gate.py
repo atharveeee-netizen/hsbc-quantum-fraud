@@ -23,6 +23,8 @@ def test_real_data_gate_blocks_without_credentials(monkeypatch):
     """Verify that ingest_real_ieee_cis explicitly raises RealDataBlockedError when credentials are missing."""
     monkeypatch.delenv("KAGGLE_USERNAME", raising=False)
     monkeypatch.delenv("KAGGLE_KEY", raising=False)
+    monkeypatch.delenv("KAGGLE_API_TOKEN", raising=False)
+    monkeypatch.setattr("src.data.make_dataset.check_kaggle_credentials", lambda: False)
     with pytest.raises(RealDataBlockedError, match=r"\[BLOCKED: REAL DATA\]"):
         ingest_real_ieee_cis()
 

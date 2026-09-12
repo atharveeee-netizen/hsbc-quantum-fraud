@@ -7,7 +7,7 @@
 | **Real Data Status** | `[BLOCKED: REAL DATA]` (Awaiting Kaggle credentials) |
 | **Experiment ID** | `EXP-REPRO-01` |
 | **Primary Seed** | `42` |
-| **Git Commit** | `c58c174` |
+| **Git Commit** | `c0968b6` |
 | **Metric Definition** | Deterministic reproduction across Python 3.10+, pinned requirements, and fixed seeds. |
 
 ---
