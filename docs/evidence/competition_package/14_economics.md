@@ -7,7 +7,7 @@
 | **Real Data Status** | `[BLOCKED: REAL DATA]` (Awaiting Kaggle credentials) |
 | **Experiment ID** | `EXP-ECON-01` |
 | **Primary Seed** | `42` |
-| **Git Commit** | `e9bd296` |
+| **Git Commit** | `9857a2a` |
 | **Metric Definition** | Cost per evaluation ($ USD), SLA latency compliance, and throughput. |
 
 ---

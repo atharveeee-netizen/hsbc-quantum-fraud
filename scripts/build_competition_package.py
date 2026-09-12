@@ -124,9 +124,9 @@ Full-System Score Fusion & Final Fraud Decision
         f.write("""
 ## Monolithic LightGBM Performance
 - **Model:** LightGBM Classifier with isotonic probability calibration on the temporal calibration split.
-- **Full-System Baseline AUPRC:** $0.3040$.
-- **Full-System Baseline AUROC:** $0.8540$.
-- **Inference Latency:** $<12\\text{ms}$ on standard CPU.
+- **Full-System Baseline AUPRC:** $0.3040$ ($0.3987$ on raw test features).
+- **Full-System Baseline AUROC:** $0.5996$ (raw test features) / $0.4833$ (standardized feature stream).
+- **Inference Latency:** $<12\text{ms}$ on standard CPU.
 - **Calibration:** Platt/isotonic calibration eliminates probability skew on imbalanced fraud scores.
 """)
 

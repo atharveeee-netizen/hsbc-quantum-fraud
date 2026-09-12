@@ -80,7 +80,7 @@ def run_routing_causality_ablation(
 ):
     """
     [IMPLEMENTED] Phases 30 & 31: Router Causality and Controlled Routing Ablation.
-    Disentangles the causal drivers of escalation: Amount vs. Uncertainty vs. Synergy.
+    Disentangles the mechanistic enrichment drivers of selective escalation: Amount vs. Uncertainty vs. Synergy.
     """
     logging.info("Starting Phase 30 & 31: Router Causality & Routing Ablation Study...")
     

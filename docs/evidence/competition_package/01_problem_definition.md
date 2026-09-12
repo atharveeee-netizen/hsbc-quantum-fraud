@@ -7,7 +7,7 @@
 | **Real Data Status** | `[BLOCKED: REAL DATA]` (Awaiting Kaggle credentials) |
 | **Experiment ID** | `EXP-PROBLEM-01` |
 | **Primary Seed** | `42` |
-| **Git Commit** | `e9bd296` |
+| **Git Commit** | `9857a2a` |
 | **Metric Definition** | Classification accuracy under class imbalance (AUPRC, AUROC, Precision, Recall). |
 
 ---

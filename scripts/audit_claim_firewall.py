@@ -55,7 +55,7 @@ def audit_claim_firewall():
             path = Path(root) / file
             if path.suffix not in scanned_extensions:
                 continue
-            if path.name in ['audit_claim_firewall.py', 'claim_firewall_audit.json']:
+            if path.name in ['audit_claim_firewall.py', 'claim_firewall_audit.json', 'audit_stale_claims.py', 'stale_claim_audit.json']:
                 continue
 
             try:

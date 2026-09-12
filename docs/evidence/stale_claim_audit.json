@@ -1,0 +1,433 @@
+{
+  "0.8845": [
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 20,
+      "text": "The forensic audit revealed that while the core architectural conclusions (**Outcome B \u2014 No Quantum Advantage over tuned classical controls**) and the underlying experiments are scientifically sound, ungrounded narrative artifacts (e.g., PR-AUC of `0.8845`, ROC-AUC of `0.9412`, `\u20ac1.2M+` savings, `13 seeds`, `5 windows`) were mistakenly cited in chat narrative summaries rather than originating from committed evidence."
+    },
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 36,
+      "text": "| **4** | **Baseline LightGBM PR-AUC** | 0.8845 | **0.3040** (0.303997) | `src/evaluation/system_evaluator.py` | `docs/evidence/evidence_ledger.json` | `d32ea250a87f4827...` | `[UNVERIFIED] -> DOWNGRADED & REVERTED to 0.3040` |"
+    },
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 149,
+      "text": "2. **Downgraded Claims:** Exaggerated narrative metrics (`PR-AUC 0.8845`, `ROC-AUC 0.9412`, `\u20ac1.2M+ savings`, `13 seeds`, `5 windows`) are formally downgraded, stripped of `[MEASURED]` status, and reverted to the exact committed evidence in the provenance manifest."
+    },
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 7,
+      "text": "'0.8845',"
+    }
+  ],
+  "0.9412": [
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 20,
+      "text": "The forensic audit revealed that while the core architectural conclusions (**Outcome B \u2014 No Quantum Advantage over tuned classical controls**) and the underlying experiments are scientifically sound, ungrounded narrative artifacts (e.g., PR-AUC of `0.8845`, ROC-AUC of `0.9412`, `\u20ac1.2M+` savings, `13 seeds`, `5 windows`) were mistakenly cited in chat narrative summaries rather than originating from committed evidence."
+    },
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 37,
+      "text": "| **5** | **Baseline LightGBM ROC-AUC** | 0.9412 | **0.4833** (raw) / **0.8540** (calib) | `src/models/classical/train_baseline.py` | `docs/evidence/competition_package/04_classical_baseline.md` | Pinned in Ledger | `[UNVERIFIED] -> DOWNGRADED & REVERTED to 0.4833/0.8540` |"
+    },
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 149,
+      "text": "2. **Downgraded Claims:** Exaggerated narrative metrics (`PR-AUC 0.8845`, `ROC-AUC 0.9412`, `\u20ac1.2M+ savings`, `13 seeds`, `5 windows`) are formally downgraded, stripped of `[MEASURED]` status, and reverted to the exact committed evidence in the provenance manifest."
+    },
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 8,
+      "text": "'0.9412',"
+    }
+  ],
+  "0.641": [
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 1909,
+      "text": "3001907,1,566389,60.641952815129315,11325"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 7735,
+      "text": "3007733,1,2038787,20.64185761405124,6121"
+    },
+    {
+      "file": "data\\results\\router_audit.json",
+      "line": 142,
+      "text": "\"escalated_mean\": 0.6413753830615241,"
+    },
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 42,
+      "text": "| **10** | **PQK Bootstrap $p$-value** | 0.641 | **0.610** (nom) / **1.000** (Bonf) | `src/evaluation/system_evaluator.py` | `data/results/full_system_evaluation.json` | `8f88370633b01736...` | `[SYNTHETIC] [MEASURED] [VERIFIED] (Reconciled: 0.641 was TxnAmt mean)` |"
+    },
+    {
+      "file": "docs\\evidence\\router_audit.json",
+      "line": 142,
+      "text": "\"escalated_mean\": 0.6413753830615241,"
+    },
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 9,
+      "text": "'0.641',"
+    }
+  ],
+  "13 seeds": [
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 20,
+      "text": "The forensic audit revealed that while the core architectural conclusions (**Outcome B \u2014 No Quantum Advantage over tuned classical controls**) and the underlying experiments are scientifically sound, ungrounded narrative artifacts (e.g., PR-AUC of `0.8845`, ROC-AUC of `0.9412`, `\u20ac1.2M+` savings, `13 seeds`, `5 windows`) were mistakenly cited in chat narrative summaries rather than originating from committed evidence."
+    },
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 44,
+      "text": "| **12** | **Random Seeds Tested** | 13 seeds | **5 seeds** (42, 43, 44, 45, 46) | `src/evaluation/seed_robustness.py` | `docs/evidence/seed_robustness.json` | `56148a31c1761f2d...` | `[UNVERIFIED as 13] -> DOWNGRADED & REVERTED to 5 seeds` |"
+    },
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 149,
+      "text": "2. **Downgraded Claims:** Exaggerated narrative metrics (`PR-AUC 0.8845`, `ROC-AUC 0.9412`, `\u20ac1.2M+ savings`, `13 seeds`, `5 windows`) are formally downgraded, stripped of `[MEASURED]` status, and reverted to the exact committed evidence in the provenance manifest."
+    },
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 10,
+      "text": "'13 seeds',"
+    }
+  ],
+  "5 temporal windows": [
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 11,
+      "text": "'5 temporal windows',"
+    }
+  ],
+  "14.8%": [
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 47,
+      "text": "| **15** | **Noise Degradation Ratio** | 14.8% drop | **25.88% purity drop** ($1.0 \\to 0.741$) | `src/evaluation/noisy_simulation.py` | `docs/evidence/noisy_simulation.json` | `e7e51e13c6011380...` | `[SYNTHETIC] [MEASURED] [VERIFIED] (Reconciled)` |"
+    },
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 12,
+      "text": "'14.8%',"
+    }
+  ],
+  "\u20ac1.2M": [
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 20,
+      "text": "The forensic audit revealed that while the core architectural conclusions (**Outcome B \u2014 No Quantum Advantage over tuned classical controls**) and the underlying experiments are scientifically sound, ungrounded narrative artifacts (e.g., PR-AUC of `0.8845`, ROC-AUC of `0.9412`, `\u20ac1.2M+` savings, `13 seeds`, `5 windows`) were mistakenly cited in chat narrative summaries rather than originating from committed evidence."
+    },
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 121,
+      "text": "- **Realized Savings Classification:** `[MODELED]` \u2014 Zero empirical savings have been realized. Any mention of `\u20ac1.2M+` in previous summaries was an uncalibrated illustrative scenario and has been removed from scientific claims."
+    },
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 149,
+      "text": "2. **Downgraded Claims:** Exaggerated narrative metrics (`PR-AUC 0.8845`, `ROC-AUC 0.9412`, `\u20ac1.2M+ savings`, `13 seeds`, `5 windows`) are formally downgraded, stripped of `[MEASURED]` status, and reverted to the exact committed evidence in the provenance manifest."
+    },
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 13,
+      "text": "'\u20ac1.2M',"
+    }
+  ],
+  "$1.2M": [
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 14,
+      "text": "'$1.2M',"
+    }
+  ],
+  "0.40": [
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 37,
+      "text": "3000035,0,93359,40.405147977554094,9509"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 249,
+      "text": "3000247,0,141726,20.402220505720003,2960"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 1253,
+      "text": "3001251,0,394336,0.4047956826368741,11580"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 4739,
+      "text": "3004737,1,1277827,60.4096674634343,12454"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 5828,
+      "text": "3005826,0,1565340,90.40865813813652,13707"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 7495,
+      "text": "3007493,0,1970591,30.409693098121053,1021"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 7774,
+      "text": "3007772,1,2047739,20.40097690915502,14827"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 7884,
+      "text": "3007882,0,2075383,0.4003461019843134,12036"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 8289,
+      "text": "3008287,0,2172347,20.40242746678279,14232"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 8742,
+      "text": "3008740,0,2287914,0.40189035386299377,8867"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 8943,
+      "text": "3008941,0,2335650,90.40024980581069,6881"
+    },
+    {
+      "file": "data\\results\\router_audit.json",
+      "line": 41,
+      "text": "\"fraud_rate\": 0.40772532188841204,"
+    },
+    {
+      "file": "data\\results\\temporal_robustness.json",
+      "line": 14,
+      "text": "\"test_auprc\": 0.40783118775659777,"
+    },
+    {
+      "file": "data\\results\\temporal_robustness.json",
+      "line": 15,
+      "text": "\"system_quantum_auprc\": 0.4083570952590215,"
+    },
+    {
+      "file": "data\\results\\temporal_robustness.json",
+      "line": 16,
+      "text": "\"system_rbf_auprc\": 0.4066811627050982,"
+    },
+    {
+      "file": "docs\\evidence\\real_data_temporal_split.md",
+      "line": 31,
+      "text": "* **Random IID Test AUPRC:** $0.4078$"
+    },
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 50,
+      "text": "| **18** | **Router Uncertainty Interval** | $0.40 \\le p \\le 0.60$ | **Budget Percentile Router** ($B=10\\%$) | `src/models/router/escalation_router.py` | `data/results/router_audit.json` | `3aeb09c8cdd36711...` | `[IMPLEMENTED] [VERIFIED]` |"
+    },
+    {
+      "file": "docs\\evidence\\router_audit.json",
+      "line": 41,
+      "text": "\"fraud_rate\": 0.40772532188841204,"
+    },
+    {
+      "file": "docs\\evidence\\router_causality_ablation.csv",
+      "line": 30,
+      "text": "10.0,combined_uncertainty_amount,200,77,0.385,1.2445637723687866,0.12439418416801293,0.3242246401841599,0.5194270203797264,0.40384615384615385,0.033925686591276254,0.06259314456035768,0.020227180254480115"
+    },
+    {
+      "file": "docs\\evidence\\router_causality_ablation.json",
+      "line": 479,
+      "text": "\"system_precision\": 0.40384615384615385,"
+    },
+    {
+      "file": "docs\\evidence\\temporal_robustness.json",
+      "line": 14,
+      "text": "\"test_auprc\": 0.40783118775659777,"
+    },
+    {
+      "file": "docs\\evidence\\temporal_robustness.json",
+      "line": 15,
+      "text": "\"system_quantum_auprc\": 0.4083570952590215,"
+    },
+    {
+      "file": "docs\\evidence\\temporal_robustness.json",
+      "line": 16,
+      "text": "\"system_rbf_auprc\": 0.4066811627050982,"
+    },
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 15,
+      "text": "'0.40',"
+    }
+  ],
+  "0.60": [
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 71,
+      "text": "3000069,1,102288,10.604532638858446,10512"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 902,
+      "text": "3000900,0,300916,0.6068085369167475,5494"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 2023,
+      "text": "3002021,0,595718,10.603826931481835,6862"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 5575,
+      "text": "3005573,0,1499663,190.60728080339325,15855"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 6357,
+      "text": "3006355,1,1700287,40.607116984111094,11647"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 7075,
+      "text": "3007073,0,1867632,60.60940823327541,1685"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 7707,
+      "text": "3007705,0,2029139,10.601523363081716,11373"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 7838,
+      "text": "3007836,1,2062339,40.60183212789017,3121"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 8556,
+      "text": "3008554,1,2238509,30.60539336547728,12328"
+    },
+    {
+      "file": "data\\raw\\train_transaction.csv",
+      "line": 8689,
+      "text": "3008687,0,2273099,10.609488851657389,13409"
+    },
+    {
+      "file": "data\\results\\router_audit.json",
+      "line": 146,
+      "text": "\"ks_statistic\": 0.6084564131038313,"
+    },
+    {
+      "file": "docs\\research_status.md",
+      "line": 71,
+      "text": "*   $N=400$: $79,800$ circuits ($0.60$s simulation)."
+    },
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 50,
+      "text": "| **18** | **Router Uncertainty Interval** | $0.40 \\le p \\le 0.60$ | **Budget Percentile Router** ($B=10\\%$) | `src/models/router/escalation_router.py` | `data/results/router_audit.json` | `3aeb09c8cdd36711...` | `[IMPLEMENTED] [VERIFIED]` |"
+    },
+    {
+      "file": "docs\\evidence\\router_audit.json",
+      "line": 146,
+      "text": "\"ks_statistic\": 0.6084564131038313,"
+    },
+    {
+      "file": "docs\\evidence\\router_causality_ablation.csv",
+      "line": 21,
+      "text": "5.0,amount_only,100,62,0.62,2.0042325684899938,0.10016155088852989,0.3413851796461834,0.5118427789558342,0.6071428571428571,0.027463651050080775,0.05255023183925812,0.03738771971650362"
+    },
+    {
+      "file": "docs\\evidence\\router_causality_ablation.json",
+      "line": 344,
+      "text": "\"system_precision\": 0.6071428571428571,"
+    },
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 16,
+      "text": "'0.60',"
+    }
+  ],
+  "185 ms hardware": [
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 17,
+      "text": "'185 ms hardware',"
+    }
+  ],
+  "185ms hardware": [
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 18,
+      "text": "'185ms hardware',"
+    }
+  ],
+  "hardware 185": [
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 19,
+      "text": "'hardware 185',"
+    }
+  ],
+  "quantum advantage demonstrated": [
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 20,
+      "text": "'quantum advantage demonstrated',"
+    }
+  ],
+  "causal driver": [
+    {
+      "file": "scripts\\audit_claim_firewall.py",
+      "line": 23,
+      "text": "r\"transaction amount is the dominant causal driver\","
+    },
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 21,
+      "text": "'causal driver',"
+    },
+    {
+      "file": "src\\evaluation\\routing_causality_ablation.py",
+      "line": 83,
+      "text": "Disentangles the causal drivers of escalation: Amount vs. Uncertainty vs. Synergy."
+    }
+  ],
+  "dimension collapse": [
+    {
+      "file": "docs\\evidence\\RECONCILIATION_REPORT.md",
+      "line": 100,
+      "text": "| *\"Hilbert space dimension explosion causes kernel collapse.\"* | **\"Centered Kernel Alignment (CKA = 0.9429) confirms high geometric overlap with classical RBF kernels rather than dimension collapse.\"** | CKA measurements prove the quantum kernel geometrically emulates classical RBF, rather than undergoing dimension explosion. |"
+    },
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 22,
+      "text": "'dimension collapse',"
+    }
+  ],
+  "100% reproducible": [
+    {
+      "file": "scripts\\audit_claim_firewall.py",
+      "line": 25,
+      "text": "r\"100% reproducible\","
+    },
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 23,
+      "text": "'100% reproducible',"
+    }
+  ],
+  "verified secure": [
+    {
+      "file": "scripts\\audit_stale_claims.py",
+      "line": 24,
+      "text": "'verified secure'"
+    }
+  ]
+}
