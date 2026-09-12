@@ -1,0 +1,169 @@
+{
+  "metadata": {
+    "dataset_type": "SYNTHETIC",
+    "seeds_tested": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "budgets_tested": [
+      1.0,
+      5.0,
+      10.0
+    ]
+  },
+  "summary_by_budget": {
+    "budget_1.0%": {
+      "mean_delta_q_rbf": -9.041690015036963e-05,
+      "std_delta_q_rbf": 0.001032745287882377,
+      "min_delta_q_rbf": -0.0019318793753365093,
+      "max_delta_q_rbf": 0.00045759553148128074,
+      "mean_quantum_auprc": 0.3032498977909796,
+      "mean_rbf_auprc": 0.30334031469112993,
+      "mean_gbm_auprc": 0.3043344611042801
+    },
+    "budget_5.0%": {
+      "mean_delta_q_rbf": -0.003606525043569242,
+      "std_delta_q_rbf": 0.005514246397457621,
+      "min_delta_q_rbf": -0.013431232080199973,
+      "max_delta_q_rbf": -0.0003705844301218342,
+      "mean_quantum_auprc": 0.29982021298032835,
+      "mean_rbf_auprc": 0.30342673802389764,
+      "mean_gbm_auprc": 0.310283134708711
+    },
+    "budget_10.0%": {
+      "mean_delta_q_rbf": -0.009018674646970181,
+      "std_delta_q_rbf": 0.010458933738732166,
+      "min_delta_q_rbf": -0.027704746005118408,
+      "max_delta_q_rbf": -0.0035412243726057335,
+      "mean_quantum_auprc": 0.2974726586968266,
+      "mean_rbf_auprc": 0.3064913333437968,
+      "mean_gbm_auprc": 0.31128433791208776
+    }
+  },
+  "detailed_table": [
+    {
+      "seed": 42,
+      "budget_pct": 1.0,
+      "quantum_auprc": 0.3032691022339534,
+      "rbf_auprc": 0.3029820326403648,
+      "gbm_auprc": 0.3043344611042801,
+      "delta_q_minus_rbf": 0.00028706959358865136
+    },
+    {
+      "seed": 42,
+      "budget_pct": 5.0,
+      "quantum_auprc": 0.2997452652585197,
+      "rbf_auprc": 0.30131795959246377,
+      "gbm_auprc": 0.310283134708711,
+      "delta_q_minus_rbf": -0.0015726943339440802
+    },
+    {
+      "seed": 42,
+      "budget_pct": 10.0,
+      "quantum_auprc": 0.2974726586968266,
+      "rbf_auprc": 0.3022840634933866,
+      "gbm_auprc": 0.31128433791208776,
+      "delta_q_minus_rbf": -0.004811404796560004
+    },
+    {
+      "seed": 43,
+      "budget_pct": 1.0,
+      "quantum_auprc": 0.3032691022339534,
+      "rbf_auprc": 0.30520098160928993,
+      "gbm_auprc": 0.3043344611042801,
+      "delta_q_minus_rbf": -0.0019318793753365093
+    },
+    {
+      "seed": 43,
+      "budget_pct": 5.0,
+      "quantum_auprc": 0.29998868040316945,
+      "rbf_auprc": 0.3134199124833694,
+      "gbm_auprc": 0.310283134708711,
+      "delta_q_minus_rbf": -0.013431232080199973
+    },
+    {
+      "seed": 43,
+      "budget_pct": 10.0,
+      "quantum_auprc": 0.2974726586968266,
+      "rbf_auprc": 0.325177404701945,
+      "gbm_auprc": 0.31128433791208776,
+      "delta_q_minus_rbf": -0.027704746005118408
+    },
+    {
+      "seed": 44,
+      "budget_pct": 1.0,
+      "quantum_auprc": 0.3031730800190842,
+      "rbf_auprc": 0.30272501986315814,
+      "gbm_auprc": 0.3043344611042801,
+      "delta_q_minus_rbf": 0.00044806015592607773
+    },
+    {
+      "seed": 44,
+      "budget_pct": 5.0,
+      "quantum_auprc": 0.29951277657461683,
+      "rbf_auprc": 0.3005955754768972,
+      "gbm_auprc": 0.310283134708711,
+      "delta_q_minus_rbf": -0.0010827989022803575
+    },
+    {
+      "seed": 44,
+      "budget_pct": 10.0,
+      "quantum_auprc": 0.2974726586968266,
+      "rbf_auprc": 0.30169725196083336,
+      "gbm_auprc": 0.31128433791208776,
+      "delta_q_minus_rbf": -0.00422459326400676
+    },
+    {
+      "seed": 45,
+      "budget_pct": 1.0,
+      "quantum_auprc": 0.3032691022339534,
+      "rbf_auprc": 0.30281150670247214,
+      "gbm_auprc": 0.3043344611042801,
+      "delta_q_minus_rbf": 0.00045759553148128074
+    },
+    {
+      "seed": 45,
+      "budget_pct": 5.0,
+      "quantum_auprc": 0.29998868040316945,
+      "rbf_auprc": 0.3003592648332913,
+      "gbm_auprc": 0.310283134708711,
+      "delta_q_minus_rbf": -0.0003705844301218342
+    },
+    {
+      "seed": 45,
+      "budget_pct": 10.0,
+      "quantum_auprc": 0.2974726586968266,
+      "rbf_auprc": 0.30101388306943233,
+      "gbm_auprc": 0.31128433791208776,
+      "delta_q_minus_rbf": -0.0035412243726057335
+    },
+    {
+      "seed": 46,
+      "budget_pct": 1.0,
+      "quantum_auprc": 0.3032691022339534,
+      "rbf_auprc": 0.3029820326403648,
+      "gbm_auprc": 0.3043344611042801,
+      "delta_q_minus_rbf": 0.00028706959358865136
+    },
+    {
+      "seed": 46,
+      "budget_pct": 5.0,
+      "quantum_auprc": 0.2998656622621666,
+      "rbf_auprc": 0.30144097773346656,
+      "gbm_auprc": 0.310283134708711,
+      "delta_q_minus_rbf": -0.001575315471299965
+    },
+    {
+      "seed": 46,
+      "budget_pct": 10.0,
+      "quantum_auprc": 0.2974726586968266,
+      "rbf_auprc": 0.3022840634933866,
+      "gbm_auprc": 0.31128433791208776,
+      "delta_q_minus_rbf": -0.004811404796560004
+    }
+  ],
+  "scientific_verdict": "Across all tested seeds, the quantum-vs-classical delta remains tightly clustered around zero, confirming that the absence of quantum advantage is robust and not an artifact of a single seed."
+}

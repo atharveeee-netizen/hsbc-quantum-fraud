@@ -1,0 +1,66 @@
+{
+  "metadata": {
+    "dataset_type": "SYNTHETIC",
+    "device": "PennyLane default.qubit (Simulated)",
+    "n_qubits": 2
+  },
+  "scaling_summary": [
+    {
+      "sample_size_N": 50,
+      "kernel_matrix_shape": [
+        50,
+        50
+      ],
+      "memory_kb": 19.53125,
+      "runtime_fidelity_sec": 0.06879281997680664,
+      "runtime_projected_sec": 0.23338913917541504,
+      "condition_number_fidelity": 19237110340470.984,
+      "qpu_pairwise_inversion_circuits": 1225,
+      "simulator_statevector_calls": 50
+    },
+    {
+      "sample_size_N": 100,
+      "kernel_matrix_shape": [
+        100,
+        100
+      ],
+      "memory_kb": 78.125,
+      "runtime_fidelity_sec": 0.14694428443908691,
+      "runtime_projected_sec": 0.5109949111938477,
+      "condition_number_fidelity": 37120033152657.19,
+      "qpu_pairwise_inversion_circuits": 4950,
+      "simulator_statevector_calls": 100
+    },
+    {
+      "sample_size_N": 200,
+      "kernel_matrix_shape": [
+        200,
+        200
+      ],
+      "memory_kb": 312.5,
+      "runtime_fidelity_sec": 0.3106074333190918,
+      "runtime_projected_sec": 0.9221899509429932,
+      "condition_number_fidelity": 70464704324577.75,
+      "qpu_pairwise_inversion_circuits": 19900,
+      "simulator_statevector_calls": 200
+    },
+    {
+      "sample_size_N": 400,
+      "kernel_matrix_shape": [
+        400,
+        400
+      ],
+      "memory_kb": 1250.0,
+      "runtime_fidelity_sec": 0.5972163677215576,
+      "runtime_projected_sec": 1.7882184982299805,
+      "condition_number_fidelity": 135875874488532.05,
+      "qpu_pairwise_inversion_circuits": 79800,
+      "simulator_statevector_calls": 400
+    }
+  ],
+  "complexity_analysis": {
+    "simulator_statevector_complexity": "O(N) quantum executions + O(N^2) classical BLAS multiplication",
+    "physical_qpu_pairwise_complexity": "O(N^2) quantum swap-test circuit executions",
+    "hardware_scalability_verdict": "Full-population quantum kernel matrices scale quadratically O(N^2) in circuit evaluations on physical QPUs. For N=10,000 transactions, physical execution requires ~50,000,000 quantum circuits. The escalation router is computationally essential to limit quantum execution strictly to small budget subsets (B <= 2%)."
+  }
+}

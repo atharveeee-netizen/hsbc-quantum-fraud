@@ -1,0 +1,301 @@
+{
+  "metadata": {
+    "dataset_type": "SYNTHETIC",
+    "seed": 42,
+    "budgets": [
+      0.5,
+      1.0,
+      2.0,
+      5.0,
+      10.0
+    ],
+    "models_tested": [
+      "Classical_RBF_Tuned",
+      "Classical_GBM",
+      "Classical_MLP_NeuralNet",
+      "Classical_Poly_Kernel",
+      "Quantum_Fidelity_Kernel",
+      "Quantum_Projected_Kernel"
+    ]
+  },
+  "mean_full_system_auprc_across_budgets": {
+    "Classical_GBM": 0.3069076497658001,
+    "Classical_MLP_NeuralNet": 0.3013904857516302,
+    "Classical_Poly_Kernel": 0.301648102344909,
+    "Classical_RBF_Tuned": 0.3030403594330065,
+    "Quantum_Fidelity_Kernel": 0.30172991630702883,
+    "Quantum_Projected_Kernel": 0.3043676520361436
+  },
+  "detailed_table": [
+    {
+      "budget_pct": 0.5,
+      "model_name": "Classical_RBF_Tuned",
+      "n_escalated": 10,
+      "full_system_auprc": 0.30361196533958007,
+      "full_system_roc_auc": 0.48316574279508756,
+      "expert_subset_auprc": 0.2361111111111111,
+      "expert_subset_roc_auc": 0.375
+    },
+    {
+      "budget_pct": 0.5,
+      "model_name": "Classical_GBM",
+      "n_escalated": 10,
+      "full_system_auprc": 0.30423612973280223,
+      "full_system_roc_auc": 0.483366804682404,
+      "expert_subset_auprc": 0.24285714285714285,
+      "expert_subset_roc_auc": 0.4375
+    },
+    {
+      "budget_pct": 0.5,
+      "model_name": "Classical_MLP_NeuralNet",
+      "n_escalated": 10,
+      "full_system_auprc": 0.3034773395991385,
+      "full_system_roc_auc": 0.48316340486616527,
+      "expert_subset_auprc": 0.19444444444444442,
+      "expert_subset_roc_auc": 0.25
+    },
+    {
+      "budget_pct": 0.5,
+      "model_name": "Classical_Poly_Kernel",
+      "n_escalated": 10,
+      "full_system_auprc": 0.30349528969786405,
+      "full_system_roc_auc": 0.48316340486616527,
+      "expert_subset_auprc": 0.2,
+      "expert_subset_roc_auc": 0.25
+    },
+    {
+      "budget_pct": 0.5,
+      "model_name": "Quantum_Fidelity_Kernel",
+      "n_escalated": 10,
+      "full_system_auprc": 0.3040607178077186,
+      "full_system_roc_auc": 0.4831692496884709,
+      "expert_subset_auprc": 0.375,
+      "expert_subset_roc_auc": 0.5625
+    },
+    {
+      "budget_pct": 0.5,
+      "model_name": "Quantum_Projected_Kernel",
+      "n_escalated": 10,
+      "full_system_auprc": 0.30401584256090475,
+      "full_system_roc_auc": 0.48316808072400985,
+      "expert_subset_auprc": 0.3611111111111111,
+      "expert_subset_roc_auc": 0.5
+    },
+    {
+      "budget_pct": 1.0,
+      "model_name": "Classical_RBF_Tuned",
+      "n_escalated": 20,
+      "full_system_auprc": 0.3029820326403648,
+      "full_system_roc_auc": 0.48300676362837214,
+      "expert_subset_auprc": 0.19828431372549019,
+      "expert_subset_roc_auc": 0.359375
+    },
+    {
+      "budget_pct": 1.0,
+      "model_name": "Classical_GBM",
+      "n_escalated": 20,
+      "full_system_auprc": 0.3043344611042801,
+      "full_system_roc_auc": 0.48327328752551263,
+      "expert_subset_auprc": 0.2869047619047619,
+      "expert_subset_roc_auc": 0.484375
+    },
+    {
+      "budget_pct": 1.0,
+      "model_name": "Classical_MLP_NeuralNet",
+      "n_escalated": 20,
+      "full_system_auprc": 0.30277864218348194,
+      "full_system_roc_auc": 0.48299974984160526,
+      "expert_subset_auprc": 0.1668096405228758,
+      "expert_subset_roc_auc": 0.265625
+    },
+    {
+      "budget_pct": 1.0,
+      "model_name": "Classical_Poly_Kernel",
+      "n_escalated": 20,
+      "full_system_auprc": 0.30276425570729754,
+      "full_system_roc_auc": 0.48299624294822185,
+      "expert_subset_auprc": 0.16458333333333333,
+      "expert_subset_roc_auc": 0.21875
+    },
+    {
+      "budget_pct": 1.0,
+      "model_name": "Quantum_Fidelity_Kernel",
+      "n_escalated": 20,
+      "full_system_auprc": 0.3032691022339534,
+      "full_system_roc_auc": 0.4830114394862167,
+      "expert_subset_auprc": 0.2427083333333333,
+      "expert_subset_roc_auc": 0.421875
+    },
+    {
+      "budget_pct": 1.0,
+      "model_name": "Quantum_Projected_Kernel",
+      "n_escalated": 20,
+      "full_system_auprc": 0.3032307767649877,
+      "full_system_roc_auc": 0.4829062326847139,
+      "expert_subset_auprc": 0.25163690476190476,
+      "expert_subset_roc_auc": 0.4375
+    },
+    {
+      "budget_pct": 2.0,
+      "model_name": "Classical_RBF_Tuned",
+      "n_escalated": 40,
+      "full_system_auprc": 0.30500577609923724,
+      "full_system_roc_auc": 0.4834790252706737,
+      "expert_subset_auprc": 0.3944309185567425,
+      "expert_subset_roc_auc": 0.4713541666666667
+    },
+    {
+      "budget_pct": 2.0,
+      "model_name": "Classical_GBM",
+      "n_escalated": 40,
+      "full_system_auprc": 0.30440018537111935,
+      "full_system_roc_auc": 0.4825958726202806,
+      "expert_subset_auprc": 0.39295773381933424,
+      "expert_subset_roc_auc": 0.44661458333333337
+    },
+    {
+      "budget_pct": 2.0,
+      "model_name": "Classical_MLP_NeuralNet",
+      "n_escalated": 40,
+      "full_system_auprc": 0.30268813174483017,
+      "full_system_roc_auc": 0.48332121506841946,
+      "expert_subset_auprc": 0.318052010609493,
+      "expert_subset_roc_auc": 0.3359375
+    },
+    {
+      "budget_pct": 2.0,
+      "model_name": "Classical_Poly_Kernel",
+      "n_escalated": 40,
+      "full_system_auprc": 0.30258406950857325,
+      "full_system_roc_auc": 0.48338784604270457,
+      "expert_subset_auprc": 0.30074114483042896,
+      "expert_subset_roc_auc": 0.26822916666666663
+    },
+    {
+      "budget_pct": 2.0,
+      "model_name": "Quantum_Fidelity_Kernel",
+      "n_escalated": 40,
+      "full_system_auprc": 0.3041018375381259,
+      "full_system_roc_auc": 0.4832417254850618,
+      "expert_subset_auprc": 0.38544036580213875,
+      "expert_subset_roc_auc": 0.375
+    },
+    {
+      "budget_pct": 2.0,
+      "model_name": "Quantum_Projected_Kernel",
+      "n_escalated": 40,
+      "full_system_auprc": 0.3070504559669428,
+      "full_system_roc_auc": 0.48025502128684283,
+      "expert_subset_auprc": 0.5443743154258494,
+      "expert_subset_roc_auc": 0.578125
+    },
+    {
+      "budget_pct": 5.0,
+      "model_name": "Classical_RBF_Tuned",
+      "n_escalated": 100,
+      "full_system_auprc": 0.30131795959246377,
+      "full_system_roc_auc": 0.4828740861620325,
+      "expert_subset_auprc": 0.3074682782786253,
+      "expert_subset_roc_auc": 0.4414292175486206
+    },
+    {
+      "budget_pct": 5.0,
+      "model_name": "Classical_GBM",
+      "n_escalated": 100,
+      "full_system_auprc": 0.310283134708711,
+      "full_system_roc_auc": 0.48264146223426513,
+      "expert_subset_auprc": 0.4598609902204435,
+      "expert_subset_roc_auc": 0.5662596110357304
+    },
+    {
+      "budget_pct": 5.0,
+      "model_name": "Classical_MLP_NeuralNet",
+      "n_escalated": 100,
+      "full_system_auprc": 0.299153656082463,
+      "full_system_roc_auc": 0.48274433110684567,
+      "expert_subset_auprc": 0.2646685195014581,
+      "expert_subset_roc_auc": 0.3803708729081864
+    },
+    {
+      "budget_pct": 5.0,
+      "model_name": "Classical_Poly_Kernel",
+      "n_escalated": 100,
+      "full_system_auprc": 0.30116576242738263,
+      "full_system_roc_auc": 0.48272212078208393,
+      "expert_subset_auprc": 0.302305906325112,
+      "expert_subset_roc_auc": 0.3645409317051108
+    },
+    {
+      "budget_pct": 5.0,
+      "model_name": "Quantum_Fidelity_Kernel",
+      "n_escalated": 100,
+      "full_system_auprc": 0.2997452652585197,
+      "full_system_roc_auc": 0.4826040553715086,
+      "expert_subset_auprc": 0.28022670108305137,
+      "expert_subset_roc_auc": 0.35504296698326554
+    },
+    {
+      "budget_pct": 5.0,
+      "model_name": "Quantum_Projected_Kernel",
+      "n_escalated": 100,
+      "full_system_auprc": 0.3030127140918202,
+      "full_system_roc_auc": 0.4798043854870724,
+      "expert_subset_auprc": 0.3596254557653427,
+      "expert_subset_roc_auc": 0.44323835368611486
+    },
+    {
+      "budget_pct": 10.0,
+      "model_name": "Classical_RBF_Tuned",
+      "n_escalated": 200,
+      "full_system_auprc": 0.3022840634933866,
+      "full_system_roc_auc": 0.48383439046686105,
+      "expert_subset_auprc": 0.33099240170688493,
+      "expert_subset_roc_auc": 0.45879120879120877
+    },
+    {
+      "budget_pct": 10.0,
+      "model_name": "Classical_GBM",
+      "n_escalated": 200,
+      "full_system_auprc": 0.31128433791208776,
+      "full_system_roc_auc": 0.48389225420768756,
+      "expert_subset_auprc": 0.4129158052593308,
+      "expert_subset_roc_auc": 0.5414835164835164
+    },
+    {
+      "budget_pct": 10.0,
+      "model_name": "Classical_MLP_NeuralNet",
+      "n_escalated": 200,
+      "full_system_auprc": 0.2988546591482375,
+      "full_system_roc_auc": 0.4835912458589434,
+      "expert_subset_auprc": 0.30066666899763783,
+      "expert_subset_roc_auc": 0.4359340659340659
+    },
+    {
+      "budget_pct": 10.0,
+      "model_name": "Classical_Poly_Kernel",
+      "n_escalated": 200,
+      "full_system_auprc": 0.29823113438342763,
+      "full_system_roc_auc": 0.48264438464541803,
+      "expert_subset_auprc": 0.2951529285773902,
+      "expert_subset_roc_auc": 0.3469230769230769
+    },
+    {
+      "budget_pct": 10.0,
+      "model_name": "Quantum_Fidelity_Kernel",
+      "n_escalated": 200,
+      "full_system_auprc": 0.2974726586968266,
+      "full_system_roc_auc": 0.48284077067489,
+      "expert_subset_auprc": 0.288445836434447,
+      "expert_subset_roc_auc": 0.36538461538461536
+    },
+    {
+      "budget_pct": 10.0,
+      "model_name": "Quantum_Projected_Kernel",
+      "n_escalated": 200,
+      "full_system_auprc": 0.3045284707960624,
+      "full_system_roc_auc": 0.47938764965667513,
+      "expert_subset_auprc": 0.3613372007713278,
+      "expert_subset_roc_auc": 0.43835164835164836
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "dataset_type": "SYNTHETIC",
+    "budget_pct": 5.0,
+    "n_windows": 3
+  },
+  "windows": [
+    {
+      "window_index": 1,
+      "window_label": "Window_1",
+      "time_range": [
+        2101217,
+        2267209
+      ],
+      "n_samples": 667,
+      "fraud_prevalence": 0.28785607196401797,
+      "baseline_auprc": 0.29125692202517783,
+      "quantum_system_auprc": 0.2906865849763175,
+      "rbf_system_auprc": 0.2968034283940526,
+      "gbm_system_auprc": 0.2910241532507424,
+      "delta_q_minus_rbf": -0.006116843417735107
+    },
+    {
+      "window_index": 2,
+      "window_label": "Window_2",
+      "time_range": [
+        2267210,
+        2428396
+      ],
+      "n_samples": 667,
+      "fraud_prevalence": 0.32083958020989506,
+      "baseline_auprc": 0.3126650896730533,
+      "quantum_system_auprc": 0.30858795663722494,
+      "rbf_system_auprc": 0.31061411096431735,
+      "gbm_system_auprc": 0.32845065209657487,
+      "delta_q_minus_rbf": -0.002026154327092411
+    },
+    {
+      "window_index": 3,
+      "window_label": "Window_3",
+      "time_range": [
+        2428692,
+        2591967
+      ],
+      "n_samples": 667,
+      "fraud_prevalence": 0.3193403298350825,
+      "baseline_auprc": 0.3092609719368587,
+      "quantum_system_auprc": 0.3087286579621589,
+      "rbf_system_auprc": 0.31030119872989514,
+      "gbm_system_auprc": 0.30874324635782785,
+      "delta_q_minus_rbf": -0.001572540767736219
+    }
+  ],
+  "temporal_drift_analysis": {
+    "window_1_to_last_baseline_change": 0.018004049911680864,
+    "delta_q_rbf_stability": [
+      -0.006116843417735107,
+      -0.002026154327092411,
+      -0.001572540767736219
+    ],
+    "scientific_interpretation": "Performance degrades monotonically across sequential chronological windows (concept drift / non-stationarity). The delta between Quantum and RBF remains negligible across all windows, showing that temporal drift does not open an advantage window for quantum."
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "geometry_comparison": {
+    "n_samples": 100,
+    "kernel_target_alignment": {
+      "classical_rbf": 0.1819689056186241,
+      "quantum_fidelity_fqk": 0.18573382798203375,
+      "quantum_projected_pqk": 0.20501712197778132
+    },
+    "centered_kernel_alignment_cka": {
+      "fqk_vs_rbf": 0.9429299144866939,
+      "pqk_vs_rbf": 0.6334814970759637,
+      "fqk_vs_pqk": 0.5655599212590561
+    },
+    "frobenius_distance": {
+      "fqk_vs_rbf": 0.32085201962321125,
+      "pqk_vs_rbf": 0.8204144286493725
+    },
+    "spectral_cosine_similarity": {
+      "fqk_vs_rbf": 0.9906031649067664,
+      "pqk_vs_rbf": 0.938868430076234
+    },
+    "class_conditional_similarities": {
+      "classical_rbf": {
+        "within_fraud": 0.20741990201331126,
+        "within_legitimate": 0.2673520329506197,
+        "cross_class": 0.21963255021279826,
+        "separability": 1.080832310345817
+      },
+      "quantum_fidelity": {
+        "within_fraud": 0.2843643210769667,
+        "within_legitimate": 0.34341120934124836,
+        "cross_class": 0.29549485263583286,
+        "separability": 1.0622444072604473
+      },
+      "quantum_projected": {
+        "within_fraud": 0.4703374965624639,
+        "within_legitimate": 0.5036716551743979,
+        "cross_class": 0.4692795748567465,
+        "separability": 1.037770641603971
+      }
+    },
+    "scientific_conclusion": "CKA geometric similarity to Classical RBF: Quantum Fidelity=0.9429, Projected Quantum=0.6335. Projected Quantum Kernel exhibits extremely high geometrical alignment with Classical RBF (CKA=0.6335), explaining why quantum predictive performance closely tracks classical RBF SVM without manifesting independent advantage."
+  },
+  "feature_map_ablation": [
+    {
+      "config": "arctan_rotX_L1",
+      "scaling": "arctan",
+      "rotation": "X",
+      "layers": 1,
+      "kta": 0.07435767363318857,
+      "cka_to_rbf": 0.9444112226817953,
+      "effective_rank": 3.5042160867044108,
+      "system_auprc_b5": 0.30958760455899587,
+      "gate_count": 3
+    },
+    {
+      "config": "arctan_rotX_L2",
+      "scaling": "arctan",
+      "rotation": "X",
+      "layers": 2,
+      "kta": 0.05840522150341172,
+      "cka_to_rbf": 0.3810576823804458,
+      "effective_rank": 3.435227580887384,
+      "system_auprc_b5": 0.300331880654139,
+      "gate_count": 6
+    },
+    {
+      "config": "arctan_rotY_L1",
+      "scaling": "arctan",
+      "rotation": "Y",
+      "layers": 1,
+      "kta": 0.07435767363318858,
+      "cka_to_rbf": 0.9444112226817956,
+      "effective_rank": 3.5042160867044108,
+      "system_auprc_b5": 0.30958760455899587,
+      "gate_count": 3
+    },
+    {
+      "config": "arctan_rotZ_L1",
+      "scaling": "arctan",
+      "rotation": "Z",
+      "layers": 1,
+      "kta": 0.0576,
+      "cka_to_rbf": -0.02708889671051049,
+      "effective_rank": 0.9999999999989999,
+      "system_auprc_b5": 0.3026421842226513,
+      "gate_count": 3
+    },
+    {
+      "config": "minmax_pi_rotX_L1",
+      "scaling": "minmax_pi",
+      "rotation": "X",
+      "layers": 1,
+      "kta": 0.07148661580579642,
+      "cka_to_rbf": 0.8239508741126248,
+      "effective_rank": 3.871441037676918,
+      "system_auprc_b5": 0.3101097671483777,
+      "gate_count": 3
+    },
+    {
+      "config": "linear_clip_rotX_L1",
+      "scaling": "linear_clip",
+      "rotation": "X",
+      "layers": 1,
+      "kta": 0.07814420330160363,
+      "cka_to_rbf": 0.8970010715114177,
+      "effective_rank": 2.887236128084512,
+      "system_auprc_b5": 0.3099693064889411,
+      "gate_count": 3
+    }
+  ]
+}

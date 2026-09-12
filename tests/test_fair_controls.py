@@ -49,3 +49,28 @@ def test_classical_gbm_expert_interface(dummy_traffic):
     assert np.all(probs >= 0.0)
     assert np.all(probs <= 1.0)
     assert np.allclose(np.sum(probs, axis=1), 1.0)
+
+def test_classical_mlp_expert_interface(dummy_traffic):
+    from src.models.experts.classical_mlp_expert import ClassicalMLPExpert
+    X_train, y_train, X_test, y_test = dummy_traffic
+    mlp_exp = ClassicalMLPExpert(hidden_layer_sizes=(8, 4), max_iter=50, random_state=42)
+    mlp_exp.fit(X_train, y_train)
+    
+    probs = mlp_exp.predict_proba(X_test)
+    assert probs.shape == (10, 2)
+    assert np.all(probs >= 0.0)
+    assert np.all(probs <= 1.0)
+    assert np.allclose(np.sum(probs, axis=1), 1.0)
+
+def test_classical_poly_expert_interface(dummy_traffic):
+    from src.models.experts.classical_poly_expert import ClassicalPolyExpert
+    X_train, y_train, X_test, y_test = dummy_traffic
+    poly_exp = ClassicalPolyExpert(degree=2, C=1.0, random_state=42)
+    poly_exp.fit(X_train, y_train)
+    
+    probs = poly_exp.predict_proba(X_test)
+    assert probs.shape == (10, 2)
+    assert np.all(probs >= 0.0)
+    assert np.all(probs <= 1.0)
+    assert np.allclose(np.sum(probs, axis=1), 1.0)
+

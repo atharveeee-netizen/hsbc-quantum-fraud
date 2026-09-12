@@ -1,0 +1,3 @@
+depolarizing_error_rate_p,mean_state_purity,kernel_fidelity_to_ideal,test_auprc,test_roc_auc
+0.0,1.0,1.0,0.8333333333333333,0.9375
+0.05,0.7411902653493904,0.9875041666509272,0.8333333333333333,0.9375

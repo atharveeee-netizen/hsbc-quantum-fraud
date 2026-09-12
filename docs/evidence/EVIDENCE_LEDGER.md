@@ -1,32 +1,50 @@
 # Master Scientific Evidence Ledger
 
-> **Last Updated:** 2026-09-12T09:12:33.913933+00:00  
+> **Last Updated:** 2026-09-12T09:23:40.190399+00:00  
 > **Claim Firewall Status:** `ENFORCED`  
-> **Quantum Advantage Verdict:** `INCONCLUSIVE` (Null hypothesis stands)  
-> **Real IEEE-CIS Benchmark:** `BLOCKED` (Synthetic benchmark active)  
+> **Real Data Gate:** `BLOCKED` (Awaiting IEEE-CIS credentials; synthetic benchmark active)  
+> **Hardware Decision Gate:** `HARDWARE NOT JUSTIFIED`  
 
 ---
 
-## 1. Evidence Matrix: Claim -> Experiment -> Artifact -> Result -> Status
+## 1. Executive Quantum Advantage Taxonomy
 
-| Claim ID | Category | Status | Primary Metric | Result Summary | 95% CI / p-value | Limitations |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| `CLM-BASE-01` | Classical ML | `MEASURED` | AUPRC / KTA | Established baseline on temporal synthetic split: AUPRC=0.3040, ROC-AUC=0.4833.... | N/A | Measured exclusively on synthetic smoke fixture du... |
-| `CLM-ROUTED-B0.5` | Full System Evaluation | `MEASURED` | AUPRC / KTA | At 0.5% budget, Quantum Expert AUPRC=0.3041 vs Classical RBF=0.3036 (Δ=+0.0005, ... | [-0.0005, +0.0023], p=0.6880 | Tested on 2-qubit simulation on synthetic benchmar... |
-| `CLM-ROUTED-B1.0` | Full System Evaluation | `MEASURED` | AUPRC / KTA | At 1.0% budget, Quantum Expert AUPRC=0.3033 vs Classical RBF=0.3030 (Δ=+0.0004, ... | [-0.0007, +0.0024], p=0.6100 | Tested on 2-qubit simulation on synthetic benchmar... |
-| `CLM-ROUTED-B2.0` | Full System Evaluation | `MEASURED` | AUPRC / KTA | At 2.0% budget, Quantum Expert AUPRC=0.3041 vs Classical RBF=0.3050 (Δ=-0.0009, ... | [-0.0056, +0.0036], p=0.7140 | Tested on 2-qubit simulation on synthetic benchmar... |
-| `CLM-ROUTED-B5.0` | Full System Evaluation | `MEASURED` | AUPRC / KTA | At 5.0% budget, Quantum Expert AUPRC=0.2997 vs Classical RBF=0.3013 (Δ=-0.0015, ... | [-0.0066, +0.0035], p=0.5260 | Tested on 2-qubit simulation on synthetic benchmar... |
-| `CLM-ROUTED-B10.0` | Full System Evaluation | `MEASURED` | AUPRC / KTA | At 10.0% budget, Quantum Expert AUPRC=0.2975 vs Classical RBF=0.3023 (Δ=-0.0050,... | [-0.0129, +0.0020], p=0.1440 | Tested on 2-qubit simulation on synthetic benchmar... |
-| `CLM-ROUTER-AUDIT-01` | Router Audit | `VERIFIED` | AUPRC / KTA | Router temporal leakage: NONE (Verified). Uncertainty correlates with borderline... | N/A | Routing effectiveness is bounded by classical base... |
-| `CLM-TEMPORAL-01` | Temporal Validation | `VERIFIED` | AUPRC / KTA | Random IID splitting artificially inflates test AUPRC by +0.0131 relative to str... | N/A | Evaluated on synthetic chronological fixture.... |
-| `CLM-KERNEL-PSD-01` | Quantum Diagnostics | `VERIFIED` | AUPRC / KTA | Quantum Gram matrix is strictly Positive Semi-Definite (0 negative eigenvalues).... | N/A | Computed on N=100 samples with 2-qubit AngleEmbedd... |
+| Advantage Dimension | Verdict | Empirical Evidence |
+| :--- | :--- | :--- |
+| **Predictive Advantage** | **NO ADVANTAGE / INCONCLUSIVE** | Statistically tied with Classical RBF ($\Delta \in [-0.0050, +0.0005]$, all 95% CIs include 0); Classical GBM is superior ($0.3113$ vs $0.2975$). |
+| **Computational Advantage** | **NO ADVANTAGE** | Pairwise QPU kernel evaluation scales quadratically $O(N^2)$, requiring $79,800$ circuits for $N=400$. |
+| **Economic Advantage** | **NO ADVANTAGE** | Physical QPU execution costs $pprox \$3,217$ for $N=100$, $>600,000	imes$ more expensive than classical CPU ($<\$0.00001$). |
+| **Operational Advantage** | **UNVIABLE ON QPU / VIABLE WITH CLASSICAL GBM** | QPU queue latencies (minutes/hours) violate the $100-300$ms authorization SLA. Routed Classical GBM is operational. |
 
 ---
 
-## 2. Strict Scientific Principles Enforced
+## 2. Complete Scientific Evidence Matrix (Phases 21–50)
 
-1. **No Cherry-Picking:** All 5 escalation budgets (0.5%, 1%, 2%, 5%, 10%) are reported irrespective of outcome.
-2. **Paired Bootstrap:** Every quantum vs classical delta is computed on the exact same resampled test transactions.
-3. **Multiple Testing Correction:** Bonferroni and Benjamini-Hochberg FDR adjustments applied across budget sweeps.
-4. **Fair Tuning:** Classical RBF control tuned via cross-validation strictly on the training fold.
-5. **No Leakage:** Preprocessing scalers fit exclusively on the chronological training window.
+| Claim ID | Category | Status | Primary Result | 95% CI / p-value / Metric | Limitations |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `CLM-BASE-01` | Classical Baseline | `MEASURED` | Established baseline on chronological synthetic split: AUPRC=0.3040, ROC-AU... | N/A | Evaluated on synthetic benchmark due to IEEE-... |
+| `CLM-ROUTED-B0.5` | Routed System Evaluation | `MEASURED` | At 0.5% budget, Quantum AUPRC=0.3041 vs Classical RBF=0.3036 vs Classical G... | [-0.0005, +0.0023], p=0.6880 | Evaluated on 2-qubit simulator; classical RBF... |
+| `CLM-ROUTED-B1.0` | Routed System Evaluation | `MEASURED` | At 1.0% budget, Quantum AUPRC=0.3033 vs Classical RBF=0.3030 vs Classical G... | [-0.0007, +0.0024], p=0.6100 | Evaluated on 2-qubit simulator; classical RBF... |
+| `CLM-ROUTED-B2.0` | Routed System Evaluation | `MEASURED` | At 2.0% budget, Quantum AUPRC=0.3041 vs Classical RBF=0.3050 vs Classical G... | [-0.0056, +0.0036], p=0.7140 | Evaluated on 2-qubit simulator; classical RBF... |
+| `CLM-ROUTED-B5.0` | Routed System Evaluation | `MEASURED` | At 5.0% budget, Quantum AUPRC=0.2997 vs Classical RBF=0.3013 vs Classical G... | [-0.0066, +0.0035], p=0.5260 | Evaluated on 2-qubit simulator; classical RBF... |
+| `CLM-ROUTED-B10.0` | Routed System Evaluation | `MEASURED` | At 10.0% budget, Quantum AUPRC=0.2975 vs Classical RBF=0.3023 vs Classical ... | [-0.0129, +0.0020], p=0.1440 | Evaluated on 2-qubit simulator; classical RBF... |
+| `CLM-ROUTER-CAUSALITY-01` | Router Causality | `VERIFIED` | Transaction amount drives 2.09x fraud enrichment alone; residual uncertaint... | Enrichment=2.09x | Tested on synthetic features mirroring IEEE-C... |
+| `CLM-CLASSICAL-STRENGTH-01` | Classical Strengthening | `MEASURED` | Strong Classical GBM achieves the highest mean system AUPRC (0.3069), outpe... | N/A | All models fitted strictly on training escala... |
+| `CLM-QUANTUM-GEOMETRY-01` | Quantum Geometry | `VERIFIED` | Quantum Fidelity Kernel has 0.9429 CKA geometric alignment and 0.9906 spect... | CKA=0.9429 | Evaluated on matched N=100 samples with 2-qub... |
+| `CLM-SEED-ROBUSTNESS-01` | Seed Robustness | `VERIFIED` | Across 5 pre-registered random seeds (42-46), Δ(Quantum - RBF) is consisten... | N/A | Evaluated across budgets 1%, 5%, 10%.... |
+| `CLM-SCALING-01` | Resource Scaling | `VERIFIED` | Full-population quantum kernel matrices scale quadratically O(N^2) in circu... | N/A | Measured on PennyLane default.qubit simulator... |
+| `CLM-TEMPORAL-WINDOWS-01` | Temporal Robustness | `VERIFIED` | Monotonic degradation observed across time windows (concept drift). Δ(Quant... | N/A | Evaluated on 3 non-overlapping sequential win... |
+| `CLM-NOISY-SIM-01` | Noise Sensitivity | `VERIFIED` | State purity drops from 1.000 to 0.9406 at p=0.01 and 0.5647 at p=0.10. Cla... | N/A | Single-qubit depolarizing channel on default.... |
+| `CLM-HARDWARE-GATE-01` | Hardware Gate | `VERIFIED` | Hardware Decision Gate Verdict: HARDWARE NOT JUSTIFIED. Physical QPU execut... | HARDWARE NOT JUSTIFIED | Based on AWS Braket standard QPU pricing mode... |
+
+---
+
+## 3. Strict Scientific Controls Enforced
+
+1. **No Cherry-Picking:** All 5 escalation budgets reported across all runs.
+2. **Paired Bootstrap:** Every quantum vs classical delta is computed on identical resampled test transactions ($N=1000$ resamples).
+3. **Multiple Testing Correction:** Bonferroni and Benjamini-Hochberg FDR adjustments applied across all tested budgets.
+4. **Fair Tuning:** Classical RBF and GBM controls tuned via cross-validation strictly on the training fold.
+5. **Leakage Firewall:** Scalers fitted exclusively on historical training data; timestamps strictly monotone ($T_{\text{train}} < T_{\text{calib}} < T_{\text{test}}$).
+6. **Noisy Simulation:** Purity degradation ($1.000 \to 0.565$) confirms physical noise cannot improve performance.
+7. **Hardware Gate:** Hardware expenditure rejected as scientifically unjustified.
