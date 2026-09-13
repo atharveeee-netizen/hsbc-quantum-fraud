@@ -468,17 +468,17 @@
     },
     {
       "file": "docs\\proposal\\FINAL_PROPOSAL_READINESS_REPORT.md",
-      "line": 91,
+      "line": 92,
       "text": "- **Classical LightGBM PR-AUC:** 0.4040 ($11.74\\times$ lift over $\\pi = 0.0344$)"
     },
     {
       "file": "docs\\proposal\\FINAL_PROPOSAL_READINESS_REPORT.md",
-      "line": 97,
+      "line": 98,
       "text": "- **Quantum Models PR-AUCs:** Quantum Fidelity Kernel 0.3789, Quantum Projected Kernel (PQK) 0.4043"
     },
     {
       "file": "docs\\proposal\\FINAL_PROPOSAL_READINESS_REPORT.md",
-      "line": 148,
+      "line": 149,
       "text": "> *\"Digital payment fraud is a severe class-imbalance decision problem operating under strict sub-50 ms operational budgets. Frontline calibrated classical ML efficiently processes the 99.5% majority at 4.07 ms latency. Posterior uncertainty routing concentrates fraud risk in a tiny 0.5% escalation population with 12.4\u00d7 enrichment. Quantum kernel methods offer a testable specialist hypothesis for complex boundary separations. In matched real-data experiments ($N=200$), the quantum projected kernel achieved PR-AUC 0.4043 vs 0.3367 for classical RBF ($\\Delta = +0.0653$), but paired bootstrap hypothesis testing yields $p = 0.246$ and a 95% CI spanning $[-0.0383, +0.1821]$, failing to reject the null hypothesis. Therefore, quantum advantage is NOT demonstrated on current representations, and physical QPU deployment is NOT currently justified. However, the selective classical architecture wins decisively today, delivering 11.7\u00d7 precision-recall lift and $0.65 / 1M transaction economics, while establishing a scientifically rigorous, falsifiable adoption gate that prevents unjustified capital expenditure on quantum hardware.\"*"
     },
     {
@@ -525,6 +525,51 @@
       "file": "docs\\proposal\\HSBC_Phase1_Concept_Proposal.md",
       "line": 80,
       "text": "- **Quantum Kernels (N=200):** Fidelity Kernel = 0.3789; Projected Quantum Kernel (PQK) = 0.4043."
+    },
+    {
+      "file": "docs\\proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 86,
+      "text": "This proposal establishes an empirically validated, asymmetric hybrid architecture for digital payment fraud detection. High-throughput retail payment environments process thousands of transactions per second under rigid operational latency constraints ($<50$~ms budget), where 99.5\\% of transactions are benign and fraud prevalence is below 3.5\\%. Indiscriminately executing quantum circuits across high-volume streams is operationally prohibitive ($180$--$1,200$~s cloud QPU queues; $\\$353,000 / 1\\text{M}$ tx modeled cost). Our architecture decouples online payment authorization from specialist evaluation: a fast, calibrated frontline LightGBM model processes 99.5\\% of transactions at \\textbf{4.07~ms median latency}, yielding a PR-AUC of \\textbf{0.4040} ($11.74\\times$ lift over the 3.499\\% prevalence base rate on the IEEE-CIS benchmark). A model posterior uncertainty router isolates the 0.5\\% boundary transactions, achieving a \\textbf{42.81\\% fraud density} ($12.44\\times$ concentration; $28.1\\times$ more fraud than transaction amount alone). On this matched boundary population ($N=200$), we conducted rigorous paired experiments comparing classical baselines against Quantum State Fidelity and Projected Quantum Kernels (PQK). PQK achieved a point-estimate PR-AUC of \\textbf{0.4043} vs \\textbf{0.3367} for classical RBF ($\\Delta = +0.0653$), but paired bootstrap hypothesis testing yields $p = 0.246$ (95\\% CI: $[-0.0383, +0.1821]$), failing to reject the null hypothesis. We transparently report this as \\textbf{Outcome B: No Quantum Advantage Demonstrated}. The primary enterprise deliverable is therefore a verified selective classical architecture operating at \\textbf{\\$0.65 / 1M transactions} that prevents multi-hundred-thousand-dollar cloud QPU misallocation while defining a falsifiable empirical gate for future quantum hardware adoption."
+    },
+    {
+      "file": "docs\\proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 137,
+      "text": "node distance=0.40cm,"
+    },
+    {
+      "file": "docs\\proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 161,
+      "text": "\\scriptsize PR-AUC: 0.4040 $\\cdot$ 3.29 ms"
+    },
+    {
+      "file": "docs\\proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 217,
+      "text": "The frontline model is an optimized LightGBM classifier comprising 150 gradient-boosted trees trained with focal loss weighting to address the 1:28 class imbalance. Raw tree outputs are uncalibrated; we apply isotonic regression on the independent calibration partition. The calibrated model achieves an Expected Calibration Error (ECE) of \\textbf{0.0785} and a Brier score of \\textbf{0.0250}, ensuring that output score $p$ reflects true empirical posterior probability $P(Y=1 \\mid X)$. On the unseen test partition, this frontline detector achieves a PR-AUC of \\textbf{0.4040} ($11.74\\times$ lift over the test base prevalence of $\\pi = 0.0344$) and an ROC-AUC of \\textbf{0.8503}."
+    },
+    {
+      "file": "docs\\proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 295,
+      "text": "\\textbf{Frontline Detector} & LightGBM (150 trees, focal loss) & PR-AUC (Test Partition) & \\textbf{0.4040} & \\texttt{[REAL DATA][MEASURED]} \\\\"
+    },
+    {
+      "file": "docs\\proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 310,
+      "text": "& \\textbf{Projected Quantum Kernel (PQK)} & \\textbf{PR-AUC (Matched $N=200$)} & \\textbf{0.4043} (ROC: 0.5171) & \\texttt{[REAL DATA][MEASURED]} \\\\"
+    },
+    {
+      "file": "docs\\proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 332,
+      "text": "In the matched experiment ($N=200$ escalated transactions), the Projected Quantum Kernel (PQK) achieved a point-estimate PR-AUC of \\textbf{0.4043}, outperforming the tuned classical RBF baseline (\\textbf{0.3367}) by $\\Delta = +0.0653$. However, rigorous paired bootstrap hypothesis testing (2,000 resamples) demonstrates that:"
+    },
+    {
+      "file": "docs\\proposal\\HSBC_Phase1_Supplementary_Appendix.tex",
+      "line": 271,
+      "text": "$[0.30, 0.40)$ & 284 & 0.3472 & 0.3521 & \\textbf{0.0049} \\\\"
+    },
+    {
+      "file": "docs\\proposal\\HSBC_Phase1_Supplementary_Appendix.tex",
+      "line": 272,
+      "text": "$[0.40, 0.50)$ & 186 & 0.4481 & 0.4355 & \\textbf{0.0126} \\\\"
     },
     {
       "file": "docs\\proposal\\JUDGE_OBJECTIONS.md",
@@ -563,17 +608,17 @@
     },
     {
       "file": "proposal\\FINAL_PROPOSAL_READINESS_REPORT.md",
-      "line": 91,
+      "line": 92,
       "text": "- **Classical LightGBM PR-AUC:** 0.4040 ($11.74\\times$ lift over $\\pi = 0.0344$)"
     },
     {
       "file": "proposal\\FINAL_PROPOSAL_READINESS_REPORT.md",
-      "line": 97,
+      "line": 98,
       "text": "- **Quantum Models PR-AUCs:** Quantum Fidelity Kernel 0.3789, Quantum Projected Kernel (PQK) 0.4043"
     },
     {
       "file": "proposal\\FINAL_PROPOSAL_READINESS_REPORT.md",
-      "line": 148,
+      "line": 149,
       "text": "> *\"Digital payment fraud is a severe class-imbalance decision problem operating under strict sub-50 ms operational budgets. Frontline calibrated classical ML efficiently processes the 99.5% majority at 4.07 ms latency. Posterior uncertainty routing concentrates fraud risk in a tiny 0.5% escalation population with 12.4\u00d7 enrichment. Quantum kernel methods offer a testable specialist hypothesis for complex boundary separations. In matched real-data experiments ($N=200$), the quantum projected kernel achieved PR-AUC 0.4043 vs 0.3367 for classical RBF ($\\Delta = +0.0653$), but paired bootstrap hypothesis testing yields $p = 0.246$ and a 95% CI spanning $[-0.0383, +0.1821]$, failing to reject the null hypothesis. Therefore, quantum advantage is NOT demonstrated on current representations, and physical QPU deployment is NOT currently justified. However, the selective classical architecture wins decisively today, delivering 11.7\u00d7 precision-recall lift and $0.65 / 1M transaction economics, while establishing a scientifically rigorous, falsifiable adoption gate that prevents unjustified capital expenditure on quantum hardware.\"*"
     },
     {
@@ -607,6 +652,11 @@
       "text": "In the matched N=200 escalated experiment, Projected Quantum Kernel achieved a nominal PR-AUC of 0.4043 versus 0.3367 for the Classical RBF baseline (&Delta;PR-AUC = +0.0653). To establish whether this point estimate represents genuine advantage or finite-sample variance, we conducted a <strong>1,000-resample paired bootstrap hypothesis test</strong>. The resulting 95% confidence interval spans zero: <strong>[&minus;0.0383, +0.1821]</strong>, with a two-tailed p-value of <strong>p = 0.246</strong> (Bonferroni-adjusted p = 0.492). Because the confidence interval includes negative values and p &gt; 0.05, <strong>the null hypothesis of no quantum advantage cannot be rejected</strong>."
     },
     {
+      "file": "proposal\\HSBC_Phase1_Concept_Proposal.log",
+      "line": 987,
+      "text": "[]|\\OT1/ptm/b/n/7 0.4043 \\OT1/ptm/m/n/7 (ROC:"
+    },
+    {
       "file": "proposal\\HSBC_Phase1_Concept_Proposal.md",
       "line": 24,
       "text": "Frontline gradient boosted decision trees (LightGBM) achieve strong baseline discrimination (PR-AUC 0.4040, ROC-AUC 0.8503) and sub-5 ms execution across routine transactions. However, transactions close to the classification boundary exhibit epistemic uncertainty: instances where the frontline scorer lacks decisive confidence. Instead of attempting to replace the fast classical detector with a slow, costly quantum system, the rational architecture isolates this small, ambiguous subset for targeted secondary evaluation. This keeps 99% of transactions on an autonomous fast path while focusing specialist computation strictly where decision ambiguity is highest."
@@ -620,6 +670,51 @@
       "file": "proposal\\HSBC_Phase1_Concept_Proposal.md",
       "line": 80,
       "text": "- **Quantum Kernels (N=200):** Fidelity Kernel = 0.3789; Projected Quantum Kernel (PQK) = 0.4043."
+    },
+    {
+      "file": "proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 86,
+      "text": "This proposal establishes an empirically validated, asymmetric hybrid architecture for digital payment fraud detection. High-throughput retail payment environments process thousands of transactions per second under rigid operational latency constraints ($<50$~ms budget), where 99.5\\% of transactions are benign and fraud prevalence is below 3.5\\%. Indiscriminately executing quantum circuits across high-volume streams is operationally prohibitive ($180$--$1,200$~s cloud QPU queues; $\\$353,000 / 1\\text{M}$ tx modeled cost). Our architecture decouples online payment authorization from specialist evaluation: a fast, calibrated frontline LightGBM model processes 99.5\\% of transactions at \\textbf{4.07~ms median latency}, yielding a PR-AUC of \\textbf{0.4040} ($11.74\\times$ lift over the 3.499\\% prevalence base rate on the IEEE-CIS benchmark). A model posterior uncertainty router isolates the 0.5\\% boundary transactions, achieving a \\textbf{42.81\\% fraud density} ($12.44\\times$ concentration; $28.1\\times$ more fraud than transaction amount alone). On this matched boundary population ($N=200$), we conducted rigorous paired experiments comparing classical baselines against Quantum State Fidelity and Projected Quantum Kernels (PQK). PQK achieved a point-estimate PR-AUC of \\textbf{0.4043} vs \\textbf{0.3367} for classical RBF ($\\Delta = +0.0653$), but paired bootstrap hypothesis testing yields $p = 0.246$ (95\\% CI: $[-0.0383, +0.1821]$), failing to reject the null hypothesis. We transparently report this as \\textbf{Outcome B: No Quantum Advantage Demonstrated}. The primary enterprise deliverable is therefore a verified selective classical architecture operating at \\textbf{\\$0.65 / 1M transactions} that prevents multi-hundred-thousand-dollar cloud QPU misallocation while defining a falsifiable empirical gate for future quantum hardware adoption."
+    },
+    {
+      "file": "proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 137,
+      "text": "node distance=0.40cm,"
+    },
+    {
+      "file": "proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 161,
+      "text": "\\scriptsize PR-AUC: 0.4040 $\\cdot$ 3.29 ms"
+    },
+    {
+      "file": "proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 217,
+      "text": "The frontline model is an optimized LightGBM classifier comprising 150 gradient-boosted trees trained with focal loss weighting to address the 1:28 class imbalance. Raw tree outputs are uncalibrated; we apply isotonic regression on the independent calibration partition. The calibrated model achieves an Expected Calibration Error (ECE) of \\textbf{0.0785} and a Brier score of \\textbf{0.0250}, ensuring that output score $p$ reflects true empirical posterior probability $P(Y=1 \\mid X)$. On the unseen test partition, this frontline detector achieves a PR-AUC of \\textbf{0.4040} ($11.74\\times$ lift over the test base prevalence of $\\pi = 0.0344$) and an ROC-AUC of \\textbf{0.8503}."
+    },
+    {
+      "file": "proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 295,
+      "text": "\\textbf{Frontline Detector} & LightGBM (150 trees, focal loss) & PR-AUC (Test Partition) & \\textbf{0.4040} & \\texttt{[REAL DATA][MEASURED]} \\\\"
+    },
+    {
+      "file": "proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 310,
+      "text": "& \\textbf{Projected Quantum Kernel (PQK)} & \\textbf{PR-AUC (Matched $N=200$)} & \\textbf{0.4043} (ROC: 0.5171) & \\texttt{[REAL DATA][MEASURED]} \\\\"
+    },
+    {
+      "file": "proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 332,
+      "text": "In the matched experiment ($N=200$ escalated transactions), the Projected Quantum Kernel (PQK) achieved a point-estimate PR-AUC of \\textbf{0.4043}, outperforming the tuned classical RBF baseline (\\textbf{0.3367}) by $\\Delta = +0.0653$. However, rigorous paired bootstrap hypothesis testing (2,000 resamples) demonstrates that:"
+    },
+    {
+      "file": "proposal\\HSBC_Phase1_Supplementary_Appendix.tex",
+      "line": 271,
+      "text": "$[0.30, 0.40)$ & 284 & 0.3472 & 0.3521 & \\textbf{0.0049} \\\\"
+    },
+    {
+      "file": "proposal\\HSBC_Phase1_Supplementary_Appendix.tex",
+      "line": 272,
+      "text": "$[0.40, 0.50)$ & 186 & 0.4481 & 0.4355 & \\textbf{0.0126} \\\\"
     },
     {
       "file": "proposal\\JUDGE_OBJECTIONS.md",
@@ -667,6 +762,51 @@
       "text": "- **PR-AUC:** **0.4040** (**11.74x lift** over random guessing $\\pi = 0.0344$)."
     },
     {
+      "file": "scripts\\build_latex_proposal.py",
+      "line": 105,
+      "text": "This proposal establishes an empirically validated, asymmetric hybrid architecture for digital payment fraud detection. High-throughput retail payment environments process thousands of transactions per second under rigid operational latency constraints ($<50$~ms budget), where 99.5\\% of transactions are benign and fraud prevalence is below 3.5\\%. Indiscriminately executing quantum circuits across high-volume streams is operationally prohibitive ($180$--$1,200$~s cloud QPU queues; $\\$353,000 / 1\\text{M}$ tx modeled cost). Our architecture decouples online payment authorization from specialist evaluation: a fast, calibrated frontline LightGBM model processes 99.5\\% of transactions at \\textbf{4.07~ms median latency}, yielding a PR-AUC of \\textbf{0.4040} ($11.74\\times$ lift over the 3.499\\% prevalence base rate on the IEEE-CIS benchmark). A model posterior uncertainty router isolates the 0.5\\% boundary transactions, achieving a \\textbf{42.81\\% fraud density} ($12.44\\times$ concentration; $28.1\\times$ more fraud than transaction amount alone). On this matched boundary population ($N=200$), we conducted rigorous paired experiments comparing classical baselines against Quantum State Fidelity and Projected Quantum Kernels (PQK). PQK achieved a point-estimate PR-AUC of \\textbf{0.4043} vs \\textbf{0.3367} for classical RBF ($\\Delta = +0.0653$), but paired bootstrap hypothesis testing yields $p = 0.246$ (95\\% CI: $[-0.0383, +0.1821]$), failing to reject the null hypothesis. We transparently report this as \\textbf{Outcome B: No Quantum Advantage Demonstrated}. The primary enterprise deliverable is therefore a verified selective classical architecture operating at \\textbf{\\$0.65 / 1M transactions} that prevents multi-hundred-thousand-dollar cloud QPU misallocation while defining a falsifiable empirical gate for future quantum hardware adoption."
+    },
+    {
+      "file": "scripts\\build_latex_proposal.py",
+      "line": 156,
+      "text": "node distance=0.40cm,"
+    },
+    {
+      "file": "scripts\\build_latex_proposal.py",
+      "line": 180,
+      "text": "\\scriptsize PR-AUC: 0.4040 $\\cdot$ 3.29 ms"
+    },
+    {
+      "file": "scripts\\build_latex_proposal.py",
+      "line": 236,
+      "text": "The frontline model is an optimized LightGBM classifier comprising 150 gradient-boosted trees trained with focal loss weighting to address the 1:28 class imbalance. Raw tree outputs are uncalibrated; we apply isotonic regression on the independent calibration partition. The calibrated model achieves an Expected Calibration Error (ECE) of \\textbf{0.0785} and a Brier score of \\textbf{0.0250}, ensuring that output score $p$ reflects true empirical posterior probability $P(Y=1 \\mid X)$. On the unseen test partition, this frontline detector achieves a PR-AUC of \\textbf{0.4040} ($11.74\\times$ lift over the test base prevalence of $\\pi = 0.0344$) and an ROC-AUC of \\textbf{0.8503}."
+    },
+    {
+      "file": "scripts\\build_latex_proposal.py",
+      "line": 314,
+      "text": "\\textbf{Frontline Detector} & LightGBM (150 trees, focal loss) & PR-AUC (Test Partition) & \\textbf{0.4040} & \\texttt{[REAL DATA][MEASURED]} \\\\"
+    },
+    {
+      "file": "scripts\\build_latex_proposal.py",
+      "line": 329,
+      "text": "& \\textbf{Projected Quantum Kernel (PQK)} & \\textbf{PR-AUC (Matched $N=200$)} & \\textbf{0.4043} (ROC: 0.5171) & \\texttt{[REAL DATA][MEASURED]} \\\\"
+    },
+    {
+      "file": "scripts\\build_latex_proposal.py",
+      "line": 351,
+      "text": "In the matched experiment ($N=200$ escalated transactions), the Projected Quantum Kernel (PQK) achieved a point-estimate PR-AUC of \\textbf{0.4043}, outperforming the tuned classical RBF baseline (\\textbf{0.3367}) by $\\Delta = +0.0653$. However, rigorous paired bootstrap hypothesis testing (2,000 resamples) demonstrates that:"
+    },
+    {
+      "file": "scripts\\build_latex_proposal.py",
+      "line": 727,
+      "text": "$[0.30, 0.40)$ & 284 & 0.3472 & 0.3521 & \\textbf{0.0049} \\\\"
+    },
+    {
+      "file": "scripts\\build_latex_proposal.py",
+      "line": 728,
+      "text": "$[0.40, 0.50)$ & 186 & 0.4481 & 0.4355 & \\textbf{0.0126} \\\\"
+    },
+    {
       "file": "scripts\\build_proposal.py",
       "line": 316,
       "text": "Frontline gradient boosted decision trees (LightGBM) achieve strong baseline discrimination (PR-AUC 0.4040, ROC-AUC 0.8503) and sub-5 ms execution across routine transactions. However, transactions close to the classification boundary exhibit epistemic uncertainty: instances where the frontline scorer lacks decisive confidence. Instead of attempting to replace the fast classical detector with a slow, costly quantum system, the rational architecture isolates this small, ambiguous subset for targeted secondary evaluation. This keeps 99% of transactions on an autonomous fast path while focusing specialist computation strictly where decision ambiguity is highest."
@@ -685,6 +825,11 @@
       "file": "scripts\\build_proposal.py",
       "line": 609,
       "text": "In the matched N=200 escalated experiment, Projected Quantum Kernel achieved a nominal PR-AUC of 0.4043 versus 0.3367 for the Classical RBF baseline (&Delta;PR-AUC = +0.0653). To establish whether this point estimate represents genuine advantage or finite-sample variance, we conducted a <strong>1,000-resample paired bootstrap hypothesis test</strong>. The resulting 95% confidence interval spans zero: <strong>[&minus;0.0383, +0.1821]</strong>, with a two-tailed p-value of <strong>p = 0.246</strong> (Bonferroni-adjusted p = 0.492). Because the confidence interval includes negative values and p &gt; 0.05, <strong>the null hypothesis of no quantum advantage cannot be rejected</strong>."
+    },
+    {
+      "file": "scripts\\test_tikz_renders.py",
+      "line": 56,
+      "text": "\\scriptsize PR-AUC: 0.4040 $\\cdot$ 3.29 ms"
     },
     {
       "file": "src\\dashboard\\app.py",
@@ -759,9 +904,39 @@
       "text": "| **`0.40` / `0.60`** | 24 | **VALID** | Legitimate raw floating point values in `data/raw/train_transaction.csv` ($Amt) and threshold bounds for $B=10\\%$ uncertainty escalation in router audit. | **Retained as valid**. Retained as floating-point feature values and router margin bounds. |"
     },
     {
+      "file": "docs\\proposal\\HSBC_Phase1_Supplementary_Appendix.tex",
+      "line": 273,
+      "text": "$[0.50, 0.60)$ & 98 & 0.5429 & 0.5510 & \\textbf{0.0081} \\\\"
+    },
+    {
+      "file": "docs\\proposal\\HSBC_Phase1_Supplementary_Appendix.tex",
+      "line": 274,
+      "text": "$[0.60, 0.70)$ & 62 & 0.6480 & 0.6613 & \\textbf{0.0133} \\\\"
+    },
+    {
+      "file": "proposal\\HSBC_Phase1_Supplementary_Appendix.tex",
+      "line": 273,
+      "text": "$[0.50, 0.60)$ & 98 & 0.5429 & 0.5510 & \\textbf{0.0081} \\\\"
+    },
+    {
+      "file": "proposal\\HSBC_Phase1_Supplementary_Appendix.tex",
+      "line": 274,
+      "text": "$[0.60, 0.70)$ & 62 & 0.6480 & 0.6613 & \\textbf{0.0133} \\\\"
+    },
+    {
       "file": "scripts\\audit_stale_claims.py",
       "line": 16,
       "text": "'0.60',"
+    },
+    {
+      "file": "scripts\\build_latex_proposal.py",
+      "line": 729,
+      "text": "$[0.50, 0.60)$ & 98 & 0.5429 & 0.5510 & \\textbf{0.0081} \\\\"
+    },
+    {
+      "file": "scripts\\build_latex_proposal.py",
+      "line": 730,
+      "text": "$[0.60, 0.70)$ & 62 & 0.6480 & 0.6613 & \\textbf{0.0133} \\\\"
     },
     {
       "file": "src\\evaluation\\threshold_and_calibration_audit.py",
@@ -933,8 +1108,18 @@
     },
     {
       "file": "docs\\proposal\\FINAL_PROPOSAL_READINESS_REPORT.md",
-      "line": 112,
+      "line": 113,
       "text": "- *\"quantum advantage demonstrated\"* $\\to$ 0 instances (explicitly states advantage was not demonstrated)."
+    },
+    {
+      "file": "docs\\proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 86,
+      "text": "This proposal establishes an empirically validated, asymmetric hybrid architecture for digital payment fraud detection. High-throughput retail payment environments process thousands of transactions per second under rigid operational latency constraints ($<50$~ms budget), where 99.5\\% of transactions are benign and fraud prevalence is below 3.5\\%. Indiscriminately executing quantum circuits across high-volume streams is operationally prohibitive ($180$--$1,200$~s cloud QPU queues; $\\$353,000 / 1\\text{M}$ tx modeled cost). Our architecture decouples online payment authorization from specialist evaluation: a fast, calibrated frontline LightGBM model processes 99.5\\% of transactions at \\textbf{4.07~ms median latency}, yielding a PR-AUC of \\textbf{0.4040} ($11.74\\times$ lift over the 3.499\\% prevalence base rate on the IEEE-CIS benchmark). A model posterior uncertainty router isolates the 0.5\\% boundary transactions, achieving a \\textbf{42.81\\% fraud density} ($12.44\\times$ concentration; $28.1\\times$ more fraud than transaction amount alone). On this matched boundary population ($N=200$), we conducted rigorous paired experiments comparing classical baselines against Quantum State Fidelity and Projected Quantum Kernels (PQK). PQK achieved a point-estimate PR-AUC of \\textbf{0.4043} vs \\textbf{0.3367} for classical RBF ($\\Delta = +0.0653$), but paired bootstrap hypothesis testing yields $p = 0.246$ (95\\% CI: $[-0.0383, +0.1821]$), failing to reject the null hypothesis. We transparently report this as \\textbf{Outcome B: No Quantum Advantage Demonstrated}. The primary enterprise deliverable is therefore a verified selective classical architecture operating at \\textbf{\\$0.65 / 1M transactions} that prevents multi-hundred-thousand-dollar cloud QPU misallocation while defining a falsifiable empirical gate for future quantum hardware adoption."
+    },
+    {
+      "file": "docs\\proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 338,
+      "text": "\\textbf{Scientific Verdict:} We report this unambiguously as \\textbf{Outcome B: No Quantum Advantage Demonstrated}. Under current feature representations, quantum kernels do not demonstrate statistically significant superiority over tuned classical non-linear methods."
     },
     {
       "file": "docs\\proposal\\PROPOSAL_CLAIM_MATRIX.md",
@@ -963,8 +1148,18 @@
     },
     {
       "file": "proposal\\FINAL_PROPOSAL_READINESS_REPORT.md",
-      "line": 112,
+      "line": 113,
       "text": "- *\"quantum advantage demonstrated\"* $\\to$ 0 instances (explicitly states advantage was not demonstrated)."
+    },
+    {
+      "file": "proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 86,
+      "text": "This proposal establishes an empirically validated, asymmetric hybrid architecture for digital payment fraud detection. High-throughput retail payment environments process thousands of transactions per second under rigid operational latency constraints ($<50$~ms budget), where 99.5\\% of transactions are benign and fraud prevalence is below 3.5\\%. Indiscriminately executing quantum circuits across high-volume streams is operationally prohibitive ($180$--$1,200$~s cloud QPU queues; $\\$353,000 / 1\\text{M}$ tx modeled cost). Our architecture decouples online payment authorization from specialist evaluation: a fast, calibrated frontline LightGBM model processes 99.5\\% of transactions at \\textbf{4.07~ms median latency}, yielding a PR-AUC of \\textbf{0.4040} ($11.74\\times$ lift over the 3.499\\% prevalence base rate on the IEEE-CIS benchmark). A model posterior uncertainty router isolates the 0.5\\% boundary transactions, achieving a \\textbf{42.81\\% fraud density} ($12.44\\times$ concentration; $28.1\\times$ more fraud than transaction amount alone). On this matched boundary population ($N=200$), we conducted rigorous paired experiments comparing classical baselines against Quantum State Fidelity and Projected Quantum Kernels (PQK). PQK achieved a point-estimate PR-AUC of \\textbf{0.4043} vs \\textbf{0.3367} for classical RBF ($\\Delta = +0.0653$), but paired bootstrap hypothesis testing yields $p = 0.246$ (95\\% CI: $[-0.0383, +0.1821]$), failing to reject the null hypothesis. We transparently report this as \\textbf{Outcome B: No Quantum Advantage Demonstrated}. The primary enterprise deliverable is therefore a verified selective classical architecture operating at \\textbf{\\$0.65 / 1M transactions} that prevents multi-hundred-thousand-dollar cloud QPU misallocation while defining a falsifiable empirical gate for future quantum hardware adoption."
+    },
+    {
+      "file": "proposal\\HSBC_Phase1_Concept_Proposal.tex",
+      "line": 338,
+      "text": "\\textbf{Scientific Verdict:} We report this unambiguously as \\textbf{Outcome B: No Quantum Advantage Demonstrated}. Under current feature representations, quantum kernels do not demonstrate statistically significant superiority over tuned classical non-linear methods."
     },
     {
       "file": "proposal\\PROPOSAL_CLAIM_MATRIX.md",
@@ -1000,6 +1195,16 @@
       "file": "scripts\\build_competition_package.py",
       "line": 328,
       "text": "2. **No Quantum Advantage Demonstrated on Tabular Payment Data:** Quantum kernels showed no statistically significant outperformance over fair classical controls ($p = 0.246$)."
+    },
+    {
+      "file": "scripts\\build_latex_proposal.py",
+      "line": 105,
+      "text": "This proposal establishes an empirically validated, asymmetric hybrid architecture for digital payment fraud detection. High-throughput retail payment environments process thousands of transactions per second under rigid operational latency constraints ($<50$~ms budget), where 99.5\\% of transactions are benign and fraud prevalence is below 3.5\\%. Indiscriminately executing quantum circuits across high-volume streams is operationally prohibitive ($180$--$1,200$~s cloud QPU queues; $\\$353,000 / 1\\text{M}$ tx modeled cost). Our architecture decouples online payment authorization from specialist evaluation: a fast, calibrated frontline LightGBM model processes 99.5\\% of transactions at \\textbf{4.07~ms median latency}, yielding a PR-AUC of \\textbf{0.4040} ($11.74\\times$ lift over the 3.499\\% prevalence base rate on the IEEE-CIS benchmark). A model posterior uncertainty router isolates the 0.5\\% boundary transactions, achieving a \\textbf{42.81\\% fraud density} ($12.44\\times$ concentration; $28.1\\times$ more fraud than transaction amount alone). On this matched boundary population ($N=200$), we conducted rigorous paired experiments comparing classical baselines against Quantum State Fidelity and Projected Quantum Kernels (PQK). PQK achieved a point-estimate PR-AUC of \\textbf{0.4043} vs \\textbf{0.3367} for classical RBF ($\\Delta = +0.0653$), but paired bootstrap hypothesis testing yields $p = 0.246$ (95\\% CI: $[-0.0383, +0.1821]$), failing to reject the null hypothesis. We transparently report this as \\textbf{Outcome B: No Quantum Advantage Demonstrated}. The primary enterprise deliverable is therefore a verified selective classical architecture operating at \\textbf{\\$0.65 / 1M transactions} that prevents multi-hundred-thousand-dollar cloud QPU misallocation while defining a falsifiable empirical gate for future quantum hardware adoption."
+    },
+    {
+      "file": "scripts\\build_latex_proposal.py",
+      "line": 357,
+      "text": "\\textbf{Scientific Verdict:} We report this unambiguously as \\textbf{Outcome B: No Quantum Advantage Demonstrated}. Under current feature representations, quantum kernels do not demonstrate statistically significant superiority over tuned classical non-linear methods."
     },
     {
       "file": "src\\dashboard\\app.py",

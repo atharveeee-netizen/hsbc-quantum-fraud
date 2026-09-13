@@ -15,14 +15,15 @@ The submission strictly enforces **OUTCOME B: NO QUANTUM ADVANTAGE DEMONSTRATED,
 
 | Metric / Dimension | Target / Constraint | Realized Status | Compliance |
 | :--- | :--- | :--- | :---: |
-| **Core Proposal Pages** | $\le 6$ pages (A4) | **5 pages** | **PASS** |
+| **Document Compiler** | Professional Typesetting | **LaTeX (pdf\TeX\ / pdflatex)** | **PASS** |
+| **Core Proposal Pages** | $\le 6$ pages (A4) | **6 pages (Dense, Institutional Layout)** | **PASS** |
 | **Supplementary Appendix Pages** | $\le 3$ pages (A4) | **3 pages** | **PASS** |
-| **Core PDF Size** | $\le 20$ MB | **267 KB (0.26 MB)** | **PASS** |
-| **Supplementary PDF Size** | $\le 20$ MB | **202 KB (0.20 MB)** | **PASS** |
+| **Core PDF Size** | $\le 20$ MB | **326.8 KB (0.32 MB)** | **PASS** |
+| **Supplementary PDF Size** | $\le 20$ MB | **171.0 KB (0.17 MB)** | **PASS** |
 | **Word Document (.docx)** | Complete matching text | **18.5 KB** | **PASS** |
-| **Typography** | Minimum 10pt body font | **10pt body / 11.5–18pt headers** | **PASS** |
+| **Typography** | Minimum 10pt body font | **10pt Times Roman (mathptmx)** | **PASS** |
 | **Language** | English | **English (UK/International Financial)** | **PASS** |
-| **Required Sections** | All 7 official sections present | **7 / 7 present + Team Profile** | **PASS** |
+| **Required Sections** | All 7 official sections present | **7 / 7 present in sequential order** | **PASS** |
 | **Evidence Firewall** | 0 unverified / banned claims | **0 violations (FIREWALL CLEAN)** | **PASS** |
 | **Test Suite** | 100% passing tests | **24 / 24 tests passed (123s)** | **PASS** |
 | **Hardware Decision Gate** | Empirical deployment gate | **HARDWARE NOT JUSTIFIED** | **PASS** |
