@@ -3,12 +3,17 @@ import subprocess
 import fitz # PyMuPDF
 
 def build_latex():
-    # -------------------------------------------------------------
-    # 1. CORE PROPOSAL LATEX (EXACTLY 6 PAGES)
-    # -------------------------------------------------------------
+    print("================================================================================")
+    print("BUILDING STRICT 10pt LATEX PROPOSAL & APPENDIX (PHASE 1 GUIDELINES COMPLIANT)")
+    print("================================================================================")
+
+    # -------------------------------------------------------------------------
+    # 1. CORE CONCEPT PROPOSAL LATEX (EXACTLY 6 PAGES, MINIMUM 10pt FONT EVERYWHERE)
+    # -------------------------------------------------------------------------
     core_tex = r"""\documentclass[10pt,a4paper]{article}
-\usepackage[top=1.25cm,bottom=1.35cm,left=1.35cm,right=1.35cm]{geometry}
+\usepackage[top=1.05cm,bottom=1.10cm,left=1.15cm,right=1.15cm]{geometry}
 \usepackage{mathptmx}
+\usepackage{courier}
 \usepackage{xcolor}
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -19,6 +24,7 @@ def build_latex():
 \usepackage{titlesec}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, backgrounds, fit, decorations.pathreplacing}
+\usepackage{caption}
 \usepackage[colorlinks=true,linkcolor=blue!70!black,citecolor=blue!70!black,urlcolor=blue!70!black]{hyperref}
 
 % Institutional Colors
@@ -32,41 +38,50 @@ def build_latex():
 \definecolor{amberdark}{RGB}{180,83,9}
 \definecolor{accentblue}{RGB}{14,116,144}
 
-% Typography & Spacing
+% Strict Minimum 10pt Typography (Mandated by Challenge Guidelines Section 5)
+\renewcommand{\normalsize}{\fontsize{10.25pt}{12.25pt}\selectfont}
+\normalsize
+\renewcommand{\tiny}{\normalsize}
+\renewcommand{\scriptsize}{\normalsize}
+\renewcommand{\footnotesize}{\normalsize}
+\renewcommand{\small}{\normalsize}
+\DeclareMathSizes{10.25}{10.25}{10.25}{10.25}
+
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{1.8pt plus 0.4pt minus 0.4pt}
+\setlength{\parskip}{1.6pt plus 0.3pt minus 0.3pt}
 
-\titleformat{\section}{\color{hsbcnavy}\normalfont\large\bfseries}{\thesection}{0.5em}{}[\color{hsbcnavy}\titlerule]
-\titleformat{\subsection}{\color{hsbcnavy}\normalfont\normalsize\bfseries}{\thesubsection}{0.4em}{}
-\titleformat{\subsubsection}{\color{darkslate}\normalfont\small\bfseries}{\thesubsubsection}{0.4em}{}
+\titleformat{\section}{\color{hsbcnavy}\fontsize{12pt}{14pt}\bfseries}{\thesection}{0.5em}{}[\color{hsbcnavy}\titlerule]
+\titleformat{\subsection}{\color{hsbcnavy}\fontsize{10.5pt}{12.5pt}\bfseries}{\thesubsection}{0.4em}{}
+\titleformat{\subsubsection}{\color{darkslate}\fontsize{10.25pt}{12.25pt}\bfseries}{\thesubsubsection}{0.4em}{}
 
-\titlespacing*{\section}{0pt}{3.5pt plus 0.8pt minus 0.8pt}{1.4pt plus 0.3pt minus 0.3pt}
-\titlespacing*{\subsection}{0pt}{2.8pt plus 0.6pt minus 0.6pt}{1.2pt plus 0.3pt minus 0.3pt}
-\titlespacing*{\subsubsection}{0pt}{2.0pt plus 0.4pt minus 0.4pt}{0.8pt plus 0.2pt minus 0.2pt}
+\titlespacing*{\section}{0pt}{2.5pt plus 0.5pt minus 0.5pt}{1.0pt plus 0.2pt minus 0.2pt}
+\titlespacing*{\subsection}{0pt}{2.0pt plus 0.4pt minus 0.4pt}{0.8pt plus 0.2pt minus 0.2pt}
+\titlespacing*{\subsubsection}{0pt}{1.5pt plus 0.3pt minus 0.3pt}{0.6pt plus 0.2pt minus 0.2pt}
 
-% Headers and Footers
+% Headers and Footers (Strictly >= 10pt)
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\fancyhead[L]{\small\color{darkslate}\textbf{HSBC / 2026 Global Quantum + AI Challenge} $\cdot$ Phase 1 Concept Proposal}
-\fancyhead[R]{\small\color{darkslate}Track: Quantum-Enhanced Credit Card Fraud Detection}
-\fancyfoot[L]{\footnotesize\color{darkslate}\texttt{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}}
-\fancyfoot[R]{\small\color{darkslate}\textbf{Page \thepage\ of 6}}
+\fancyhead[L]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\textbf{HSBC / 2026 Global Quantum + AI Challenge} $\cdot$ Phase 1 Concept Proposal}
+\fancyhead[R]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}Track: Quantum-Enhanced Credit Card Fraud Detection}
+\fancyfoot[L]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\texttt{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}}
+\fancyfoot[R]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\textbf{Page \thepage\ of 6}}
 
-% Custom Callout Box
+% Custom Callout Box (Strictly >= 10pt)
 \newcommand{\calloutbox}[2]{%
 \vspace{1.0pt}
 \noindent\fcolorbox{slateborder}{lightbg}{%
 \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
 \textbf{\color{hsbcnavy}#1}\par\vspace{1.0pt}
-{\small #2}
+#2
 \end{minipage}%
 }
 \vspace{1.0pt}
 }
 
 \begin{document}
+\fontsize{10.25pt}{12.25pt}\selectfont
 
 % =============================================================================
 % PAGE 1: TITLE, AUTHORS, EXECUTIVE PROPOSITION, PROBLEM FRAMING
@@ -80,7 +95,6 @@ def build_latex():
 \vspace{-4pt}
 \noindent\fcolorbox{slateborder}{bannerbg}{%
 \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
-\footnotesize
 \begin{tabularx}{\linewidth}{@{}Xr@{}}
 \textbf{\color{hsbcnavy}Team Profile:} \textbf{Akshit Agarwal} \& \textbf{Atharve Dahima} & \textbf{\color{hsbcnavy}Affiliation:} Rashtriya Raksha University, India \\
 \textbf{\color{hsbcnavy}Challenge Track:} Quantum-Enhanced Credit Card Fraud Detection & \textbf{\color{hsbcnavy}Credentials:} QLS Quantum Summer School $\cdot$ Quantum Hackathon India \\
@@ -136,84 +150,71 @@ The proposed framework executes across ten structured stages, strictly decouplin
 
 \vspace{1pt}
 % -----------------------------------------------------------------------------
-% FIGURE 1: NATIVE TIKZ ARCHITECTURE FLOWCHART (NO EXTERNAL IMAGES)
+% FIGURE 1: NATIVE TIKZ ARCHITECTURE (MINIMUM 10pt FONT, NO TRANSFORM SHAPE)
 % -----------------------------------------------------------------------------
 \begin{figure}[h!]
 \centering
 \begin{tikzpicture}[
-  scale=0.68, transform shape,
-  node distance=0.38cm,
-  box/.style={rectangle, draw=slateborder, thick, fill=white, rounded corners=3pt, inner sep=3.2pt, align=center},
+  node distance=0.25cm,
+  box/.style={rectangle, draw=slateborder, thick, fill=white, rounded corners=2pt, inner sep=2.5pt, align=center},
   fastbox/.style={box, fill=green!5, draw=forestgreen, thick},
   ambigbox/.style={box, fill=amberdark!10, draw=amberdark, thick},
   qbox/.style={box, fill=accentblue!10, draw=accentblue, thick},
-  arrow/.style={-{Stealth[length=4.5pt]}, thick, draw=darkslate}
+  arrow/.style={-{Stealth[length=4pt]}, thick, draw=darkslate}
 ]
 
-% Top flow: Ingestion -> Prep -> LightGBM -> Router
+% Row 1: Flow across 4 stages
 \node[box, fill=lightbg] (stream) {
   \textbf{\color{hsbcnavy}Transaction Stream} \\
-  \scriptsize IEEE-CIS ($N=590,540$) \\
-  \scriptsize Temporal Sequence
+  IEEE-CIS ($N=590,540$)
 };
 
-\node[box, right=0.42cm of stream] (prep) {
+\node[box, right=0.3cm of stream] (prep) {
   \textbf{\color{hsbcnavy}Decision-Time Prep} \\
-  \scriptsize Train-Only Scaling \& Impute \\
-  \scriptsize Latency: 0.78 ms
+  Train-Only Scaling (0.78 ms)
 };
 
-\node[fastbox, right=0.42cm of prep] (lgbm) {
+\node[fastbox, right=0.3cm of prep] (lgbm) {
   \textbf{\color{forestgreen}Calibrated LightGBM} \\
-  \scriptsize 150 Trees + Isotonic Calib \\
-  \scriptsize PR-AUC: 0.4040 $\cdot$ 3.29 ms
+  150 Trees (3.29 ms, PR: 0.4040)
 };
 
-\node[box, fill=bannerbg, draw=hsbcnavy, thick, right=0.42cm of lgbm] (router) {
+\node[box, fill=bannerbg, draw=hsbcnavy, thick, right=0.3cm of lgbm] (router) {
   \textbf{\color{hsbcnavy}Uncertainty Router} \\
-  \scriptsize $U(x) = 1 - 2|p(x) - 0.5|$ \\
-  \scriptsize Escalation Budget $B=0.5\%$
+  $U(x) = 1 - 2|p - 0.5|$ ($B=0.5\%$)
 };
 
-% Fast clearance branch (Top Right)
-\node[fastbox, above right=0.12cm and 0.72cm of router] (fast) {
-  \textbf{\color{forestgreen}Fast Classical Authorization (99.5\%)} \\
-  \scriptsize 117,517 Transactions $\cdot$ Latency: 4.07 ms (p95: 4.97 ms) \\
-  \scriptsize Autonomous Approve / Decline $\cdot$ Cost: \$0.50 / 1M tx
+% Row 2: Bifurcation
+\node[fastbox, below=0.6cm of prep, xshift=-0.5cm] (fast) {
+  \textbf{\color{forestgreen}Fast Classical Authorization (99.5\% Traffic)} \\
+  117,517 tx $\cdot$ 4.07 ms latency $\cdot$ \$0.50 / 1M tx
 };
 
-% Specialist branch (Bottom Right)
-\node[ambigbox, below right=0.12cm and 0.72cm of router] (ambig) {
-  \textbf{\color{amberdark}Specialist Escalation Tier (0.5\%)} \\
-  \scriptsize 591 Boundary Transactions $\cdot$ Fraud Density: 42.81\% \\
-  \scriptsize $28.1\times$ Fraud Lift vs Transaction Amount Alone
+\node[ambigbox, below=0.6cm of lgbm, xshift=1.2cm] (ambig) {
+  \textbf{\color{amberdark}Specialist Tier (0.5\% Boundary)} \\
+  591 tx $\cdot$ 42.81\% Fraud Density ($28.1\times$ lift)
 };
 
-% Specialist options
-\node[qbox, right=0.42cm of ambig] (eval) {
-  \textbf{\color{accentblue}Specialist Evaluation} \\
-  \scriptsize Mode A (Real-time): Tuned RBF SVC (4.89 ms) \\
-  \scriptsize Mode B (Braket): 8-Qubit PQK via Amazon Braket (159 ms)
+% Row 3: Specialist and QPU Gate
+\node[qbox, below=0.4cm of ambig] (eval) {
+  \textbf{\color{accentblue}Specialist Evaluation:} Classical RBF (4.89 ms) vs Amazon Braket PQK (159 ms)
 };
 
-% QPU Gate
-\node[box, fill=red!10, draw=hsbcred, thick, below=0.32cm of eval] (qpugate) {
-  \textbf{\color{hsbcred}Physical QPU Gate: NOT JUSTIFIED} \\
-  \scriptsize Cloud Queue: 180--1,200 s $\cdot$ Modeled Cost: \$353,000 / 1M tx \\
-  \scriptsize Hypothesis: $p=0.246$ (No advantage demonstrated)
+\node[box, fill=red!10, draw=hsbcred, thick, below=0.25cm of eval] (qpugate) {
+  \textbf{\color{hsbcred}Physical QPU Gate: NOT JUSTIFIED} ($p=0.246$, 180--1,200s queue, \$353,000/1M tx)
 };
 
 \draw[arrow] (stream) -- (prep);
 \draw[arrow] (prep) -- (lgbm);
 \draw[arrow] (lgbm) -- (router);
-\draw[arrow] (router) |- node[above, pos=0.6, font=\scriptsize\bfseries, text=forestgreen] {99.5\% Traffic ($U < \tau$)} (fast);
-\draw[arrow] (router) |- node[below, pos=0.6, font=\scriptsize\bfseries, text=hsbcred] {0.5\% Boundary ($U \ge \tau$)} (ambig);
+\draw[arrow] (router) |- node[above, pos=0.75, font=\bfseries, text=forestgreen] {99.5\%} (fast);
+\draw[arrow] (router) |- node[right, pos=0.4, font=\bfseries, text=hsbcred] {0.5\%} (ambig);
 \draw[arrow] (ambig) -- (eval);
 \draw[arrow, dashed, draw=hsbcred] (eval) -- (qpugate);
 
 \end{tikzpicture}
-\vspace{-4pt}
-\caption{\textbf{Asymmetric Hybrid Fraud Detection Architecture (Typeset via TikZ).} The frontline calibrated detector authorizes 99.5\% of traffic at 4.07~ms latency. Only the 0.5\% boundary transactions are escalated to specialist analysis, isolating quantum latency and operational costs.}
+\vspace{-3pt}
+\caption{\textbf{Asymmetric Hybrid Fraud Detection Architecture.} Frontline calibrated detector authorizes 99.5\% of traffic at 4.07~ms latency. Only the 0.5\% boundary transactions are escalated to specialist analysis, isolating quantum latency and costs.}
 \label{fig:arch}
 \end{figure}
 \vspace{-6pt}
@@ -250,7 +251,7 @@ PQK provably mitigates exponential concentration while preserving multi-qubit no
 \subsection{Data Grounding and Benchmark Integrity}
 Empirical evaluations are grounded on the canonical \textbf{IEEE-CIS Fraud Detection benchmark} (\textbf{590,540 real transactions}, 393 anonymized features). Generalization was confirmed on secondary benchmarks: European Credit Card Fraud ($N=284,807$, 0.172\% fraud) and Sparkov multi-million simulated streams.
 \begin{quote}
-\footnotesize\textbf{Integrity Declaration:} To maintain strict governance, this project does not claim access to proprietary internal HSBC bank logs. All results reflect open financial benchmarks universally acknowledged as the gold standard for imbalanced fraud evaluation.
+\textbf{Integrity Declaration:} To maintain strict governance, this project does not claim access to proprietary internal HSBC bank logs. All results reflect open financial benchmarks universally acknowledged as the gold standard for imbalanced fraud evaluation.
 \end{quote}
 
 \subsection{Computational and Software Infrastructure}
@@ -285,61 +286,44 @@ Deploying physical quantum processors in production payment streams encounters i
 \subsection{Consolidated Empirical Evidence}
 Table~\ref{tab:results} consolidates the frozen, provenance-tracked empirical evidence across the entire project pipeline. Every numerical value is locked against canonical empirical ledgers.
 
-\vspace{-2pt}
-\begin{table}[h!]
-\centering
-\scriptsize
-\renewcommand{\arraystretch}{0.72}
-\caption{\textbf{Consolidated Empirical Results Across Pipeline Components (Frozen Ledger).}}
+\vspace{-4pt}
+\begin{center}
+\renewcommand{\arraystretch}{0.68}
+\captionof{table}{\textbf{Consolidated Empirical Results Across Pipeline Components (Frozen Ledger).}}
 \label{tab:results}
 \vspace{1pt}
-\begin{tabularx}{\linewidth}{@{}p{2.3cm}Xp{2.7cm}p{2.1cm}>{\raggedright\arraybackslash\tiny}p{2.1cm}@{}}
+\begin{tabularx}{\linewidth}{@{}p{2.8cm}Xp{5.0cm}p{3.2cm}@{}}
 \toprule
-\textbf{Pipeline Component} & \textbf{Model / Configuration} & \textbf{Evaluation Metric} & \textbf{Observed Value} & \textbf{Evidence Status} \\
+\textbf{Pipeline Component} & \textbf{Model / Configuration} & \textbf{Metric \& Empirical Result} & \textbf{Evidence Status} \\
 \midrule
-\textbf{Frontline Detectors} & LightGBM (150 trees, focal loss) & PR-AUC / ROC-AUC (Test) & \textbf{0.4040} / \textbf{0.8503} & \texttt{[REAL DATA][MEASURED]} \\
-& & F1 / Precision / Recall (0.50) & \textbf{0.4119} / \textbf{0.7347} / \textbf{0.2862} & \texttt{[REAL DATA][MEASURED]} \\
-& & Optimal Threshold F1 (0.33) & \textbf{0.4452} (Prec: 0.6171, Rec: 0.3482) & \texttt{[REAL DATA][MEASURED]} \\
-& & Frontline Confusion Matrix & TN: 113,624, FP: 420, FN: 2,901, TP: 1,163 & \texttt{[REAL DATA][MEASURED]} \\
-& & Baseline Prevalence Lift & \textbf{11.74$\times$} ($\pi=0.0344$) & \texttt{[REAL DATA][VERIFIED]} \\
-& & Calibration ECE / Brier Loss & \textbf{0.0785} / \textbf{0.0250} & \texttt{[REAL DATA][MEASURED]} \\
-& Tuned XGBoost Control & PR-AUC / ROC-AUC (Test) & \textbf{0.4000} / \textbf{0.8521} & \texttt{[REAL DATA][MEASURED]} \\
-& & F1 / Precision / Recall (0.50) & \textbf{0.4130} / \textbf{0.7370} / \textbf{0.2869} & \texttt{[REAL DATA][MEASURED]} \\
-& Kaggle Competition Winner & Offline Heavy Ensemble & ROC-AUC: 0.9459 (High Latency) & \texttt{[COMPETITION WINNER]} \\
+\textbf{Frontline Detectors} & LightGBM (150 trees, focal loss) & PR-AUC: \textbf{0.4040} $\cdot$ ROC-AUC: \textbf{0.8503} $\cdot$ Lift: \textbf{11.74$\times$} & \texttt{[REAL DATA][MEASURED]} \\
+& Frontline Decision Thresholds & F1(0.50): \textbf{0.4119} (Prec: 0.73, Rec: 0.29) $\cdot$ Cost-Opt(0.33): \textbf{0.4452} & \texttt{[REAL DATA][MEASURED]} \\
+& Calibration \& Confusion & ECE: \textbf{0.0785} $\cdot$ Brier: \textbf{0.0250} $\cdot$ TN:113k FP:420 FN:2901 TP:1163 & \texttt{[REAL DATA][MEASURED]} \\
+& Tuned XGBoost Baseline Control & PR-AUC: \textbf{0.4000} $\cdot$ ROC-AUC: \textbf{0.8521} $\cdot$ F1: \textbf{0.4130} & \texttt{[REAL DATA][MEASURED]} \\
+& Kaggle 1st Place Solution & ROC-AUC: \textbf{0.9459} (High Offline Latency Ensemble) & \texttt{[COMPETITION WINNER]} \\
 \midrule
-\textbf{Uncertainty Router} & Posterior Uncertainty $|p-0.5|$ & Escalation Budget / Volume & \textbf{0.5\%} (591 / 118,108 tx) & \texttt{[REAL DATA][VERIFIED]} \\
-& & Captured Frauds in Budget & \textbf{253 frauds} & \texttt{[REAL DATA][MEASURED]} \\
-& & Escalated Fraud Density & \textbf{42.81\%} ($12.44\times$ lift) & \texttt{[REAL DATA][MEASURED]} \\
-& & Concentration vs Amount Alone & \textbf{28.1$\times$ more fraud} & \texttt{[REAL DATA][MEASURED]} \\
+\textbf{Uncertainty Router} & Posterior Uncertainty $|p-0.5|$ & Escalation Budget: \textbf{0.5\%} (591 / 118,108 tx) $\cdot$ \textbf{253 frauds} & \texttt{[REAL DATA][VERIFIED]} \\
+& Fraud Density \& Lift & Boundary Fraud Density: \textbf{42.81\%} $\cdot$ \textbf{28.1$\times$} lift vs amount & \texttt{[REAL DATA][MEASURED]} \\
 \midrule
-\textbf{Specialist Cohort} & Tuned Classical RBF Kernel & PR-AUC (Matched $N=200$) & \textbf{0.6561} (ROC: 0.7546) & \texttt{[REAL DATA][MEASURED]} \\
-\textbf{($N=200$ support)} & Multilayer Perceptron (MLP) & PR-AUC (Matched $N=200$) & \textbf{0.3516} (ROC: 0.4867) & \texttt{[REAL DATA][MEASURED]} \\
-& Matched Local LightGBM & PR-AUC (Matched $N=200$) & \textbf{0.3529} (ROC: 0.4369) & \texttt{[REAL DATA][MEASURED]} \\
-& Quantum State Fidelity Kernel & PR-AUC (Matched $N=200$) & \textbf{0.3789} (ROC: 0.4657) & \texttt{[REAL DATA][MEASURED]} \\
-& \textbf{Projected Quantum Kernel} & \textbf{PR-AUC (Amazon Braket SDK)} & \textbf{0.5540} (ROC: 0.6753) & \texttt{[REAL DATA][MEASURED]} \\
+\textbf{Specialist Cohort} & Tuned Classical Baselines & RBF SVC PR-AUC: \textbf{0.6561} (ROC: 0.75) $\cdot$ MLP: 0.35 $\cdot$ LGBM: 0.35 & \texttt{[REAL DATA][MEASURED]} \\
+\textbf{($N=200$ support)} & Quantum Kernels (Amazon Braket) & State Fidelity: \textbf{0.3789} $\cdot$ \textbf{PQK PR-AUC: 0.5540} (ROC: 0.6753) & \texttt{[REAL DATA][MEASURED]} \\
 \midrule
-\textbf{Hypothesis Test} & Paired Difference ($\text{PQK} - \text{RBF}$) & Point Estimate Delta ($\Delta\text{PR-AUC}$) & \textbf{-0.1021} & \texttt{[REAL DATA][MEASURED]} \\
-\textbf{(2,000 resamples)} & Paired Bootstrap 95\% CI & Confidence Interval & \textbf{[-0.0383, +0.1821]} & \texttt{[REAL DATA][VERIFIED]} \\
-& Empirical $p$-value & Significance & \textbf{$p = 0.246$} (Bonf: 0.492) & \texttt{[REAL DATA][VERIFIED]} \\
-& Kernel Alignment (CKA) & Geometry Overlap ($\text{PQK} \leftrightarrow \text{RBF}$) & \textbf{0.5741} & \texttt{[REAL DATA][MEASURED]} \\
+\textbf{Hypothesis Test} & Paired Bootstrap (2,000 resamples) & Point Delta: \textbf{-0.1021} $\cdot$ 95\% CI: \textbf{[-0.0383, +0.1821]} $\cdot$ $p = \textbf{0.246}$ & \texttt{[REAL DATA][VERIFIED]} \\
+& Centered Kernel Alignment (CKA) & Geometry Overlap ($\text{PQK} \leftrightarrow \text{RBF}$): \textbf{0.5741} (Strong Alignment) & \texttt{[REAL DATA][MEASURED]} \\
 \midrule
-\textbf{Latency Profile} & Classical Fast Path & Median / p95 Latency & \textbf{4.07 ms} / \textbf{4.97 ms} & \texttt{[REAL DATA][MEASURED]} \\
-& Escalated Classical Path & Median / p95 Latency & \textbf{4.89 ms} / \textbf{5.45 ms} & \texttt{[REAL DATA][MEASURED]} \\
-& Braket Simulator (Local) & Median / p95 Latency & \textbf{159.14 ms} / \textbf{217.18 ms} & \texttt{[REAL DATA][MEASURED]} \\
-& Cloud Physical QPU & Estimated Queue Time & \textbf{180 s -- 1,200 s} & \texttt{[MODELED][ASSUMED]} \\
+\textbf{Latency Profile} & Fast Path / Specialist Path & Median: \textbf{4.07 ms} (p95: 4.97 ms) / Specialist: \textbf{4.89 ms} (p95: 5.45 ms) & \texttt{[REAL DATA][MEASURED]} \\
+& Amazon Braket Simulator / QPU & Median: \textbf{159.14 ms} (p95: 217.18 ms) / QPU Queue: \textbf{180--1,200 s} & \texttt{[MEASURED] / [MODELED]} \\
 \midrule
-\textbf{Unit Economics} & Monolithic Classical & Compute Cost / 1M tx & \textbf{\$0.50} & \texttt{[MODELED][VERIFIED]} \\
-& Selective Classical Architecture & Compute Cost / 1M tx & \textbf{\$0.65} & \texttt{[MODELED][VERIFIED]} \\
-& Quantum-Assisted Architecture & Compute Cost / 1M tx & \textbf{\$353,000.50} & \texttt{[MODELED][VERIFIED]} \\
-& Realized Monetary Savings & Empirical Realized Savings & \textbf{\$0.00} & \texttt{[VERIFIED FACT]} \\
+\textbf{Unit Economics} & Monolithic / Selective Classical & Cost / 1M tx: \textbf{\$0.50} / Selective: \textbf{\$0.65} (1.3$\times$ ratio) & \texttt{[MODELED][VERIFIED]} \\
+& Quantum QPU / Realized Savings & Cost / 1M tx: \textbf{\$353,000.50} $\cdot$ Realized Savings: \textbf{\$0.00} & \texttt{[MODELED][VERIFIED]} \\
 \bottomrule
 \end{tabularx}
-\end{table}
-\vspace{-5pt}
+\end{center}
+\vspace{-6pt}
 
 \subsection{Scientific Interpretation of the Quantum Specialist Experiment}
 In the matched experiment ($N=200$ escalated transactions), the Projected Quantum Kernel (PQK) achieved a point-estimate PR-AUC of \textbf{0.5540}, outperforming the tuned classical RBF baseline (\textbf{0.6561}) by $\Delta = -0.1021$. However, rigorous paired bootstrap hypothesis testing (2,000 resamples) demonstrates that:
-\begin{itemize}[leftmargin=*,itemsep=0.4pt,topsep=1pt]
+\begin{itemize}[leftmargin=*,itemsep=0.2pt,topsep=0.5pt]
 \item The 95\% confidence interval for the performance delta spans \textbf{[-0.0383, +0.1821]}, which comfortably contains zero.
 \item The empirical $p$-value is \textbf{$p = 0.246$} (and $p = 0.492$ under Bonferroni correction), failing to reject the null hypothesis of equal performance at any conventional significance threshold ($\alpha = 0.05$).
 \item Centered Kernel Alignment (CKA) between PQK and the classical RBF kernel is \textbf{0.5741}, indicating that the quantum kernel geometrically emulates classical RBF feature representations rather than discovering an orthogonal feature geometry.
@@ -347,9 +331,7 @@ In the matched experiment ($N=200$ escalated transactions), the Projected Quantu
 \textbf{Scientific Verdict:} We report this unambiguously as \textbf{Outcome B: No Quantum Advantage Demonstrated}. Under current feature representations, quantum kernels do not demonstrate statistically significant superiority over tuned classical non-linear methods.
 
 \subsection{The Enterprise Decision Signal: Preventing Capital Misallocation}
-In corporate environments, negative results are often concealed with promotional rhetoric. In enterprise banking, an honest, rigorous negative result is a \textbf{high-value strategic decision asset}. 
-By conducting this evaluation, the enterprise avoids: (1) \textbf{Premature Capital Expenditure:} Cloud quantum processors would cost \textbf{\$353,000 per 1M transactions} without delivering measurable fraud reduction; (2) \textbf{Operational Risk Ingestion:} Placing high-latency quantum calls into real-time payment authorization would violate core banking SLAs; (3) \textbf{Regulatory Vulnerability:} Black-box quantum models fail adverse action reporting requirements.
-Simultaneously, the project delivers immediate, validated business value: the \textbf{selective classical architecture} operates at \textbf{\$0.65 per 1M transactions}, captures $42.81\%$ fraud density in its escalation tier ($12.44\times$ enrichment), and executes within a 4.89~ms operational latency window.
+In corporate environments, negative results are often concealed with promotional rhetoric. In enterprise banking, an honest, rigorous negative result is a \textbf{high-value strategic decision asset}. By conducting this evaluation, the enterprise avoids: (1) \textbf{Premature Capital Expenditure:} Cloud quantum processors would cost \textbf{\$353,000 per 1M transactions} without delivering measurable fraud reduction; (2) \textbf{Operational Risk Ingestion:} Placing high-latency quantum calls into real-time payment authorization would violate core banking SLAs; (3) \textbf{Regulatory Vulnerability:} Black-box quantum models fail adverse action reporting requirements. Simultaneously, the project delivers immediate, validated business value: the \textbf{selective classical architecture} operates at \textbf{\$0.65 per 1M transactions}, captures $42.81\%$ fraud density in its escalation tier ($12.44\times$ enrichment), and executes within a 4.89~ms operational latency window.
 
 \clearpage
 
@@ -361,45 +343,43 @@ Simultaneously, the project delivers immediate, validated business value: the \t
 
 \subsection{Phase 2 Experimental Validation Protocol}
 In Phase 2 of the Global Quantum + AI Challenge, our team will execute an experimentally falsifiable proof-of-concept (PoC) protocol across four phases using the Amazon Braket ecosystem:
-\begin{enumerate}[leftmargin=*,itemsep=0.4pt,topsep=1pt]
-\item \textbf{Enterprise Data Ingestion \& Feature Schema Adaptation (Weeks 1--4):} Adapting the pipeline to representative enterprise digital payment schemas (if provided by HSBC) or expanded temporal benchmarks. Validating feature pipelines against strict temporal boundaries.
-\item \textbf{Advanced Quantum Feature Map Engineering (Weeks 5--8):} Investigating non-linear trainable data-reuploading circuits, Hamiltonian-evolution kernels, and covariant quantum embeddings on Amazon Braket to test whether alternative quantum mappings can break the 0.5741 CKA alignment barrier with classical RBF.
+\begin{enumerate}[leftmargin=*,itemsep=0.1pt,topsep=0.5pt]
+\item \textbf{Enterprise Data Ingestion \& Schema Adaptation (Weeks 1--4):} Adapting the pipeline to representative enterprise schemas (if provided by HSBC) or expanded temporal benchmarks under strict temporal boundaries.
+\item \textbf{Advanced Quantum Feature Map Engineering (Weeks 5--8):} Investigating trainable data-reuploading circuits, Hamiltonian-evolution kernels, and covariant quantum embeddings on Amazon Braket to test if alternative mappings can break the 0.5741 CKA alignment barrier with classical RBF.
 \item \textbf{Statistical Gate Evaluation (Weeks 9--12):} Executing paired bootstrap hypothesis testing with expanded support sizes ($N=500, 1000$). Applying Bonferroni-Holm correction across all tested kernels.
-\item \textbf{Hardware Gate Execution (Weeks 13--16):} If and only if the statistical gate passes, testing error-mitigated circuit execution (Zero-Noise Extrapolation, readout mitigation) on AWS Braket QPUs (IonQ Aria / Rigetti Ankaa).
+\item \textbf{Hardware Gate Execution (Weeks 13--16):} If and only if the statistical gate passes, testing error-mitigated circuit execution (Zero-Noise Extrapolation, readout calibration) on AWS Braket QPUs (IonQ Aria / Rigetti Ankaa).
 \end{enumerate}
 
 \subsection{Falsifiable Deployment Decision Gate}
 To ensure objective engineering governance, Phase 2 deployment decisions will be governed by strict mathematical criteria:
-\begin{itemize}[leftmargin=*,itemsep=0.4pt,topsep=1pt]
-\item \textbf{Criterion for Quantum Specialist Deployment (Success):} (1) Paired bootstrap hypothesis test achieves $p < 0.01$ with 95\% CI lower bound $> +0.03$ PR-AUC over the strongest classical control; (2) End-to-end execution latency remains within agreed holding budgets; (3) CKA score $< 0.80$ confirming genuine geometric distinctiveness.
-\item \textbf{Criterion for Classical-Only Production Deployment (Failure / Pivot):} If quantum models fail to achieve statistically significant improvement ($p \ge 0.05$) or if cost/latency metrics violate operational constraints, \textbf{the quantum path is rejected}, and the selective classical LightGBM/XGBoost architecture is deployed to production.
+\begin{itemize}[leftmargin=*,itemsep=0.1pt,topsep=0.5pt]
+\item \textbf{Criterion for Quantum Specialist Deployment (Success):} (1) Paired bootstrap test achieves $p < 0.01$ with 95\% CI lower bound $> +0.03$ PR-AUC over classical control; (2) Latency remains within agreed budgets; (3) CKA score $< 0.80$ confirming genuine geometric distinctiveness.
+\item \textbf{Criterion for Classical-Only Production Deployment (Failure / Pivot):} If quantum models fail to achieve statistically significant improvement ($p \ge 0.05$) or if cost/latency metrics violate constraints, \textbf{the quantum path is rejected}, and the selective classical LightGBM architecture is deployed to production.
 \end{itemize}
 
 \section{Hybrid / Cross-Domain Integration}
 
 \subsection{The 99.5\% / 0.5\% Asymmetric Bifurcation Strategy}
 The central architectural innovation of this project is its asymmetric division of labor. Rather than forcing a homogeneous pipeline across all transactions, the architecture establishes two distinct operating regimes:
-\begin{itemize}[leftmargin=*,itemsep=0.4pt,topsep=1pt]
-\item \textbf{The Fast Classical Authorization Path (99.5\% of Volume):} The calibrated LightGBM model evaluates every transaction in $4.07$~ms median latency ($4.97$~ms p95). Out of $118,108$ test transactions, $117,517$ transactions possess posterior probabilities outside the ambiguous zone ($p < 0.38$ or $p > 0.62$). These transactions receive immediate automated clearance or decline without incurring external specialist overhead.
-\item \textbf{The Selective Specialist Path (0.5\% of Volume):} Exactly $591$ highly ambiguous transactions are escalated. This small cohort contains $253$ frauds ($42.81\%$ density). Here, computational expenditure is justified because resolving ambiguity directly prevents fraud losses while minimizing false customer declines.
+\begin{itemize}[leftmargin=*,itemsep=0.1pt,topsep=0.5pt]
+\item \textbf{Fast Classical Authorization Path (99.5\% of Volume):} The calibrated LightGBM model evaluates every transaction in $4.07$~ms median latency ($4.97$~ms p95). 117,517 test transactions possess confident posteriors ($p < 0.38$ or $p > 0.62$), receiving immediate automated clearance or decline without specialist overhead.
+\item \textbf{Selective Specialist Path (0.5\% of Volume):} Exactly $591$ highly ambiguous transactions are escalated, containing $253$ confirmed frauds ($42.81\%$ density). Computational expenditure is concentrated where resolving ambiguity directly prevents fraud losses.
 \end{itemize}
 
 \subsection{Latency Isolation and Resilient Fallback}
-In production payment gateways, system availability must exceed $99.999\%$ (the ``five nines'' standard). A critical vulnerability of end-to-end quantum proposals is that any quantum hardware failure, API timeout, or network glitch halts credit card authorizations. 
-In our architecture, the specialist path is \textbf{asynchronously decoupled} from the critical authorization stream:
-\begin{itemize}[leftmargin=*,itemsep=0.4pt,topsep=1pt]
-\item \textbf{Real-Time Mode ($<50$~ms):} Escalated transactions are routed to a secondary classical ensemble (Tuned RBF SVC or Escalated Classical LightGBM), which scores the transaction in \textbf{4.89~ms median latency}, fully within budget.
+In production payment gateways, system availability must exceed $99.999\%$. In our architecture, the specialist path is \textbf{asynchronously decoupled} from the critical authorization stream:
+\begin{itemize}[leftmargin=*,itemsep=0.1pt,topsep=0.5pt]
+\item \textbf{Real-Time Mode ($<50$~ms):} Escalated transactions are routed to a secondary classical ensemble (Tuned RBF SVC), scoring in \textbf{4.89~ms median latency}, fully within budget.
 \item \textbf{Near-Real-Time Specialist Queue ($150$--$300$~ms):} When sub-second manual hold queues are permitted, the local Amazon Braket quantum simulator executes in \textbf{159.14~ms median latency}.
-\item \textbf{Autonomous Circuit-Breaker Fallback:} If the specialist tier experiences a timeout or error, the system automatically falls back to the calibrated classical posterior score $p$. Under no circumstances does a specialist failure block payment authorization.
+\item \textbf{Autonomous Circuit-Breaker Fallback:} If the specialist tier experiences a timeout, the system automatically falls back to calibrated classical score $p$. Under no circumstances does specialist failure block payment authorization.
 \end{itemize}
 
 \subsection{Operational Auditability, SHAP Explainability \& Prediction Outputs}
-Financial regulatory compliance (e.g., Fair Lending regulations, GDPR Article 22, and Basel III risk management guidelines) mandates that automated fraud systems provide human-interpretable adverse action explanations. Monolithic quantum neural networks operate as black boxes whose Hilbert space projections cannot be directly explained to regulators or customers. 
-In our hybrid framework:
-\begin{enumerate}[leftmargin=*,itemsep=0.4pt,topsep=1pt]
-\item \textbf{TreeSHAP Feature Attribution:} The frontline classical model outputs exact feature attribution values via TreeSHAP in real time ($<1.2$~ms overhead). As detailed in the submitted feature attribution analysis (\texttt{feature\_attribution\_shap.png}), risk scoring is dominated by transaction velocity indicators (\texttt{C5}: mean $|SHAP|=0.558$, \texttt{C1}: $0.366$, \texttt{C13}: $0.329$) and temporal delta (\texttt{D1}: $0.223$), whereas \texttt{TransactionAmt} ($0.203$) acts as an secondary modulator, preventing demographic income discrimination.
-\item \textbf{Transaction-Level Output Pipeline:} Model predictions are exported in an audited schema (\texttt{prediction\_outputs.csv}, $118,108$ transactions) providing continuous risk probability $[0, 1]$, binary decision, true label, and the top 3 driver features for every transaction.
-\item \textbf{Mathematical Governance:} Specialist escalation is triggered exclusively by model posterior uncertainty $|p - 0.5| \le \delta$, while quantum representations are audited via Centered Kernel Alignment (CKA) tracking.
+Financial regulations mandate that automated fraud systems provide human-interpretable adverse action explanations. In our hybrid framework:
+\begin{enumerate}[leftmargin=*,itemsep=0.1pt,topsep=0.5pt]
+\item \textbf{TreeSHAP Feature Attribution:} The frontline model outputs exact feature attributions via TreeSHAP in real time ($<1.2$~ms overhead). Risk scoring is dominated by velocity indicators (\texttt{C5}: mean $|SHAP|=0.558$, \texttt{C1}: $0.366$, \texttt{C13}: $0.329$) and temporal delta (\texttt{D1}: $0.223$), while \texttt{TransactionAmt} ($0.203$) acts as a secondary modulator, preventing income discrimination.
+\item \textbf{Transaction-Level Output Pipeline:} Predictions are exported in an audited schema (\texttt{prediction\_outputs.csv}, $118,108$ transactions) providing continuous risk probability $[0, 1]$, binary decision, true label, and top 3 driver features for every transaction.
+\item \textbf{Mathematical Governance:} Specialist escalation is triggered exclusively by posterior uncertainty $|p - 0.5| \le \delta$, while quantum representations are audited via Centered Kernel Alignment (CKA) tracking.
 \end{enumerate}
 
 \clearpage
@@ -421,10 +401,10 @@ The project team comprises verified researchers and engineers from \textbf{Rasht
 The team has established an uncommonly rigorous standard of reproducibility and governance. The complete submission package comprises exactly 5 core deliverables mapping to all challenge requirements:
 \begin{enumerate}[leftmargin=*,itemsep=0.8pt,topsep=1pt]
 \item \textbf{Core Concept Proposal PDF} (\texttt{HSBC\_Phase1\_Concept\_Proposal.pdf}): 6-page comprehensive architectural, empirical, and enterprise specification.
-\item \textbf{Supplementary Technical Appendix PDF} (\texttt{HSBC\_Phase1\_Supplementary\_Appendix.pdf}): 3-page rigorous mathematical, telemetry, and environment ledger.
+\item \textbf{Supplementary Technical Appendix PDF} (\texttt{HSBC\_Phase1\_Supplementary\_Appendix.pdf}): 3-page rigorous mathematical, telemetry, and environment ledger (incorporating embedded TreeSHAP plot).
 \item \textbf{Amazon Braket Quantum Pipeline Script} (\texttt{braket\_quantum\_kernel\_pipeline.py}): Fully executable, self-contained Python script utilizing Amazon Braket SDK (`braket.circuits.Circuit', `LocalSimulator') for 8-qubit PQK and CKA evaluation.
 \item \textbf{Full Test Stream Predictions CSV} (\texttt{prediction\_outputs.csv}): 118,108 out-of-sample forward transactions with fraud probabilities, binary predictions, true labels, and top 3 SHAP attribution features.
-\item \textbf{SHAP Feature Attribution Summary Plot} (\texttt{feature\_attribution\_shap.png}): High-resolution (300 DPI) TreeSHAP feature importance visualization demonstrating regulatory compliance.
+\item \textbf{Escalated Cohort Feature Array} (\texttt{escalated\_cohort.npz}): Verified, provenance-tracked 200-sample boundary cohort supporting deterministic reproduction of all quantum and classical specialist experiments.
 \end{enumerate}
 
 \subsection{Why This Team Can Execute Phase 2}
@@ -433,7 +413,7 @@ The team has already implemented, debugged, and audited the complete end-to-end 
 \vspace{6pt}
 \noindent\rule{\linewidth}{0.4pt}
 \vspace{2pt}
-{\footnotesize\color{darkslate}
+{\color{darkslate}
 \textbf{Submission Metadata:} HSBC Global Quantum + AI Challenge 2026 $\cdot$ Phase 1 Concept Proposal $\cdot$ Compiled via pdf\TeX\ $\cdot$ Verified 100\% Firewall Clean $\cdot$ Strictly 0 external images embedded $\cdot$ Public Repository: \href{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}{\texttt{github.com/atharveeee-netizen/hsbc-quantum-fraud}}.
 }
 
@@ -443,12 +423,13 @@ The team has already implemented, debugged, and audited the complete end-to-end 
     with open("proposal/HSBC_Phase1_Concept_Proposal.tex", "w", encoding="utf-8") as f:
         f.write(core_tex)
 
-    # -------------------------------------------------------------
-    # 2. SUPPLEMENTARY APPENDIX LATEX (EXACTLY 3 PAGES)
-    # -------------------------------------------------------------
+    # -------------------------------------------------------------------------
+    # 2. SUPPLEMENTARY APPENDIX LATEX (EXACTLY 3 PAGES, MINIMUM 10pt FONT)
+    # -------------------------------------------------------------------------
     appendix_tex = r"""\documentclass[10pt,a4paper]{article}
-\usepackage[top=1.25cm,bottom=1.35cm,left=1.35cm,right=1.35cm]{geometry}
+\usepackage[top=1.05cm,bottom=1.10cm,left=1.15cm,right=1.15cm]{geometry}
 \usepackage{mathptmx}
+\usepackage{courier}
 \usepackage{xcolor}
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -474,25 +455,39 @@ The team has already implemented, debugged, and audited the complete end-to-end 
 \definecolor{amberdark}{RGB}{180,83,9}
 \definecolor{accentblue}{RGB}{14,116,144}
 
+% Strict Minimum 10pt Typography
+\renewcommand{\normalsize}{\fontsize{10.25pt}{12.25pt}\selectfont}
+\normalsize
+\renewcommand{\tiny}{\normalsize}
+\renewcommand{\scriptsize}{\normalsize}
+\renewcommand{\footnotesize}{\normalsize}
+\renewcommand{\small}{\normalsize}
+\DeclareMathSizes{10.25}{10.25}{10.25}{10.25}
+
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{1.8pt plus 0.4pt minus 0.4pt}
+\setlength{\parskip}{1.6pt plus 0.3pt minus 0.3pt}
 
-\titleformat{\section}{\color{hsbcnavy}\normalfont\large\bfseries}{\thesection}{0.5em}{}[\color{hsbcnavy}\titlerule]
-\titleformat{\subsection}{\color{hsbcnavy}\normalfont\normalsize\bfseries}{\thesubsection}{0.4em}{}
+\titleformat{\section}{\color{hsbcnavy}\fontsize{12pt}{14pt}\bfseries}{\thesection}{0.5em}{}[\color{hsbcnavy}\titlerule]
+\titleformat{\subsection}{\color{hsbcnavy}\fontsize{10.5pt}{12.5pt}\bfseries}{\thesubsection}{0.4em}{}
 
-\titlespacing*{\section}{0pt}{3.5pt plus 0.8pt minus 0.8pt}{1.4pt plus 0.3pt minus 0.3pt}
-\titlespacing*{\subsection}{0pt}{2.6pt plus 0.6pt minus 0.6pt}{1.1pt plus 0.3pt minus 0.3pt}
+\titlespacing*{\section}{0pt}{2.5pt plus 0.5pt minus 0.5pt}{1.0pt plus 0.2pt minus 0.2pt}
+\titlespacing*{\subsection}{0pt}{2.0pt plus 0.4pt minus 0.4pt}{0.8pt plus 0.2pt minus 0.2pt}
 
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\fancyhead[L]{\small\color{darkslate}\textbf{HSBC / 2026 Global Quantum + AI Challenge} $\cdot$ Supplementary Material}
-\fancyhead[R]{\small\color{darkslate}Appendices A, B, and C}
-\fancyfoot[L]{\footnotesize\color{darkslate}\texttt{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}}
-\fancyfoot[R]{\small\color{darkslate}\textbf{Appendix Page \thepage\ of 3}}
+\fancyhead[L]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\textbf{HSBC / 2026 Global Quantum + AI Challenge} $\cdot$ Supplementary Material}
+\fancyhead[R]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}Appendices A, B, and C}
+\fancyfoot[L]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\texttt{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}}
+\fancyfoot[R]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\textbf{Appendix Page \thepage\ of 3}}
 
 \begin{document}
+\fontsize{10.25pt}{12.25pt}\selectfont
+\setlength{\abovedisplayskip}{3.5pt}
+\setlength{\belowdisplayskip}{3.5pt}
+\setlength{\abovedisplayshortskip}{1.5pt}
+\setlength{\belowdisplayshortskip}{1.5pt}
 
 % =============================================================================
 % APPENDIX PAGE 1: APPENDIX A - MATHEMATICAL FORMULATIONS & QUANTUM CIRCUIT
@@ -501,20 +496,20 @@ The team has already implemented, debugged, and audited the complete end-to-end 
 \begin{center}
 {\LARGE\textbf{\color{hsbcnavy}Supplementary Material: Appendices A, B, and C}}\\[2pt]
 {\large\color{darkslate}\textbf{Technical Foundations, Empirical Telemetry, and Reproducibility Specifications}}\\[2.5pt]
-{\small\color{darkslate}\textbf{Authors:} Akshit Agarwal \& Atharve Dahima $\cdot$ Rashtriya Raksha University $\cdot$ Track: Quantum-Enhanced Fraud Detection}
+{\color{darkslate}\textbf{Authors:} Akshit Agarwal \& Atharve Dahima $\cdot$ Rashtriya Raksha University $\cdot$ Track: Quantum-Enhanced Fraud Detection}
 \end{center}
-\vspace{-4pt}
+\vspace{-6pt}
 
 \section*{Appendix A: Technical Architecture \& Mathematical Formulations}
 \addcontentsline{toc}{section}{Appendix A: Technical Architecture \& Mathematical Formulations}
 
 \subsection*{A.1 Mathematical Formulation of Decision-Uncertainty Routing}
-In credit card fraud detection, conventional routing policies stratify transactions by currency volume (Transaction Amount), assuming high-value transactions represent the dominant fraud risk. However, organized fraud rings routinely exploit low-value authorization testing ($<\$5.00$) to probe compromised cards prior to executing large withdrawals. 
+In credit card fraud detection, conventional routing policies stratify transactions by currency volume (Transaction Amount), assuming high-value transactions represent dominant risk. However, organized fraud rings routinely exploit low-value authorization testing ($<\$5.00$) to probe compromised cards prior to executing large withdrawals. 
 Our uncertainty routing policy formalizes decision ambiguity directly from the calibrated posterior probability $p(x) = \hat{P}(Y=1 \mid x)$:
 \begin{equation}
 U(x) = 1 - 2 \cdot |p(x) - 0.5| \in [0, 1]
 \end{equation}
-A transaction with $p(x) = 0.50$ exhibits maximal epistemic ambiguity ($U(x) = 1.0$), whereas confident classifications ($p \rightarrow 0$ or $p \rightarrow 1$) yield $U(x) \rightarrow 0$. Given an escalation compute budget $B \in (0, 1)$ ($B = 0.005$ for a 0.5\% rate), the routing threshold $\tau_B$ is defined empirically over the calibration distribution $D_{\text{cal}}$:
+A transaction with $p(x) = 0.50$ exhibits maximal epistemic ambiguity ($U(x) = 1.0$), whereas confident classifications yield $U(x) \rightarrow 0$. Given escalation compute budget $B \in (0, 1)$ ($B = 0.005$ for a 0.5\% rate), routing threshold $\tau_B$ is defined empirically over calibration distribution $D_{\text{cal}}$:
 \begin{equation}
 \tau_B = \text{Quantile}_{1 - B} \left( \{ U(x_i) \}_{x_i \in D_{\text{cal}}} \right), \quad \text{Routing Action } R(x) = 
 \begin{cases}
@@ -522,86 +517,85 @@ A transaction with $p(x) = 0.50$ exhibits maximal epistemic ambiguity ($U(x) = 1
 \text{Fast Classical Authorization}, & \text{if } U(x) < \tau_B
 \end{cases}
 \end{equation}
-Empirical ablation on $118,108$ test transactions demonstrates that setting $B = 0.5\%$ ($591$ transactions) captures $253$ confirmed frauds ($42.81\%$ density), whereas routing the top $0.5\%$ by Transaction Amount captures only $9$ frauds ($1.52\%$ density). Uncertainty routing achieves \textbf{28.1$\times$ higher fraud concentration}.
+Empirical ablation on $118,108$ test transactions demonstrates that setting $B = 0.5\%$ ($591$ txs) captures $253$ confirmed frauds ($42.81\%$ density), whereas routing by Amount captures only $9$ frauds ($1.52\%$). Uncertainty routing achieves \textbf{28.1$\times$ higher fraud concentration}.
 
 \subsection*{A.2 Parameterized 8-Qubit Quantum Circuit Architecture via Amazon Braket}
-Figure~\ref{fig:circuit} illustrates the parameterized quantum circuit implemented via the Amazon Braket SDK and PennyLane for mapping escalated 8-dimensional feature vectors into Hilbert space at circuit depth $d=2$.
-\vspace{-3pt}
+Figure~\ref{fig:circuit} illustrates the parameterized quantum circuit implemented via Amazon Braket SDK and PennyLane for mapping escalated 8-dimensional feature vectors into Hilbert space at circuit depth $d=2$.
+\vspace{-4pt}
 \begin{figure}[h!]
 \centering
 \begin{tikzpicture}[
-  scale=0.70, transform shape,
   wire/.style={thick, draw=darkslate},
-  gate/.style={rectangle, draw=accentblue, fill=accentblue!15, thick, inner sep=1.8pt, font=\scriptsize\bfseries},
+  gate/.style={rectangle, draw=accentblue, fill=accentblue!15, thick, inner sep=1.8pt, font=\bfseries},
   cnotctrl/.style={circle, fill=darkslate, inner sep=1.3pt},
   cnottgt/.style={circle, draw=darkslate, thick, inner sep=1.6pt},
-  meas/.style={rectangle, draw=darkslate, fill=lightbg, thick, inner sep=1.8pt, font=\scriptsize\bfseries}
+  meas/.style={rectangle, draw=darkslate, fill=lightbg, thick, inner sep=1.8pt, font=\bfseries}
 ]
 
 % 8 Qubit wires
 \foreach \i in {0,...,7} {
-  \node[font=\footnotesize\bfseries] at (-0.7, -\i*0.38) {$q_\i$};
-  \node[font=\footnotesize] at (-0.3, -\i*0.38) {$|0\rangle$};
-  \draw[wire] (0, -\i*0.38) -- (9.0, -\i*0.38);
+  \node[font=\bfseries] at (-0.7, -\i*0.28) {$q_\i$};
+  \node at (-0.3, -\i*0.28) {$|0\rangle$};
+  \draw[wire] (0, -\i*0.28) -- (12.0, -\i*0.28);
 }
 
 % RY layer 1
 \foreach \i in {0,...,7} {
-  \node[gate] at (1.0, -\i*0.38) {$R_Y(\theta_\i)$};
+  \node[gate] at (1.2, -\i*0.28) {$R_Y(\theta_\i)$};
 }
 
 % CNOT circular entanglement
 \foreach \i in {0,...,6} {
   \pgfmathtruncatemacro{\nextq}{\i+1}
-  \node[cnotctrl] at (1.9 + \i*0.4, -\i*0.38) {};
-  \node[cnottgt] at (1.9 + \i*0.4, -\nextq*0.38) {+};
-  \draw[wire] (1.9 + \i*0.4, -\i*0.38) -- (1.9 + \i*0.4, -\nextq*0.38);
+  \node[cnotctrl] at (2.4 + \i*0.55, -\i*0.28) {};
+  \node[cnottgt] at (2.4 + \i*0.55, -\nextq*0.28) {+};
+  \draw[wire] (2.4 + \i*0.55, -\i*0.28) -- (2.4 + \i*0.55, -\nextq*0.28);
 }
 % Circular link q7 -> q0
-\node[cnotctrl] at (4.9, -7*0.38) {};
-\node[cnottgt] at (4.9, 0) {+};
-\draw[wire] (4.9, 0) -- (4.9, -7*0.38);
+\node[cnotctrl] at (6.6, -7*0.28) {};
+\node[cnottgt] at (6.6, 0) {+};
+\draw[wire] (6.6, 0) -- (6.6, -7*0.28);
 
 % RY layer 2
 \foreach \i in {0,...,7} {
-  \node[gate] at (5.9, -\i*0.38) {$R_Y(\theta_{\i+8})$};
+  \node[gate] at (7.8, -\i*0.28) {$R_Y(\theta_{\i+8})$};
 }
 
 % Measurement / Reduced Density Matrix Projection
 \foreach \i in {0,...,7} {
-  \node[meas] at (7.4, -\i*0.38) {$\mathrm{Tr}_{\bar{q}_\i}$};
-  \node[font=\scriptsize\bfseries\color{accentblue}] at (8.5, -\i*0.38) {$\rho_\i(x)$};
+  \node[meas] at (9.6, -\i*0.28) {$\mathrm{Tr}_{\bar{q}_\i}$};
+  \node[font=\bfseries\color{accentblue}] at (11.0, -\i*0.28) {$\rho_\i(x)$};
 }
 
 % Layer brackets
-\draw[thick, decorate, decoration={brace, amplitude=3pt}] (0.5, 0.25) -- (5.2, 0.25) 
-  node[midway, above=3pt, font=\scriptsize\bfseries\color{hsbcnavy}] {Layer 1: Unitary Embedding $U_1(x)$};
-\draw[thick, decorate, decoration={brace, amplitude=3pt}] (5.4, 0.25) -- (6.5, 0.25) 
-  node[midway, above=3pt, font=\scriptsize\bfseries\color{hsbcnavy}] {Layer 2 ($d=2$)};
-\draw[thick, decorate, decoration={brace, amplitude=3pt}] (6.9, 0.25) -- (9.0, 0.25) 
-  node[midway, above=3pt, font=\scriptsize\bfseries\color{accentblue}] {Braket 1-Qubit Projections};
+\draw[thick, decorate, decoration={brace, amplitude=3pt}] (0.6, 0.25) -- (7.0, 0.25) 
+  node[midway, above=3pt, font=\bfseries\color{hsbcnavy}] {Layer 1: Unitary Embedding $U_1(x)$};
+\draw[thick, decorate, decoration={brace, amplitude=3pt}] (7.2, 0.25) -- (8.5, 0.25) 
+  node[midway, above=3pt, font=\bfseries\color{hsbcnavy}] {Layer 2 ($d=2$)};
+\draw[thick, decorate, decoration={brace, amplitude=3pt}] (9.0, 0.25) -- (11.6, 0.25) 
+  node[midway, above=3pt, font=\bfseries\color{accentblue}] {Braket 1-Qubit Projections};
 
 \end{tikzpicture}
-\vspace{-4pt}
-\caption{\textbf{8-Qubit Amazon Braket Quantum Circuit and Projection Schematic (Typeset via TikZ).} Scaled PCA features parametrize single-qubit $R_Y$ gates coupled via circular CNOT entanglement ladder ($d=2$). The state is projected onto 1-qubit reduced density operators $\rho_i(x)$.}
+\vspace{-5pt}
+\caption{\textbf{8-Qubit Amazon Braket Quantum Circuit and Projection Schematic.} Scaled PCA features parametrize single-qubit $R_Y$ gates coupled via circular CNOT entanglement ladder ($d=2$). The state is projected onto 1-qubit reduced density operators $\rho_i(x)$.}
 \label{fig:circuit}
 \end{figure}
-\vspace{-6pt}
+\vspace{-8pt}
 
 \subsection*{A.3 Quantum Hilbert Space Embedding, Error Mitigation \& Noise Robustness}
 We evaluate two mathematical kernel formulations:
-\begin{enumerate}[leftmargin=*,itemsep=0.4pt,topsep=1pt]
+\begin{enumerate}[leftmargin=*,itemsep=0.3pt,topsep=0.5pt]
 \item \textbf{Quantum State Fidelity Kernel:} Evaluates transition amplitude $K_{\text{Fid}}(x, x') = |\langle \psi(x) \mid \psi(x') \rangle|^2 = \mathrm{Tr}(|\psi(x)\rangle\langle\psi(x)| \cdot |\psi(x')\rangle\langle\psi(x')|)$. As proven by Thanasilp et al. (2022), as qubit count $n$ and depth $d$ grow, global state fidelity concentrates exponentially: $\mathrm{Var}_{x, x'}[K_{\text{Fid}}(x, x')] \le \mathcal{O}(2^{-n})$, inducing barren plateaus where all kernel entries approach zero.
-\item \textbf{Projected Quantum Kernel (PQK):} Following Huang et al. (2021), we project the $2^n$-dimensional state onto 1-qubit reduced density operators $\rho_k(x) = \mathrm{Tr}_{\bar{k}}(|\psi(x)\rangle\langle\psi(x)|) = \frac{1}{2} (I + \langle X_k \rangle X + \langle Y_k \rangle Y + \langle Z_k \rangle Z) \in \mathbb{C}^{2 \times 2}$. The PQK evaluates a Gaussian distance over the extracted 1-particle reduced states:
+\item \textbf{Projected Quantum Kernel (PQK):} Following Huang et al. (2021), we project the state onto 1-qubit reduced density operators $\rho_k(x) = \mathrm{Tr}_{\bar{k}}(|\psi(x)\rangle\langle\psi(x)|) = \frac{1}{2} (I + \langle X_k \rangle X + \langle Y_k \rangle Y + \langle Z_k \rangle Z) \in \mathbb{C}^{2 \times 2}$. The PQK evaluates a Gaussian distance over the extracted 1-particle reduced states:
 \begin{equation}
-K_{\text{PQK}}(x, x') = \exp\left( -\gamma \sum_{k=1}^n \|\rho_k(x) - \rho_k(x')\|_F^2 \right) = \exp\left( -\frac{\gamma}{2} \sum_{k=1}^n \sum_{P \in \{X, Y, Z\}} (\langle P_k \rangle_x - \langle P_k \rangle_{x'})^2 \right)
+K_{\text{PQK}}(x, x') = \exp\left( -\frac{\gamma}{2} \sum_{k=1}^n \sum_{P \in \{X, Y, Z\}} (\langle P_k \rangle_x - \langle P_k \rangle_{x'})^2 \right)
 \end{equation}
 PQK provably avoids exponential concentration while encoding non-linear multi-qubit correlations into local observable differences.
 \item \textbf{Noise Robustness and Error Mitigation Strategy:} Under simulated phase-damping and depolarizing channels, PQK PR-AUC degrades by only $-1.32\%$ at $1\%$ noise and $-6.49\%$ at $5\%$ noise. In Phase 2, physical deployment will incorporate Zero-Noise Extrapolation (ZNE) via Richardson polynomial extrapolation across gate scale factors $\lambda \in \{1, 3, 5\}$ alongside readout measurement calibration matrices.
 \end{enumerate}
 
 \subsection*{A.4 Centered Kernel Alignment (CKA) Formulation}
-To determine whether the quantum kernel discovers an orthogonal geometric representation or merely emulates a classical function space, we compute Centered Kernel Alignment (Cortes et al., 2012):
+To determine whether the quantum kernel discovers an orthogonal geometric representation, we compute Centered Kernel Alignment (Cortes et al., 2012):
 \begin{equation}
 \mathrm{CKA}(K_1, K_2) = \frac{\langle K_1^c, K_2^c \rangle_F}{\|K_1^c\|_F \|K_2^c\|_F} = \frac{\mathrm{Tr}(K_1^c K_2^c)}{\sqrt{\mathrm{Tr}((K_1^c)^2) \mathrm{Tr}((K_2^c)^2)}}
 \end{equation}
@@ -622,7 +616,6 @@ Table~\ref{tab:lat_bench} details the empirically measured latency distributions
 \vspace{-2pt}
 \begin{table}[h!]
 \centering
-\scriptsize
 \renewcommand{\arraystretch}{0.76}
 \caption{\textbf{System Latency Telemetry Across 1,000 Repeated Evaluations.}}
 \label{tab:lat_bench}
@@ -655,7 +648,6 @@ Table~\ref{tab:econ_bench} itemizes compute expenditure models reflecting AWS c6
 \vspace{-2pt}
 \begin{table}[h!]
 \centering
-\scriptsize
 \renewcommand{\arraystretch}{0.76}
 \caption{\textbf{Unit Economics and Cost Projections per 1 Million Transactions.}}
 \label{tab:econ_bench}
@@ -683,7 +675,6 @@ Table~\ref{tab:ablation} provides a systematic ablation study comparing Uncertai
 \vspace{-2pt}
 \begin{table}[h!]
 \centering
-\scriptsize
 \renewcommand{\arraystretch}{0.76}
 \caption{\textbf{Routing Policy Ablation Across Multiple Escalation Budgets on Test Partition.}}
 \label{tab:ablation}
@@ -707,7 +698,6 @@ Table~\ref{tab:threshold_audit} details the operational trade-offs across decisi
 \vspace{-2pt}
 \begin{table}[h!]
 \centering
-\scriptsize
 \renewcommand{\arraystretch}{0.74}
 \caption{\textbf{Decision Threshold Performance and Confusion Matrix Ledger (Frontline LightGBM).}}
 \label{tab:threshold_audit}
@@ -742,7 +732,6 @@ Table~\ref{tab:env} enumerates the frozen package versions tested under Python 3
 \vspace{-2pt}
 \begin{table}[h!]
 \centering
-\scriptsize
 \renewcommand{\arraystretch}{0.68}
 \caption{\textbf{Reproducible Software Environment Specifications (Python 3.10.11).}}
 \label{tab:env}
@@ -764,17 +753,17 @@ Table~\ref{tab:env} enumerates the frozen package versions tested under Python 3
 \bottomrule
 \end{tabularx}
 \end{table}
-\vspace{-6pt}
+\vspace{-8pt}
 
 \subsection*{C.2 TreeSHAP Local \& Global Explainability Artifact}
 Figure~\ref{fig:shap} illustrates the TreeSHAP summary attribution across the out-of-sample forward test partition ($N=118,108$). Feature attributions exhibit genuine row-level variance without constant-attribution artifacts, satisfying regulatory explainability standards.
 
 \begin{center}
-\vspace{-3pt}
-\includegraphics[width=0.68\linewidth,height=3.4cm,keepaspectratio]{feature_attribution_shap.png}\\[1pt]
+\vspace{-6pt}
+\includegraphics[width=0.68\linewidth,height=2.3cm,keepaspectratio]{feature_attribution_shap.png}\\[1pt]
 \captionof{figure}{\textbf{TreeSHAP Global Feature Attribution Summary on IEEE-CIS Benchmark ($N=118,108$).}}
 \label{fig:shap}
-\vspace{-4pt}
+\vspace{-6pt}
 \end{center}
 
 \subsection*{C.3 Cryptographic Provenance \& Verification of the 5 Submission Deliverables}
@@ -787,8 +776,7 @@ To reproduce the experimental findings and verify the 5 submission deliverables 
 \end{enumerate}
 
 \subsection*{C.4 Academic References \& Foundational Literature}
-\begin{enumerate}[leftmargin=*,itemsep=0.1pt,topsep=0.5pt]
-\tiny
+\begin{enumerate}[leftmargin=*,itemsep=0pt,topsep=0pt]
 \item Chen, T., \& Guestrin, C. (2016). XGBoost: A scalable tree boosting system. \textit{ACM SIGKDD}, 785--794.
 \item Cortes, C., Mohri, M., \& Rostamizadeh, A. (2012). Algorithms for learning kernels based on centered alignment. \textit{JMLR}, 13, 795--828.
 \item Cortes, C., \& Vapnik, V. (1995). Support-vector networks. \textit{Machine Learning}, 20(3), 273--297.
@@ -808,7 +796,7 @@ To reproduce the experimental findings and verify the 5 submission deliverables 
 \vspace{1.5pt}
 \noindent\rule{\linewidth}{0.4pt}
 \vspace{1pt}
-{\tiny\color{darkslate}
+{\color{darkslate}
 \textbf{Document Metadata:} Supplementary Material $\cdot$ Phase 1 Concept Proposal $\cdot$ HSBC / 2026 Global Quantum + AI Challenge $\cdot$ Typeset in pdf\TeX.\\
 \textbf{Public Repository:} \href{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}{\texttt{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}} $\cdot$ Phase 1 Academic Submission.
 }
@@ -821,9 +809,9 @@ To reproduce the experimental findings and verify the 5 submission deliverables 
 
     print("LaTeX source files written successfully.")
 
-    # -------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # 3. COMPILE LATEX VIA PDFLATEX
-    # -------------------------------------------------------------
+    # -------------------------------------------------------------------------
     print("Compiling Core Proposal with pdflatex...")
     cmd1 = ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", "HSBC_Phase1_Concept_Proposal.tex"]
     res1 = subprocess.run(cmd1, cwd="proposal", capture_output=True, text=True)
@@ -840,14 +828,27 @@ To reproduce the experimental findings and verify the 5 submission deliverables 
         raise RuntimeError("Supplementary Appendix compilation failed")
     subprocess.run(cmd2, cwd="proposal", capture_output=True, text=True)
 
-    # -------------------------------------------------------------
-    # 4. INSPECT PAGE COUNTS AND RENDER HIGH-RES PNGS
-    # -------------------------------------------------------------
+    # -------------------------------------------------------------------------
+    # 4. INSPECT PAGE COUNTS, AUDIT FONT SIZES, AND RENDER PNGS
+    # -------------------------------------------------------------------------
     core_pdf = "proposal/HSBC_Phase1_Concept_Proposal.pdf"
     doc_core = fitz.open(core_pdf)
     core_pages = len(doc_core)
     core_size_kb = os.path.getsize(core_pdf) / 1024
     print(f"Core Proposal PDF: {core_pages} pages, {core_size_kb:.1f} KB")
+
+    print("Auditing Core Proposal Font Sizes...")
+    for i, page in enumerate(doc_core):
+        page_sizes = set()
+        for b in page.get_text("dict")["blocks"]:
+            if "lines" in b:
+                for l in b["lines"]:
+                    for s in l["spans"]:
+                        txt = s["text"].strip()
+                        if txt:
+                            page_sizes.add(round(s["size"], 2))
+        print(f"  Core Page {i+1} font sizes: {sorted(list(page_sizes))}")
+        assert min(page_sizes) >= 10.0, f"Core Page {i+1} contains font < 10pt: {min(page_sizes)}"
 
     os.makedirs("docs/proposal/renders_latex", exist_ok=True)
     for i, page in enumerate(doc_core):
@@ -860,6 +861,19 @@ To reproduce the experimental findings and verify the 5 submission deliverables 
     app_pages = len(doc_app)
     app_size_kb = os.path.getsize(app_pdf) / 1024
     print(f"Supplementary Appendix PDF: {app_pages} pages, {app_size_kb:.1f} KB")
+
+    print("Auditing Supplementary Appendix Font Sizes...")
+    for i, page in enumerate(doc_app):
+        page_sizes = set()
+        for b in page.get_text("dict")["blocks"]:
+            if "lines" in b:
+                for l in b["lines"]:
+                    for s in l["spans"]:
+                        txt = s["text"].strip()
+                        if txt:
+                            page_sizes.add(round(s["size"], 2))
+        print(f"  Appendix Page {i+1} font sizes: {sorted(list(page_sizes))}")
+        assert min(page_sizes) >= 10.0, f"Appendix Page {i+1} contains font < 10pt: {min(page_sizes)}"
 
     for i, page in enumerate(doc_app):
         pix = page.get_pixmap(dpi=150)
@@ -894,7 +908,7 @@ To reproduce the experimental findings and verify the 5 submission deliverables 
     assert core_pages == 6, f"Expected 6 pages for Core Proposal, got {core_pages}"
     assert app_pages == 3, f"Expected 3 pages for Supplementary Appendix, got {app_pages}"
     assert combined_pages == 9, f"Expected 9 pages for Combined Submission Package, got {combined_pages}"
-    print("STRICT GUIDELINE COMPLIANCE VERIFIED: Core=6 pages, Appendix=3 pages, Combined=9 pages, 0 external images!")
+    print("STRICT GUIDELINE COMPLIANCE VERIFIED: Core=6 pages, Appendix=3 pages, All Fonts >= 10.0pt!")
     return core_pages, app_pages, combined_pages
 
 if __name__ == "__main__":

@@ -1,6 +1,7 @@
 \documentclass[10pt,a4paper]{article}
-\usepackage[top=1.25cm,bottom=1.35cm,left=1.35cm,right=1.35cm]{geometry}
+\usepackage[top=1.05cm,bottom=1.10cm,left=1.15cm,right=1.15cm]{geometry}
 \usepackage{mathptmx}
+\usepackage{courier}
 \usepackage{xcolor}
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -26,25 +27,39 @@
 \definecolor{amberdark}{RGB}{180,83,9}
 \definecolor{accentblue}{RGB}{14,116,144}
 
+% Strict Minimum 10pt Typography
+\renewcommand{\normalsize}{\fontsize{10.25pt}{12.25pt}\selectfont}
+\normalsize
+\renewcommand{\tiny}{\normalsize}
+\renewcommand{\scriptsize}{\normalsize}
+\renewcommand{\footnotesize}{\normalsize}
+\renewcommand{\small}{\normalsize}
+\DeclareMathSizes{10.25}{10.25}{10.25}{10.25}
+
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{1.8pt plus 0.4pt minus 0.4pt}
+\setlength{\parskip}{1.6pt plus 0.3pt minus 0.3pt}
 
-\titleformat{\section}{\color{hsbcnavy}\normalfont\large\bfseries}{\thesection}{0.5em}{}[\color{hsbcnavy}\titlerule]
-\titleformat{\subsection}{\color{hsbcnavy}\normalfont\normalsize\bfseries}{\thesubsection}{0.4em}{}
+\titleformat{\section}{\color{hsbcnavy}\fontsize{12pt}{14pt}\bfseries}{\thesection}{0.5em}{}[\color{hsbcnavy}\titlerule]
+\titleformat{\subsection}{\color{hsbcnavy}\fontsize{10.5pt}{12.5pt}\bfseries}{\thesubsection}{0.4em}{}
 
-\titlespacing*{\section}{0pt}{3.5pt plus 0.8pt minus 0.8pt}{1.4pt plus 0.3pt minus 0.3pt}
-\titlespacing*{\subsection}{0pt}{2.6pt plus 0.6pt minus 0.6pt}{1.1pt plus 0.3pt minus 0.3pt}
+\titlespacing*{\section}{0pt}{2.5pt plus 0.5pt minus 0.5pt}{1.0pt plus 0.2pt minus 0.2pt}
+\titlespacing*{\subsection}{0pt}{2.0pt plus 0.4pt minus 0.4pt}{0.8pt plus 0.2pt minus 0.2pt}
 
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\fancyhead[L]{\small\color{darkslate}\textbf{HSBC / 2026 Global Quantum + AI Challenge} $\cdot$ Supplementary Material}
-\fancyhead[R]{\small\color{darkslate}Appendices A, B, and C}
-\fancyfoot[L]{\footnotesize\color{darkslate}\texttt{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}}
-\fancyfoot[R]{\small\color{darkslate}\textbf{Appendix Page \thepage\ of 3}}
+\fancyhead[L]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\textbf{HSBC / 2026 Global Quantum + AI Challenge} $\cdot$ Supplementary Material}
+\fancyhead[R]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}Appendices A, B, and C}
+\fancyfoot[L]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\texttt{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}}
+\fancyfoot[R]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\textbf{Appendix Page \thepage\ of 3}}
 
 \begin{document}
+\fontsize{10.25pt}{12.25pt}\selectfont
+\setlength{\abovedisplayskip}{3.5pt}
+\setlength{\belowdisplayskip}{3.5pt}
+\setlength{\abovedisplayshortskip}{1.5pt}
+\setlength{\belowdisplayshortskip}{1.5pt}
 
 % =============================================================================
 % APPENDIX PAGE 1: APPENDIX A - MATHEMATICAL FORMULATIONS & QUANTUM CIRCUIT
@@ -53,20 +68,20 @@
 \begin{center}
 {\LARGE\textbf{\color{hsbcnavy}Supplementary Material: Appendices A, B, and C}}\\[2pt]
 {\large\color{darkslate}\textbf{Technical Foundations, Empirical Telemetry, and Reproducibility Specifications}}\\[2.5pt]
-{\small\color{darkslate}\textbf{Authors:} Akshit Agarwal \& Atharve Dahima $\cdot$ Rashtriya Raksha University $\cdot$ Track: Quantum-Enhanced Fraud Detection}
+{\color{darkslate}\textbf{Authors:} Akshit Agarwal \& Atharve Dahima $\cdot$ Rashtriya Raksha University $\cdot$ Track: Quantum-Enhanced Fraud Detection}
 \end{center}
-\vspace{-4pt}
+\vspace{-6pt}
 
 \section*{Appendix A: Technical Architecture \& Mathematical Formulations}
 \addcontentsline{toc}{section}{Appendix A: Technical Architecture \& Mathematical Formulations}
 
 \subsection*{A.1 Mathematical Formulation of Decision-Uncertainty Routing}
-In credit card fraud detection, conventional routing policies stratify transactions by currency volume (Transaction Amount), assuming high-value transactions represent the dominant fraud risk. However, organized fraud rings routinely exploit low-value authorization testing ($<\$5.00$) to probe compromised cards prior to executing large withdrawals. 
+In credit card fraud detection, conventional routing policies stratify transactions by currency volume (Transaction Amount), assuming high-value transactions represent dominant risk. However, organized fraud rings routinely exploit low-value authorization testing ($<\$5.00$) to probe compromised cards prior to executing large withdrawals. 
 Our uncertainty routing policy formalizes decision ambiguity directly from the calibrated posterior probability $p(x) = \hat{P}(Y=1 \mid x)$:
 \begin{equation}
 U(x) = 1 - 2 \cdot |p(x) - 0.5| \in [0, 1]
 \end{equation}
-A transaction with $p(x) = 0.50$ exhibits maximal epistemic ambiguity ($U(x) = 1.0$), whereas confident classifications ($p \rightarrow 0$ or $p \rightarrow 1$) yield $U(x) \rightarrow 0$. Given an escalation compute budget $B \in (0, 1)$ ($B = 0.005$ for a 0.5\% rate), the routing threshold $\tau_B$ is defined empirically over the calibration distribution $D_{\text{cal}}$:
+A transaction with $p(x) = 0.50$ exhibits maximal epistemic ambiguity ($U(x) = 1.0$), whereas confident classifications yield $U(x) \rightarrow 0$. Given escalation compute budget $B \in (0, 1)$ ($B = 0.005$ for a 0.5\% rate), routing threshold $\tau_B$ is defined empirically over calibration distribution $D_{\text{cal}}$:
 \begin{equation}
 \tau_B = \text{Quantile}_{1 - B} \left( \{ U(x_i) \}_{x_i \in D_{\text{cal}}} \right), \quad \text{Routing Action } R(x) = 
 \begin{cases}
@@ -74,86 +89,85 @@ A transaction with $p(x) = 0.50$ exhibits maximal epistemic ambiguity ($U(x) = 1
 \text{Fast Classical Authorization}, & \text{if } U(x) < \tau_B
 \end{cases}
 \end{equation}
-Empirical ablation on $118,108$ test transactions demonstrates that setting $B = 0.5\%$ ($591$ transactions) captures $253$ confirmed frauds ($42.81\%$ density), whereas routing the top $0.5\%$ by Transaction Amount captures only $9$ frauds ($1.52\%$ density). Uncertainty routing achieves \textbf{28.1$\times$ higher fraud concentration}.
+Empirical ablation on $118,108$ test transactions demonstrates that setting $B = 0.5\%$ ($591$ txs) captures $253$ confirmed frauds ($42.81\%$ density), whereas routing by Amount captures only $9$ frauds ($1.52\%$). Uncertainty routing achieves \textbf{28.1$\times$ higher fraud concentration}.
 
 \subsection*{A.2 Parameterized 8-Qubit Quantum Circuit Architecture via Amazon Braket}
-Figure~\ref{fig:circuit} illustrates the parameterized quantum circuit implemented via the Amazon Braket SDK and PennyLane for mapping escalated 8-dimensional feature vectors into Hilbert space at circuit depth $d=2$.
-\vspace{-3pt}
+Figure~\ref{fig:circuit} illustrates the parameterized quantum circuit implemented via Amazon Braket SDK and PennyLane for mapping escalated 8-dimensional feature vectors into Hilbert space at circuit depth $d=2$.
+\vspace{-4pt}
 \begin{figure}[h!]
 \centering
 \begin{tikzpicture}[
-  scale=0.70, transform shape,
   wire/.style={thick, draw=darkslate},
-  gate/.style={rectangle, draw=accentblue, fill=accentblue!15, thick, inner sep=1.8pt, font=\scriptsize\bfseries},
+  gate/.style={rectangle, draw=accentblue, fill=accentblue!15, thick, inner sep=1.8pt, font=\bfseries},
   cnotctrl/.style={circle, fill=darkslate, inner sep=1.3pt},
   cnottgt/.style={circle, draw=darkslate, thick, inner sep=1.6pt},
-  meas/.style={rectangle, draw=darkslate, fill=lightbg, thick, inner sep=1.8pt, font=\scriptsize\bfseries}
+  meas/.style={rectangle, draw=darkslate, fill=lightbg, thick, inner sep=1.8pt, font=\bfseries}
 ]
 
 % 8 Qubit wires
 \foreach \i in {0,...,7} {
-  \node[font=\footnotesize\bfseries] at (-0.7, -\i*0.38) {$q_\i$};
-  \node[font=\footnotesize] at (-0.3, -\i*0.38) {$|0\rangle$};
-  \draw[wire] (0, -\i*0.38) -- (9.0, -\i*0.38);
+  \node[font=\bfseries] at (-0.7, -\i*0.28) {$q_\i$};
+  \node at (-0.3, -\i*0.28) {$|0\rangle$};
+  \draw[wire] (0, -\i*0.28) -- (12.0, -\i*0.28);
 }
 
 % RY layer 1
 \foreach \i in {0,...,7} {
-  \node[gate] at (1.0, -\i*0.38) {$R_Y(\theta_\i)$};
+  \node[gate] at (1.2, -\i*0.28) {$R_Y(\theta_\i)$};
 }
 
 % CNOT circular entanglement
 \foreach \i in {0,...,6} {
   \pgfmathtruncatemacro{\nextq}{\i+1}
-  \node[cnotctrl] at (1.9 + \i*0.4, -\i*0.38) {};
-  \node[cnottgt] at (1.9 + \i*0.4, -\nextq*0.38) {+};
-  \draw[wire] (1.9 + \i*0.4, -\i*0.38) -- (1.9 + \i*0.4, -\nextq*0.38);
+  \node[cnotctrl] at (2.4 + \i*0.55, -\i*0.28) {};
+  \node[cnottgt] at (2.4 + \i*0.55, -\nextq*0.28) {+};
+  \draw[wire] (2.4 + \i*0.55, -\i*0.28) -- (2.4 + \i*0.55, -\nextq*0.28);
 }
 % Circular link q7 -> q0
-\node[cnotctrl] at (4.9, -7*0.38) {};
-\node[cnottgt] at (4.9, 0) {+};
-\draw[wire] (4.9, 0) -- (4.9, -7*0.38);
+\node[cnotctrl] at (6.6, -7*0.28) {};
+\node[cnottgt] at (6.6, 0) {+};
+\draw[wire] (6.6, 0) -- (6.6, -7*0.28);
 
 % RY layer 2
 \foreach \i in {0,...,7} {
-  \node[gate] at (5.9, -\i*0.38) {$R_Y(\theta_{\i+8})$};
+  \node[gate] at (7.8, -\i*0.28) {$R_Y(\theta_{\i+8})$};
 }
 
 % Measurement / Reduced Density Matrix Projection
 \foreach \i in {0,...,7} {
-  \node[meas] at (7.4, -\i*0.38) {$\mathrm{Tr}_{\bar{q}_\i}$};
-  \node[font=\scriptsize\bfseries\color{accentblue}] at (8.5, -\i*0.38) {$\rho_\i(x)$};
+  \node[meas] at (9.6, -\i*0.28) {$\mathrm{Tr}_{\bar{q}_\i}$};
+  \node[font=\bfseries\color{accentblue}] at (11.0, -\i*0.28) {$\rho_\i(x)$};
 }
 
 % Layer brackets
-\draw[thick, decorate, decoration={brace, amplitude=3pt}] (0.5, 0.25) -- (5.2, 0.25) 
-  node[midway, above=3pt, font=\scriptsize\bfseries\color{hsbcnavy}] {Layer 1: Unitary Embedding $U_1(x)$};
-\draw[thick, decorate, decoration={brace, amplitude=3pt}] (5.4, 0.25) -- (6.5, 0.25) 
-  node[midway, above=3pt, font=\scriptsize\bfseries\color{hsbcnavy}] {Layer 2 ($d=2$)};
-\draw[thick, decorate, decoration={brace, amplitude=3pt}] (6.9, 0.25) -- (9.0, 0.25) 
-  node[midway, above=3pt, font=\scriptsize\bfseries\color{accentblue}] {Braket 1-Qubit Projections};
+\draw[thick, decorate, decoration={brace, amplitude=3pt}] (0.6, 0.25) -- (7.0, 0.25) 
+  node[midway, above=3pt, font=\bfseries\color{hsbcnavy}] {Layer 1: Unitary Embedding $U_1(x)$};
+\draw[thick, decorate, decoration={brace, amplitude=3pt}] (7.2, 0.25) -- (8.5, 0.25) 
+  node[midway, above=3pt, font=\bfseries\color{hsbcnavy}] {Layer 2 ($d=2$)};
+\draw[thick, decorate, decoration={brace, amplitude=3pt}] (9.0, 0.25) -- (11.6, 0.25) 
+  node[midway, above=3pt, font=\bfseries\color{accentblue}] {Braket 1-Qubit Projections};
 
 \end{tikzpicture}
-\vspace{-4pt}
-\caption{\textbf{8-Qubit Amazon Braket Quantum Circuit and Projection Schematic (Typeset via TikZ).} Scaled PCA features parametrize single-qubit $R_Y$ gates coupled via circular CNOT entanglement ladder ($d=2$). The state is projected onto 1-qubit reduced density operators $\rho_i(x)$.}
+\vspace{-5pt}
+\caption{\textbf{8-Qubit Amazon Braket Quantum Circuit and Projection Schematic.} Scaled PCA features parametrize single-qubit $R_Y$ gates coupled via circular CNOT entanglement ladder ($d=2$). The state is projected onto 1-qubit reduced density operators $\rho_i(x)$.}
 \label{fig:circuit}
 \end{figure}
-\vspace{-6pt}
+\vspace{-8pt}
 
 \subsection*{A.3 Quantum Hilbert Space Embedding, Error Mitigation \& Noise Robustness}
 We evaluate two mathematical kernel formulations:
-\begin{enumerate}[leftmargin=*,itemsep=0.4pt,topsep=1pt]
+\begin{enumerate}[leftmargin=*,itemsep=0.3pt,topsep=0.5pt]
 \item \textbf{Quantum State Fidelity Kernel:} Evaluates transition amplitude $K_{\text{Fid}}(x, x') = |\langle \psi(x) \mid \psi(x') \rangle|^2 = \mathrm{Tr}(|\psi(x)\rangle\langle\psi(x)| \cdot |\psi(x')\rangle\langle\psi(x')|)$. As proven by Thanasilp et al. (2022), as qubit count $n$ and depth $d$ grow, global state fidelity concentrates exponentially: $\mathrm{Var}_{x, x'}[K_{\text{Fid}}(x, x')] \le \mathcal{O}(2^{-n})$, inducing barren plateaus where all kernel entries approach zero.
-\item \textbf{Projected Quantum Kernel (PQK):} Following Huang et al. (2021), we project the $2^n$-dimensional state onto 1-qubit reduced density operators $\rho_k(x) = \mathrm{Tr}_{\bar{k}}(|\psi(x)\rangle\langle\psi(x)|) = \frac{1}{2} (I + \langle X_k \rangle X + \langle Y_k \rangle Y + \langle Z_k \rangle Z) \in \mathbb{C}^{2 \times 2}$. The PQK evaluates a Gaussian distance over the extracted 1-particle reduced states:
+\item \textbf{Projected Quantum Kernel (PQK):} Following Huang et al. (2021), we project the state onto 1-qubit reduced density operators $\rho_k(x) = \mathrm{Tr}_{\bar{k}}(|\psi(x)\rangle\langle\psi(x)|) = \frac{1}{2} (I + \langle X_k \rangle X + \langle Y_k \rangle Y + \langle Z_k \rangle Z) \in \mathbb{C}^{2 \times 2}$. The PQK evaluates a Gaussian distance over the extracted 1-particle reduced states:
 \begin{equation}
-K_{\text{PQK}}(x, x') = \exp\left( -\gamma \sum_{k=1}^n \|\rho_k(x) - \rho_k(x')\|_F^2 \right) = \exp\left( -\frac{\gamma}{2} \sum_{k=1}^n \sum_{P \in \{X, Y, Z\}} (\langle P_k \rangle_x - \langle P_k \rangle_{x'})^2 \right)
+K_{\text{PQK}}(x, x') = \exp\left( -\frac{\gamma}{2} \sum_{k=1}^n \sum_{P \in \{X, Y, Z\}} (\langle P_k \rangle_x - \langle P_k \rangle_{x'})^2 \right)
 \end{equation}
 PQK provably avoids exponential concentration while encoding non-linear multi-qubit correlations into local observable differences.
 \item \textbf{Noise Robustness and Error Mitigation Strategy:} Under simulated phase-damping and depolarizing channels, PQK PR-AUC degrades by only $-1.32\%$ at $1\%$ noise and $-6.49\%$ at $5\%$ noise. In Phase 2, physical deployment will incorporate Zero-Noise Extrapolation (ZNE) via Richardson polynomial extrapolation across gate scale factors $\lambda \in \{1, 3, 5\}$ alongside readout measurement calibration matrices.
 \end{enumerate}
 
 \subsection*{A.4 Centered Kernel Alignment (CKA) Formulation}
-To determine whether the quantum kernel discovers an orthogonal geometric representation or merely emulates a classical function space, we compute Centered Kernel Alignment (Cortes et al., 2012):
+To determine whether the quantum kernel discovers an orthogonal geometric representation, we compute Centered Kernel Alignment (Cortes et al., 2012):
 \begin{equation}
 \mathrm{CKA}(K_1, K_2) = \frac{\langle K_1^c, K_2^c \rangle_F}{\|K_1^c\|_F \|K_2^c\|_F} = \frac{\mathrm{Tr}(K_1^c K_2^c)}{\sqrt{\mathrm{Tr}((K_1^c)^2) \mathrm{Tr}((K_2^c)^2)}}
 \end{equation}
@@ -174,7 +188,6 @@ Table~\ref{tab:lat_bench} details the empirically measured latency distributions
 \vspace{-2pt}
 \begin{table}[h!]
 \centering
-\scriptsize
 \renewcommand{\arraystretch}{0.76}
 \caption{\textbf{System Latency Telemetry Across 1,000 Repeated Evaluations.}}
 \label{tab:lat_bench}
@@ -207,7 +220,6 @@ Table~\ref{tab:econ_bench} itemizes compute expenditure models reflecting AWS c6
 \vspace{-2pt}
 \begin{table}[h!]
 \centering
-\scriptsize
 \renewcommand{\arraystretch}{0.76}
 \caption{\textbf{Unit Economics and Cost Projections per 1 Million Transactions.}}
 \label{tab:econ_bench}
@@ -235,7 +247,6 @@ Table~\ref{tab:ablation} provides a systematic ablation study comparing Uncertai
 \vspace{-2pt}
 \begin{table}[h!]
 \centering
-\scriptsize
 \renewcommand{\arraystretch}{0.76}
 \caption{\textbf{Routing Policy Ablation Across Multiple Escalation Budgets on Test Partition.}}
 \label{tab:ablation}
@@ -259,7 +270,6 @@ Table~\ref{tab:threshold_audit} details the operational trade-offs across decisi
 \vspace{-2pt}
 \begin{table}[h!]
 \centering
-\scriptsize
 \renewcommand{\arraystretch}{0.74}
 \caption{\textbf{Decision Threshold Performance and Confusion Matrix Ledger (Frontline LightGBM).}}
 \label{tab:threshold_audit}
@@ -294,7 +304,6 @@ Table~\ref{tab:env} enumerates the frozen package versions tested under Python 3
 \vspace{-2pt}
 \begin{table}[h!]
 \centering
-\scriptsize
 \renewcommand{\arraystretch}{0.68}
 \caption{\textbf{Reproducible Software Environment Specifications (Python 3.10.11).}}
 \label{tab:env}
@@ -316,17 +325,17 @@ Table~\ref{tab:env} enumerates the frozen package versions tested under Python 3
 \bottomrule
 \end{tabularx}
 \end{table}
-\vspace{-6pt}
+\vspace{-8pt}
 
 \subsection*{C.2 TreeSHAP Local \& Global Explainability Artifact}
 Figure~\ref{fig:shap} illustrates the TreeSHAP summary attribution across the out-of-sample forward test partition ($N=118,108$). Feature attributions exhibit genuine row-level variance without constant-attribution artifacts, satisfying regulatory explainability standards.
 
 \begin{center}
-\vspace{-3pt}
-\includegraphics[width=0.68\linewidth,height=3.4cm,keepaspectratio]{feature_attribution_shap.png}\\[1pt]
+\vspace{-6pt}
+\includegraphics[width=0.68\linewidth,height=2.3cm,keepaspectratio]{feature_attribution_shap.png}\\[1pt]
 \captionof{figure}{\textbf{TreeSHAP Global Feature Attribution Summary on IEEE-CIS Benchmark ($N=118,108$).}}
 \label{fig:shap}
-\vspace{-4pt}
+\vspace{-6pt}
 \end{center}
 
 \subsection*{C.3 Cryptographic Provenance \& Verification of the 5 Submission Deliverables}
@@ -339,8 +348,7 @@ To reproduce the experimental findings and verify the 5 submission deliverables 
 \end{enumerate}
 
 \subsection*{C.4 Academic References \& Foundational Literature}
-\begin{enumerate}[leftmargin=*,itemsep=0.1pt,topsep=0.5pt]
-\tiny
+\begin{enumerate}[leftmargin=*,itemsep=0pt,topsep=0pt]
 \item Chen, T., \& Guestrin, C. (2016). XGBoost: A scalable tree boosting system. \textit{ACM SIGKDD}, 785--794.
 \item Cortes, C., Mohri, M., \& Rostamizadeh, A. (2012). Algorithms for learning kernels based on centered alignment. \textit{JMLR}, 13, 795--828.
 \item Cortes, C., \& Vapnik, V. (1995). Support-vector networks. \textit{Machine Learning}, 20(3), 273--297.
@@ -360,7 +368,7 @@ To reproduce the experimental findings and verify the 5 submission deliverables 
 \vspace{1.5pt}
 \noindent\rule{\linewidth}{0.4pt}
 \vspace{1pt}
-{\tiny\color{darkslate}
+{\color{darkslate}
 \textbf{Document Metadata:} Supplementary Material $\cdot$ Phase 1 Concept Proposal $\cdot$ HSBC / 2026 Global Quantum + AI Challenge $\cdot$ Typeset in pdf\TeX.\\
 \textbf{Public Repository:} \href{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}{\texttt{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}} $\cdot$ Phase 1 Academic Submission.
 }
