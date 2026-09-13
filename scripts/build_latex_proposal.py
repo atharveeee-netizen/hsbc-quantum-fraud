@@ -11,7 +11,7 @@ def build_latex():
     # 1. CORE CONCEPT PROPOSAL LATEX (EXACTLY 6 PAGES, MINIMUM 10pt FONT EVERYWHERE)
     # -------------------------------------------------------------------------
     core_tex = r"""\documentclass[10pt,a4paper]{article}
-\usepackage[top=1.05cm,bottom=1.10cm,left=1.15cm,right=1.15cm]{geometry}
+\usepackage[top=0.75cm,bottom=0.75cm,left=1.15cm,right=1.15cm,headheight=13pt,headsep=7pt,footskip=13pt,includehead,includefoot]{geometry}
 \usepackage{mathptmx}
 \usepackage{courier}
 \usepackage{xcolor}
@@ -49,14 +49,14 @@ def build_latex():
 \DeclareMathSizes{10.25}{10.25}{10.25}{10.25}
 
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{1.6pt plus 0.3pt minus 0.3pt}
+\setlength{\parskip}{1.2pt plus 0.2pt minus 0.2pt}
 
 \titleformat{\section}{\color{hsbcnavy}\fontsize{12pt}{14pt}\bfseries}{\thesection}{0.5em}{}[\color{hsbcnavy}\titlerule]
 \titleformat{\subsection}{\color{hsbcnavy}\fontsize{10.5pt}{12.5pt}\bfseries}{\thesubsection}{0.4em}{}
 \titleformat{\subsubsection}{\color{darkslate}\fontsize{10.25pt}{12.25pt}\bfseries}{\thesubsubsection}{0.4em}{}
 
-\titlespacing*{\section}{0pt}{2.5pt plus 0.5pt minus 0.5pt}{1.0pt plus 0.2pt minus 0.2pt}
-\titlespacing*{\subsection}{0pt}{2.0pt plus 0.4pt minus 0.4pt}{0.8pt plus 0.2pt minus 0.2pt}
+\titlespacing*{\section}{0pt}{2.0pt plus 0.3pt minus 0.3pt}{0.8pt plus 0.2pt minus 0.2pt}
+\titlespacing*{\subsection}{0pt}{1.6pt plus 0.3pt minus 0.3pt}{0.6pt plus 0.2pt minus 0.2pt}
 \titlespacing*{\subsubsection}{0pt}{1.5pt plus 0.3pt minus 0.3pt}{0.6pt plus 0.2pt minus 0.2pt}
 
 % Headers and Footers (Strictly >= 10pt)
@@ -64,8 +64,8 @@ def build_latex():
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\fancyhead[L]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\textbf{HSBC / 2026 Global Quantum + AI Challenge} $\cdot$ Phase 1 Concept Proposal}
-\fancyhead[R]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}Track: Quantum-Enhanced Credit Card Fraud Detection}
+\fancyhead[L]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\textbf{HSBC} $\cdot$ 2026 Global Quantum + AI Challenge}
+\fancyhead[R]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}Phase 1 Proposal $\cdot$ Quantum Fraud Detection}
 \fancyfoot[L]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\texttt{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}}
 \fancyfoot[R]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\textbf{Page \thepage\ of 6}}
 
@@ -83,6 +83,10 @@ def build_latex():
 
 \begin{document}
 \fontsize{10.25pt}{12.25pt}\selectfont
+\setlength{\abovedisplayskip}{2pt}
+\setlength{\belowdisplayskip}{2pt}
+\setlength{\abovedisplayshortskip}{1pt}
+\setlength{\belowdisplayshortskip}{1pt}
 
 % =============================================================================
 % PAGE 1: TITLE, AUTHORS, EXECUTIVE PROPOSITION, PROBLEM FRAMING
@@ -251,9 +255,10 @@ PQK provably mitigates exponential concentration while preserving multi-qubit no
 
 \subsection{Data Grounding and Benchmark Integrity}
 Empirical evaluations are grounded on the canonical \textbf{IEEE-CIS Fraud Detection benchmark} (\textbf{590,540 real transactions}, 393 anonymized features). Generalization was confirmed on secondary benchmarks: European Credit Card Fraud ($N=284,807$, 0.172\% fraud) and Sparkov multi-million simulated streams.
-\begin{quote}
-\textbf{Integrity Declaration:} To maintain strict governance, this project does not claim access to proprietary internal HSBC bank logs. All results reflect open financial benchmarks universally acknowledged as the gold standard for imbalanced fraud evaluation.
-\end{quote}
+
+\vspace{1pt}
+\noindent\textit{\textbf{Integrity Declaration:} To maintain strict governance, this project does not claim access to proprietary internal HSBC bank logs. All results reflect open financial benchmarks universally acknowledged as the gold standard for imbalanced fraud evaluation.}\par
+\vspace{1pt}
 
 \subsection{Computational and Software Infrastructure}
 The software pipeline is implemented in Python 3.10 and leverages industry-standard open-source frameworks:
@@ -401,8 +406,8 @@ The project team comprises verified researchers and engineers from \textbf{Rasht
 \subsection{Execution Governance and Submission Package}
 The team has established an uncommonly rigorous standard of reproducibility and governance. The complete submission package comprises exactly 5 core deliverables mapping to all challenge requirements:
 \begin{enumerate}[leftmargin=*,itemsep=0.8pt,topsep=1pt]
-\item \textbf{Core Concept Proposal PDF} (\texttt{HSBC\_Phase1\_Concept\_Proposal.pdf}): 6-page comprehensive architectural, empirical, and enterprise specification.
-\item \textbf{Supplementary Technical Appendix PDF} (\texttt{HSBC\_Phase1\_Supplementary\_Appendix.pdf}): 3-page rigorous mathematical, telemetry, and environment ledger (incorporating embedded TreeSHAP plot).
+\item \textbf{Core Concept Proposal PDF} (\texttt{HSBC\_Phase1\_Concept\_Proposal.pdf}): 6-page comprehensive architectural, empirical, and enterprise specification (incorporating embedded TreeSHAP plot).
+\item \textbf{Supplementary Technical Appendix PDF} (\texttt{HSBC\_Phase1\_Supplementary\_Appendix.pdf}): 3-page rigorous mathematical, telemetry, and environment ledger.
 \item \textbf{Amazon Braket Quantum Pipeline Script} (\texttt{braket\_quantum\_kernel\_pipeline.py}): Fully executable, self-contained Python script utilizing Amazon Braket SDK (`braket.circuits.Circuit', `LocalSimulator') for 8-qubit PQK and CKA evaluation.
 \item \textbf{Full Test Stream Predictions CSV} (\texttt{prediction\_outputs.csv}): 118,108 out-of-sample forward transactions with fraud probabilities, binary predictions, true labels, and top 3 SHAP attribution features.
 \item \textbf{Escalated Cohort Feature Array} (\texttt{escalated\_cohort.npz}): Verified, provenance-tracked 200-sample boundary cohort supporting deterministic reproduction of all quantum and classical specialist experiments.
@@ -436,7 +441,7 @@ The team has already implemented, debugged, and audited the complete end-to-end 
     # 2. SUPPLEMENTARY APPENDIX LATEX (EXACTLY 3 PAGES, MINIMUM 10pt FONT)
     # -------------------------------------------------------------------------
     appendix_tex = r"""\documentclass[10pt,a4paper]{article}
-\usepackage[top=1.05cm,bottom=1.10cm,left=1.15cm,right=1.15cm]{geometry}
+\usepackage[top=0.75cm,bottom=0.75cm,left=1.15cm,right=1.15cm,headheight=13pt,headsep=7pt,footskip=13pt,includehead,includefoot]{geometry}
 \usepackage{mathptmx}
 \usepackage{courier}
 \usepackage{xcolor}
@@ -474,29 +479,29 @@ The team has already implemented, debugged, and audited the complete end-to-end 
 \DeclareMathSizes{10.25}{10.25}{10.25}{10.25}
 
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{1.6pt plus 0.3pt minus 0.3pt}
+\setlength{\parskip}{1.2pt plus 0.2pt minus 0.2pt}
 
 \titleformat{\section}{\color{hsbcnavy}\fontsize{12pt}{14pt}\bfseries}{\thesection}{0.5em}{}[\color{hsbcnavy}\titlerule]
 \titleformat{\subsection}{\color{hsbcnavy}\fontsize{10.5pt}{12.5pt}\bfseries}{\thesubsection}{0.4em}{}
 
-\titlespacing*{\section}{0pt}{2.5pt plus 0.5pt minus 0.5pt}{1.0pt plus 0.2pt minus 0.2pt}
-\titlespacing*{\subsection}{0pt}{2.0pt plus 0.4pt minus 0.4pt}{0.8pt plus 0.2pt minus 0.2pt}
+\titlespacing*{\section}{0pt}{2.0pt plus 0.3pt minus 0.3pt}{0.8pt plus 0.2pt minus 0.2pt}
+\titlespacing*{\subsection}{0pt}{1.6pt plus 0.3pt minus 0.3pt}{0.6pt plus 0.2pt minus 0.2pt}
 
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\fancyhead[L]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\textbf{HSBC / 2026 Global Quantum + AI Challenge} $\cdot$ Supplementary Material}
-\fancyhead[R]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}Appendices A, B, and C}
+\fancyhead[L]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\textbf{HSBC} $\cdot$ 2026 Global Quantum + AI Challenge}
+\fancyhead[R]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}Supplementary Material $\cdot$ Appendices A--C}
 \fancyfoot[L]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\texttt{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}}
 \fancyfoot[R]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\textbf{Appendix Page \thepage\ of 3}}
 
 \begin{document}
 \fontsize{10.25pt}{12.25pt}\selectfont
-\setlength{\abovedisplayskip}{3.5pt}
-\setlength{\belowdisplayskip}{3.5pt}
-\setlength{\abovedisplayshortskip}{1.5pt}
-\setlength{\belowdisplayshortskip}{1.5pt}
+\setlength{\abovedisplayskip}{2pt}
+\setlength{\belowdisplayskip}{2pt}
+\setlength{\abovedisplayshortskip}{1pt}
+\setlength{\belowdisplayshortskip}{1pt}
 
 % =============================================================================
 % APPENDIX PAGE 1: APPENDIX A - MATHEMATICAL FORMULATIONS & QUANTUM CIRCUIT
@@ -535,54 +540,89 @@ Figure~\ref{fig:circuit} illustrates the parameterized quantum circuit implement
 \centering
 \begin{tikzpicture}[
   wire/.style={thick, draw=darkslate},
-  gate/.style={rectangle, draw=accentblue, fill=accentblue!15, thick, inner sep=1.8pt, font=\bfseries},
-  cnotctrl/.style={circle, fill=darkslate, inner sep=1.3pt},
-  cnottgt/.style={circle, draw=darkslate, thick, inner sep=1.6pt},
-  meas/.style={rectangle, draw=darkslate, fill=lightbg, thick, inner sep=1.8pt, font=\bfseries}
+  gate/.style={rectangle, draw=accentblue, fill=accentblue!15, thick, inner sep=2.0pt, font=\bfseries},
+  cnotctrl/.style={circle, fill=darkslate, inner sep=1.8pt},
+  cnottgt/.style={circle, draw=darkslate, thick, inner sep=2.0pt},
+  meas/.style={rectangle, draw=darkslate, fill=lightbg, thick, inner sep=2.0pt, font=\bfseries}
 ]
 
-% 8 Qubit wires
-\foreach \i in {0,...,7} {
-  \node[font=\bfseries] at (-0.7, -\i*0.28) {$q_\i$};
-  \node at (-0.3, -\i*0.28) {$|0\rangle$};
-  \draw[wire] (0, -\i*0.28) -- (12.0, -\i*0.28);
-}
+% Qubit wires: q_0, q_1, q_2, vdots, q_7
+\node[font=\bfseries] at (-0.6, 0) {$q_0$};
+\node at (-0.25, 0) {$|0\rangle$};
+\draw[wire] (0, 0) -- (10.6, 0);
+
+\node[font=\bfseries] at (-0.6, -0.52) {$q_1$};
+\node at (-0.25, -0.52) {$|0\rangle$};
+\draw[wire] (0, -0.52) -- (10.6, -0.52);
+
+\node[font=\bfseries] at (-0.6, -1.04) {$q_2$};
+\node at (-0.25, -1.04) {$|0\rangle$};
+\draw[wire] (0, -1.04) -- (10.6, -1.04);
+
+\node[font=\bfseries] at (-0.6, -1.45) {$\vdots$};
+\node at (1.2, -1.45) {$\vdots$};
+\node at (7.8, -1.45) {$\vdots$};
+\node at (9.8, -1.45) {$\vdots$};
+\node at (11.2, -1.45) {$\vdots$};
+
+\node[font=\bfseries] at (-0.6, -1.86) {$q_7$};
+\node at (-0.25, -1.86) {$|0\rangle$};
+\draw[wire] (0, -1.86) -- (10.6, -1.86);
 
 % RY layer 1
-\foreach \i in {0,...,7} {
-  \node[gate] at (1.2, -\i*0.28) {$R_Y(\theta_\i)$};
-}
+\node[gate] at (1.2, 0) {$R_Y(\theta_0)$};
+\node[gate] at (1.2, -0.52) {$R_Y(\theta_1)$};
+\node[gate] at (1.2, -1.04) {$R_Y(\theta_2)$};
+\node[gate] at (1.2, -1.86) {$R_Y(\theta_7)$};
 
-% CNOT circular entanglement
-\foreach \i in {0,...,6} {
-  \pgfmathtruncatemacro{\nextq}{\i+1}
-  \node[cnotctrl] at (2.4 + \i*0.55, -\i*0.28) {};
-  \node[cnottgt] at (2.4 + \i*0.55, -\nextq*0.28) {+};
-  \draw[wire] (2.4 + \i*0.55, -\i*0.28) -- (2.4 + \i*0.55, -\nextq*0.28);
-}
+% CNOT entanglement ladder
+% q0 -> q1
+\node[cnotctrl] at (2.6, 0) {};
+\node[cnottgt] at (2.6, -0.52) {+};
+\draw[wire] (2.6, 0) -- (2.6, -0.52);
+
+% q1 -> q2
+\node[cnotctrl] at (3.6, -0.52) {};
+\node[cnottgt] at (3.6, -1.04) {+};
+\draw[wire] (3.6, -0.52) -- (3.6, -1.04);
+
+% q2 -> ...
+\node[cnotctrl] at (4.6, -1.04) {};
+\draw[wire, dashed] (4.6, -1.04) -- (4.6, -1.40);
+
+% ... -> q7
+\draw[wire, dashed] (5.6, -1.50) -- (5.6, -1.86);
+\node[cnottgt] at (5.6, -1.86) {+};
+
 % Circular link q7 -> q0
-\node[cnotctrl] at (6.6, -7*0.28) {};
+\node[cnotctrl] at (6.6, -1.86) {};
 \node[cnottgt] at (6.6, 0) {+};
-\draw[wire] (6.6, 0) -- (6.6, -7*0.28);
+\draw[wire] (6.6, 0) -- (6.6, -1.86);
 
 % RY layer 2
-\foreach \i in {0,...,7} {
-  \node[gate] at (7.8, -\i*0.28) {$R_Y(\theta_{\i+8})$};
-}
+\node[gate] at (7.8, 0) {$R_Y(\theta_8)$};
+\node[gate] at (7.8, -0.52) {$R_Y(\theta_9)$};
+\node[gate] at (7.8, -1.04) {$R_Y(\theta_{10})$};
+\node[gate] at (7.8, -1.86) {$R_Y(\theta_{15})$};
 
-% Measurement / Reduced Density Matrix Projection
-\foreach \i in {0,...,7} {
-  \node[meas] at (9.6, -\i*0.28) {$\mathrm{Tr}_{\bar{q}_\i}$};
-  \node[font=\bfseries\color{accentblue}] at (11.0, -\i*0.28) {$\rho_\i(x)$};
-}
+% Projections
+\node[meas] at (9.8, 0) {$\mathrm{Tr}_{\bar{q}_0}$};
+\node[font=\bfseries\color{accentblue}] at (11.2, 0) {$\rho_0(x)$};
 
-% Layer brackets
-\draw[thick, decorate, decoration={brace, amplitude=3pt}] (0.6, 0.25) -- (7.0, 0.25) 
-  node[midway, above=3pt, font=\bfseries\color{hsbcnavy}] {Layer 1: Unitary Embedding $U_1(x)$};
-\draw[thick, decorate, decoration={brace, amplitude=3pt}] (7.2, 0.25) -- (8.5, 0.25) 
-  node[midway, above=3pt, font=\bfseries\color{hsbcnavy}] {Layer 2 ($d=2$)};
-\draw[thick, decorate, decoration={brace, amplitude=3pt}] (9.0, 0.25) -- (11.6, 0.25) 
-  node[midway, above=3pt, font=\bfseries\color{accentblue}] {Braket 1-Qubit Projections};
+\node[meas] at (9.8, -0.52) {$\mathrm{Tr}_{\bar{q}_1}$};
+\node[font=\bfseries\color{accentblue}] at (11.2, -0.52) {$\rho_1(x)$};
+
+\node[meas] at (9.8, -1.04) {$\mathrm{Tr}_{\bar{q}_2}$};
+\node[font=\bfseries\color{accentblue}] at (11.2, -1.04) {$\rho_2(x)$};
+
+\node[meas] at (9.8, -1.86) {$\mathrm{Tr}_{\bar{q}_7}$};
+\node[font=\bfseries\color{accentblue}] at (11.2, -1.86) {$\rho_7(x)$};
+
+% Top layer brackets
+\draw[thick, decorate, decoration={brace, amplitude=3pt}] (0.5, 0.35) -- (8.5, 0.35) 
+  node[midway, above=3pt, font=\bfseries\color{hsbcnavy}] {2-Layer Unitary Embedding $U(\theta)$};
+\draw[thick, decorate, decoration={brace, amplitude=3pt}] (9.2, 0.35) -- (12.0, 0.35) 
+  node[midway, above=3pt, font=\bfseries\color{accentblue}] {1-Qubit Projections};
 
 \end{tikzpicture}
 \vspace{-5pt}

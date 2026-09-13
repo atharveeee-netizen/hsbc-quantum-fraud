@@ -1,5 +1,5 @@
 \documentclass[10pt,a4paper]{article}
-\usepackage[top=1.05cm,bottom=1.10cm,left=1.15cm,right=1.15cm]{geometry}
+\usepackage[top=0.75cm,bottom=0.75cm,left=1.15cm,right=1.15cm,headheight=13pt,headsep=7pt,footskip=13pt,includehead,includefoot]{geometry}
 \usepackage{mathptmx}
 \usepackage{courier}
 \usepackage{xcolor}
@@ -37,14 +37,14 @@
 \DeclareMathSizes{10.25}{10.25}{10.25}{10.25}
 
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{1.6pt plus 0.3pt minus 0.3pt}
+\setlength{\parskip}{1.2pt plus 0.2pt minus 0.2pt}
 
 \titleformat{\section}{\color{hsbcnavy}\fontsize{12pt}{14pt}\bfseries}{\thesection}{0.5em}{}[\color{hsbcnavy}\titlerule]
 \titleformat{\subsection}{\color{hsbcnavy}\fontsize{10.5pt}{12.5pt}\bfseries}{\thesubsection}{0.4em}{}
 \titleformat{\subsubsection}{\color{darkslate}\fontsize{10.25pt}{12.25pt}\bfseries}{\thesubsubsection}{0.4em}{}
 
-\titlespacing*{\section}{0pt}{2.5pt plus 0.5pt minus 0.5pt}{1.0pt plus 0.2pt minus 0.2pt}
-\titlespacing*{\subsection}{0pt}{2.0pt plus 0.4pt minus 0.4pt}{0.8pt plus 0.2pt minus 0.2pt}
+\titlespacing*{\section}{0pt}{2.0pt plus 0.3pt minus 0.3pt}{0.8pt plus 0.2pt minus 0.2pt}
+\titlespacing*{\subsection}{0pt}{1.6pt plus 0.3pt minus 0.3pt}{0.6pt plus 0.2pt minus 0.2pt}
 \titlespacing*{\subsubsection}{0pt}{1.5pt plus 0.3pt minus 0.3pt}{0.6pt plus 0.2pt minus 0.2pt}
 
 % Headers and Footers (Strictly >= 10pt)
@@ -52,8 +52,8 @@
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
-\fancyhead[L]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\textbf{HSBC / 2026 Global Quantum + AI Challenge} $\cdot$ Phase 1 Concept Proposal}
-\fancyhead[R]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}Track: Quantum-Enhanced Credit Card Fraud Detection}
+\fancyhead[L]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\textbf{HSBC} $\cdot$ 2026 Global Quantum + AI Challenge}
+\fancyhead[R]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}Phase 1 Proposal $\cdot$ Quantum Fraud Detection}
 \fancyfoot[L]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\texttt{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}}
 \fancyfoot[R]{\fontsize{10.25pt}{12pt}\selectfont\color{darkslate}\textbf{Page \thepage\ of 6}}
 
@@ -71,6 +71,10 @@
 
 \begin{document}
 \fontsize{10.25pt}{12.25pt}\selectfont
+\setlength{\abovedisplayskip}{2pt}
+\setlength{\belowdisplayskip}{2pt}
+\setlength{\abovedisplayshortskip}{1pt}
+\setlength{\belowdisplayshortskip}{1pt}
 
 % =============================================================================
 % PAGE 1: TITLE, AUTHORS, EXECUTIVE PROPOSITION, PROBLEM FRAMING
@@ -239,9 +243,10 @@ PQK provably mitigates exponential concentration while preserving multi-qubit no
 
 \subsection{Data Grounding and Benchmark Integrity}
 Empirical evaluations are grounded on the canonical \textbf{IEEE-CIS Fraud Detection benchmark} (\textbf{590,540 real transactions}, 393 anonymized features). Generalization was confirmed on secondary benchmarks: European Credit Card Fraud ($N=284,807$, 0.172\% fraud) and Sparkov multi-million simulated streams.
-\begin{quote}
-\textbf{Integrity Declaration:} To maintain strict governance, this project does not claim access to proprietary internal HSBC bank logs. All results reflect open financial benchmarks universally acknowledged as the gold standard for imbalanced fraud evaluation.
-\end{quote}
+
+\vspace{1pt}
+\noindent\textit{\textbf{Integrity Declaration:} To maintain strict governance, this project does not claim access to proprietary internal HSBC bank logs. All results reflect open financial benchmarks universally acknowledged as the gold standard for imbalanced fraud evaluation.}\par
+\vspace{1pt}
 
 \subsection{Computational and Software Infrastructure}
 The software pipeline is implemented in Python 3.10 and leverages industry-standard open-source frameworks:
@@ -389,8 +394,8 @@ The project team comprises verified researchers and engineers from \textbf{Rasht
 \subsection{Execution Governance and Submission Package}
 The team has established an uncommonly rigorous standard of reproducibility and governance. The complete submission package comprises exactly 5 core deliverables mapping to all challenge requirements:
 \begin{enumerate}[leftmargin=*,itemsep=0.8pt,topsep=1pt]
-\item \textbf{Core Concept Proposal PDF} (\texttt{HSBC\_Phase1\_Concept\_Proposal.pdf}): 6-page comprehensive architectural, empirical, and enterprise specification.
-\item \textbf{Supplementary Technical Appendix PDF} (\texttt{HSBC\_Phase1\_Supplementary\_Appendix.pdf}): 3-page rigorous mathematical, telemetry, and environment ledger (incorporating embedded TreeSHAP plot).
+\item \textbf{Core Concept Proposal PDF} (\texttt{HSBC\_Phase1\_Concept\_Proposal.pdf}): 6-page comprehensive architectural, empirical, and enterprise specification (incorporating embedded TreeSHAP plot).
+\item \textbf{Supplementary Technical Appendix PDF} (\texttt{HSBC\_Phase1\_Supplementary\_Appendix.pdf}): 3-page rigorous mathematical, telemetry, and environment ledger.
 \item \textbf{Amazon Braket Quantum Pipeline Script} (\texttt{braket\_quantum\_kernel\_pipeline.py}): Fully executable, self-contained Python script utilizing Amazon Braket SDK (`braket.circuits.Circuit', `LocalSimulator') for 8-qubit PQK and CKA evaluation.
 \item \textbf{Full Test Stream Predictions CSV} (\texttt{prediction\_outputs.csv}): 118,108 out-of-sample forward transactions with fraud probabilities, binary predictions, true labels, and top 3 SHAP attribution features.
 \item \textbf{Escalated Cohort Feature Array} (\texttt{escalated\_cohort.npz}): Verified, provenance-tracked 200-sample boundary cohort supporting deterministic reproduction of all quantum and classical specialist experiments.
