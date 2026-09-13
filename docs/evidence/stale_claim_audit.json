@@ -827,11 +827,6 @@
       "text": "In the matched N=200 escalated experiment, Projected Quantum Kernel achieved a nominal PR-AUC of 0.4043 versus 0.3367 for the Classical RBF baseline (&Delta;PR-AUC = +0.0653). To establish whether this point estimate represents genuine advantage or finite-sample variance, we conducted a <strong>1,000-resample paired bootstrap hypothesis test</strong>. The resulting 95% confidence interval spans zero: <strong>[&minus;0.0383, +0.1821]</strong>, with a two-tailed p-value of <strong>p = 0.246</strong> (Bonferroni-adjusted p = 0.492). Because the confidence interval includes negative values and p &gt; 0.05, <strong>the null hypothesis of no quantum advantage cannot be rejected</strong>."
     },
     {
-      "file": "scripts\\test_tikz_renders.py",
-      "line": 56,
-      "text": "\\scriptsize PR-AUC: 0.4040 $\\cdot$ 3.29 ms"
-    },
-    {
       "file": "src\\dashboard\\app.py",
       "line": 247,
       "text": "{\"Specialist Architecture\": \"Projected Quantum Kernel (PQK)\", \"PR-AUC (Escalated)\": \"0.4043\", \"ROC-AUC\": \"0.5171\", \"Inference Latency\": \"159.14 ms\", \"Compute Cost / 10k\": \"$353,000.00 (QPU)\"}"
