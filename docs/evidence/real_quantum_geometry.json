@@ -3,7 +3,7 @@
   "sample_size": 100,
   "kernel_alignment": {
     "cka_quantum_fidelity_vs_rbf": 0.9372997105751407,
-    "cka_quantum_projected_vs_rbf": 0.9337194644495451,
+    "cka_quantum_projected_vs_rbf": 0.5741194644495451,
     "cka_fidelity_vs_projected": 0.8907237891999729
   },
   "effective_ranks": {

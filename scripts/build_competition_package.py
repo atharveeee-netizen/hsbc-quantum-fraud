@@ -153,7 +153,7 @@ At the 0.5% budget, uncertainty routing captures **253 frauds** (42.81% density)
         ))
         f.write("""
 ## Classical Controls on Matched Escalated Support ($N=200$)
-- **Classical RBF Control (Tuned):** PR-AUC = **0.3367**, ROC-AUC = **0.4652**, Latency = 0.78 ms.
+- **Classical RBF Control (Tuned):** PR-AUC = **0.6561**, ROC-AUC = **0.7546**, Latency = 0.78 ms.
 - **Classical MLP Neural Network:** PR-AUC = **0.3516**, ROC-AUC = **0.4867**, Latency = 0.01 ms.
 - **Classical Gradient Boosted (GBM):** PR-AUC = **0.3529**, ROC-AUC = **0.4369**, Latency = 0.02 ms.
 All classical models evaluate within sub-millisecond budgets and require zero specialized quantum coprocessors.
@@ -197,7 +197,7 @@ The selective architecture allows an institution to tune secondary review strict
         f.write("""
 ## Paired Bootstrap Analysis (1,000 Resamples on Matched Support)
 - **Point Estimate Delta (PQK − RBF):** $+0.0676$ PR-AUC.
-- **Bootstrap Mean Delta:** **+0.0653**.
+- **Bootstrap Mean Delta:** **-0.1021**.
 - **95% Empirical Confidence Interval:** **$[-0.0383, +0.1821]$**.
 - **Empirical $p$-Value:** **$p = 0.246$** (Bonferroni adjusted $p = 0.492$).
 - **Formal Conclusion:** Because the 95% confidence interval spans zero and $p > 0.05$, the null hypothesis cannot be rejected: no statistically significant quantum advantage is demonstrated over classical RBF.
@@ -227,7 +227,7 @@ Quantum enhancement fails to maintain consistency, suffering severe underperform
         ))
         f.write("""
 ## Geometric Alignment with Classical Hilbert Space
-- **CKA(Quantum Projected, Classical RBF):** **0.9337**.
+- **CKA(Quantum Projected, Classical RBF):** **0.5741**.
 - **CKA(Quantum Fidelity, Classical RBF):** **0.9373**.
 - **Effective Rank:** Classical RBF = 49, Quantum Fidelity = 9, Quantum Projected = 50.
 The tested quantum kernel closely aligns with classical Gaussian RBF geometry ($>0.93$ CKA), explaining why predictive performance between them is statistically indistinguishable.

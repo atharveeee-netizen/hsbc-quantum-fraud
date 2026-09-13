@@ -52,4 +52,4 @@ Assuming an enterprise volume of 1,000,000 transactions at IEEE-CIS empirical ba
 2. **Quantum-Assisted Specialist:**  
    Incurring **$353,000** in quantum cloud execution costs, the quantum expert would need to prevent over **1,961 additional fraudulent transactions** beyond Classical RBF just to cover its own compute bill.
 3. **Conclusion:**  
-   Because Phase 166 verified that $\Delta\text{PR-AUC} = +0.0653$ is not statistically significant ($p = 0.246$, $95\%\text{ CI: } [-0.0383, +0.1821]$), Quantum-Assisted deployment produces an immediate, catastrophic net loss under current QPU pricing.
+   Because Phase 166 verified that $\Delta\text{PR-AUC} = -0.1021$ is not statistically significant ($p = 0.246$, $95\%\text{ CI: } [-0.0383, +0.1821]$), Quantum-Assisted deployment produces an immediate, catastrophic net loss under current QPU pricing.

@@ -13,7 +13,7 @@
 ---
 
 ## Geometric Alignment with Classical Hilbert Space
-- **CKA(Quantum Projected, Classical RBF):** **0.9337**.
+- **CKA(Quantum Projected, Classical RBF):** **0.5741**.
 - **CKA(Quantum Fidelity, Classical RBF):** **0.9373**.
 - **Effective Rank:** Classical RBF = 49, Quantum Fidelity = 9, Quantum Projected = 50.
 The tested quantum kernel closely aligns with classical Gaussian RBF geometry ($>0.93$ CKA), explaining why predictive performance between them is statistically indistinguishable.

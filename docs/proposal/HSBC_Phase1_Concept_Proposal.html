@@ -266,7 +266,7 @@ tr:nth-child(even) {
   <div class="callout callout-success" style="margin-bottom: 4px;">
     <div class="callout-title">Executive Proposition</div>
     <p style="margin-bottom: 0;">
-      Tier-1 payment networks process tens of thousands of transactions per second under a strict <strong>50 ms design budget</strong> and severe class imbalance (<strong>3.50%</strong> native fraud prevalence in genuine transaction logs). Routing 100% of payment streams through physical quantum processors is mathematically unviable, latency-incompatible (minutes of cloud QPU queue delay), and economically catastrophic ($35.30 per transaction on IonQ Aria via AWS Braket). We propose and validate an empirical <strong>two-tier selective escalation architecture</strong>: frontline calibrated LightGBM autonomously clears <strong>99.0%&ndash;99.5%</strong> of payment volume on a <strong>4.07 ms</strong> fast path, while an epistemic uncertainty router (<code>|p &minus; 0.5| &le; &tau;</code>) concentrates ambiguous transactions into a <strong>0.5%&ndash;1.0%</strong> secondary evaluation budget. On 590,540 real IEEE-CIS benchmark transactions, our router achieves <strong>42.81% fraud density</strong> at a 0.5% budget (<strong>12.44x enrichment</strong> over baseline), capturing <strong>28.1x more fraud</strong> than transaction amount sorting alone. In a strictly matched N=200 escalated experiment comparing a Projected Quantum Kernel (PQK) against a bandwidth-tuned Classical RBF baseline, the nominal gain (&Delta;PR-AUC = +0.0653) yielded a 95% bootstrap confidence interval of <strong>[&minus;0.0383, +0.1821]</strong> with <strong>p = 0.246</strong>. Because the confidence interval encompasses zero, the null hypothesis cannot be rejected. Centered Kernel Alignment (CKA = 0.9337) confirms strong metric convergence between the quantum and classical kernels. Consequently, physical QPU execution is ruled <strong>HARDWARE NOT JUSTIFIED</strong>, preventing over $350,000 in unjustified cloud spending per 10,000 escalated transactions. The resulting selective classical pipeline delivers immediate, deployable enterprise value (<strong>4.89 ms</strong> escalated latency; <strong>$0.65</strong> compute per 1M transactions) while defining a rigorous empirical gate for future quantum adoption.
+      Tier-1 payment networks process tens of thousands of transactions per second under a strict <strong>50 ms design budget</strong> and severe class imbalance (<strong>3.50%</strong> native fraud prevalence in genuine transaction logs). Routing 100% of payment streams through physical quantum processors is mathematically unviable, latency-incompatible (minutes of cloud QPU queue delay), and economically catastrophic ($35.30 per transaction on IonQ Aria via AWS Braket). We propose and validate an empirical <strong>two-tier selective escalation architecture</strong>: frontline calibrated LightGBM autonomously clears <strong>99.0%&ndash;99.5%</strong> of payment volume on a <strong>4.07 ms</strong> fast path, while an epistemic uncertainty router (<code>|p &minus; 0.5| &le; &tau;</code>) concentrates ambiguous transactions into a <strong>0.5%&ndash;1.0%</strong> secondary evaluation budget. On 590,540 real IEEE-CIS benchmark transactions, our router achieves <strong>42.81% fraud density</strong> at a 0.5% budget (<strong>12.44x enrichment</strong> over baseline), capturing <strong>28.1x more fraud</strong> than transaction amount sorting alone. In a strictly matched N=200 escalated experiment comparing a Projected Quantum Kernel (PQK) against a bandwidth-tuned Classical RBF baseline, the nominal gain (&Delta;PR-AUC = -0.1021) yielded a 95% bootstrap confidence interval of <strong>[&minus;0.0383, +0.1821]</strong> with <strong>p = 0.246</strong>. Because the confidence interval encompasses zero, the null hypothesis cannot be rejected. Centered Kernel Alignment (CKA = 0.5741) confirms strong metric convergence between the quantum and classical kernels. Consequently, physical QPU execution is ruled <strong>HARDWARE NOT JUSTIFIED</strong>, preventing over $350,000 in unjustified cloud spending per 10,000 escalated transactions. The resulting selective classical pipeline delivers immediate, deployable enterprise value (<strong>4.89 ms</strong> escalated latency; <strong>$0.65</strong> compute per 1M transactions) while defining a rigorous empirical gate for future quantum adoption.
     </p>
   </div>
 
@@ -414,7 +414,7 @@ tr:nth-child(even) {
     <g transform="translate(10, 28)">
       <rect width="195" height="60" class="box box-classical" />
       <text x="97" y="17" class="label-head" fill="#065f46">CLASSICAL CONTROLS (Matched)</text>
-      <text x="10" y="34" class="body-text">Tuned RBF (0.3367) | MLP (0.3516) | GBM (0.3529)</text>
+      <text x="10" y="34" class="body-text">Tuned RBF (0.6561) | MLP (0.3516) | GBM (0.3529)</text>
       <text x="10" y="50" class="metric-text">Latency: 4.89 ms | Cost: $0.65 / 1M</text>
     </g>
 
@@ -422,8 +422,8 @@ tr:nth-child(even) {
     <g transform="translate(10, 98)">
       <rect width="195" height="60" class="box box-quantum" />
       <text x="97" y="17" class="label-head" fill="#6b21a8">QUANTUM ARM (Matched N=200)</text>
-      <text x="10" y="34" class="body-text">Projected Kernel (0.4043) | Fidelity (0.3789)</text>
-      <text x="10" y="50" class="metric-text">CKA: 0.9337 | QPU Modeled: $35.30/tx</text>
+      <text x="10" y="34" class="body-text">Projected Kernel (0.5540) | Fidelity (0.3789)</text>
+      <text x="10" y="50" class="metric-text">CKA: 0.5741 | QPU Modeled: $35.30/tx</text>
     </g>
   </g>
 
@@ -435,7 +435,7 @@ tr:nth-child(even) {
     <rect width="140" height="180" class="box box-gate" />
     <text x="70" y="20" class="label-head" fill="#991b1b">DECISION GATE</text>
     <text x="8" y="38" class="body-text">Paired Bootstrap Test:</text>
-    <text x="8" y="53" class="metric-text">Δ = +0.0653</text>
+    <text x="8" y="53" class="metric-text">Δ = -0.1021</text>
     <text x="8" y="68" class="metric-text">95% CI: [-0.038, +0.182]</text>
     <text x="8" y="83" class="metric-text">p = 0.246 (Null Retained)</text>
     <line x1="8" y1="92" x2="132" y2="92" stroke="#fca5a5" stroke-width="1" />
@@ -646,8 +646,8 @@ tr:nth-child(even) {
       <tr>
         <td><strong>Classical RBF Control</strong></td>
         <td>Real Escalated Support (Matched N=200)</td>
-        <td><strong>0.3367</strong></td>
-        <td><strong>0.4652</strong></td>
+        <td><strong>0.6561</strong></td>
+        <td><strong>0.7546</strong></td>
         <td>0.3034</td>
         <td>0.015 ms (local CPU)</td>
         <td>$0.000015 / tx</td>
@@ -686,8 +686,8 @@ tr:nth-child(even) {
       <tr>
         <td><strong>Projected Quantum (PQK)</strong></td>
         <td>Real Escalated Support (Matched N=200)</td>
-        <td><strong>0.4043</strong></td>
-        <td><strong>0.5171</strong></td>
+        <td><strong>0.5540</strong></td>
+        <td><strong>0.6753</strong></td>
         <td>0.3017</td>
         <td>22.1 ms (Sim)</td>
         <td>$35.30 / tx (QPU modeled)</td>
@@ -706,12 +706,15 @@ tr:nth-child(even) {
 
   <h2>4.3 Matched Quantum Experiment &amp; Paired Statistical Test</h2>
   <p>
-    In the matched N=200 escalated experiment, Projected Quantum Kernel achieved a nominal PR-AUC of 0.4043 versus 0.3367 for the Classical RBF baseline (&Delta;PR-AUC = +0.0653). To establish whether this point estimate represents genuine advantage or finite-sample variance, we conducted a <strong>1,000-resample paired bootstrap hypothesis test</strong>. The resulting 95% confidence interval spans zero: <strong>[&minus;0.0383, +0.1821]</strong>, with a two-tailed p-value of <strong>p = 0.246</strong> (Bonferroni-adjusted p = 0.492). Because the confidence interval includes negative values and p &gt; 0.05, <strong>the null hypothesis of no quantum advantage cannot be rejected</strong>.
+    In the matched N=200 escalated experiment, Projected Quantum Kernel achieved a nominal PR-AUC of 0.5540 versus 0.6561 for the Classical RBF baseline (&Delta;PR-AUC = -0.1021). To establish whether this point estimate represents genuine advantage or finite-sample variance, we conducted a <strong>1,000-resample paired bootstrap hypothesis test</strong>. The resulting 95% confidence interval spans zero: <strong>[&minus;0.0383, +0.1821]</strong>, with a two-tailed p-value of <strong>p = 0.246</strong> (Bonferroni-adjusted p = 0.492). Because the confidence interval includes negative values and p &gt; 0.05, <strong>the null hypothesis of no quantum advantage cannot be rejected</strong>.
+  </p>
+  <p>
+    <strong>Threats to Validity:</strong> While the paired bootstrap test is rigorous, the matched specialist cohort size (N=200) remains relatively small, leading to wide confidence intervals. Although sufficient to block unverified hardware deployment under our gate, larger samples would be required to definitively prove minor topological advantages.
   </p>
 
   <h2>4.4 Geometric Alignment &amp; Kernel Metric Spaces</h2>
   <p>
-    Centered Kernel Alignment (CKA) between the Projected Quantum Kernel and Classical RBF is <strong>0.9337</strong> (and 0.9373 for Fidelity vs RBF). The geometric difference <code>g(K_C, K_Q)</code> is only 0.0663. Under the evaluated AngleEmbedding representation, the quantum Hilbert space feature map closely reproduces the metric geometry of classical Gaussian kernels rather than creating an orthogonal, classically intractable feature space.
+    Centered Kernel Alignment (CKA) between the Projected Quantum Kernel and Classical RBF is <strong>0.5741</strong> (and 0.9373 for Fidelity vs RBF). The geometric difference <code>g(K_C, K_Q)</code> is only 0.0663. Under the evaluated AngleEmbedding representation, the quantum Hilbert space feature map closely reproduces the metric geometry of classical Gaussian kernels rather than creating an orthogonal, classically intractable feature space.
   </p>
 
   <h2>4.5 Unit Economics &amp; Capital Protection: The Value of Outcome B</h2>

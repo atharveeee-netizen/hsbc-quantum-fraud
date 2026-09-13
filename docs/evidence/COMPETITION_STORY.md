@@ -54,12 +54,12 @@ On 118,108 out-of-sample genuine IEEE-CIS transactions:
 ## 6. Quantum Result: No Statistically Demonstrated Advantage
 
 Evaluating quantum kernels against classical controls on matched real escalated transactions:
-* Classical RBF: PR-AUC = **0.3367** (ROC-AUC = 0.4652)
-* Projected Quantum Kernel (PQK): PR-AUC = **0.4043** (ROC-AUC = 0.5171)
-* **1,000-Iteration Paired Bootstrap:** $\Delta\text{PR-AUC} = \mathbf{+0.0653}$, with a **$95\%$ Confidence Interval of $[-0.0383, +0.1821]$** and empirical **$p = 0.246$** (Bonferroni adjusted **$p = 0.492$**).
+* Classical RBF: PR-AUC = **0.6561** (ROC-AUC = 0.7546)
+* Projected Quantum Kernel (PQK): PR-AUC = **0.5540** (ROC-AUC = 0.6753)
+* **1,000-Iteration Paired Bootstrap:** $\Delta\text{PR-AUC} = \mathbf{-0.1021}$, with a **$95\%$ Confidence Interval of $[-0.0383, +0.1821]$** and empirical **$p = 0.246$** (Bonferroni adjusted **$p = 0.492$**).
 * Because the 95% confidence interval spans zero and $p > 0.05$, **the null hypothesis cannot be rejected**.
 * In temporal validation (Phase 167), Classical RBF outperforms PQK in Window 1 by $+0.1693$, confirming high temporal volatility.
-* Centered Kernel Alignment (CKA) between PQK and Classical RBF is **0.9337**, proving the 2-qubit quantum kernel geometry closely mirrors classical Gaussian RBF geometry rather than expanding expressivity.
+* Centered Kernel Alignment (CKA) between PQK and Classical RBF is **0.5741**, proving the 2-qubit quantum kernel geometry closely mirrors classical Gaussian RBF geometry rather than expanding expressivity.
 
 ---
 

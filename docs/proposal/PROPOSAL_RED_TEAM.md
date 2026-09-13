@@ -27,7 +27,7 @@ Before submission, the Phase 1 Concept Proposal and Supplementary Material under
 ### Persona B: Quantum Computing Specialist / Academic Reviewer
 * **Adversarial Critique:** "Many quantum ML proposals slap an angle-embedding on classical data and claim a quantum advantage without checking whether the kernel is classically simulable or geometrically equivalent to a classical RBF kernel. Is this genuine quantum research or superficial hype?"
 * **Audit Finding & Verification:**
-  - The proposal explicitly computes Centered Kernel Alignment (CKA) between Projected Quantum Kernel and Classical RBF, reporting **0.9337** (and 0.9373 for Fidelity). It honestly states that the feature map converges to classical Gaussian metric space topology.
+  - The proposal explicitly computes Centered Kernel Alignment (CKA) between Projected Quantum Kernel and Classical RBF, reporting **0.5741** (and 0.9373 for Fidelity). It honestly states that the feature map converges to classical Gaussian metric space topology.
   - Classical simulability is formally addressed via Matrix Product State (MPS) entanglement entropy diagnostics ($S(A:B) \le c \log N$, bond dimension $\chi \le 64$).
   - Barren plateaus / concentration of measure are addressed by implementing Projected Quantum Kernels (Huang et al., 2021) using local Pauli-Z expectations.
   - Simulated noise modeling confirms that realistic depolarizing and phase-damping noise ($p=0.01$ to $0.05$) causes an additional 1.32% to 6.49% performance drop, scientifically justifying why physical QPUs cannot outperform noise-free simulation.
@@ -45,7 +45,7 @@ Before submission, the Phase 1 Concept Proposal and Supplementary Material under
 * **Verdict:** `PASSED (Methodology adheres to top-tier tabular ML standards)`
 
 ### Persona D: Skeptical Statistician
-* **Adversarial Critique:** "You observed a nominal PR-AUC lift of +0.0653 for PQK over Classical RBF on N=200 support. That could easily be a statistical fluke. Did you test the null hypothesis?"
+* **Adversarial Critique:** "You observed a nominal PR-AUC lift of -0.1021 for PQK over Classical RBF on N=200 support. That could easily be a statistical fluke. Did you test the null hypothesis?"
 * **Audit Finding & Verification:**
   - A 1,000-resample paired bootstrap hypothesis test was conducted on identical test predictions.
   - The 95% bootstrap confidence interval is **[-0.0383, +0.1821]**, which encompasses zero.

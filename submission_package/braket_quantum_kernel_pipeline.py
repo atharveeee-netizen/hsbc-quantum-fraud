@@ -145,6 +145,7 @@ class BraketProjectedQuantumKernel:
         
         for i in range(N):
             circ = build_braket_feature_circuit(X_angles[i])
+            # Use shots=0 for exact statevector analytic expectation values (avoids sampling noise)
             task = self.device.run(circ, shots=0)
             res = task.result()
             phi_Q[i, :] = np.array(res.values, dtype=np.float64)
@@ -199,68 +200,17 @@ def compute_cka(K1: np.ndarray, K2: np.ndarray) -> float:
 
 def load_or_generate_escalated_cohort(n_samples: int = 200) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """
-    Loads real IEEE-CIS escalated boundary cohort or generates an identical
-    statistical proxy if raw parquets are absent.
+    Loads real IEEE-CIS escalated boundary cohort.
     """
-    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    real_test_path = os.path.join(repo_root, "data", "real", "test_raw.parquet")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    cohort_path = os.path.join(script_dir, "escalated_cohort.npz")
     
-    if os.path.exists(real_test_path):
-        logging.info(f"Loading real IEEE-CIS test partition from {real_test_path}...")
-        df = pd.read_parquet(real_test_path)
-        feature_cols = ['TransactionAmt', 'card1', 'card2', 'card3', 'card5', 'C1', 'C2', 'C5', 'C13', 'D1']
-        X_raw = df[feature_cols].values
-        y_all = df['isFraud'].values
-        
-        # Fit PCA to 8 dimensions
-        scaler = StandardScaler()
-        X_scaled = scaler.fit_transform(X_raw)
-        pca = PCA(n_components=N_FEATURES, random_state=42)
-        X_pca = pca.fit_transform(X_scaled)
-        
-        # Stratified slice of boundary support
-        fraud_idx = np.where(y_all == 1)[0]
-        nonfraud_idx = np.where(y_all == 0)[0]
-        
-        np.random.seed(42)
-        # 42.81% fraud density matching audited router escalation
-        n_fraud = int(n_samples * 0.4281)
-        n_nonfraud = n_samples - n_fraud
-        
-        sel_fraud = np.random.choice(fraud_idx, size=n_fraud, replace=False)
-        sel_non = np.random.choice(nonfraud_idx, size=n_nonfraud, replace=False)
-        sel = np.concatenate([sel_fraud, sel_non])
-        np.random.shuffle(sel)
-        
-        X_support = X_pca[sel]
-        y_support = y_all[sel]
-        
-        # Test slice
-        rem_fraud = np.setdiff1d(fraud_idx, sel_fraud)
-        rem_non = np.setdiff1d(nonfraud_idx, sel_non)
-        test_f = np.random.choice(rem_fraud, size=min(100, len(rem_fraud)), replace=False)
-        test_n = np.random.choice(rem_non, size=min(200, len(rem_non)), replace=False)
-        test_idx = np.concatenate([test_f, test_n])
-        np.random.shuffle(test_idx)
-        
-        X_eval = X_pca[test_idx]
-        y_eval = y_all[test_idx]
-        
-        return X_support, y_support, X_eval, y_eval
+    if os.path.exists(cohort_path):
+        logging.info(f"Loading real IEEE-CIS test partition from {cohort_path}...")
+        data = np.load(cohort_path)
+        return data['X_support'], data['y_support'], data['X_eval'], data['y_eval']
     else:
-        logging.info("Generating audited synthetic escalated benchmark matching IEEE-CIS parameters...")
-        np.random.seed(42)
-        n_train = n_samples
-        n_eval = 200
-        
-        X_support = np.random.randn(n_train, N_FEATURES)
-        # Class distribution with ~42% fraud
-        y_support = (np.random.rand(n_train) < 0.4281).astype(int)
-        
-        X_eval = np.random.randn(n_eval, N_FEATURES)
-        y_eval = (np.random.rand(n_eval) < 0.35).astype(int)
-        
-        return X_support, y_support, X_eval, y_eval
+        raise FileNotFoundError(f"Cohort file not found at {cohort_path}. Please ensure the data directory is present.")
 
 
 def run_pipeline():

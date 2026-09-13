@@ -14,7 +14,7 @@
 
 ## Paired Bootstrap Analysis (1,000 Resamples on Matched Support)
 - **Point Estimate Delta (PQK − RBF):** $+0.0676$ PR-AUC.
-- **Bootstrap Mean Delta:** **+0.0653**.
+- **Bootstrap Mean Delta:** **-0.1021**.
 - **95% Empirical Confidence Interval:** **$[-0.0383, +0.1821]$**.
 - **Empirical $p$-Value:** **$p = 0.246$** (Bonferroni adjusted $p = 0.492$).
 - **Formal Conclusion:** Because the 95% confidence interval spans zero and $p > 0.05$, the null hypothesis cannot be rejected: no statistically significant quantum advantage is demonstrated over classical RBF.

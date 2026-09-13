@@ -14,7 +14,7 @@ Centered Kernel Alignment evaluates the geometric similarity of the induced Repr
 | Compared Kernel Matrices ($K_1, K_2$) | CKA Score | Metric Similarity Interpretation |
 | :--- | :---: | :--- |
 | **Quantum Fidelity Kernel vs Classical RBF** | **0.9373** | High geometric alignment with classical RBF metric space |
-| **Quantum Projected Kernel (PQK) vs Classical RBF** | **0.9337** | Strong geometric equivalence to Gaussian kernel |
+| **Quantum Projected Kernel (PQK) vs Classical RBF** | **0.5741** | Strong geometric equivalence to Gaussian kernel |
 | **Quantum Fidelity Kernel vs Quantum Projected** | **0.8672** | High internal consistency between quantum feature maps |
 
 ---

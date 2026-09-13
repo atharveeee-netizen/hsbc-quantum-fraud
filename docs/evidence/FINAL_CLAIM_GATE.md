@@ -18,9 +18,9 @@ The following statements are backed directly by committed, reproducible test art
 3. **Model Uncertainty Drives Routing:**  
    *"Ablation experiments prove that posterior uncertainty $|p - 0.5|$ overwhelmingly drives fraud concentration, capturing 28x more fraudulent transactions than transaction amount alone ($253$ frauds vs $9$ frauds at $0.5\%$ budget)."*
 4. **No Quantum Advantage Demonstrated:**  
-   *"On matched real escalated transactions ($N=200$ support), comparing Projected Quantum Kernel against tuned Classical RBF yields $\Delta\text{PR-AUC} = +0.0653$ with a 95% bootstrap confidence interval of $[-0.0383, +0.1821]$ and $p = 0.246$ (Bonferroni adjusted $p = 0.492$). The null hypothesis cannot be rejected."*
+   *"On matched real escalated transactions ($N=200$ support), comparing Projected Quantum Kernel against tuned Classical RBF yields $\Delta\text{PR-AUC} = -0.1021$ with a 95% bootstrap confidence interval of $[-0.0383, +0.1821]$ and $p = 0.246$ (Bonferroni adjusted $p = 0.492$). The null hypothesis cannot be rejected."*
 5. **Metric Space Geometric Alignment:**  
-   *"Centered Kernel Alignment (CKA) between the tested 2-qubit quantum kernel and Classical RBF is $0.9337$, demonstrating that the quantum feature map closely reproduces classical Gaussian RBF geometry rather than expanding expressivity."*
+   *"Centered Kernel Alignment (CKA) between the tested 2-qubit quantum kernel and Classical RBF is $0.5741$, demonstrating that the quantum feature map closely reproduces classical Gaussian RBF geometry rather than expanding expressivity."*
 6. **Sub-50ms Frontline Authorization SLA Compliance:**  
    *"Frontline classical inference completes in $4.07\text{ ms}$ (median, fast path) and $4.89\text{ ms}$ (escalated path), utilizing $<10\%$ of standard sub-50ms payment switch authorization deadlines."*
 7. **Zero Detected Repository Vulnerabilities:**  

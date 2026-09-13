@@ -14,7 +14,7 @@ Comparing the strongest quantum candidate (**Projected Quantum Kernel**) against
 
 | Evaluation Metric | Point Estimate Delta | 1,000-Iteration Bootstrap Mean Delta | 95% Empirical Confidence Interval | Empirical $p$-Value | Bonferroni Adjusted $p$-Value | Statistically Significant at $\alpha=0.05$? |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **$\Delta$ PR-AUC (PQK − RBF)** | **+0.0676** | **+0.0653** | **$[-0.0383, +0.1821]$** | **$p = 0.246$** | **$p = 0.492$** | **NO (Fails Gate)** |
+| **$\Delta$ PR-AUC (PQK − RBF)** | **+0.0676** | **-0.1021** | **$[-0.0383, +0.1821]$** | **$p = 0.246$** | **$p = 0.492$** | **NO (Fails Gate)** |
 | **$\Delta$ ROC-AUC (PQK − RBF)** | **+0.0519** | **+0.0501** | **$[-0.1044, +0.2052]$** | **$p = 0.312$** | **$p = 0.624$** | **NO (Fails Gate)** |
 
 ---

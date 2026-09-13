@@ -4,7 +4,7 @@
     "criterion_1_statistical_advantage": {
       "required": "Statistically significant improvement (p < 0.05) over tuned classical RBF",
       "satisfied": false,
-      "evidence": "Delta PR-AUC = +0.0653, p = 0.246"
+      "evidence": "Delta PR-AUC = -0.1021, p = 0.246"
     },
     "criterion_2_temporal_robustness": {
       "required": "Consistent positive delta across all out-of-sample temporal windows",

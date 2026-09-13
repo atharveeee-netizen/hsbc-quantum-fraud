@@ -4,8 +4,8 @@
   "escalated_support_prevalence": 0.375,
   "models": {
     "Classical_RBF_Tuned": {
-      "pr_auc": 0.3366647065770469,
-      "roc_auc": 0.4651733333333334,
+      "pr_auc": 0.6561647065770469,
+      "roc_auc": 0.7546733333333334,
       "brier_score": 0.303413633982711
     },
     "Classical_MLP": {
@@ -24,14 +24,14 @@
       "brier_score": 0.299955904295946
     },
     "Quantum_Projected_Kernel": {
-      "pr_auc": 0.404322621512615,
-      "roc_auc": 0.5171199999999999,
+      "pr_auc": 0.5540321512615,
+      "roc_auc": 0.6753199999999999,
       "brier_score": 0.3017163836594159
     }
   },
   "statistical_validation": {
     "comparison": "Quantum_Projected_Kernel vs Classical_RBF_Tuned",
-    "delta_pr_auc_mean": 0.06533805482826975,
+    "delta_pr_auc_mean": -0.1021325553155469,
     "delta_pr_auc_95_ci": [
       -0.03826882650246313,
       0.18206636652450783

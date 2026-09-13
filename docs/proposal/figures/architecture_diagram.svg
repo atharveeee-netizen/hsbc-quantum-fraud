@@ -99,7 +99,7 @@
     <g transform="translate(10, 28)">
       <rect width="195" height="60" class="box box-classical" />
       <text x="97" y="17" class="label-head" fill="#065f46">CLASSICAL CONTROLS (Matched)</text>
-      <text x="10" y="34" class="body-text">Tuned RBF (0.3367) | MLP (0.3516) | GBM (0.3529)</text>
+      <text x="10" y="34" class="body-text">Tuned RBF (0.6561) | MLP (0.3516) | GBM (0.3529)</text>
       <text x="10" y="50" class="metric-text">Latency: 4.89 ms | Cost: $0.65 / 1M</text>
     </g>
 
@@ -107,8 +107,8 @@
     <g transform="translate(10, 98)">
       <rect width="195" height="60" class="box box-quantum" />
       <text x="97" y="17" class="label-head" fill="#6b21a8">QUANTUM ARM (Matched N=200)</text>
-      <text x="10" y="34" class="body-text">Projected Kernel (0.4043) | Fidelity (0.3789)</text>
-      <text x="10" y="50" class="metric-text">CKA: 0.9337 | QPU Modeled: $35.30/tx</text>
+      <text x="10" y="34" class="body-text">Projected Kernel (0.5540) | Fidelity (0.3789)</text>
+      <text x="10" y="50" class="metric-text">CKA: 0.5741 | QPU Modeled: $35.30/tx</text>
     </g>
   </g>
 
@@ -120,7 +120,7 @@
     <rect width="140" height="180" class="box box-gate" />
     <text x="70" y="20" class="label-head" fill="#991b1b">DECISION GATE</text>
     <text x="8" y="38" class="body-text">Paired Bootstrap Test:</text>
-    <text x="8" y="53" class="metric-text">Δ = +0.0653</text>
+    <text x="8" y="53" class="metric-text">Δ = -0.1021</text>
     <text x="8" y="68" class="metric-text">95% CI: [-0.038, +0.182]</text>
     <text x="8" y="83" class="metric-text">p = 0.246 (Null Retained)</text>
     <line x1="8" y1="92" x2="132" y2="92" stroke="#fca5a5" stroke-width="1" />

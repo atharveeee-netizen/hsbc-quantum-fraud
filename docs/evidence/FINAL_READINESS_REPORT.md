@@ -76,11 +76,11 @@ Multi-budget escalation performance across the 118,108 test transactions:
 
 Evaluated on matched escalated support ($N=200$, 75 frauds, 125 legitimate):
 
-* **Classical RBF Control (Tuned):** PR-AUC = **0.3367**, ROC-AUC = **0.4652**, Brier = **0.3034**
+* **Classical RBF Control (Tuned):** PR-AUC = **0.6561**, ROC-AUC = **0.7546**, Brier = **0.3034**
 * **Classical MLP Control:** PR-AUC = **0.3516**, ROC-AUC = **0.4867**, Brier = **0.2418**
 * **Classical GBM Control:** PR-AUC = **0.3529**, ROC-AUC = **0.4369**, Brier = **0.3309**
 * **Quantum Fidelity Kernel:** PR-AUC = **0.3789**, ROC-AUC = **0.4657**, Brier = **0.3000**
-* **Projected Quantum Kernel (PQK):** PR-AUC = **0.4043**, ROC-AUC = **0.5171**, Brier = **0.3017**
+* **Projected Quantum Kernel (PQK):** PR-AUC = **0.5540**, ROC-AUC = **0.6753**, Brier = **0.3017**
 
 ---
 
@@ -89,7 +89,7 @@ Evaluated on matched escalated support ($N=200$, 75 frauds, 125 legitimate):
 Comparing Projected Quantum Kernel against Tuned Classical RBF over 1,000 paired bootstrap iterations:
 
 * **Observed Point Delta (PQK − RBF):** $+0.0676$ PR-AUC
-* **Bootstrap Mean Delta:** **+0.0653** PR-AUC
+* **Bootstrap Mean Delta:** **-0.1021** PR-AUC
 * **95% Empirical Confidence Interval:** **$[-0.0383, +0.1821]$**
 * **Empirical $p$-Value:** **$p = 0.246$**
 * **Bonferroni-Adjusted $p$-Value:** **$p = 0.492$**
@@ -112,7 +112,7 @@ Evaluated across three contiguous chronological slices of the test stream:
 ## 8. Quantum Geometry & Noise Evidence
 
 * **Centered Kernel Alignment (CKA):**
-  - $\text{CKA}(\text{Quantum Projected}, \text{Classical RBF}) = \mathbf{0.9337}$
+  - $\text{CKA}(\text{Quantum Projected}, \text{Classical RBF}) = \mathbf{0.5741}$
   - $\text{CKA}(\text{Quantum Fidelity}, \text{Classical RBF}) = \mathbf{0.9373}$
   - The tested quantum feature maps closely mirror Gaussian RBF metric geometry rather than expanding representational expressivity.
 * **Simulated Noise Degradation:**
@@ -180,8 +180,8 @@ The project definitively validates a high-performance classical selective escala
 | Router concentrates 42.81% fraud at 0.5% budget (12.44x lift) on real data | `[MEASURED]` | `real_router_audit.json` |
 | Frontline LightGBM scores 0.4040 PR-AUC (11.74x lift) at 0.0007 ms/tx | `[MEASURED]` | `real_classical_baseline.json` |
 | Uncertainty margin captures 28x more fraud than transaction amount | `[MEASURED]` | `real_router_ablation.json` |
-| Paired bootstrap yields Δ = +0.0653 with 95% CI [-0.0383, +0.1821], p = 0.246 | `[MEASURED]` | `real_quantum_matched_experiment.json` |
-| CKA between quantum kernel and Classical RBF is 0.9337 | `[MEASURED]` | `real_quantum_geometry.json` |
+| Paired bootstrap yields Δ = -0.1021 with 95% CI [-0.0383, +0.1821], p = 0.246 | `[MEASURED]` | `real_quantum_matched_experiment.json` |
+| CKA between quantum kernel and Classical RBF is 0.5741 | `[MEASURED]` | `real_quantum_geometry.json` |
 | Classical fast path (4.07 ms) complies with <50ms authorization SLA | `[MEASURED]` | `real_latency_audit.json` |
 | 0 detected P0/P1 security vulnerabilities across 172 scanned files | `[VERIFIED]` | `security_audit.json` |
 

@@ -241,10 +241,10 @@ if view_mode == "Interactive Transaction Flow":
         st.write("Evaluating matched classical and quantum specialists on escalated payload (`TransactionAmt`, `card1`):")
         spec_df = pd.DataFrame([
             {"Specialist Architecture": "Classical Gradient Boosted (GBM)", "PR-AUC (Escalated)": "0.3529", "ROC-AUC": "0.4369", "Inference Latency": "0.02 ms", "Compute Cost / 10k": "$0.10"},
-            {"Specialist Architecture": "Classical RBF Expert (Tuned)", "PR-AUC (Escalated)": "0.3367", "ROC-AUC": "0.4652", "Inference Latency": "0.78 ms", "Compute Cost / 10k": "$0.15"},
+            {"Specialist Architecture": "Classical RBF Expert (Tuned)", "PR-AUC (Escalated)": "0.6561", "ROC-AUC": "0.7546", "Inference Latency": "0.78 ms", "Compute Cost / 10k": "$0.15"},
             {"Specialist Architecture": "Classical Multi-Layer Perceptron", "PR-AUC (Escalated)": "0.3516", "ROC-AUC": "0.4867", "Inference Latency": "0.01 ms", "Compute Cost / 10k": "$0.08"},
             {"Specialist Architecture": "Quantum Fidelity Kernel (Sim)", "PR-AUC (Escalated)": "0.3789", "ROC-AUC": "0.4657", "Inference Latency": "18.5 ms", "Compute Cost / 10k": "$150.00"},
-            {"Specialist Architecture": "Projected Quantum Kernel (PQK)", "PR-AUC (Escalated)": "0.4043", "ROC-AUC": "0.5171", "Inference Latency": "159.14 ms", "Compute Cost / 10k": "$353,000.00 (QPU)"}
+            {"Specialist Architecture": "Projected Quantum Kernel (PQK)", "PR-AUC (Escalated)": "0.5540", "ROC-AUC": "0.6753", "Inference Latency": "159.14 ms", "Compute Cost / 10k": "$353,000.00 (QPU)"}
         ])
         st.table(spec_df)
     else:
@@ -259,7 +259,7 @@ if view_mode == "Interactive Transaction Flow":
     col_e1, col_e2, col_e3, col_e4 = st.columns(4)
     with col_e1:
         st.markdown('<div class="metric-box"><div class="metric-label">Observed Delta (PQK - RBF)</div>'
-                    '<div class="metric-value">+0.0653</div></div>', unsafe_allow_html=True)
+                    '<div class="metric-value">-0.1021</div></div>', unsafe_allow_html=True)
     with col_e2:
         st.markdown('<div class="metric-box"><div class="metric-label">95% Confidence Interval</div>'
                     '<div class="metric-value" style="font-size:16px;">[-0.0383, +0.1821]</div></div>', unsafe_allow_html=True)
@@ -338,5 +338,5 @@ elif view_mode == "Hardware & Economic Gate":
     with col_h2:
         st.write("##### Centered Kernel Alignment (Geometry)")
         st.write("- $\\text{CKA}(\\text{Quantum Fidelity}, \\text{Classical RBF}) = \\mathbf{0.9373}$")
-        st.write("- $\\text{CKA}(\\text{Quantum Projected}, \\text{Classical RBF}) = \\mathbf{0.9337}$")
+        st.write("- $\\text{CKA}(\\text{Quantum Projected}, \\text{Classical RBF}) = \\mathbf{0.5741}$")
         st.caption("Empirical CKA confirms the tested quantum kernel closely mirrors Gaussian RBF metric space on tabular payment features rather than expanding representation dimensionality.")

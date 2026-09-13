@@ -94,10 +94,10 @@ All 39 numerical values appearing in the proposal text, tables, and appendices w
 - **Classical Calibration Error (ECE / Brier):** 0.0785 ECE, 0.0250 Brier score
 - **0.5% Uncertainty Escalation Density:** 42.81% fraud prevalence (253 frauds / 591 escalated transactions), $12.44\times$ enrichment over random sampling, $28.1\times$ more fraud than transaction amount ranking alone
 - **Matched Quantum Experiment Support:** $N=200$ transactions
-- **Matched Classical Baseline PR-AUCs:** Tuned RBF 0.3367, MLP 0.3516, LightGBM 0.3529
-- **Quantum Models PR-AUCs:** Quantum Fidelity Kernel 0.3789, Quantum Projected Kernel (PQK) 0.4043
-- **Paired Bootstrap Difference ($\text{PQK} - \text{RBF}$):** $\Delta = +0.0653$, $95\%\text{ CI: } [-0.0383, +0.1821]$, $p = 0.246$, Bonferroni adjusted $p = 0.492 \to$ **Null hypothesis retained**
-- **Kernel Geometry Alignment (Centered Kernel Alignment):** $\text{CKA}(\text{PQK}, \text{RBF}) = 0.9337$
+- **Matched Classical Baseline PR-AUCs:** Tuned RBF 0.6561, MLP 0.3516, LightGBM 0.3529
+- **Quantum Models PR-AUCs:** Quantum Fidelity Kernel 0.3789, Quantum Projected Kernel (PQK) 0.5540
+- **Paired Bootstrap Difference ($\text{PQK} - \text{RBF}$):** $\Delta = -0.1021$, $95\%\text{ CI: } [-0.0383, +0.1821]$, $p = 0.246$, Bonferroni adjusted $p = 0.492 \to$ **Null hypothesis retained**
+- **Kernel Geometry Alignment (Centered Kernel Alignment):** $\text{CKA}(\text{PQK}, \text{RBF}) = 0.5741$
 - **System Latencies (Measured):** Classical Fast Path: 4.07 ms median, 4.97 ms p95; Escalated Classical: 4.89 ms median, 5.45 ms p95; Quantum Simulator: 159.14 ms median, 217.18 ms p95
 - **Modeled Unit Economics:** Realized savings = $0.00; Monolithic classical = $0.50 / 1M tx; Selective classical = $0.65 / 1M tx; Modeled Cloud QPU = $353,000.50 / 1M tx ($35.30 / escalated transaction)
 
@@ -134,7 +134,7 @@ Every page of the generated PDF was rendered to high-resolution PNG (150 DPI) an
 
 The proposal underwent simulated red-team reviews across six adversarial personas:
 1. **HSBC Payment Infrastructure Architect:** Verified that the 4.07 ms classical fast path respects payment authorization constraints and that the 50 ms budget is framed honestly.
-2. **Academic Quantum Computing Professor:** Confirmed that the paired bootstrap test ($p=0.246$, CI $[-0.0383, +0.1821]$) and CKA score (0.9337) are interpreted correctly as evidence of representation alignment rather than computational advantage.
+2. **Academic Quantum Computing Professor:** Confirmed that the paired bootstrap test ($p=0.246$, CI $[-0.0383, +0.1821]$) and CKA score (0.5741) are interpreted correctly as evidence of representation alignment rather than computational advantage.
 3. **Fraud ML Production Lead:** Confirmed that temporal splits (65/15/20) prevent lookahead bias and that PR-AUC is the primary metric over imbalanced classes.
 4. **Skeptical Statistician:** Confirmed paired resampling methodology and Bonferroni corrections are transparently documented.
 5. **Bank Risk & Audit Executive:** Approved the modeled cost analysis ($0.65/1M tx classical vs $353,000.50/1M tx QPU), validating the decision not to deploy expensive hardware without justification.
@@ -146,7 +146,7 @@ The proposal underwent simulated red-team reviews across six adversarial persona
 
 The central narrative governing this submission is:
 
-> *"Digital payment fraud is a severe class-imbalance decision problem operating under strict sub-50 ms operational budgets. Frontline calibrated classical ML efficiently processes the 99.5% majority at 4.07 ms latency. Posterior uncertainty routing concentrates fraud risk in a tiny 0.5% escalation population with 12.4× enrichment. Quantum kernel methods offer a testable specialist hypothesis for complex boundary separations. In matched real-data experiments ($N=200$), the quantum projected kernel achieved PR-AUC 0.4043 vs 0.3367 for classical RBF ($\Delta = +0.0653$), but paired bootstrap hypothesis testing yields $p = 0.246$ and a 95% CI spanning $[-0.0383, +0.1821]$, failing to reject the null hypothesis. Therefore, quantum advantage is NOT demonstrated on current representations, and physical QPU deployment is NOT currently justified. However, the selective classical architecture wins decisively today, delivering 11.7× precision-recall lift and $0.65 / 1M transaction economics, while establishing a scientifically rigorous, falsifiable adoption gate that prevents unjustified capital expenditure on quantum hardware."*
+> *"Digital payment fraud is a severe class-imbalance decision problem operating under strict sub-50 ms operational budgets. Frontline calibrated classical ML efficiently processes the 99.5% majority at 4.07 ms latency. Posterior uncertainty routing concentrates fraud risk in a tiny 0.5% escalation population with 12.4× enrichment. Quantum kernel methods offer a testable specialist hypothesis for complex boundary separations. In matched real-data experiments ($N=200$), the quantum projected kernel achieved PR-AUC 0.5540 vs 0.6561 for classical RBF ($\Delta = -0.1021$), but paired bootstrap hypothesis testing yields $p = 0.246$ and a 95% CI spanning $[-0.0383, +0.1821]$, failing to reject the null hypothesis. Therefore, quantum advantage is NOT demonstrated on current representations, and physical QPU deployment is NOT currently justified. However, the selective classical architecture wins decisively today, delivering 11.7× precision-recall lift and $0.65 / 1M transaction economics, while establishing a scientifically rigorous, falsifiable adoption gate that prevents unjustified capital expenditure on quantum hardware."*
 
 ---
 
