@@ -12,6 +12,7 @@
 \usepackage{titlesec}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, backgrounds, fit, decorations.pathreplacing}
+\usepackage{graphicx}
 \usepackage{caption}
 \usepackage[colorlinks=true,linkcolor=blue!70!black,citecolor=blue!70!black,urlcolor=blue!70!black]{hyperref}
 
@@ -398,11 +399,19 @@ The team has established an uncommonly rigorous standard of reproducibility and 
 \subsection{Why This Team Can Execute Phase 2}
 The team has already implemented, debugged, and audited the complete end-to-end pipeline on 590,540 real transactions. Having demonstrated the discipline to report negative scientific findings honestly while delivering an operational classical architecture and open-source Amazon Braket implementations, the team possesses the exact technical rigor, domain knowledge, and intellectual integrity required for an enterprise-grade banking PoC.
 
-\vspace{6pt}
-\noindent\rule{\linewidth}{0.4pt}
+\begin{center}
+\vspace{-2pt}
+\includegraphics[width=0.82\linewidth,height=7.8cm,keepaspectratio]{feature_attribution_shap.png}\\[2pt]
+\captionof{figure}{\textbf{Frontline Model Global TreeSHAP Feature Attribution Summary ($N=118,108$ Transactions).}}
+\label{fig:shap_core}
+\vspace{-4pt}
+\end{center}
+
 \vspace{2pt}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{1pt}
 {\color{darkslate}
-\textbf{Submission Metadata:} HSBC Global Quantum + AI Challenge 2026 $\cdot$ Phase 1 Concept Proposal $\cdot$ Compiled via pdf\TeX\ $\cdot$ Verified 100\% Firewall Clean $\cdot$ Strictly 0 external images embedded $\cdot$ Public Repository: \href{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}{\texttt{github.com/atharveeee-netizen/hsbc-quantum-fraud}}.
+\textbf{Submission Metadata:} HSBC Global Quantum + AI Challenge 2026 $\cdot$ Phase 1 Concept Proposal $\cdot$ Compiled via pdf\TeX\ $\cdot$ Verified 100\% Firewall Clean $\cdot$ Regulatory Explainability Artifact (Figure 2) $\cdot$ Public Repository: \href{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}{\texttt{github.com/atharveeee-netizen/hsbc-quantum-fraud}}.
 }
 
 \end{document}

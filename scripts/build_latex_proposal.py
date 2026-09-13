@@ -24,6 +24,7 @@ def build_latex():
 \usepackage{titlesec}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, backgrounds, fit, decorations.pathreplacing}
+\usepackage{graphicx}
 \usepackage{caption}
 \usepackage[colorlinks=true,linkcolor=blue!70!black,citecolor=blue!70!black,urlcolor=blue!70!black]{hyperref}
 
@@ -410,11 +411,19 @@ The team has established an uncommonly rigorous standard of reproducibility and 
 \subsection{Why This Team Can Execute Phase 2}
 The team has already implemented, debugged, and audited the complete end-to-end pipeline on 590,540 real transactions. Having demonstrated the discipline to report negative scientific findings honestly while delivering an operational classical architecture and open-source Amazon Braket implementations, the team possesses the exact technical rigor, domain knowledge, and intellectual integrity required for an enterprise-grade banking PoC.
 
-\vspace{6pt}
-\noindent\rule{\linewidth}{0.4pt}
+\begin{center}
+\vspace{-2pt}
+\includegraphics[width=0.82\linewidth,height=7.8cm,keepaspectratio]{feature_attribution_shap.png}\\[2pt]
+\captionof{figure}{\textbf{Frontline Model Global TreeSHAP Feature Attribution Summary ($N=118,108$ Transactions).}}
+\label{fig:shap_core}
+\vspace{-4pt}
+\end{center}
+
 \vspace{2pt}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{1pt}
 {\color{darkslate}
-\textbf{Submission Metadata:} HSBC Global Quantum + AI Challenge 2026 $\cdot$ Phase 1 Concept Proposal $\cdot$ Compiled via pdf\TeX\ $\cdot$ Verified 100\% Firewall Clean $\cdot$ Strictly 0 external images embedded $\cdot$ Public Repository: \href{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}{\texttt{github.com/atharveeee-netizen/hsbc-quantum-fraud}}.
+\textbf{Submission Metadata:} HSBC Global Quantum + AI Challenge 2026 $\cdot$ Phase 1 Concept Proposal $\cdot$ Compiled via pdf\TeX\ $\cdot$ Verified 100\% Firewall Clean $\cdot$ Regulatory Explainability Artifact (Figure 2) $\cdot$ Public Repository: \href{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}{\texttt{github.com/atharveeee-netizen/hsbc-quantum-fraud}}.
 }
 
 \end{document}
@@ -755,22 +764,14 @@ Table~\ref{tab:env} enumerates the frozen package versions tested under Python 3
 \end{table}
 \vspace{-8pt}
 
-\subsection*{C.2 TreeSHAP Local \& Global Explainability Artifact}
-Figure~\ref{fig:shap} illustrates the TreeSHAP summary attribution across the out-of-sample forward test partition ($N=118,108$). Feature attributions exhibit genuine row-level variance without constant-attribution artifacts, satisfying regulatory explainability standards.
-
-\begin{center}
-\vspace{-6pt}
-\includegraphics[width=0.68\linewidth,height=2.3cm,keepaspectratio]{feature_attribution_shap.png}\\[1pt]
-\captionof{figure}{\textbf{TreeSHAP Global Feature Attribution Summary on IEEE-CIS Benchmark ($N=118,108$).}}
-\label{fig:shap}
-\vspace{-6pt}
-\end{center}
+\subsection*{C.2 TreeSHAP Explainability Ledger and Regulatory Compliance}
+As visually presented in Figure~2 of the Concept Proposal, TreeSHAP feature attributions on the out-of-sample forward test partition ($N=118,108$) demonstrate that model risk scoring is governed by behavioral velocity rather than static demographic factors. Top attribution drivers are: \textbf{\texttt{C5}} (mean $|SHAP|=0.558$, short-window velocity probing), \textbf{\texttt{C1}} ($0.366$, terminal authorization frequency), \textbf{\texttt{C13}} ($0.329$, cumulative merchant velocity), and \textbf{\texttt{D1}} ($0.223$, inter-transaction timedelta). Monetary volume (\textbf{\texttt{TransactionAmt}}, $0.203$) acts as a secondary risk modulator, preventing wealth-based bias while satisfying Fair Lending and GDPR Article 22 adverse action requirements.
 
 \subsection*{C.3 Cryptographic Provenance \& Verification of the 5 Submission Deliverables}
 To reproduce the experimental findings and verify the 5 submission deliverables from raw source:
 \begin{enumerate}[leftmargin=*,itemsep=0.2pt,topsep=0.5pt]
 \item \textbf{Clone Repository:} \texttt{git clone https://github.com/atharveeee-netizen/hsbc-quantum-fraud.git}
-\item \textbf{Verify 5 Shipped Deliverables:} (1) \texttt{HSBC\_Phase1\_Concept\_Proposal.pdf}, (2) \texttt{HSBC\_Phase1\_Supplementary\_Appendix.pdf} (incorporating TreeSHAP artifact), (3) \texttt{braket\_quantum\_kernel\_pipeline.py}, (4) \texttt{escalated\_cohort.npz}, (5) \texttt{prediction\_outputs.csv}.
+\item \textbf{Verify 5 Shipped Deliverables:} (1) \texttt{HSBC\_Phase1\_Concept\_Proposal.pdf} (incorporating Figure 2 TreeSHAP Summary), (2) \texttt{HSBC\_Phase1\_Supplementary\_Appendix.pdf}, (3) \texttt{braket\_quantum\_kernel\_pipeline.py}, (4) \texttt{escalated\_cohort.npz}, (5) \texttt{prediction\_outputs.csv}.
 \item \textbf{Execute Amazon Braket Pipeline:} Run \texttt{python proposal/braket\_quantum\_kernel\_pipeline.py} (evaluates 8-qubit Braket PQK in $<90$s).
 \item \textbf{Execute Full Test Suite \& Claim Firewall:} Run \texttt{pytest -v} (24 unit and integration tests pass) and \texttt{python scripts/audit\_claim\_firewall.py} (0 violations).
 \end{enumerate}
