@@ -20,6 +20,8 @@ ENV/
 *.parquet
 *.csv
 !docs/evidence/*.csv
+!submission_package/*.csv
+!proposal/*.csv
 *.joblib
 *.pkl
 
