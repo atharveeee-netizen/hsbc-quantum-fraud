@@ -459,6 +459,8 @@ The team has already implemented, debugged, and audited the complete end-to-end 
 \usepackage{titlesec}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, backgrounds, fit, decorations.pathreplacing}
+\usepackage{graphicx}
+\usepackage{caption}
 \usepackage[colorlinks=true,linkcolor=blue!70!black,citecolor=blue!70!black,urlcolor=blue!70!black]{hyperref}
 
 % Institutional Colors
@@ -728,20 +730,20 @@ Table~\ref{tab:threshold_audit} details the operational trade-offs across decisi
 \clearpage
 
 % =============================================================================
-% APPENDIX PAGE 3: APPENDIX C - REPRODUCIBILITY, ENVIRONMENT & REFERENCES
+% APPENDIX PAGE 3: APPENDIX C - REPRODUCIBILITY, EXPLAINABILITY & REFERENCES
 % =============================================================================
 
-\section*{Appendix C: Reproducibility, Open-Source Environment \& Academic References}
-\addcontentsline{toc}{section}{Appendix C: Reproducibility, Open-Source Environment \& Academic References}
+\section*{Appendix C: Reproducibility, Explainability \& Academic References}
+\addcontentsline{toc}{section}{Appendix C: Reproducibility, Explainability \& Academic References}
 
 \subsection*{C.1 Complete Execution Environment Manifest}
-All experiments, data pipelines, and test suites are fully reproducible in a standard Python 3.10 virtual environment. Table~\ref{tab:env} enumerates the frozen package versions.
+Table~\ref{tab:env} enumerates the frozen package versions tested under Python 3.10.11.
 
 \vspace{-2pt}
 \begin{table}[h!]
 \centering
 \scriptsize
-\renewcommand{\arraystretch}{0.74}
+\renewcommand{\arraystretch}{0.68}
 \caption{\textbf{Reproducible Software Environment Specifications (Python 3.10.11).}}
 \label{tab:env}
 \vspace{1pt}
@@ -762,43 +764,53 @@ All experiments, data pipelines, and test suites are fully reproducible in a sta
 \bottomrule
 \end{tabularx}
 \end{table}
-\vspace{-5pt}
+\vspace{-6pt}
 
-\subsection*{C.2 Cryptographic Provenance \& Verification of the 5 Submission Artifacts}
+\subsection*{C.2 TreeSHAP Local \& Global Explainability Artifact}
+Figure~\ref{fig:shap} illustrates the TreeSHAP summary attribution across the out-of-sample forward test partition ($N=118,108$). Feature attributions exhibit genuine row-level variance without constant-attribution artifacts, satisfying regulatory explainability standards.
+
+\begin{center}
+\vspace{-3pt}
+\includegraphics[width=0.68\linewidth,height=3.4cm,keepaspectratio]{feature_attribution_shap.png}\\[1pt]
+\captionof{figure}{\textbf{TreeSHAP Global Feature Attribution Summary on IEEE-CIS Benchmark ($N=118,108$).}}
+\label{fig:shap}
+\vspace{-4pt}
+\end{center}
+
+\subsection*{C.3 Cryptographic Provenance \& Verification of the 5 Submission Deliverables}
 To reproduce the experimental findings and verify the 5 submission deliverables from raw source:
-\begin{enumerate}[leftmargin=*,itemsep=0.4pt,topsep=1pt]
+\begin{enumerate}[leftmargin=*,itemsep=0.2pt,topsep=0.5pt]
 \item \textbf{Clone Repository:} \texttt{git clone https://github.com/atharveeee-netizen/hsbc-quantum-fraud.git}
-\item \textbf{Verify 5 Submission Files:} Check directory contents: (1) \texttt{HSBC\_Phase1\_Concept\_Proposal.pdf}, (2) \texttt{HSBC\_Phase1\_Supplementary\_Appendix.pdf}, (3) \texttt{braket\_quantum\_kernel\_pipeline.py}, (4) \texttt{prediction\_outputs.csv}, (5) \texttt{feature\_attribution\_shap.png}.
-\item \textbf{Execute Amazon Braket Pipeline:} Run \texttt{python proposal/braket\_quantum\_kernel\_pipeline.py} (evaluates 8-qubit Braket PQK and outputs metrics in $<90$ seconds).
-\item \textbf{Execute Full Test Suite:} Run \texttt{pytest -v} (verifies 24 tests in $<130$~seconds).
-\item \textbf{Execute Claim Firewall Scanner:} Run \texttt{python scripts/audit\_claim\_firewall.py} (0 violations).
+\item \textbf{Verify 5 Shipped Deliverables:} (1) \texttt{HSBC\_Phase1\_Concept\_Proposal.pdf}, (2) \texttt{HSBC\_Phase1\_Supplementary\_Appendix.pdf} (incorporating TreeSHAP artifact), (3) \texttt{braket\_quantum\_kernel\_pipeline.py}, (4) \texttt{escalated\_cohort.npz}, (5) \texttt{prediction\_outputs.csv}.
+\item \textbf{Execute Amazon Braket Pipeline:} Run \texttt{python proposal/braket\_quantum\_kernel\_pipeline.py} (evaluates 8-qubit Braket PQK in $<90$s).
+\item \textbf{Execute Full Test Suite \& Claim Firewall:} Run \texttt{pytest -v} (24 unit and integration tests pass) and \texttt{python scripts/audit\_claim\_firewall.py} (0 violations).
 \end{enumerate}
 
-\subsection*{C.3 Academic References \& Foundational Literature}
-\begin{enumerate}[leftmargin=*,itemsep=0.5pt,topsep=1pt]
-\footnotesize
-\item Chen, T., \& Guestrin, C. (2016). XGBoost: A scalable tree boosting system. \textit{Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}, 785--794.
-\item Cortes, C., Mohri, M., \& Rostamizadeh, A. (2012). Algorithms for learning kernels based on centered alignment. \textit{Journal of Machine Learning Research}, 13(Mar), 795--828.
+\subsection*{C.4 Academic References \& Foundational Literature}
+\begin{enumerate}[leftmargin=*,itemsep=0.1pt,topsep=0.5pt]
+\tiny
+\item Chen, T., \& Guestrin, C. (2016). XGBoost: A scalable tree boosting system. \textit{ACM SIGKDD}, 785--794.
+\item Cortes, C., Mohri, M., \& Rostamizadeh, A. (2012). Algorithms for learning kernels based on centered alignment. \textit{JMLR}, 13, 795--828.
 \item Cortes, C., \& Vapnik, V. (1995). Support-vector networks. \textit{Machine Learning}, 20(3), 273--297.
-\item Dal Pozzolo, A., Caelen, O., Johnson, R. A., \& Bontempi, G. (2015). Calibrating probability with undersampling for unbalanced credit card fraud detection. \textit{IEEE Symposium Series on Computational Intelligence}, 159--166.
-\item Havl{\'\i}{\v{c}}ek, V., C{\'o}rcoles, A. D., Temme, K., et al. (2019). Supervised learning with quantum-enhanced feature spaces. \textit{Nature}, 567(7747), 209--212.
-\item Huang, H. Y., Broughton, M., Mohseni, M., Babbush, R., Boixo, S., Neven, H., \& McClean, J. R. (2021). Power of data in quantum machine learning. \textit{Nature Communications}, 12(1), 2631.
-\item Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., \& Liu, T. Y. (2017). LightGBM: A highly efficient gradient boosting decision tree. \textit{Advances in Neural Information Processing Systems}, 30, 3146--3154.
-\item LexisNexis Risk Solutions. (2024). \textit{True Cost of Fraud Study: Financial Services and Lending}. LexisNexis Research.
-\item Lundberg, S. M., \& Lee, S. I. (2017). A unified approach to interpreting model predictions. \textit{Advances in Neural Information Processing Systems}, 30, 4765--4774.
-\item Niculescu-Mizil, A., \& Caruana, R. (2005). Predicting good probabilities with supervised learning. \textit{Proceedings of the 22nd International Conference on Machine Learning}, 625--632.
-\item Temme, K., Bravyi, S., \& Gambetta, J. M. (2017). Error mitigation for short-depth quantum circuits. \textit{Physical Review Letters}, 119(18), 180509.
-\item Thanasilp, S., Wang, S., Cerezo, M., \& Holmes, Z. (2022). Subtleties in the trainability of quantum machine learning models. \textit{Quantum Science and Technology}, 8(3), 035014.
+\item Dal Pozzolo, A., et al. (2015). Calibrating probability with undersampling. \textit{IEEE SSCI}, 159--166.
+\item Havl{\'\i}{\v{c}}ek, V., et al. (2019). Supervised learning with quantum-enhanced feature spaces. \textit{Nature}, 567, 209--212.
+\item Huang, H. Y., et al. (2021). Power of data in quantum machine learning. \textit{Nature Communications}, 12, 2631.
+\item Ke, G., et al. (2017). LightGBM: A highly efficient gradient boosting decision tree. \textit{NeurIPS}, 30, 3146--3154.
+\item LexisNexis Risk Solutions. (2024). \textit{True Cost of Fraud Study: Financial Services and Lending}.
+\item Lundberg, S. M., \& Lee, S. I. (2017). A unified approach to interpreting model predictions. \textit{NeurIPS}, 30, 4765--4774.
+\item Niculescu-Mizil, A., \& Caruana, R. (2005). Predicting good probabilities with supervised learning. \textit{ICML}, 625--632.
+\item Temme, K., Bravyi, S., \& Gambetta, J. M. (2017). Error mitigation for short-depth quantum circuits. \textit{Phys. Rev. Lett.}, 119, 180509.
+\item Thanasilp, S., et al. (2022). Subtleties in the trainability of quantum machine learning models. \textit{QST}, 8, 035014.
 \item The Nilson Report. (2025). \textit{Card Fraud Losses Worldwide}. Issue 1240.
-\item IEEE Computational Intelligence Society. (2019). \textit{IEEE-CIS Fraud Detection Benchmark Dataset}. Kaggle Competition Repository.
+\item IEEE CIS. (2019). \textit{IEEE-CIS Fraud Detection Benchmark Dataset}. Kaggle.
 \end{enumerate}
 
-\vspace{3pt}
-\noindent\rule{\linewidth}{0.4pt}
 \vspace{1.5pt}
-{\footnotesize\color{darkslate}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{1pt}
+{\tiny\color{darkslate}
 \textbf{Document Metadata:} Supplementary Material $\cdot$ Phase 1 Concept Proposal $\cdot$ HSBC / 2026 Global Quantum + AI Challenge $\cdot$ Typeset in pdf\TeX.\\
-\textbf{Public Repository:} \href{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}{\texttt{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}} $\cdot$ Strictly 0 external images embedded.
+\textbf{Public Repository:} \href{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}{\texttt{https://github.com/atharveeee-netizen/hsbc-quantum-fraud}} $\cdot$ Phase 1 Academic Submission.
 }
 
 \end{document}
