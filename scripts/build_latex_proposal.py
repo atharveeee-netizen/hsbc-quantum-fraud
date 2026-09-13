@@ -849,19 +849,36 @@ To reproduce the experimental findings from raw source:
         pix.save(f"docs/proposal/renders_latex/appendix_page_{i+1}.png")
     doc_app.close()
 
+    # Create unified combined submission package (Core 6 pages + Appendix 3 pages = 9 pages)
+    combined_pdf = "proposal/HSBC_Phase1_Combined_Submission_Package.pdf"
+    doc_combined = fitz.open()
+    doc_core_in = fitz.open(core_pdf)
+    doc_app_in = fitz.open(app_pdf)
+    doc_combined.insert_pdf(doc_core_in)
+    doc_combined.insert_pdf(doc_app_in)
+    doc_combined.save(combined_pdf)
+    combined_pages = len(doc_combined)
+    combined_size_kb = os.path.getsize(combined_pdf) / 1024
+    print(f"Combined Submission Package PDF: {combined_pages} pages, {combined_size_kb:.1f} KB")
+    doc_core_in.close()
+    doc_app_in.close()
+    doc_combined.close()
+
     # Mirror generated files to docs/proposal
     for fname in ["HSBC_Phase1_Concept_Proposal.pdf", "HSBC_Phase1_Concept_Proposal.tex",
-                  "HSBC_Phase1_Supplementary_Appendix.pdf", "HSBC_Phase1_Supplementary_Appendix.tex"]:
+                  "HSBC_Phase1_Supplementary_Appendix.pdf", "HSBC_Phase1_Supplementary_Appendix.tex",
+                  "HSBC_Phase1_Combined_Submission_Package.pdf"]:
         src = os.path.join("proposal", fname)
         dst = os.path.join("docs/proposal", fname)
         with open(src, "rb") as sf, open(dst, "wb") as df:
             df.write(sf.read())
 
-    print(f"FINAL RESULT: Core={core_pages} pages, Appendix={app_pages} pages")
+    print(f"FINAL RESULT: Core={core_pages} pages, Appendix={app_pages} pages, Combined={combined_pages} pages")
     assert core_pages == 6, f"Expected 6 pages for Core Proposal, got {core_pages}"
     assert app_pages == 3, f"Expected 3 pages for Supplementary Appendix, got {app_pages}"
-    print("STRICT GUIDELINE COMPLIANCE VERIFIED: Core=6 pages, Appendix=3 pages, 0 external images!")
-    return core_pages, app_pages
+    assert combined_pages == 9, f"Expected 9 pages for Combined Submission Package, got {combined_pages}"
+    print("STRICT GUIDELINE COMPLIANCE VERIFIED: Core=6 pages, Appendix=3 pages, Combined=9 pages, 0 external images!")
+    return core_pages, app_pages, combined_pages
 
 if __name__ == "__main__":
     build_latex()
